@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use PRISM in your research or work, please cite it as below."
+title: "PRISM: A Framework for LLM Research and Audits"
+abstract: >-
+  PRISM is a methodology for keeping multi-prompt, multi-session LLM research
+  and audit work coherent across prompts, sessions, and the context limits of
+  any single chat. It splits a research problem into atomic specialist prompts,
+  runs each where it works best across Claude, ChatGPT, Gemini, and Perplexity,
+  and converges their outputs into a single living document called the Starter.
+  The framework codifies Monitors, Gates, Standing Principles, a two-layer
+  convergence model, and version management — all distributed as a single
+  markdown file that can be attached to any LLM session or installed as a
+  Claude Skill.
+authors:
+  - family-names: Kuper
+    given-names: Ron
+    alias: Ronkupper
+repository-code: "https://github.com/Ronkupper/PRISM"
+url: "https://github.com/Ronkupper/PRISM"
+license: CC-BY-4.0
+version: "1.10.4"
+date-released: "2026-04-23"
+keywords:
+  - llm
+  - prompt-engineering
+  - research-methodology
+  - audit-framework
+  - multi-prompt
+  - context-engineering
+  - multi-session
+  - claude
+  - anthropic
