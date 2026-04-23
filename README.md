@@ -38,7 +38,7 @@ PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, ac
 
 ## How to use
 
-1. Grab the PRISM framework file from this repo — either [`PRISM.md`](./PRISM.md) (stable filename, always the current version) or the versioned copy (see [Current version](#current-version) below) if you want the version visible in the filename.
+1. Grab the PRISM framework file from this repo. Use [`PRISM.md`](./PRISM.md) for a stable always-latest link, or the versioned copy (see [Current version](#current-version) below) if you prefer the version visible in the filename.
 2. Either:
    - **Attach it to a Claude session**, or
    - **Install it as a Claude Skill** (auto-triggers on any `*_starter_v*.md` or `*_audit_master*.md` file)
