@@ -66,6 +66,10 @@ Active proposals, deferred items, and declined ideas with rationale live in [`PR
 - `PRISM_backlog_v{n}.md` — versioned copy of the backlog (e.g., `PRISM_backlog_v6.md`).
 - `README.md` — this file.
 - `RELEASING.md` — maintainer workflow for tagging releases and bumping versions.
+- `CONTRIBUTING.md` — how to contribute (bug reports, proposals, PRs).
+- `CODE_OF_CONDUCT.md` — community norms; participation governed by the Contributor Covenant.
+- `SECURITY.md` — how to report vulnerabilities privately.
+- `CITATION.cff` — citation metadata (powers GitHub's "Cite this repository" button).
 - `LICENSE-CC-BY-4.0.txt` — Creative Commons license, covers the framework docs.
 - `LICENSE-MIT.txt` — MIT license, covers any code.
 - `assets/` — logo, teaser deck (PPTX source + PDF), and other visual assets.
@@ -78,7 +82,8 @@ Ron Kuper, with Claude as co-maintainer. Distilled from real-world competitive r
 
 This repository is dual-licensed:
 
-- **Framework documentation** (`PRISM.md`, any versioned `PRISM_v*.md` copy, and any other `.md` content except this README) is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). See [`LICENSE-CC-BY-4.0.txt`](./LICENSE-CC-BY-4.0.txt).
+- **Framework documentation** (`PRISM.md`, any versioned `PRISM_v*.md` copy, and any other `.md` content except this README and `CODE_OF_CONDUCT.md`) is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). See [`LICENSE-CC-BY-4.0.txt`](./LICENSE-CC-BY-4.0.txt).
 - **Code** (scripts, tools, or any source files added in the future) is licensed under the [MIT License](https://opensource.org/licenses/MIT). See [`LICENSE-MIT.txt`](./LICENSE-MIT.txt).
+- **`CODE_OF_CONDUCT.md`** is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/) and is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) per the Covenant's own terms.
 
 You're free to use, adapt, and build on PRISM — including commercially — as long as you credit the project.
