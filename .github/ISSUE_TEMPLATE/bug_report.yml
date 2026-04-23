@@ -1,0 +1,43 @@
+name: Bug report
+description: Framework bug, internal contradiction, broken link, or unclear section in PRISM
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. The fields below help triage fast.
+
+  - type: input
+    id: prism-version
+    attributes:
+      label: PRISM version
+      description: From the filename (e.g. `PRISM_v1_10_4.md`) or the `Version:` line inside the file.
+      placeholder: "e.g. v1.10.4"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What were you trying to do, and what went wrong?
+      placeholder: "I was running [prompt X] on [LLM Y] and found that…"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: What should have happened instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Optional — LLM vendor/version, attachments used, Scope Flags, Starter excerpt, anything relevant.
+    validations:
+      required: false

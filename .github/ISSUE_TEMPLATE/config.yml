@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Question about using PRISM
+    url: https://github.com/Ronkupper/PRISM/discussions/categories/q-a
+    about: For questions about applying PRISM to your own projects, head to Discussions → Q&A.
+  - name: 💡 Framework proposal
+    url: https://github.com/Ronkupper/PRISM/discussions/categories/ideas
+    about: For proposals on how PRISM should evolve, start in Discussions → Ideas. Active proposals graduate to PRISM_backlog.md.
+  - name: 📣 Show what you built
+    url: https://github.com/Ronkupper/PRISM/discussions/categories/show-and-tell
+    about: Share cross-LLM adaptations, tooling, or case studies in Discussions → Show and Tell.
