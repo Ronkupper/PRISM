@@ -58,12 +58,18 @@ PRISM is distributed primarily as a **file attachment**, not via `git clone`. Th
 
 Active proposals, deferred items, and declined ideas with rationale live in [`PRISM_backlog.md`](./PRISM_backlog.md) (versioned copy: [`PRISM_backlog_v6.md`](./PRISM_backlog_v6.md)). It's a working document — not canonical, not in force — kept separate from `PRISM.md` so the framework file stays authoritative. Useful if you want to see what's being considered, what's been decided against and why, or what's queued for the next version.
 
+## Related artifacts
+
+The **PRISM Lens Library** ([`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md)) is a framework-neutral reference catalog of audit-scope lenses; integration into PRISM is planned for v2.
+
 ## Repository contents
 
 - `PRISM.md` — the current framework version (stable filename, always up to date).
 - `PRISM_v{n}.md` — versioned copy of the current framework (e.g., `PRISM_v1_10_4.md`). Previous versions available via git tags.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
 - `PRISM_backlog_v{n}.md` — versioned copy of the backlog (e.g., `PRISM_backlog_v6.md`).
+- `lens/PRISM_lens_library.md` — reference catalog of audit-scope lenses (stable filename). Framework-neutral; integration planned for v2.
+- `lens/PRISM_lens_library_v{n}.md` — versioned copy of the Lens Library (e.g., `PRISM_lens_library_v0_9.md`).
 - `README.md` — this file.
 - `RELEASING.md` — maintainer workflow for tagging releases and bumping versions.
 - `CONTRIBUTING.md` — how to contribute (bug reports, proposals, PRs).
