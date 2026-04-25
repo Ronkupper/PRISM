@@ -41,14 +41,16 @@ PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, ac
 1. Grab the PRISM framework file from this repo. Use [`PRISM.md`](./PRISM.md) for a stable always-latest link, or the versioned copy (see [Current version](#current-version) below) if you prefer the version visible in the filename.
 2. Either:
    - **Attach it to a Claude session**, or
-   - **Install it as a Claude Skill** (auto-triggers on any `*_starter_v*.md` or `*_audit_master*.md` file)
+   - **Install it as a Claude Skill** (auto-triggers on any `*_master_p*.md` (v2) or `*_starter_v*.md` (v1.x) file)
 3. Hand Claude your subject and goal. PRISM takes it from there.
 
 The framework runs on any capable LLM — Claude is the primary reasoning and build environment, with ChatGPT, Gemini, and Perplexity used in deliberate multi-vendor triangulation sequences.
 
 ## Current version
 
-**v1.10.4** — file: [`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md). See the `Version History` section at the bottom of the file for the full change log. Previous versions are available via git tags.
+**v2.0.0** — file: [`PRISM_v2_0_0.md`](./PRISM_v2_0_0.md). v2 is a major rebuild around the Lens Library, a triple execution contract (Envelope · Self-check · Output), continuous Master + *What's next* state, and a telemetric context-pressure framework. See [Appendix D](./PRISM_v2_0_0.md#appendix-d--v1x--v2-surface-drift) for the v1.x → v2 surface drift map. Previous versions are available via git tags.
+
+**Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
 ### Why versioned filenames?
 
@@ -60,16 +62,18 @@ Active proposals, deferred items, and declined ideas with rationale live in [`PR
 
 ## Related artifacts
 
-The **PRISM Lens Library** ([`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md)) is a framework-neutral reference catalog of audit-scope lenses; integration into PRISM is planned for v2.
+The **PRISM Lens Library** ([`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md)) is a reference catalog of audit-scope lenses. As of v2.0 it is required attachment to every orchestration session and is graded against the draft Prompt Strategy by the seven Setup probes.
 
 ## Repository contents
 
 - `PRISM.md` — the current framework version (stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned copy of the current framework (e.g., `PRISM_v1_10_4.md`). Previous versions available via git tags.
+- `PRISM_v{n}.md` — versioned copy of the current framework (e.g., `PRISM_v2_0_0.md`). Previous versions available via git tags.
+- `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
 - `PRISM_backlog_v{n}.md` — versioned copy of the backlog (e.g., `PRISM_backlog_v6.md`).
-- `lens/PRISM_lens_library.md` — reference catalog of audit-scope lenses (stable filename). Framework-neutral; integration planned for v2.
+- `lens/PRISM_lens_library.md` — reference catalog of audit-scope lenses (stable filename). Integrated into PRISM v2.
 - `lens/PRISM_lens_library_v{n}.md` — versioned copy of the Lens Library (e.g., `PRISM_lens_library_v0_9.md`).
+- `design/` — design-time artifacts for the current major version (specification + design document). Provenance for the framework as shipped.
 - `README.md` — this file.
 - `RELEASING.md` — maintainer workflow for tagging releases and bumping versions.
 - `CONTRIBUTING.md` — how to contribute (bug reports, proposals, PRs).
