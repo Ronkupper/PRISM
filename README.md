@@ -54,7 +54,7 @@ The framework runs on any capable LLM — Claude is the primary reasoning and bu
 
 ## Current version
 
-**v2.0.0** — current file: [`PRISM.md`](./PRISM.md). v2 is a major rebuild around the Lens Library (embedded as Appendix G), a triple execution contract (Envelope · Self-check · Output), continuous Master + *What's next* state, and a telemetric context-pressure framework. See [Appendix D](./PRISM.md#appendix-d--v1x--v2-surface-drift) for the v1.x → v2 surface drift map. The version-pinned snapshot at this tag is [`PRISM_v2_0_0.md`](./PRISM_v2_0_0.md) (byte-identical to PRISM.md at the v2.0.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.0.1** — current file: [`PRISM.md`](./PRISM.md). v2 is a major rebuild around the Lens Library (embedded as Appendix G), a triple execution contract (Envelope · Self-check · Output), continuous Master + *What's next* state, and a telemetric context-pressure framework. See [Appendix D](./PRISM.md#appendix-d--v1x--v2-surface-drift) for the v1.x → v2 surface drift map. The version-pinned snapshot at this tag is [`PRISM_v2_0_1.md`](./PRISM_v2_0_1.md) (byte-identical to PRISM.md at the v2.0.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 

@@ -1,16 +1,16 @@
 ---
 name: prism-v2
-description: PRISM v2.0 — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md, Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Do NOT trigger for unrelated audit work, generic prompt engineering, or v1.10.4-specific terminology like Starter, GATE-0/1/2, Scope Flags, Runtime Profile, Assumption Register — those are v1.x and v2.0 supersedes them.
+description: PRISM v2.0.1 — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md, Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Do NOT trigger for unrelated audit work, generic prompt engineering, or v1.10.4-specific terminology like Starter, GATE-0/1/2, Scope Flags, Runtime Profile, Assumption Register — those are v1.x and v2.0 supersedes them.
 ---
 
-# PRISM v2.0 framework loader
+# PRISM v2.0.1 framework loader
 
-This Skill loads PRISM v2.0 — the canonical framework operating document for
+This Skill loads PRISM v2.0.1 — the canonical framework operating document for
 structured multi-session, multi-vendor LLM-orchestrated audit and research.
 
 ## When triggered
 
-1. Read `PRISM_v2_0_0.md` (version-pinned) or `PRISM.md` (always-current) from
+1. Read `PRISM_v2_0_1.md` (version-pinned) or `PRISM.md` (always-current) from
    this Skill's folder, the operator's project, or the attached copy in full
    before responding to the operator's request.
 2. Run SP-13 substrate self-check (§10.1.3): declare your model identity and
@@ -40,8 +40,8 @@ structured multi-session, multi-vendor LLM-orchestrated audit and research.
 
 ## Files this Skill expects in the Project or attached
 
-- `PRISM.md` (always-current) or `PRISM_v2_0_0.md` (version-pinned)
-- `PRISM_lens_library.md` v0.9 (canonical catalog; `prism-lens-v0.9` tag)
+- `PRISM.md` (always-current) or `PRISM_v2_0_1.md` (version-pinned)
+- `PRISM_lens_library.md` v0.10 (canonical catalog; `prism-lens-v0.10` tag)
 - `[project]_prism2.0_master_*.md` (the Master)
 - `[project]_brief.md` (subject brief, at Setup)
 
@@ -49,7 +49,7 @@ structured multi-session, multi-vendor LLM-orchestrated audit and research.
 
 `PRISM.md` at the repo root carries its own skill frontmatter (`name: prism`,
 v1.x fused-file pattern). This `SKILL.md` is the v2-native loader pattern
-(`name: prism-v2`) — separate loader, body lives in `PRISM_v2_0_0.md`.
+(`name: prism-v2`) — separate loader, body lives in `PRISM_v2_0_1.md`.
 Either pattern works; pick whichever fits your environment.
 
 ## What this Skill does NOT do
