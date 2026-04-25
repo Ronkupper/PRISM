@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 8
+**Version:** 9
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -145,7 +145,7 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 **Supporting work to produce (operator-facing):**
 - **Operator setup guide.** Step-by-step: GitHub account → repo creation → fine-grained PAT (scoping + expiry guidance) → SSH signing key → git config → first commit. Lives in the public repo, probably `docs/PRISM_mode_setup.md`. Calibrated for the operator who's used `git` casually but never set up a signing key — that's the median PRISM user.
 - **Default repo template.** A scaffolded layout the operator clones or copies — README, `.gitignore`, placeholder dirs (`probes/`, `handoffs/`, `evidence/`, `findings/`, `learnings.md`), and a `PROJECT.md` operators fill in with audit subject + scope flags. Slimmer than `PRISM-workshop` because audit projects don't need `design/` or `synthesis/` as first-class dirs.
-- **System-prompt snippet (operator's project).** A drop-in header analogous to the `[PRISM-GitHub Workflow v1]` block in PRISM's own dev project — tells Claude how to operate in repo-backed mode (fetch on demand, commit durable artifacts, treat project files as credentials only).
+- **System-prompt snippet (operator's project).** A generalized version of `PRISM-workshop/protocols/system_instructions.md` (the dev-project canonical) with personal details stripped — operator name, email, GitHub handle removed; repo names parameterized. Drop-in template the operator pastes into their Claude.ai project settings UI; tells Claude how to operate in repo-backed mode (fetch on demand, commit durable artifacts, treat project files as credentials only). Co-evolves with the canonical: when `system_instructions.md` revises (currently at v1.1), the operator template should mirror the same behaviors generalized, version-tagged in lockstep.
 - **PRISM.md updates.** New Execution Mode flag at Setup (`chat-default` / `repo-backed`); mode-specific guidance for Setup outputs (commit at Setup completion) and handoffs (signed commit replaces session-end attachment); credential lifecycle nudges (PAT expiration warning, signing-key rotation prompt) generalised from the dev project's pattern.
 - **Worked example.** A published exemplar repo demonstrating repo-backed mode end-to-end — either a synthetic Atlas-style audit run through the new flow, or PRISM's own paired repos (`PRISM` + `PRISM-workshop`) cited as the canonical existence proof. The dev project is itself the strongest demo; using it as the example removes the need to fabricate one.
 - **Migration note.** Short guidance for operators mid-project: chat-default projects don't need to migrate; repo-backed mode is opt-in for new projects. Avoid framing it as a forced upgrade.
