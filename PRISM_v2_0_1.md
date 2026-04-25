@@ -1,16 +1,19 @@
 ---
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.0.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 ---
 
-# PRISM v2.0 — Framework operating document
+# PRISM v2.0.1 — Framework operating document
 
-**Status:** v2.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.0.1 release. Canonical framework for Claude orchestration sessions.
 **Date:** April 2026
-**Supersedes:** PRISM v1.10.4 (terminal on the v1.x line; pinned per DD §10.1).
+**Supersedes:** PRISM v2.0.0 (release-hygiene patch; see §18 for surface and provenance). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §10.1).
 **Required attachments at every orchestration session:** this file (or the
-PRISM v2 Skill that loads it), the project's Master, the Lens Library
-(`PRISM_lens_library.md` v0.9, tag `prism-lens-v0.9`).
+PRISM v2 Skill that loads it) and the project's Master. This file embeds
+Lens Library v0.10 in Appendix G; a singleton PRISM.md attachment is
+sufficient for normal operation. Attach a standalone Lens Library only
+when the project explicitly pins to a newer Library version than the
+embedded copy (see §7.1).
 **Substrate:** Claude Opus 4.6 / 4.7 verified at v2.0; other Claude models
 report-worthy per §3.1.
 
@@ -57,7 +60,7 @@ Reading order for an operator returning to v2.0 after running a session:
 
 ## 1. Scope
 
-### 1.1 What v2.0 covers `[structural | stable]`
+### 1.1 What v2.0.1 covers `[structural | stable]`
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -75,12 +78,13 @@ and research framework. v2.0 covers:
 - **Seven Setup probes** (P1 Coverage grading, P2 Adversarial Scope, P3
   Decision Framing, P4 Pre-mortem, P5 Falsifier, P6 Domain Reconnaissance,
   P7 User Voice) — Setup-time grading constructs only (§6.3).
-- **Library integration** — the Lens Library v0.9 as canonical reference
-  catalog; point-refresh in Setup; Update sessions for currency maintenance
-  (§7).
-- **Eleven Monitors** (M1–M12 with M12 reused for Result Completeness
-  Check; v1.x M12 Conversation Pressure retired into M5) firing
-  orchestration-side at defined lifecycle slots (§9).
+- **Library integration** — the Lens Library v0.10 as canonical reference
+  catalog (embedded as Appendix G; standalone at `lens/PRISM_lens_library.md`
+  for explicit override); point-refresh in Setup; Update sessions for
+  currency maintenance (§7).
+- **Twelve Monitor slots** (M1–M12, with v1.x M12 Conversation Pressure
+  retired into M5 and the M12 slot reused for Result Completeness Check)
+  firing orchestration-side at defined lifecycle slots (§9).
 - **Telemetric context-pressure framework** (M5) — seven signals,
   qualitative compounding, four bands (🟢🟡🟠🔴), continuous-curation
   posture from 🟡 onward (§5).
@@ -94,14 +98,16 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§12).
 
-### 1.2 What v2.0 does not cover
+### 1.2 What v2.0.1 does not cover
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
-- **The Library catalog itself.** The catalog is its own canonical artifact
-  at `lens/PRISM_lens_library.md` v0.9 (tag `prism-lens-v0.9`). This file
-  references it but does not duplicate it.
+- **Standalone Library evolution.** The Lens Library catalog ships embedded
+  in Appendix G (v0.10 at this release) for singleton-attachment use. The
+  standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.10`)
+  remains authoritative for the Library's own evolution and for projects
+  that explicitly pin to a newer Library version than the embedded copy.
 - **Empirical calibration.** Several thresholds in v2.0 are rev. 1 draft
   estimates: M5 band thresholds (§5.1), Update session trigger (§7.5),
   probe iteration ceilings (§6.1). Calibration against real use is a
@@ -456,6 +462,7 @@ unchanged.
 Prompt ID:          [identifier — purpose/title]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
+Prompt digest:      [orchestration-generated short identifier; copy verbatim into Output]
 Vendor:             [vendor] | multi-vendor
 Dispatch shape:     equivalence | split | limitation-named
 Dispatch rationale: [one positive-framing line per variant; see §4.2]
@@ -541,7 +548,7 @@ Vendor:           [vendor that actually executed; see §4.10]
 Vendor config:    [config actually applied at execution]
 Schema version:   output-v1
 Date:             [YYYY-MM-DD]
-Prompt hash:      [first 6 chars of hash of the prompt body]
+Prompt digest:    [copied verbatim from Envelope]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [findings content]
@@ -560,9 +567,12 @@ Attachment warnings:  [optional; one line per warning; see §9.2 spec / §13]
 - `Schema version` — currently `output-v1`. Bumps when the Output block's
   structure changes; orchestration's Layer-1 convergence flags
   incompatibilities at ingestion.
-- `Prompt hash` — first 6 hex chars of SHA-256 of the prompt body (excluding
-  signature blocks). Lets orchestration verify that the file came from the
-  prompt orchestration thinks it did.
+- `Prompt digest` — short identifier orchestration generates for the exact
+  dispatched prompt body and writes into the Envelope. Execution copies it
+  verbatim from the Envelope into the Output. Orchestration verifies
+  copy-through, not cryptographic computation by the execution model. This
+  catches wrong-prompt / wrong-attachment delivery without depending on
+  vendor chats to compute reliable hashes (which they can't, in general).
 - `Operator next` — download filename + attachment instruction for the next
   orchestration turn.
 - `Attachment warnings` — populated only when warranted. See §13 for
@@ -617,7 +627,7 @@ orchestration remembers.
 - *Single file by principle* — no parallel Masters. Multiple-Master state is
   itself a Monitor fire (M2 Version Drift, §9.1.2).
 - *Authoritative copy* — operator's locally-attached Master at session open
-  is authoritative for that session. Cloud-drive copies (§17 E.5) are
+  is authoritative for that session. Cloud-drive copies (§17 MO-5) are
   durable persistence, not authority.
 
 **Required sections.**
@@ -1008,11 +1018,13 @@ recommended state at Layer-1 ingestion.
 
 ```
 1. Read Output signature fields: Executed Vendor, Executed Vendor config,
-   Schema version, Prompt hash.
+   Schema version, Prompt digest.
 2. Look up Dispatch register entry for Prompt ID.
 3. Verify Schema version compatible.
-4. Verify Prompt hash matches expected.
-   - If mismatch: flag as "wrong prompt" — operator escalation.
+4. Verify Prompt digest equals the digest orchestration wrote into the
+   dispatched Envelope (copy-through verification).
+   - If mismatch: flag as "wrong prompt or wrong attachment" — operator
+     escalation.
 5. Compare Executed Vendor/config to Recommended Vendor/config.
    - If match: status = returned.
    - If differs: status = substituted; log both.
@@ -1160,11 +1172,30 @@ side robust to partial returns.
 - Evidence: [...]
 - Provenance: [source, citation, date]
 - Evidence class: [document | trace | probe | empirical-test | expert-interview | cross-check]
+- Verification status: [verified | partially verified | unverified | not found]
 - Confidence: [low | medium | high]
+- Null results: [surfaces checked where nothing material was found; optional]
+- Could not verify: [claims, sources, attachments, or tools unavailable/inconclusive; optional]
 - Notes: [optional]
 
 ### Finding 2 — ...
 ```
+
+**Verification ≠ confidence.** Verification status records what evidence
+actually established the claim; confidence records the calibrated signal
+strength. They are orthogonal axes: a high-confidence inference may be
+*unverified* (no source confirmed it directly), and a *verified* finding
+may be low-confidence because the source itself is ambiguous. Keeping
+the axes separate is what v1.x's `[UNVERIFIED]` tagging gave up when
+it was folded into confidence; v2.0.1 restores the separation explicitly.
+
+**Null results and could-not-verify are first-class.** Surfaces where the
+vendor checked and found nothing, and surfaces where the vendor could not
+check at all (missing attachment, blocked tool, source paywalled), are
+both load-bearing inputs to orchestration's convergence and Master
+ingestion. They do not inflate finding count and they do not require a
+claim. Empty / not applicable on a given finding is fine; orchestration
+ingests the omission.
 
 **Adaptable.** Where the prompt's analytical shape requires a different
 finding structure, the prompt body specifies the alternative explicitly.
@@ -1387,16 +1418,33 @@ essentially nothing because state is always recoverable.
 **Mechanics.**
 
 - **Master update at every orchestration turn-close.**
-  - Append-mostly: Changelog gains a line; relevant register sections gain
-    entries; Dispatch register status updates per §4.8; findings sections
-    absorb any newly-converged Layer-1 outputs.
+  - Always emitted at turn-close, regardless of whether material state
+    changed. Continuous-state safety property (operator never picks the
+    wrong Master because the latest is always the most recent emission)
+    is preserved.
+  - **No-state-change marker (v2.0.1).** When no material Master state
+    changed during the turn (no Dispatch register change, no findings
+    ingestion, no probe disposition change, no monitor state change, no
+    strategy change, no new Changelog entry), the emitted filename
+    carries the `_no_change` suffix immediately before the extension —
+    e.g., `solace_audit_prism2.0_master_p2.3_no_change.md`. The operator
+    can defer cloud-save and attachment-swap on these emissions; the
+    prior Master remains current. This addresses mobile churn cost
+    without giving up the always-emit safety property.
+  - Append-mostly when content does change: Changelog gains a line;
+    relevant register sections gain entries; Dispatch register status
+    updates per §4.8; findings sections absorb any newly-converged
+    Layer-1 outputs.
   - Filename version bump only at phase boundaries or convergence-round
-    increments (per §11 bump atomicity).
-  - Operator must *download* the updated Master at session close to make
-    it the authoritative canonical copy. (Manual step under v2.0
+    increments (per §11 bump atomicity). The `_no_change` suffix is
+    orthogonal to the version field — a no-change emission keeps the
+    same version number as the prior content-bearing emission.
+  - Operator must *download* the updated Master at session close when
+    the emission is content-bearing (no `_no_change` suffix) to make it
+    the authoritative canonical copy. (Manual step under v2.0.1
     plain-chat substrate.)
-  - Cloud-drive save is the Operator hint emitted at every turn-close:
-    `Save Master to cloud drive (E.5).`
+  - Cloud-drive save is the Operator hint emitted at every
+    content-bearing turn-close: `Save Master to cloud drive (§17 MO-5).`
 
 - ***What's next* rewrite at every orchestration turn-close.**
   - Replaces in place; no history kept (Changelog carries the historical
@@ -1782,18 +1830,26 @@ map adapts with it (§3.2.1).
 
 ## 7. Library integration
 
-The Lens Library v0.9 is canonical at `lens/PRISM_lens_library.md` (tag
-`prism-lens-v0.9`). For singleton-attach convenience, the v0.9 catalog
-is also embedded in this file as **Appendix G**. The standalone Library
-file remains authoritative for the artifact's evolution: Update sessions
-(§7.5) produce new versions of the standalone file, and the next PRISM
-minor version embeds the new content into Appendix G.
+The Lens Library v0.10 is canonical at `lens/PRISM_lens_library.md`
+(tag `prism-lens-v0.10`). The v0.10 catalog is also embedded in this
+file as **Appendix G** for singleton-attachment use; that embedded copy
+is the default Library source for orchestration. The standalone Library
+file remains authoritative for the artifact's own evolution: Update
+sessions (§7.5) produce new versions of the standalone file, and the
+next PRISM minor version embeds the new content into Appendix G.
+Operators on a newer standalone Library version pin to it explicitly
+and override Appendix G (§7.1).
 
 ### 7.1 Library reference at Setup `[structural | stable]`
 
-**Required attachment.** Lens Library v0.9 is attached to every
-orchestration session (alongside the Master). Recommended: live in the
-Claude Project alongside the Master (see §8.1).
+**Required Library source.** By default, orchestration uses the embedded
+Lens Library v0.10 in Appendix G (this file). A standalone Lens Library
+file (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.10` or newer) is
+attached only when the operator explicitly pins the project to a newer
+standalone Library version than the embedded copy. When standalone is
+attached, it overrides Appendix G for that session. Recommended: if a
+standalone newer Library is used, live in the Claude Project alongside
+the Master (see §8.1).
 
 **Probe 1 grades against Library entries.** Mechanics in §6.3.1.
 
@@ -1817,6 +1873,10 @@ Per LL.§Schema:
   Two entries at v0.9 (LL-D-002 WCAG 2.2; LL-D-005 OWASP ASVS 5.0.0).
 - `last_verified:` — populated on entries with `rubric_anchor:`.
   Maintenance signal per §7.4.
+- `verification_basis:` — populated on entries with `last_verified:`;
+  one of `{schema-introduction-only, independent-review}`. Gates §7.4
+  freshness logic so a schema-introduction date is not silently treated
+  as a performed currency check (v0.10).
 - `informed_by:` — provenance only; not a runtime rubric.
 - `failure_mode:` — used in operator-facing flag explanations.
 - `minimum_scope_binding:` — what counts as "covered" for Probe 1
@@ -1839,13 +1899,19 @@ Two-tier mechanism: point refresh (per-project, in Setup) + Update session
 
 - **Trigger.** Probe 1 evaluation extends to citation currency. For each
   lens with `rubric_anchor:` set:
-  - If `last_verified:` is within 6 months: disposition includes `fresh`.
-    No flag.
-  - If `last_verified:` is 6–12 months old: disposition includes
+  - If `verification_basis:` is `schema-introduction-only`: the
+    `last_verified:` date does not establish currency; disposition is
+    `unverified-anchor` regardless of date age. Orchestration runs a
+    web-search currency check and refreshes the citation in the Prompt
+    Strategy (the canonical Library file is *not* modified). This gates
+    every other clause below.
+  - Else if `last_verified:` is within 6 months: disposition includes
+    `fresh`. No flag.
+  - Else if `last_verified:` is 6–12 months old: disposition includes
     `stale-refresh`. Orchestration runs a web-search currency check and
     refreshes the citation in the Prompt Strategy (the canonical Library
     file is *not* modified).
-  - If `last_verified:` is > 12 months old: disposition includes
+  - Else if `last_verified:` is > 12 months old: disposition includes
     `stale-accumulating`. Same inline refresh, but advisory signal
     accumulates toward an Update session (per §7.5).
 - **Output.** Probe 1 output includes per-anchored-entry currency
@@ -1856,7 +1922,7 @@ Two-tier mechanism: point refresh (per-project, in Setup) + Update session
   P3.4 — accessibility pass
   Specialist framing: WCAG-qualified accessibility auditor (LL-D-002)
   Anchor: WCAG 2.2 (October 2023) — verified current as of [date]
-          via web search; PRISM Lens Library v0.9 last_verified
+          via web search; PRISM Lens Library v0.10 last_verified
           2026-04-24 still current.
   ```
   If the web-search currency check finds a newer version (e.g., WCAG 3.0
@@ -1967,7 +2033,7 @@ home for project state.
 - Operator uploads the new version to project knowledge (replacing or
   adding).
 - Old version retained in project knowledge as audit trail (or archived to
-  cloud drive per §17 E.5).
+  cloud drive per §17 MO-5).
 
 This is a manual sync step under v2.0's plain-chat substrate. Auto-sync is
 a roadmap adjacency.
@@ -2574,8 +2640,22 @@ graded.]
 ## Output
 
 [Reference to §4.11 finding structure. Specifies number of findings if
-known, or "as many as warranted." Confidence calibration discipline named
-explicitly.]
+known, or "as many as warranted." Confidence calibration and verification
+status discipline named explicitly.]
+
+## Success criteria
+
+[Names what a good execution output must accomplish. Default block,
+adapted by the prompt body when shape demands:
+
+  - Covers every surface named in the task and attachments.
+  - Separates verified findings from plausible-but-unverified inferences
+    via the Verification status field (§4.11).
+  - Names null results and could-not-verify areas explicitly.
+  - Produces findings that orchestration can ingest independently
+    (no cross-finding dependencies, per §4.11 composition rules).
+  - Flags attachment, tool, or source-access limits in Could not verify
+    or in Attachment warnings, not silently.]
 
 ## Output signature instruction
 
@@ -2602,8 +2682,9 @@ signature block per §3.2.3:
 
 - *Hygiene block* → folded into Envelope and Self-check (substrate
   verification is now structural, not prose discipline).
-- *[UNVERIFIED] tagging* → implicit via Confidence calibration (`low`)
-  and provenance discipline.
+- *[UNVERIFIED] tagging* → restored as an explicit Verification status
+  axis in the §4.11 finding structure (v2.0.1). Orthogonal to confidence;
+  see §4.11 *Verification ≠ confidence*.
 - *Discrepancy Check* → orchestration-side at Layer-1 (M7 Claim Conflict).
 - *Live watch for preemptive scope-down* → orchestration-side via M5 +
   M6.
@@ -2977,7 +3058,9 @@ Claude surfaces this bound rather than asserting a global null —
 session may live in a different project or outside projects; confirm
 before I conclude it doesn't exist."*
 
-#### E.5 — Persisting artifacts across device/session loss
+#### MO-5 — Persisting artifacts across device/session loss
+
+*(v2.0.1: renamed from `E.5` to `MO-5` to disambiguate from Appendix E.5 — *What's next* template. Mobile-guide subsections are now MO-1 through MO-5; Appendix E template subsections remain E.1 through E.5.)*
 
 **Situation.** Mobile operators work primarily through vendor apps.
 Execution outputs downloaded to the device live in local storage,
@@ -3338,6 +3421,7 @@ All paste-ready blocks in one place.
 Prompt ID:          [identifier — purpose/title]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
+Prompt digest:      [orchestration-generated short identifier; copy verbatim into Output]
 Vendor:             [vendor] | multi-vendor
 Dispatch shape:     equivalence | split | limitation-named
 Dispatch rationale: [one positive-framing line per variant]
@@ -3382,7 +3466,7 @@ Vendor:           [vendor that actually executed]
 Vendor config:    [config actually applied at execution]
 Schema version:   output-v1
 Date:             [YYYY-MM-DD]
-Prompt hash:      [first 6 chars of hash of the prompt body]
+Prompt digest:    [copied verbatim from Envelope]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [findings content]
@@ -3714,28 +3798,29 @@ patterns; mis-named files are flagged at session-open. Cross-ref:
 
 ---
 
-## Appendix G — Embedded Lens Library v0.9
+## Appendix G — Embedded Lens Library v0.10
 
 The content below is an embedded, byte-for-byte copy of the canonical
-`lens/PRISM_lens_library.md` v0.9 (tag `prism-lens-v0.9`) at the time of
-this PRISM release. The standalone file remains authoritative for the
-catalog's own evolution; this embedded copy exists so a single
-PRISM.md attachment is sufficient for an orchestration session
-(mobile-first singleton).
+`lens/PRISM_lens_library.md` v0.10 (tag `prism-lens-v0.10`) at the
+time of this PRISM release. The standalone file remains authoritative
+for the catalog's own evolution; this embedded copy is the **default
+Library source** for orchestration so a single PRISM.md attachment is
+sufficient (mobile-first singleton, per §7.1).
 
 When PRISM and the embedded copy disagree (e.g., after the standalone
 Library is bumped via an Update session, before the next PRISM minor
 version embeds the new content), the standalone file is authoritative
 on catalog content and PRISM.md's Appendix G is authoritative on
 "what shipped with this PRISM version." Operators on the standalone
-Library at a newer version pin to that version explicitly.
+Library at a newer version pin to that version explicitly and attach
+the standalone file alongside the Master (§7.1).
 
 ---
 
-# PRISM Lens Library — v0.9 (pre-release)
+# PRISM Lens Library — v0.10 (pre-release)
 
-**Version:** 0.9
-**Release date:** 2026-04-24
+**Version:** 0.10
+**Release date:** 2026-04-25
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -3772,7 +3857,7 @@ The gap between fired-lenses and covered-lenses is the silent-omission risk.
 1. **Weak-brief blind spot.** If a subject brief understates facts so that domain predicates fail to fire (a hidden jurisdiction, an undersold efficacy claim, an unreported custody function), the triggering lens stays silent. The Library relies on honest brief population.
 2. **Execution-quality blind spot.** A specialist pass included in scope but executed incompetently still checks the box. The Library catches scope-level omissions only.
 3. **Novel-subject blind spot.** Subjects whose failure modes don't match any covered category may slip past the catalog entirely.
-4. **Anchor currency.** Two entries carry version-pinned rubric anchors (LL-D-002 WCAG 2.2, LL-D-005 OWASP ASVS 5.0.0). `last_verified: 2026-04-24` reflects schema-introduction date, not an independently performed currency check. Verify anchor currency before applying those lenses at the depth the anchor implies.
+4. **Anchor currency.** Two entries carry version-pinned rubric anchors (LL-D-002 WCAG 2.2, LL-D-005 OWASP ASVS 5.0.0). At v0.10, both anchored entries carry `verification_basis: schema-introduction-only` to signal that `last_verified: 2026-04-24` reflects schema-introduction date, not an independently performed currency check. Run point refresh (per the adopting framework's Setup) before applying those lenses at the depth the anchor implies. The `verification_basis` field flips to `independent-review` after a real currency review is performed.
 5. **Pack structure is a convention.** Lenses are grouped into six domain packs as a readability aid. The assignment rule is primary-failure-surface dictates placement; cross-pack concerns are handled via other lenses' triggers. Packs are not orthogonal by construction.
 
 ---
@@ -3790,6 +3875,7 @@ Every entry uses the following fields:
 - `specialist_type:` the specialist role the lens's pass would typically require (open taxonomy)
 - `rubric_anchor:` optional — a version-pinned external rubric the lens recommends binding to
 - `last_verified:` populated on entries carrying `rubric_anchor:`
+- `verification_basis:` populated on entries carrying `last_verified:`; one of `{schema-introduction-only, independent-review}`. Gates freshness logic in adopting frameworks: a `schema-introduction-only` basis must not be treated as fresh on the strength of date alone
 - `informed_by:` frameworks, standards, and practice traditions that inform the lens (indicative, not exhaustive; not a compliance claim)
 - `failure_mode:` the silent omission this lens catches, in plain language
 - `minimum_scope_binding:` the minimum scope commitment that counts as "covered" for this lens
@@ -3983,6 +4069,7 @@ Every entry uses the following fields:
     conformance audit combining automated scanning
     and manual assistive-technology testing
   last_verified: 2026-04-24
+  verification_basis: schema-introduction-only
   informed_by:
     - WCAG 2.2
     - ARIA Authoring Practices
@@ -4079,6 +4166,7 @@ Every entry uses the following fields:
     requirements-based verification plus focused
     security testing at appropriate level
   last_verified: 2026-04-24
+  verification_basis: schema-introduction-only
   informed_by:
     - OWASP ASVS 5.0.0
     - OWASP Top 10
@@ -4546,15 +4634,118 @@ Every entry uses the following fields:
 - **Rubric-anchored entries:** 2 (8.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
 - **`specialist_type:` population:** 23 / 23
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
+- **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.9 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.10 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.9 ships with anchors current as of 2026-04-24 but does not include an automated currency-update mechanism.
+v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-*End of PRISM Lens Library v0.9.*
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.10 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+
+*End of PRISM Lens Library v0.10.*
 
 ---
 
-*End of PRISM v2.0 framework operating document.*
+## 18. Project, feedback, updates `[structural | stable]`
+
+PRISM is an open framework. This file ships with enough information to
+locate the project, check for newer versions, and feed observations back
+to the maintainer.
+
+### 18.1 Project identity
+
+- **Repository.** `https://github.com/Ronkupper/PRISM`
+- **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
+- **Framework version.** v2.0.1 (this file)
+- **Embedded Lens Library version.** v0.10 (Appendix G)
+- **Release date.** 2026-04-25
+- **Licensing.** Documentation under CC BY 4.0; any code under MIT;
+  Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
+
+### 18.2 Resource fetch convention
+
+The framework and its companion artifacts are addressable on `main` of the
+public repository under stable raw URLs. Orchestration sessions running on
+substrates with web access can fetch these directly; mobile operators
+without that capability can paste the URLs into a browser and download.
+
+| Resource | Stable URL | Pinned URL |
+|---|---|---|
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_0_1.md` |
+| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_10.md` |
+| Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
+| Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
+| Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.0.1` |
+
+The two `VERSION` endpoints exist as cheap currency checks: each is a
+single-line file containing the current version on the corresponding
+release track. Reading them does not require parsing the framework or
+the Lens body. New resources added to the project follow the same path
+pattern (a stable file on `main`, a `VERSION` stamp where versioned).
+
+### 18.3 Currency check at session open `[methodological | stable]`
+
+At orchestration session open, when the substrate supports web access,
+orchestration **may** check the framework and Lens version stamps against
+the attached versions and surface any newer-version finding as a soft
+flag in *What's next* under the *Operator next* surface. The check is
+opportunistic, not mandatory: substrates without web access skip it; a
+failed check is not an error.
+
+**Mechanics.**
+
+1. Read the attached framework's version (this file's header) and the
+   embedded Lens Library version (Appendix G header).
+2. If web access is available, GET the two `VERSION` endpoints from the
+   repository's `main` branch. The endpoints return one line each.
+3. Compare. If the published version is greater than the attached
+   version on either track, surface a soft flag:
+   `Framework v2.0.1 attached; v{published} available at {releases URL}.`
+   `Lens v0.10 attached; v{published} available at {releases URL}.`
+4. The flag is informational. The operator decides whether to upgrade
+   between sessions. PRISM does not silently swap attached files at
+   runtime.
+
+**Why this is in the framework.** The repository is the framework's
+source of truth for currency. Putting the URLs and the check protocol
+in the framework body means the file carries its own discoverability
+instead of relying on the operator to remember the project URL. It also
+addresses the `informed_by` chain: a Lens anchor (e.g., WCAG 2.2) can
+move; the Lens Library evolves; the framework evolves; and operators
+working from a saved attachment have an explicit, in-file path back to
+the latest.
+
+### 18.4 Feedback and contribution
+
+- **Bugs and concrete defects.** GitHub Issues on the public repository,
+  using the issue templates under `.github/ISSUE_TEMPLATE/`.
+- **Ideas, proposals, observations from real use.** GitHub Discussions
+  on the public repository, *Ideas* category. Field observations from
+  applying PRISM to real audits are particularly valuable: the framework
+  ships with several rev. 1 draft thresholds (M5 bands, Update session
+  triggers, probe iteration ceilings) that calibrate against use, not
+  introspection.
+- **Show and tell.** Discussions, *Show-and-tell* category. Adaptations
+  for non-Claude vendors, surface drift maps for new substrates, and
+  Lens additions discovered in the field are all welcome.
+- **Questions.** Discussions, *Q&A* category.
+- **Security concerns.** Private vulnerability reporting via the
+  repository's *Security* tab. Do not file security issues publicly.
+
+The four-channel split is codified in `CONTRIBUTING.md`. The Code of
+Conduct is in `CODE_OF_CONDUCT.md`.
+
+### 18.5 Citation
+
+To cite PRISM in published work, see `CITATION.cff` in the repository.
+A short attribution suitable for inline use:
+
+> Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
+> (v2.0.1). https://github.com/Ronkupper/PRISM
+
+---
+
+*End of PRISM v2.0.1 framework operating document.*

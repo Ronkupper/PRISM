@@ -1,7 +1,7 @@
-# PRISM Lens Library — v0.9 (pre-release)
+# PRISM Lens Library — v0.10 (pre-release)
 
-**Version:** 0.9
-**Release date:** 2026-04-24
+**Version:** 0.10
+**Release date:** 2026-04-25
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -38,7 +38,7 @@ The gap between fired-lenses and covered-lenses is the silent-omission risk.
 1. **Weak-brief blind spot.** If a subject brief understates facts so that domain predicates fail to fire (a hidden jurisdiction, an undersold efficacy claim, an unreported custody function), the triggering lens stays silent. The Library relies on honest brief population.
 2. **Execution-quality blind spot.** A specialist pass included in scope but executed incompetently still checks the box. The Library catches scope-level omissions only.
 3. **Novel-subject blind spot.** Subjects whose failure modes don't match any covered category may slip past the catalog entirely.
-4. **Anchor currency.** Two entries carry version-pinned rubric anchors (LL-D-002 WCAG 2.2, LL-D-005 OWASP ASVS 5.0.0). `last_verified: 2026-04-24` reflects schema-introduction date, not an independently performed currency check. Verify anchor currency before applying those lenses at the depth the anchor implies.
+4. **Anchor currency.** Two entries carry version-pinned rubric anchors (LL-D-002 WCAG 2.2, LL-D-005 OWASP ASVS 5.0.0). At v0.10, both anchored entries carry `verification_basis: schema-introduction-only` to signal that `last_verified: 2026-04-24` reflects schema-introduction date, not an independently performed currency check. Run point refresh (per the adopting framework's Setup) before applying those lenses at the depth the anchor implies. The `verification_basis` field flips to `independent-review` after a real currency review is performed.
 5. **Pack structure is a convention.** Lenses are grouped into six domain packs as a readability aid. The assignment rule is primary-failure-surface dictates placement; cross-pack concerns are handled via other lenses' triggers. Packs are not orthogonal by construction.
 
 ---
@@ -56,6 +56,7 @@ Every entry uses the following fields:
 - `specialist_type:` the specialist role the lens's pass would typically require (open taxonomy)
 - `rubric_anchor:` optional — a version-pinned external rubric the lens recommends binding to
 - `last_verified:` populated on entries carrying `rubric_anchor:`
+- `verification_basis:` populated on entries carrying `last_verified:`; one of `{schema-introduction-only, independent-review}`. Gates freshness logic in adopting frameworks: a `schema-introduction-only` basis must not be treated as fresh on the strength of date alone
 - `informed_by:` frameworks, standards, and practice traditions that inform the lens (indicative, not exhaustive; not a compliance claim)
 - `failure_mode:` the silent omission this lens catches, in plain language
 - `minimum_scope_binding:` the minimum scope commitment that counts as "covered" for this lens
@@ -249,6 +250,7 @@ Every entry uses the following fields:
     conformance audit combining automated scanning
     and manual assistive-technology testing
   last_verified: 2026-04-24
+  verification_basis: schema-introduction-only
   informed_by:
     - WCAG 2.2
     - ARIA Authoring Practices
@@ -345,6 +347,7 @@ Every entry uses the following fields:
     requirements-based verification plus focused
     security testing at appropriate level
   last_verified: 2026-04-24
+  verification_basis: schema-introduction-only
   informed_by:
     - OWASP ASVS 5.0.0
     - OWASP Top 10
@@ -812,11 +815,14 @@ Every entry uses the following fields:
 - **Rubric-anchored entries:** 2 (8.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
 - **`specialist_type:` population:** 23 / 23
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
+- **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.9 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.10 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.9 ships with anchors current as of 2026-04-24 but does not include an automated currency-update mechanism.
+v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-*End of PRISM Lens Library v0.9.*
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.10 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+
+*End of PRISM Lens Library v0.10.*
