@@ -5,12 +5,15 @@ abstract: >-
   PRISM is a methodology for keeping multi-prompt, multi-session LLM research
   and audit work coherent across prompts, sessions, and the context limits of
   any single chat. It splits a research problem into atomic specialist prompts,
-  runs each where it works best across Claude, ChatGPT, Gemini, and Perplexity,
-  and converges their outputs into a single living document called the Starter.
-  The framework codifies Monitors, Gates, Standing Principles, a two-layer
-  convergence model, and version management — all distributed as a single
-  markdown file that can be attached to any LLM session or installed as a
-  Claude Skill.
+  dispatches each where it runs best across Claude, ChatGPT, Gemini, and
+  Perplexity, and converges their outputs into a single living document called
+  the Master. v2 introduces the PRISM Lens Library — a reference catalog of
+  audit-scope lenses graded against the draft Prompt Strategy at Setup to
+  surface silent omissions before any prompt ships. The framework codifies a
+  triple execution contract (Envelope · Self-check · Output), Monitors,
+  Standing Principles, a telemetric context-pressure framework, and continuous
+  Master + What's-next state — distributed as a single markdown file that can
+  be attached to any LLM session or installed as a Claude Skill.
 authors:
   - family-names: Kuper
     given-names: Ron
@@ -18,15 +21,16 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "1.10.4"
-date-released: "2026-04-23"
+version: "2.0.0"
+date-released: "2026-04-25"
 keywords:
   - llm
   - prompt-engineering
   - research-methodology
   - audit-framework
+  - lens-library
   - multi-prompt
-  - context-engineering
   - multi-session
+  - context-engineering
   - claude
   - anthropic

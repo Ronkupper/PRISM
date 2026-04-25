@@ -7,7 +7,9 @@
 
 **A framework for LLM research and audits.**
 
-PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, across sessions, and across the context limits of any single chat. It splits a research or audit problem into atomic specialist prompts, runs each one where it works best (Claude, Gemini, Perplexity, ChatGPT), and converges the outputs into a single living document called the **Starter**.
+PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, across sessions, and across the context limits of any single chat. It splits a research or audit problem into atomic specialist prompts, runs each one where it works best (Claude, Gemini, Perplexity, ChatGPT), and converges the outputs into a single living document called the **Master**.[^master]
+
+[^master]: Called the **Starter** in v1.x. Renamed to Master at v2.0; v1.10.4 projects continue using the Starter terminology.
 
 > *Prefer a 10-slide overview? See [`PRISM_teaser.pdf`](./assets/PRISM_teaser.pdf).*
 
@@ -16,7 +18,7 @@ PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, ac
 ## What it does
 
 - **Multi-prompt by design.** One question too big for one prompt becomes a planned set of specialist prompts that add up to a whole.
-- **Session-durable.** Project state lives in the Starter file. Any fresh session can pick up with *"What's next?"* and resume without memory loss.
+- **Session-durable.** Project state lives in the Master file. Any fresh session can pick up with *"What's next?"* and resume without memory loss.
 - **Context-disciplined.** Monitors and Gates watch for version drift, context pressure, and missing inputs before they compound.
 - **Self-driving at Setup.** You bring the subject and the goal; PRISM produces the Prompt Strategy. You approve; you don't author.
 - **Foolproof per prompt.** Each prompt arrives as a complete execution package — text, attachments, which LLM to run it on, which mode. You paste and run.
@@ -45,7 +47,7 @@ PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, ac
 3. Hand Claude your subject and goal. PRISM takes it from there.
 
 Optional / advanced layouts:
-- **Decoupled loader** — install [`SKILL.md`](./SKILL.md) (skill frontmatter only, no body); attach `PRISM.md` separately. Same skill, looser coupling.
+- **Decoupled loader** — install [`SKILL.md`](./SKILL.md) (skill frontmatter only, no body); attach `PRISM.md` separately. Same v2 skill, looser coupling.
 - **Standalone Lens Library** — [`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md) is the canonical Library artifact for evolution and Update sessions. Operators on a newer Library version pin explicitly and override Appendix G.
 
 The framework runs on any capable LLM — Claude is the primary reasoning and build environment, with ChatGPT, Gemini, and Perplexity used in deliberate multi-vendor triangulation sequences.
