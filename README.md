@@ -38,17 +38,21 @@ PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, ac
 
 ## How to use
 
-1. Grab the PRISM framework file from this repo. Use [`PRISM.md`](./PRISM.md) for a stable always-latest link, or the versioned copy (see [Current version](#current-version) below) if you prefer the version visible in the filename.
+1. Grab [`PRISM.md`](./PRISM.md) from this repo. Singleton: framework body + Lens Library v0.9 (embedded as Appendix G) + skill frontmatter — one file, mobile-friendly.
 2. Either:
    - **Attach it to a Claude session**, or
    - **Install it as a Claude Skill** (auto-triggers on any `*_master_p*.md` (v2) or `*_starter_v*.md` (v1.x) file)
 3. Hand Claude your subject and goal. PRISM takes it from there.
 
+Optional / advanced layouts:
+- **Decoupled loader** — install [`SKILL.md`](./SKILL.md) (skill frontmatter only, no body); attach `PRISM.md` separately. Same skill, looser coupling.
+- **Standalone Lens Library** — [`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md) is the canonical Library artifact for evolution and Update sessions. Operators on a newer Library version pin explicitly and override Appendix G.
+
 The framework runs on any capable LLM — Claude is the primary reasoning and build environment, with ChatGPT, Gemini, and Perplexity used in deliberate multi-vendor triangulation sequences.
 
 ## Current version
 
-**v2.0.0** — file: [`PRISM_v2_0_0.md`](./PRISM_v2_0_0.md). v2 is a major rebuild around the Lens Library, a triple execution contract (Envelope · Self-check · Output), continuous Master + *What's next* state, and a telemetric context-pressure framework. See [Appendix D](./PRISM_v2_0_0.md#appendix-d--v1x--v2-surface-drift) for the v1.x → v2 surface drift map. Previous versions are available via git tags.
+**v2.0.0** — current file: [`PRISM.md`](./PRISM.md). v2 is a major rebuild around the Lens Library (embedded as Appendix G), a triple execution contract (Envelope · Self-check · Output), continuous Master + *What's next* state, and a telemetric context-pressure framework. See [Appendix D](./PRISM.md#appendix-d--v1x--v2-surface-drift) for the v1.x → v2 surface drift map. The version-pinned snapshot at this tag is [`PRISM_v2_0_0.md`](./PRISM_v2_0_0.md) (byte-identical to PRISM.md at the v2.0.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -66,12 +70,13 @@ The **PRISM Lens Library** ([`lens/PRISM_lens_library.md`](./lens/PRISM_lens_lib
 
 ## Repository contents
 
-- `PRISM.md` — the current framework version (stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned copy of the current framework (e.g., `PRISM_v2_0_0.md`). Previous versions available via git tags.
+- `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_0_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
+- `SKILL.md` — standalone skill loader (frontmatter only); use as an alternative to the fused `PRISM.md` when a decoupled skill / body layout is preferred.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
 - `PRISM_backlog_v{n}.md` — versioned copy of the backlog (e.g., `PRISM_backlog_v6.md`).
-- `lens/PRISM_lens_library.md` — reference catalog of audit-scope lenses (stable filename). Integrated into PRISM v2.
+- `lens/PRISM_lens_library.md` — canonical reference catalog of audit-scope lenses (stable filename). Authoritative for Library evolution; embedded into `PRISM.md` Appendix G for singleton-attach convenience.
 - `lens/PRISM_lens_library_v{n}.md` — versioned copy of the Lens Library (e.g., `PRISM_lens_library_v0_9.md`).
 - `design/` — design-time artifacts for the current major version (specification + design document). Provenance for the framework as shipped.
 - `README.md` — this file.
