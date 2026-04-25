@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 7
+**Version:** 8
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -141,6 +141,26 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 **Composition with existing backlog:**
 - **Cowork + Computer Use:** Composes well — desktop-mode execution with repo-backed artifacts is the most leveraged combination. Repo-backed mode can ship independent of Cowork, but Cowork without repo-backed mode would re-introduce the artifact-handoff problem this entry exists to solve.
 - **Contribution channel for cross-vendor adaptations:** Repo-backed mode produces natural cross-vendor adaptation artifacts (each operator's repo is itself a worked example). Channel design should account for this.
+
+**Supporting work to produce (operator-facing):**
+- **Operator setup guide.** Step-by-step: GitHub account → repo creation → fine-grained PAT (scoping + expiry guidance) → SSH signing key → git config → first commit. Lives in the public repo, probably `docs/PRISM_mode_setup.md`. Calibrated for the operator who's used `git` casually but never set up a signing key — that's the median PRISM user.
+- **Default repo template.** A scaffolded layout the operator clones or copies — README, `.gitignore`, placeholder dirs (`probes/`, `handoffs/`, `evidence/`, `findings/`, `learnings.md`), and a `PROJECT.md` operators fill in with audit subject + scope flags. Slimmer than `PRISM-workshop` because audit projects don't need `design/` or `synthesis/` as first-class dirs.
+- **System-prompt snippet (operator's project).** A drop-in header analogous to the `[PRISM-GitHub Workflow v1]` block in PRISM's own dev project — tells Claude how to operate in repo-backed mode (fetch on demand, commit durable artifacts, treat project files as credentials only).
+- **PRISM.md updates.** New Execution Mode flag at Setup (`chat-default` / `repo-backed`); mode-specific guidance for Setup outputs (commit at Setup completion) and handoffs (signed commit replaces session-end attachment); credential lifecycle nudges (PAT expiration warning, signing-key rotation prompt) generalised from the dev project's pattern.
+- **Worked example.** A published exemplar repo demonstrating repo-backed mode end-to-end — either a synthetic Atlas-style audit run through the new flow, or PRISM's own paired repos (`PRISM` + `PRISM-workshop`) cited as the canonical existence proof. The dev project is itself the strongest demo; using it as the example removes the need to fabricate one.
+- **Migration note.** Short guidance for operators mid-project: chat-default projects don't need to migrate; repo-backed mode is opt-in for new projects. Avoid framing it as a forced upgrade.
+
+**Adoption strategy:**
+
+The activation energy is real — even at five honest minutes, PAT setup + SSH key generation + git config will deter operators who don't see the payoff first. The leverage points:
+
+- **Lead with concrete loss-recovery scenarios, not abstract benefits.** "Your project hits cap and you can't access prior probes" → repo solves it. "You want to bring a second LLM in for synthesis without re-uploading fourteen files" → repo solves it. "You want to diff how your audit findings evolved across three iterations" → repo solves it. Each scenario is a felt pain that operators have already lived; benefits framed in those terms convert better than benefits framed as architecture.
+- **Show, don't tell.** A two-minute walkthrough video or a single linked exemplar repo will convert more operators than a 2,000-word setup guide. Setup guide still has to exist for the conversion, but it's not the lead.
+- **Front-load the value.** The very first commit (Setup output) is itself a demo of the pattern. Operators see the payoff before they've invested anything substantive — first session ends with `git log` showing what they just produced, and they get it.
+- **Frame setup time honestly.** "About five minutes, one-time" is the truth and it's compelling. Hiding the friction backfires; selling the ratio (five minutes once vs. download-attach-reattach forever) is honest and wins.
+- **Existence proof beats argument.** "PRISM itself runs on this — here are the repos" is the single strongest sales line, and it's already true. The dev project is the demo.
+- **Make it opt-in, not the default.** Chat-default mode stays the friction-free path for operators who don't need durability. Repo-backed mode is recommended-for-multi-session projects and labelled as such — no operator should feel they're using PRISM "wrong" by skipping it.
+- **Announcement at ship.** GitHub Discussions Announcement post when ready, framing the why before the how. Optionally a short external writeup (the dogfooding angle is its own story) once the supporting docs land.
 
 **Urgency:** Not blocking for v2.0 operators today; current download-attach mode works. Becomes higher priority before the user's next PRISM project starts — already a stated requirement for that project.
 
