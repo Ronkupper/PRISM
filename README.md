@@ -11,7 +11,7 @@ PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, ac
 
 [^master]: Called the **Starter** in v1.x. Renamed to Master at v2.0; v1.10.4 projects continue using the Starter terminology.
 
-> *Prefer a 10-slide overview? See [`PRISM_teaser.pdf`](./assets/PRISM_teaser.pdf).*
+> *Prefer a 12-slide overview? See [`PRISM_teaser.pdf`](./assets/PRISM_teaser.pdf).*
 
 ---
 
