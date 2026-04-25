@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 6
+**Version:** 7
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -110,6 +110,41 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 - When a vendor is recommended for a role because of its skill coverage, does PRISM recommend *using* that vendor's specific skill, or treat skill availability as a signal that the vendor has strong latent capability even when invoked in chat-default mode? First is more leveraged, second is more flexible. Likely depends on whether the operator is in a desktop execution variant (gate from the entry above).
 
 **Urgency:** Not blocking. Low-cost research — a vendor survey session cataloguing current skill libraries and mapping them to PRISM prompt roles produces the v1.9 mapping reference's next revision without needing framework changes.
+
+---
+
+### Repo-backed PRISM mode (operator GitHub flow)
+
+**Triggered by:** User note, Apr 25, 2026. Adoption of the PRISM-GitHub Workflow v1 in PRISM's own development project (paired `PRISM` public + `PRISM-workshop` private repos, fetch-on-demand reads, signed commits as durable artifact handoff) produced substantial flow improvement over the previous download-attach-reattach cycle. User declared the new flow non-negotiable for future PRISM projects ("can't go back to download-attach"). The infrastructure that PRISM dogfoods on itself should be promotable to a first-class operator mode, not just internal scaffolding.
+
+**The idea:** A new execution mode where the operator backs their PRISM project with a GitHub repo (or paired repos) instead of relying on Claude.ai project knowledge + per-session attachments. Credentials (PAT + SSH signing key) live in project files; durable artifacts (probes, handoffs, Setup outputs, evidence captures, learnings, audit findings) commit to the repo at session boundaries; subsequent sessions fetch from the repo on demand rather than re-attaching files. Replaces the download-attach-reattach cycle that currently moves artifacts between sessions with a commit-fetch cycle that's automatic, diffable, and recoverable.
+
+**Why this is structural, not cosmetic:**
+- **Solves cross-session handoff at the right layer.** The current model treats Claude.ai project knowledge as the artifact store, which puts upload/download friction on every session boundary. Repo-backed mode treats the repo as the artifact store, with sessions as ephemeral views.
+- **Pairs naturally with PRISM's session discipline.** Thinking/doing separation already produces clean session boundaries; signed commits at those boundaries are first-class evidence of what each session shipped.
+- **Built-in version history and recoverability.** Audit artifacts diff cleanly across revisions. Project deletion / model migration / context pressure no longer threaten durable state.
+- **Generalises beyond Claude.** Public-repo reads work from any vendor's session (ChatGPT, Gemini, Perplexity); only writes need authenticated Claude. Aligns with PRISM's multi-vendor methodology rather than fighting it.
+
+**What to investigate:**
+- **Artifact scope.** Which artifact classes belong in the repo (Setup outputs, probes, handoffs, evidence, learnings, findings) vs. stay session-local (scratch, exploratory thinking, single-turn outputs)? Default heuristic: anything a future session would re-attach today belongs in the repo; anything purely intra-session does not.
+- **Repo topology.** Single repo (private, all artifacts) vs. paired (private working + public deliverable, mirroring PRISM's own dev model). Paired makes sense when there's a publishable audit deliverable; single is right for sensitive subjects with no public artifact. Decision rule needs explicit framing.
+- **Onboarding cost.** PAT + SSH signing key + git config is a real friction barrier for non-technical operators. Options to lower it: a setup script that walks the operator through PAT creation and key generation; a stripped-down "read-only" variant where the operator's repo is public and Claude only writes via PR; explicit acceptance that repo-backed mode self-selects for technical operators and chat-default mode remains the friction-free path.
+- **Multi-vendor symmetry.** Claude with bash + filesystem + project files writes back natively. ChatGPT, Gemini, and Perplexity sessions can fetch from public repos but lack credentialed write-back. Asymmetry probably acceptable given existing role split (Claude as build/synthesis, others as parallel input/critique), but worth naming so operators know what to expect.
+- **PAT/key lifecycle.** Project-side credentials rotate. The framework needs a recurring lifecycle nudge (PAT expiration warning, signing-key rotation prompt) — already learned in the PRISM dev project, generalisable.
+
+**Open questions:**
+- **Required, recommended, or optional?** Probably optional + recommended for multi-session projects, given onboarding cost. Required would cut off non-technical operators; required-after-N-sessions is a possible middle ground.
+- **Default repo template.** What does a fresh PRISM project repo ship with? A direct mirror of `PRISM-workshop`'s structure (`design/`, `handoffs/`, `synthesis/`, `protocols/`, `notes/`, `archive/`) probably overshoots for an audit project; a slimmer audit-specific layout (`probes/`, `handoffs/`, `evidence/`, `findings/`, `learnings.md`) likely fits better. Worth a v0 spec.
+- **Interaction with existing Scope Flags.** New orthogonal flag (Execution Mode: chat-default / repo-backed)? Or a sub-option under the LLM access flag? Probably orthogonal — repo-backed mode is independent of multi-vendor access.
+- **Setup automation.** Does PRISM ship a Setup-time prompt sequence that, given a repo URL and credentials, scaffolds the layout, drops in canonical placement docs, and configures git? Or does it stop at "here's the recommended structure, set it up yourself"? First is much more leveraged but more to maintain.
+
+**Composition with existing backlog:**
+- **Cowork + Computer Use:** Composes well — desktop-mode execution with repo-backed artifacts is the most leveraged combination. Repo-backed mode can ship independent of Cowork, but Cowork without repo-backed mode would re-introduce the artifact-handoff problem this entry exists to solve.
+- **Contribution channel for cross-vendor adaptations:** Repo-backed mode produces natural cross-vendor adaptation artifacts (each operator's repo is itself a worked example). Channel design should account for this.
+
+**Urgency:** Not blocking for v2.0 operators today; current download-attach mode works. Becomes higher priority before the user's next PRISM project starts — already a stated requirement for that project.
+
+**User commitment:** "I want to introduce a PRISM mode to support it first-class. As an operator I'd like my next PRISM project to use this flow. Can't go back to download-attach." — Apr 25, 2026.
 
 ---
 
