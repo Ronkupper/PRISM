@@ -7,6 +7,8 @@
 
 **A framework for LLM research and audits.**
 
+*A single-file, plain-text convention for LLM context — inspired by AGENTS.md and design.md, but for research and audit processes rather than coding agents or design systems.*
+
 PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, across sessions, and across the context limits of any single chat. It splits a research or audit problem into atomic specialist prompts, runs each one where it works best (Claude, Gemini, Perplexity, ChatGPT), and converges the outputs into a single living document called the **Master**.[^master]
 
 [^master]: Called the **Starter** in v1.x. Renamed to Master at v2.0; v1.10.4 projects continue using the Starter terminology.
@@ -65,6 +67,16 @@ PRISM is distributed primarily as a **file attachment**, not via `git clone`. Th
 ## Roadmap
 
 Active proposals, deferred items, and declined ideas with rationale live in [`PRISM_backlog.md`](./PRISM_backlog.md) (versioned copy: [`PRISM_backlog_v6.md`](./PRISM_backlog_v6.md)). It's a working document — not canonical, not in force — kept separate from `PRISM.md` so the framework file stays authoritative. Useful if you want to see what's being considered, what's been decided against and why, or what's queued for the next version.
+
+## Related conventions
+
+PRISM is part of an emerging pattern of single-file, plain-text, versioned conventions for LLM context — different surfaces, same shape:
+
+- **[AGENTS.md](https://agents.md/)** — open format for guiding coding agents about a specific repo. Stewarded by the Linux Foundation; in use across 60k+ projects.
+- **[design.md](https://github.com/google-labs-code/design.md)** — Google Labs' format for describing a visual identity to coding agents.
+- **PRISM.md** — multi-session LLM research and audit framework.
+
+What they share: one file, dual-audience (human-readable rationale + machine-parseable structure), versioned, designed to travel with the work they describe. None of them existed two years ago.
 
 ## Related artifacts
 
