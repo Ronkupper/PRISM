@@ -24,7 +24,8 @@ PRISM keeps multi-prompt, multi-session LLM work coherent — across prompts, ac
 - **Context-disciplined.** Monitors and Gates watch for version drift, context pressure, and missing inputs before they compound.
 - **Self-driving at Setup.** You bring the subject and the goal; PRISM produces the Prompt Strategy. You approve; you don't author.
 - **Foolproof per prompt.** Each prompt arrives as a complete execution package — text, attachments, which LLM to run it on, which mode. You paste and run.
-- **Multi-LLM triangulation.** Cross-LLM convergence is a deliberate design feature, not a tooling convenience.
+- **Multi-LLM triangulation.** Cross-LLM convergence as a deliberate design feature.
+- **Mobile-friendly.** Drive the entire framework from a phone — paste, run, return. No desktop required.
 
 ## When to use
 
