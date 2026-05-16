@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 9
+**Version:** 10
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -48,23 +48,41 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 
 ---
 
-### Cowork + Computer Use for framework execution
+### Cowork execution mode (`agentic_orchestration`)
 
-**Triggered by:** User note, Apr 2026. Cowork (Anthropic's desktop file/task automation tool) with Computer Use enabled could automate the multi-vendor orchestration PRISM currently runs manually.
+**Triggered by:** Operator note, May 2026, following the irregular Cowork-as-orchestration PRISM run (case — see workshop case file `notes/cases/cowork_round6_2026-05-01.md`). Running PRISM with Claude Cowork as the orchestration tier surfaced enough substrate-specific behavior to warrant a documented, first-class operator mode rather than ad-hoc adaptation.
 
-**The idea:** Multi-LLM triangulation (Claude / ChatGPT / Gemini / Perplexity) is hand-driven today — open each vendor's interface, paste prompts, collect outputs, hand-off to Convergence. Cowork with Computer Use could in principle drive the browser-based vendors, run prompts in sequence, collect outputs into files, and stage a consolidated set for the synthesis steps. Folds the mechanical cross-vendor work into a single orchestrating session.
+**Supersedes:** the former "Cowork + Computer Use for framework execution" proposal, folded in below as one capability question within the broader mode.
+
+**The idea:** A documented PRISM execution mode for operators running the framework with Claude Cowork as the orchestration substrate. This is the first concrete instantiation of the `execution_mode: agentic_orchestration` value already reserved in §3.5 — not new architectural surface, a slot the framework cut deliberately. The mode would map PRISM's session-architecture machinery onto Cowork's native primitives (Projects, live artifacts, scheduled tasks, Plan/TaskList tools, auto-memory, the Global/Project/Folder instruction tiers) and document the substrate-specific adaptations the Round 6 run exposed.
+
+**Why a mode and not just guidance:** the Round 6 run produced eight distinct substrate-attributable behaviors (case file, Observations 1–8). That volume — combined with Cowork's different agency norms, persistence model, and concurrency surface — is past the threshold where loose guidance suffices. A named mode gives the adaptations a home and operators a single thing to opt into.
+
+**Modes-architecture question (shared dependency — resolve before promotion):** "Cowork mode," "repo-backed mode," and "multi-vendor" do not sit on one axis. `execution_mode` is currently a single enum, but these span at least three orthogonal axes — execution substrate, artifact persistence, LLM access. "Cowork mode" is really a *preset* (a named bundle across substrate + persistence), not one enum value. PRISM must decide whether the mode model stays a single enum or becomes orthogonal flags with named presets layered on top. This decision also governs the repo-backed mode proposal; the two share it. Promotes to its own design doc when either mode promotes from backlog.
 
 **What to investigate:**
-- Whether Cowork + Computer Use handles authenticated web UIs (ChatGPT / Gemini / Perplexity logins, session persistence, file uploads per vendor) reliably enough for a full run, or degrades on the edge cases.
-- How this interacts with SP-5 / SP-9 ("flag, don't assume" / "silence is never consent"). Computer Use makes many micro-decisions; the framework has to decide which surface for operator approval vs. run autonomously. Default should be aggressive surfacing until reliability is established.
-- Whether automated orchestration preserves the epistemic value of multi-vendor triangulation. Different vendors have different failure modes — those still surface regardless of who types the prompts, so probably yes, but the operator's real-time judgment calls ("that Gemini output went off-rails, re-run") need a place to land in the automated flow.
-- Augments the mobile-first workflow with a desktop-mode execution path. If Cowork + Computer Use works reliably, both modes are first-class: mobile-mode retains its advantages (portability, low ceremony, the thinking/doing separation that mobile friction naturally enforces), desktop-mode gains automation of the mechanical cross-vendor work. Neither is the "real" way to run PRISM; the operator picks per project based on what the project needs.
+
+- **PRISM-machinery → Cowork-primitive mapping.** Orchestration/execution session split, M12 handoffs, "What's next?", repo-as-memory — each has a plausible Cowork-native counterpart (Cowork session, Cowork handoff/Projects, Plan/TaskList, auto-memory). The mapping is the core of the mode and is *not* gated (see Gate).
+- **Self-containment — Cowork ships no baseline discipline.** Cowork's instruction surfaces all ship empty: Global instructions (every session), Project instructions (per Cowork Project, layered on global), Folder instructions (per working folder, self-updatable by Claude mid-session). There is no Anthropic-supplied default content and no stock session-discipline protocol — operators author and install all of it themselves. Cowork mode therefore cannot assume any baseline discipline on the Cowork side: it must either ship its own installable Cowork-side instructions (a Global / Project / Folder-instructions block the operator pastes in) or be designed to function with those surfaces blank. Same shape as the `[external-users]` non-repo-operator problem — PRISM cannot lean on operator infrastructure that isn't PRISM's to ship.
+- **Parallelism scope fork.** Supporting parallel Cowork sessions needs concurrency discipline — Edit-vs-Write semantics on shared mutable files, presence indicators, end-of-session write timing — which Cowork provides nothing for natively. Two paths: (a) Cowork mode packages that discipline itself within its installable instructions, or (b) Cowork mode is scoped single-session-at-a-time and parallelism is punted. Genuine fork; pick deliberately. A worked reference for the concurrency discipline exists operator-side as a personal Cowork multi-session protocol — personal infrastructure, not a PRISM artifact and not something other operators have; design input only. (That document's references to "the global Cowork CLAUDE.md" mean the operator's own global instructions, not a platform artifact — Cowork mode should not reproduce that framing.)
+- **Persistence: Cowork-native vs. repo-backed.** Under Cowork mode, PRISM can persist via Cowork's own Projects/working-folder/live-artifacts, or via a GitHub repo (composing with repo-backed mode). Both cohere. The mode should state which it assumes by default and whether the other is supported.
+- **Computer Use for cross-vendor dispatch** *(folded from the prior proposal)*. Cowork with Computer Use could drive the browser-based vendors (ChatGPT/Gemini/Perplexity) and automate the mechanical paste-collect cycle PRISM runs by hand today. Investigate: reliability on authenticated web UIs and per-vendor file uploads; interaction with SP-5/SP-9 (Computer Use makes many micro-decisions — default to aggressive surfacing until reliability is established); whether automation preserves the epistemic value of triangulation (vendor failure modes still surface regardless of who types, so likely yes). This is one capability *within* Cowork mode, not its definition — Cowork mode stands even with Computer Use off.
+- **Substrate-specific prose patches.** The Round 6 case file's patches 1–7 and extensions E1–E9 are gated on an orthodox baseline run for substrate-vs-prose attribution. The subset that turns out substrate-specific is Cowork mode's prose-adaptation content. (Patch 8 already promoted independently — vendor-side, not substrate-side.)
 
 **Open questions:**
-- New Execution Mode flag at Setup (alongside the LLM access flag from v1.9), or a separate build path?
-- Does this compose with PRISM's existing handoff-artifact pattern (thinking/doing separation), or is the temptation to run everything in one agentic session going to collapse the gap that separation exists to preserve?
+- Required / recommended / optional? Likely optional + recommended-for-Cowork-operators, mirroring repo-backed mode.
+- Version target now, or stay unversioned until the modes-architecture question and the orthodox baseline both resolve? Lean: the latter.
+- Vocabulary: the Round 6 case file routes substrate findings to "the cross-vendor-adaptation channel," but Cowork is a non-orthodox Claude *substrate*, not a non-Claude *vendor*. Two adaptation axes. Cowork mode is the first product of the *substrate* axis; the `[cross-vendor-adaptation]` workshop tag should be read to cover both, or gain a sibling.
 
-**Urgency:** Not blocking. Exploratory — depends on Cowork's actual capabilities as they mature, and on Computer Use reliability curves generally.
+**Composition with existing backlog:**
+- **Repo-backed PRISM mode** — composes (desktop-mode execution with repo-backed artifacts is the most leveraged combination) and shares the modes-architecture question. Neither blocks the other.
+- **Claude Plugins integration** — already gated on the Cowork proposal; that pointer now resolves here. Plugins are a desktop-mode capability and pair naturally with Cowork mode.
+
+**Gate:** The mapping/architecture layer (incl. the modes-architecture question) is not gated and can be designed whenever this promotes. The prose-adaptation layer is gated on the orthodox baseline run committed in the Round 6 case file — substrate-vs-prose attribution must complete first.
+
+**Urgency:** Not blocking. Exploratory until the modes-architecture question is taken up; gains priority alongside the next Cowork-substrate PRISM project.
+
+**Operator commitment:** "we need a Cowork mode (in addition to GitHub mode, and more modes we have)" — May 2026.
 
 ---
 
@@ -90,7 +108,7 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 - Does meaningful plugin uplift promote the Cowork + Computer Use proposal from "exploratory" to "recommended for projects where plugin advantage is material"?
 - Is there a "PRISM Plugin" worth building eventually — a single bundle shipping PRISM as a Skill plus a curated set of companion plugins? Out of scope for 2026 but worth flagging.
 
-**Urgency:** Not blocking. Gated on Cowork proposal resolution — no point investing in plugin shortlists if the execution-mode decision lands against desktop variants.
+**Urgency:** Not blocking. Gated on the Cowork execution mode proposal — no point investing in plugin shortlists if the execution-mode decision lands against desktop variants.
 
 ---
 
