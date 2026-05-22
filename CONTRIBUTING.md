@@ -40,6 +40,10 @@ Typos, broken links, formatting bugs, obvious grammar issues — open a PR direc
 - Proposals that hardcode specific LLM vendor names into `PRISM.md` — vendor capabilities drift too fast for that to age well (see declined item "Named-vendor recommendations" in the backlog)
 - Large rewrites without prior discussion — they're expensive to review and rarely merge clean
 
+## Reviewing PRs — rendered-diff convention
+
+When reviewing PRs that change `PRISM.md` or `lens/` content, default to the GitHub **Rendered** diff view rather than the raw Markdown diff. Raw diffs are hard to read for table cells, heading-level shifts, fenced-block boundaries, and decision-tag tokens; rendered diffs show what an operator actually sees on a phone or in a Claude chat. The convention applies to maintainers and contributors alike. Lint rules in [`lint_rules.md`](./lint_rules.md) catch what tooling can verify mechanically (named-references resolution, frontmatter shape, version-string consistency); the rendered diff covers the judgment surface that lint does not.
+
 ## Code of conduct
 
 Participation is governed by the [Code of Conduct](./CODE_OF_CONDUCT.md). By contributing, you agree to uphold it.
