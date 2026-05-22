@@ -121,6 +121,7 @@ Before pushing a framework tag:
 - [ ] `SKILL.md` reviewed for version drift (loader instructions reference current snapshot filename)
 - [ ] `CITATION.cff` version + date + abstract current
 - [ ] `README.md` *Current version* section current
+- [ ] Named-refs lint clean — `python PRISM-workshop/scripts/lint_named_refs.py PRISM.md` returns 0 errors (info-level orphan findings acceptable)
 - [ ] `design/` updated if MAJOR
 - [ ] Commit signed (`gpg.format=ssh`, `commit.gpgsign=true`)
 - [ ] Discussions announcement drafted (post after tag push and Release creation)
