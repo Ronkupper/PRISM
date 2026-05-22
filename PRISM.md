@@ -1,13 +1,13 @@
 ---
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.0.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.0.2. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 ---
 
-# PRISM v2.0.1 — Framework operating document
+# PRISM v2.0.2 — Framework operating document
 
-**Status:** v2.0.1 release. Canonical framework for Claude orchestration sessions.
-**Date:** April 2026
-**Supersedes:** PRISM v2.0.0 (release-hygiene patch; see §{section.project-feedback-updates} for surface and provenance). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Status:** v2.0.2 release. Canonical framework for Claude orchestration sessions.
+**Date:** May 2026
+**Supersedes:** PRISM v2.0.1 (release-hygiene patch; see §{section.project-feedback-updates} for surface and provenance). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.10 in Appendix G; a singleton PRISM.md attachment is
@@ -61,8 +61,8 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.0.1 covers `[structural | stable]`
-<a id="section-what-v2-0-1-covers"></a>
+### 1.1 What v2.0.2 covers `[structural | stable]`
+<a id="section-what-v2-0-2-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -100,8 +100,8 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.0.1 does not cover
-<a id="section-what-v2-0-1-does-not-cover"></a>
+### 1.2 What v2.0.2 does not cover
+<a id="section-what-v2-0-2-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -874,6 +874,9 @@ operator and vendor what kind of run this is.
     (per §{section.rationale-discipline-per-dispatch-variant} positive-framing rule). Not the access reason — the framework
     does not gate on operator vendor access (DD.§3.6).
 
+**Content rule.** Envelope content carrying PRISM-native shorthand
+follows the self-containment rule (§{section.atomic-prompt-self-containment}).
+
 ### 4.2 Rationale discipline per dispatch variant `[methodological | stable]`
 <a id="section-rationale-discipline-per-dispatch-variant"></a>
 
@@ -1235,6 +1238,55 @@ ingests the omission.
 **Adaptable.** Where the prompt's analytical shape requires a different
 finding structure, the prompt body specifies the alternative explicitly.
 Default is the structure above.
+
+**Self-containment.** Convergence across dispatch variants does not exempt
+envelope content from the self-containment rule
+(§{section.atomic-prompt-self-containment}); each variant's body remains
+self-contained.
+
+### 4.12 Atomic-prompt self-containment `[structural | stable]`
+<a id="section-atomic-prompt-self-containment"></a>
+
+Dispatched envelope text reaches executing vendors that may not share
+PRISM context. PRISM-native shorthand (M-codes, SP-codes, monitor names,
+claim IDs) carries strong competing priors in some vendors' training
+distributions and will be misinterpreted when shipped bare. The atomic
+prompt must be self-contained for the executing vendor.
+
+**Rule.** Any PRISM-native shorthand appearing in dispatched envelope text
+must carry an inline operational definition at first use within that
+envelope. Subsequent uses within the same envelope may be bare.
+Definitions need not be verbose — the shortest phrase that makes the
+operative question clear is sufficient.
+
+**Example.** Bare shorthand `M-monitor flags (M6 / M7 / M8 / M12)` gives
+executing vendors no PRISM context. Inline-expanded *"M-monitor flags:
+M6 (does the actual profile contradict DD Answers' placement?),
+M7 (does anything else contradict the brief's framework?),
+M8 (any stale attribution?),
+M12 (any material gap not addressed?)"* gives the executing vendor the
+operative questions directly.
+
+**Rationale.** The fix is asymmetric: token cost is modest, eliminated
+failure mode is systematic. Vendors with PRISM context
+(orchestration-tier Claude with PRISM.md attached) are unaffected by the
+rule because they already know the codes. Vendors without PRISM context
+are protected.
+
+**Scope.** The rule applies to M-codes
+(§{section.monitor-specifications}), SP-codes
+(§{section.standing-principles}), claim and anchor IDs introduced in the
+envelope, and monitor names used as scrutiny gates (e.g., "apply M6
+scrutiny"). It does not apply to vendor-native shorthand, common-language
+terms, or Envelope field names themselves. Future PRISM-native shorthand
+additions inherit this rule; the scope set here is illustrative, not
+exhaustive.
+
+**Optional template.** Operators may include a per-envelope glossary
+block listing all codes referenced in that envelope and their
+definitions, in lieu of inline expansion at first use. The glossary-block
+pattern is operator discretion; the inline-at-first-use rule is the
+framework default.
 
 ---
 
@@ -2206,6 +2258,10 @@ All Monitors fire orchestration-side. Twelve Monitor slots specified;
 v1.x M12 (Conversation Pressure) retired and absorbed into M5; the M12
 slot reused in v2 for Result Completeness Check. Three presentation
 groupings.
+
+**Dispatched-text note.** M-codes are PRISM-internal labels. When used
+in dispatched envelope text reaching executing vendors, they require
+inline expansion per §{section.atomic-prompt-self-containment}.
 
 ### 9.1 Standalone monitors (M1, M2, M4, M5, M9)
 <a id="section-standalone-monitors-m1-m2-m4-m5-m9"></a>
@@ -3362,7 +3418,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-0-1-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-0-2-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -4828,9 +4884,9 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.0.1 (this file)
+- **Framework version.** v2.0.2 (this file)
 - **Embedded Lens Library version.** v0.10 (Appendix G)
-- **Release date.** 2026-04-25
+- **Release date.** 2026-05-22
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
   Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
 
@@ -4844,12 +4900,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_0_1.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_0_2.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_10.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.0.1` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.0.2` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -4875,7 +4931,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.0.1 attached; v{published} available at {releases URL}.`
+   `Framework v2.0.2 attached; v{published} available at {releases URL}.`
    `Lens v0.10 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -4918,8 +4974,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.0.1). https://github.com/Ronkupper/PRISM
+> (v2.0.2). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.0.1 framework operating document.*
+*End of PRISM v2.0.2 framework operating document.*
