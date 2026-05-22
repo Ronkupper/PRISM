@@ -7,15 +7,15 @@ description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated 
 
 **Status:** v2.0.1 release. Canonical framework for Claude orchestration sessions.
 **Date:** April 2026
-**Supersedes:** PRISM v2.0.0 (release-hygiene patch; see §18 for surface and provenance). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §10.1).
+**Supersedes:** PRISM v2.0.0 (release-hygiene patch; see §{section.project-feedback-updates} for surface and provenance). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.10 in Appendix G; a singleton PRISM.md attachment is
 sufficient for normal operation. Attach a standalone Lens Library only
 when the project explicitly pins to a newer Library version than the
-embedded copy (see §7.1).
+embedded copy (see §{section.library-reference-at-setup}).
 **Substrate:** Claude Opus 4.6 / 4.7 verified at v2.0; other Claude models
-report-worthy per §3.1.
+report-worthy per §{section.two-session-types}.
 
 **Citation convention.** This file is self-contained operating instructions.
 References to source artifacts: `Spec.§X.Y` points to PRISM_v2_spec_rev2.md;
@@ -38,67 +38,70 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§1 Scope** (this section group) — what v2.0 is and what it isn't.
-2. **§2 System overview** — every construct, every lifecycle slot, the visual
+1. **§{section.scope} Scope** (this section group) — what v2.0 is and what it isn't.
+2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
-3. **§3 Architecture** — sessions, the triple contract, Master, *What's next*,
+3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
    Vendor Selection. The everyday machinery.
-4. **§6 Setup** — what happens before any prompt is dispatched. Library-graded
+4. **§{section.setup-mechanics} Setup** — what happens before any prompt is dispatched. Library-graded
    iterative refinement; the seven probes.
-5. **§9 Monitors** + **§10 Standing Principles** — the always-on background
+5. **§{section.monitor-specifications} Monitors** + **§{section.standing-principles} Standing Principles** — the always-on background
    posture.
 
-After that, §4 (prompt-package engine), §5 (context-pressure framework), §7
-(Library integration), §11 (filename conventions), §12 (atomic prompt template
-v2 form), and §13 (operator hint catalog) carry the rest of the operating
-mechanics. §15 walks a complete worked example.
+After that, §{section.prompt-package-engine} (prompt-package engine), §{section.context-pressure-framework} (context-pressure framework), §{section.library-integration}
+(Library integration), §{section.filename-conventions-and-bump-atomicity} (filename conventions), §{section.atomic-prompt-template-v2-form} (atomic prompt template
+v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
+mechanics. §{section.worked-example-flow} walks a complete worked example.
 
 Reading order for an operator returning to v2.0 after running a session:
-*What's next* → relevant §3–§7 mechanics → §9 Monitors if a fire surfaced.
+*What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
 
 ## 1. Scope
+<a id="section-scope"></a>
 
 ### 1.1 What v2.0.1 covers `[structural | stable]`
+<a id="section-what-v2-0-1-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on any vendor)
-  with explicit role separation (§3.1).
+  with explicit role separation (§{section.two-session-types}).
 - **The triple contract** (Envelope inbound, Self-check, Output outbound) as
-  the load-bearing interface between sessions (§3.2).
+  the load-bearing interface between sessions (§{section.the-triple-contract}).
 - **Master + *What's next* as continuous-state artifacts** written at every
-  orchestration turn-close, regardless of band state (§3.3, §3.4, §5.5).
+  orchestration turn-close, regardless of band state (§{section.the-master}, §{section.whats-next}, §{section.failsafe-recovery-continuous-state-mechanics}).
 - **Vendor Selection at dispatch** with live web-search currency check
-  (§3.6).
+  (§{section.vendor-selection-at-dispatch}).
 - **Setup as iterative refinement** against the Lens Library v0.9, with
-  three-layer readiness clearing the P0→P1 boundary (§6).
-- **Seven Setup probes** (P1 Coverage grading, P2 Adversarial Scope, P3
+  three-layer readiness clearing the P0→P1 boundary (§{section.setup-mechanics}).
+- **Seven Setup probes** (§{probe.P1} Coverage grading, P2 Adversarial Scope, P3
   Decision Framing, P4 Pre-mortem, P5 Falsifier, P6 Domain Reconnaissance,
-  P7 User Voice) — Setup-time grading constructs only (§6.3).
+  P7 User Voice) — Setup-time grading constructs only (§{section.the-seven-probes}).
 - **Library integration** — the Lens Library v0.10 as canonical reference
   catalog (embedded as Appendix G; standalone at `lens/PRISM_lens_library.md`
   for explicit override); point-refresh in Setup; Update sessions for
-  currency maintenance (§7).
+  currency maintenance (§{section.library-integration}).
 - **Twelve Monitor slots** (M1–M12, with v1.x M12 Conversation Pressure
   retired into M5 and the M12 slot reused for Result Completeness Check)
-  firing orchestration-side at defined lifecycle slots (§9).
-- **Telemetric context-pressure framework** (M5) — seven signals,
+  firing orchestration-side at defined lifecycle slots (§{section.monitor-specifications}).
+- **Telemetric context-pressure framework** (§{monitor.M5}) — seven signals,
   qualitative compounding, four bands (🟢🟡🟠🔴), continuous-curation
-  posture from 🟡 onward (§5).
+  posture from 🟡 onward (§{section.context-pressure-framework}).
 - **Migration handoff** as a defined artifact at 🔴 (mandatory) and 🟠
-  (operator-elective) (§5.4).
-- **Standing Principles** governing posture across sessions (§10).
+  (operator-elective) (§{section.migration-handoff}).
+- **Standing Principles** governing posture across sessions (§{section.standing-principles}).
 - **Filename discipline** — structured patterns for Outputs, Masters,
-  handoffs, and Library files (§11, SP-14).
+  handoffs, and Library files (§{section.filename-conventions-and-bump-atomicity}, SP-14).
 - **Forward-compatibility commitments** — Tools slot in Envelope,
-  execution-mode flag at Setup (§3.5).
+  execution-mode flag at Setup (§{section.forward-compatibility-commitments}).
 - **Atomic prompt template v2 form** — wraps the triple contract around the
-  prompt body (§12).
+  prompt body (§{section.atomic-prompt-template-v2-form}).
 
 ### 1.2 What v2.0.1 does not cover
+<a id="section-what-v2-0-1-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -109,18 +112,19 @@ and research framework. v2.0 covers:
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
 - **Empirical calibration.** Several thresholds in v2.0 are rev. 1 draft
-  estimates: M5 band thresholds (§5.1), Update session trigger (§7.5),
-  probe iteration ceilings (§6.1). Calibration against real use is a
-  post-release item (§16).
+  estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
+  probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
+  post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus 4.6/4.7 and Sonnet 4.6 only. Behavior on Gemini, ChatGPT, Perplexity
-  is report-worthy (§16).
+  is report-worthy (§{section.empirical-calibration-items}).
 - **Non-Claude orchestration.** v2.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
 
 ### 1.3 Three-leg constraint `[structural | stable]`
+<a id="section-three-leg-constraint"></a>
 
 v2.0 honours the constraint inherited from the design document (DD.§8.3):
 
@@ -132,45 +136,47 @@ v2.0 honours the constraint inherited from the design document (DD.§8.3):
   scope-completeness and convergence discipline.
 
 Mechanics that violate any leg do not earn their place in v2.0. Roadmap
-adjacencies (§9 of DD: automated cross-vendor orchestration, plugin-equipped
+adjacencies (§{section.monitor-specifications} of DD: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural slots
 (`Tools:`, `execution_mode:`) but no machinery beyond the slot.
 
 ---
 ## 2. System overview
+<a id="section-system-overview"></a>
 
 **Read this section first if you are encountering v2.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
-This section is a map. Definitions live in the per-construct sections (§3–§14).
+This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
+<a id="section-construct-list"></a>
 
 PRISM v2.0 has the following constructs, grouped by category.
 
-**Sessions** (§3.1)
+**Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
 - Execution session — vendor session running a single dispatched prompt
 - Update session — out-of-band, operator-gated, maintains Library currency
-  (§7.5)
+  (§{section.currency-maintenance-update-session})
 
 **Phases**
 - P0.x — Setup (iterates against draft Prompt Strategy)
 - P1+ — Execution (dispatched prompts run; convergence absorbs results)
-- P0→P1 boundary — three-layer readiness clears (§6.2)
+- P0→P1 boundary — three-layer readiness clears (§{section.three-layer-readiness})
 
-**Probes** (§6.3) — Setup-time grading constructs only
+**Probes** (§{section.the-seven-probes}) — Setup-time grading constructs only
 - P1 Coverage grading · P2 Adversarial Scope · P3 Decision Framing · P4
   Pre-mortem · P5 Falsifier · P6 Domain Reconnaissance · P7 User Voice
 
-**Monitors** (§9) — orchestration-side checks
+**Monitors** (§{section.monitor-specifications}) — orchestration-side checks
 - M1 Missing Inputs · M2 Version Drift · M3 Sequence Violation · M4
   Ambiguous Ask · M5 Context Pressure · M6 Premise Shift · M7 Claim
   Conflict · M8 Stale Source · M9 Convergence Type Drift · M10 Rerun /
   Fix Required · M11 Layer 2 Readiness · M12 Result Completeness Check
 
 **Top-level artifacts**
-- Master (§3.3) · *What's next* (§3.4) · Lens Library (§7) · Migration
-  handoff (§5.4) · Convergence delta (§4.3.1)
+- Master (§{section.the-master}) · *What's next* (§{section.whats-next}) · Lens Library (§{section.library-integration}) · Migration
+  handoff (§{section.migration-handoff}) · Convergence delta (§{section.convergence-delta-document})
 
 **Master sections** (state lives here)
 - Decision brief · Stakeholder register · Claim inventory · Jurisdiction
@@ -178,25 +184,26 @@ PRISM v2.0 has the following constructs, grouped by category.
   Learnings Register · Changelog · Open dispatches list · Active probes
   list · Open monitors list
 
-**Execution contract** (the triple, §3.2)
+**Execution contract** (the triple, §{section.the-triple-contract})
 - Envelope (inbound) · Self-check (substrate verification) · Output
   (outbound)
 
-**Standing Principles** (§10)
+**Standing Principles** (§{section.standing-principles})
 - v2-new/extended: SP-1 ext, SP-12, SP-13, SP-14
 - Carryforward: SP-2, SP-4, SP-5, SP-6, SP-7, SP-8 (narrowed), SP-9, SP-10
 - Dissolved: SP-3
 
 **Mechanisms**
-- Vendor Selection (§3.6) · Vendor Triangulation (§4.3) · Bump atomicity
-  (§9.1 spec / §11) · Telemetric framework (§5.1) · Point refresh (§7.4) ·
-  Update session (§7.5) · Continuous-curation (§5.3) · Strategy stability
-  (§6.5) · Three-layer readiness (§6.2) · Two-layer convergence · Triple
+- Vendor Selection (§{section.vendor-selection-at-dispatch}) · Vendor Triangulation (§{section.vendor-triangulation}) · Bump atomicity
+  (§{section.standalone-monitors-m1-m2-m4-m5-m9} spec / §{section.filename-conventions-and-bump-atomicity}) · Telemetric framework (§{section.telemetric-framework-signal-weighting-and-compounding}) · Point refresh (§{section.currency-maintenance-point-refresh}) ·
+  Update session (§{section.currency-maintenance-update-session}) · Continuous-curation (§{section.continuous-curation-posture}) · Strategy stability
+  (§{section.strategy-stability}) · Three-layer readiness (§{section.three-layer-readiness}) · Two-layer convergence · Triple
   contract
 
 **Bands** — 🟢 Comfortable · 🟡 Getting warm · 🟠 Curate now · 🔴 Migrate
 
 ### 2.2 Visual map
+<a id="section-visual-map"></a>
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -268,6 +275,7 @@ OUT-OF-BAND
 ```
 
 ### 2.3 Construct cards
+<a id="section-construct-cards"></a>
 
 Per-construct lifecycle, reads, writes, triggers. Cross-refs to detail
 sections.
@@ -276,86 +284,87 @@ sections.
 
 | Construct | Lifecycle | Reads | Writes | Trigger | Detail |
 |---|---|---|---|---|---|
-| Orchestration session | Per session | All Master sections, Library, briefs | Master, *What's next* | Operator opens | §3.1 |
-| Execution session | Per dispatch | Envelope.Attachments only | Output `.md` | Envelope dispatched | §3.1 |
-| Update session | Out-of-band | Library file, web | New Library file | Operator declares | §7.5 |
-| P0 Setup | Iterates per turn | Subject brief, Library | Setup artifacts, Prompt Strategy | First session | §6 |
-| P1+ Execution | Per orchestration turn | Master, returned Outputs | Master findings | Operator dispatches | §6.5 |
+| Orchestration session | Per session | All Master sections, Library, briefs | Master, *What's next* | Operator opens | §{section.two-session-types} |
+| Execution session | Per dispatch | Envelope.Attachments only | Output `.md` | Envelope dispatched | §{section.two-session-types} |
+| Update session | Out-of-band | Library file, web | New Library file | Operator declares | §{section.currency-maintenance-update-session} |
+| P0 Setup | Iterates per turn | Subject brief, Library | Setup artifacts, Prompt Strategy | First session | §{section.setup-mechanics} |
+| P1+ Execution | Per orchestration turn | Master, returned Outputs | Master findings | Operator dispatches | §{section.strategy-stability} |
 
 **Probes** (Setup-only)
 
 | Probe | Trigger | Reads | Writes | Detail |
 |---|---|---|---|---|
-| P1 Coverage grading | P0.x turn-close (iterates) | Library, draft strategy | Coverage map in Master | §6.3.1 |
-| P2 Adversarial Scope | P0.x turn-close (iterates) | Library, draft strategy, domain context | Omission candidate list | §6.3.2 |
-| P3 Decision Framing | First P0 turn (once) | Subject brief | Decision brief, Stakeholder register | §6.3.3 |
-| P4 Pre-mortem | P0.x turn-close (iterates) | Draft strategy, Decision brief | Failure-mode list | §6.3.4 |
-| P5 Falsifier | Late P0 (once) | Decision brief | Falsifiers section | §6.3.5 |
-| P6 Domain Reconnaissance | Early P0.x (iterates) | Subject, web (live) | Jurisdiction map, authoritative-source citations | §6.3.6 |
-| P7 User Voice | Early P0.x (iterates) | User-facing surfaces, web | User-signal list | §6.3.7 |
+| P1 Coverage grading | P0.x turn-close (iterates) | Library, draft strategy | Coverage map in Master | §{section.probe-1-coverage-grading-iterates} |
+| P2 Adversarial Scope | P0.x turn-close (iterates) | Library, draft strategy, domain context | Omission candidate list | §{section.probe-2-adversarial-scope-iterates} |
+| P3 Decision Framing | First P0 turn (once) | Subject brief | Decision brief, Stakeholder register | §{section.probe-3-decision-framing-once} |
+| P4 Pre-mortem | P0.x turn-close (iterates) | Draft strategy, Decision brief | Failure-mode list | §{section.probe-4-pre-mortem-iterates} |
+| P5 Falsifier | Late P0 (once) | Decision brief | Falsifiers section | §{section.probe-5-falsifier-once} |
+| P6 Domain Reconnaissance | Early P0.x (iterates) | Subject, web (live) | Jurisdiction map, authoritative-source citations | §{section.probe-6-domain-reconnaissance-iterates-early} |
+| P7 User Voice | Early P0.x (iterates) | User-facing surfaces, web | User-signal list | §{section.probe-7-user-voice-iterates-early} |
 
 **Monitors** — orchestration-side; M12 (v2) is Result Completeness Check;
 v1.x M12 Conversation Pressure retired into M5
 
 | Monitor | Lifecycle | Reads | Writes | Trigger | Detail |
 |---|---|---|---|---|---|
-| M1 Missing Inputs | Per session-open + per turn | Session attachments, Output Attachment-warnings | M1 fire | Required attachment absent | §9.1.1 |
-| M2 Version Drift | Per session-open | Master metadata, expected version | M2 fire | Master version ≠ expected | §9.1.2 |
-| M3 Sequence Violation | Per turn (op declaration) | Prompt Strategy, op input | M3 fire | Step before prereq | §9.3.1 |
-| M4 Ambiguous Ask | Per turn (op input) | Op turn content | M4 fire | Cannot confidently parse | §9.1.3 |
-| M5 Context Pressure | Per turn-close | 7 telemetric signals | Band header | Every turn-close | §5.2 |
-| M6 Premise Shift | Per Layer-1 ingestion | New finding, Setup artifacts | M6 fire | Premise invalidated | §9.2.1 |
-| M7 Claim Conflict | Per Layer-1 ingestion | New finding, prior findings | M7 fire | Two findings incompatible | §9.2.2 |
-| M8 Stale Source | Per Layer-1 ingestion | New finding's cited sources, web | M8 fire | Source invalidated | §9.2.3 |
-| M9 Convergence Type Drift | Per Layer-1 + Layer-2 | Convergence step type | M9 fire | Wrong-posture convergence | §9.1.5 |
-| M10 Rerun/Fix Required | Multi-source (chain or op) | Trigger source | Rerun Register | Rerun condition | §9.3.2 |
-| M11 Layer 2 Readiness | Per turn-close | Dispatch register, Rerun reg, Open monitors | What's next candidate | Layer 2 conditions met | §9.3.3 |
-| M12 Result Completeness | Per Layer-1 ingestion | New finding's domain coverage | M12 fire | Domain coverage gap inside finding | §9.2.4 |
+| M1 Missing Inputs | Per session-open + per turn | Session attachments, Output Attachment-warnings | M1 fire | Required attachment absent | §{section.m1-missing-inputs} |
+| M2 Version Drift | Per session-open | Master metadata, expected version | M2 fire | Master version ≠ expected | §{section.m2-version-drift} |
+| M3 Sequence Violation | Per turn (op declaration) | Prompt Strategy, op input | M3 fire | Step before prereq | §{section.m3-sequence-violation} |
+| M4 Ambiguous Ask | Per turn (op input) | Op turn content | M4 fire | Cannot confidently parse | §{section.m4-ambiguous-ask} |
+| M5 Context Pressure | Per turn-close | 7 telemetric signals | Band header | Every turn-close | §{section.m5-context-pressure-monitor} |
+| M6 Premise Shift | Per Layer-1 ingestion | New finding, Setup artifacts | M6 fire | Premise invalidated | §{section.m6-premise-shift} |
+| M7 Claim Conflict | Per Layer-1 ingestion | New finding, prior findings | M7 fire | Two findings incompatible | §{section.m7-claim-conflict} |
+| M8 Stale Source | Per Layer-1 ingestion | New finding's cited sources, web | M8 fire | Source invalidated | §{section.m8-stale-source} |
+| M9 Convergence Type Drift | Per Layer-1 + Layer-2 | Convergence step type | M9 fire | Wrong-posture convergence | §{section.m9-convergence-type-drift} |
+| M10 Rerun/Fix Required | Multi-source (chain or op) | Trigger source | Rerun Register | Rerun condition | §{section.m10-rerun-fix-required} |
+| M11 Layer 2 Readiness | Per turn-close | Dispatch register, Rerun reg, Open monitors | What's next candidate | Layer 2 conditions met | §{section.m11-layer-2-readiness} |
+| M12 Result Completeness | Per Layer-1 ingestion | New finding's domain coverage | M12 fire | Domain coverage gap inside finding | §{section.m12-result-completeness-check} |
 
 **Artifacts** (state lives here; only orchestration writes Master)
 
 | Artifact | Lifecycle | Reads | Writes | Detail |
 |---|---|---|---|---|
-| Master | Persistent + per-turn write | Orchestration + execution (selective) | Orchestration only | §3.3 |
-| *What's next* | Per-turn rewrite | Orchestration + operator | Orchestration only | §3.4 |
-| Lens Library | Persistent (read) | Orchestration | Update session only | §7 |
-| Migration handoff | Per-🔴 (or 🟠 elective) | Orchestration | Orchestration | §5.4 |
-| Convergence delta | Per Layer-1 batch | Orchestration | Orchestration | §4.3.1 |
-| Dispatch register | Per dispatch + per return | Orchestration, *What's next*, M3, M10 | Orchestration | §4.8 |
+| Master | Persistent + per-turn write | Orchestration + execution (selective) | Orchestration only | §{section.the-master} |
+| *What's next* | Per-turn rewrite | Orchestration + operator | Orchestration only | §{section.whats-next} |
+| Lens Library | Persistent (read) | Orchestration | Update session only | §{section.library-integration} |
+| Migration handoff | Per-🔴 (or 🟠 elective) | Orchestration | Orchestration | §{section.migration-handoff} |
+| Convergence delta | Per Layer-1 batch | Orchestration | Orchestration | §{section.convergence-delta-document} |
+| Dispatch register | Per dispatch + per return | Orchestration, *What's next*, M3, M10 | Orchestration | §{section.master-tracking-dispatch-register} |
 
 **Mechanisms** (active behavioral routines)
 
 | Mechanism | Lifecycle | Detail |
 |---|---|---|
-| Vendor Selection | Per dispatch | §3.6 |
-| Vendor Triangulation | Per Layer-1 batch (equivalence mode, N≥2) | §4.3 |
-| Bump atomicity | Per Master version increment | §11 |
-| Telemetric framework | Per turn-close | §5.1 |
-| Point refresh | Per Setup probe iteration | §7.4 |
-| Continuous-curation | Per turn-close (band ≥🟡) | §5.3 |
-| Strategy stability | Per Layer-1 trigger | §6.5 |
-| Three-layer readiness | Per P0→P1 boundary | §6.2 |
-| Triple contract | Per dispatch | §3.2 |
+| Vendor Selection | Per dispatch | §{section.vendor-selection-at-dispatch} |
+| Vendor Triangulation | Per Layer-1 batch (equivalence mode, N≥2) | §{section.vendor-triangulation} |
+| Bump atomicity | Per Master version increment | §{section.filename-conventions-and-bump-atomicity} |
+| Telemetric framework | Per turn-close | §{section.telemetric-framework-signal-weighting-and-compounding} |
+| Point refresh | Per Setup probe iteration | §{section.currency-maintenance-point-refresh} |
+| Continuous-curation | Per turn-close (band ≥🟡) | §{section.continuous-curation-posture} |
+| Strategy stability | Per Layer-1 trigger | §{section.strategy-stability} |
+| Three-layer readiness | Per P0→P1 boundary | §{section.three-layer-readiness} |
+| Triple contract | Per dispatch | §{section.the-triple-contract} |
 
-**Standing Principles** — persistent posture; not discrete fires (§10)
+**Standing Principles** — persistent posture; not discrete fires (§{section.standing-principles})
 
 | SP | v2 status | Detail |
 |---|---|---|
-| SP-1 ext Canonicity | Extended in v2 | §10.1.1 |
-| SP-2 Defer non-critical | Carryforward | §10.2.2 |
-| SP-3 (dissolved) | — | §10.2 |
-| SP-4 Monitors visible | Carryforward | §10.2.2 |
-| SP-5 No heuristic guessing | Carryforward | §10.2.2 |
-| SP-6 Rebuild at threshold | Carryforward | §10.2.2 |
-| SP-7 File delivery mandatory | Carryforward | §10.2.2 |
-| SP-8 Canonical authority (narrowed) | Carryforward (narrowed) | §10.2.1 |
-| SP-9 Silence not consent | Carryforward | §10.2.2 |
-| SP-10 Verify state before recommending | Carryforward as named principle | §10.1.4 |
-| SP-12 Bounded-search disclosure | New in v2 | §10.1.2 |
-| SP-13 Substrate declaration | New in v2 | §10.1.3 |
-| SP-14 Filename discipline | New in v2 | §10.1.5 |
+| SP-1 ext Canonicity | Extended in v2 | §{section.sp-1-extended-canonicity-preservation} |
+| SP-2 Defer non-critical | Carryforward | §{section.carryforward-sps-application-surfaces} |
+| SP-3 (dissolved) | — | §{section.v1-x-standing-principles-carryforward-catalog} |
+| SP-4 Monitors visible | Carryforward | §{section.carryforward-sps-application-surfaces} |
+| SP-5 No heuristic guessing | Carryforward | §{section.carryforward-sps-application-surfaces} |
+| SP-6 Rebuild at threshold | Carryforward | §{section.carryforward-sps-application-surfaces} |
+| SP-7 File delivery mandatory | Carryforward | §{section.carryforward-sps-application-surfaces} |
+| SP-8 Canonical authority (narrowed) | Carryforward (narrowed) | §{section.sp-8-narrowed-canonical-authority} |
+| SP-9 Silence not consent | Carryforward | §{section.carryforward-sps-application-surfaces} |
+| SP-10 Verify state before recommending | Carryforward as named principle | §{section.sp-10-verify-state-before-recommending} |
+| SP-12 Bounded-search disclosure | New in v2 | §{section.sp-12-bounded-search-disclosure} |
+| SP-13 Substrate declaration | New in v2 | §{section.sp-13-substrate-declaration} |
+| SP-14 Filename discipline | New in v2 | §{section.sp-14-filename-discipline} |
 
 ### 2.4 Lifecycle slots
+<a id="section-lifecycle-slots"></a>
 
 Every construct fires in exactly one lifecycle slot.
 
@@ -372,9 +381,10 @@ Every construct fires in exactly one lifecycle slot.
 | Persistent posture | All Standing Principles |
 
 ### 2.5 Band legend
+<a id="section-band-legend"></a>
 
 Bands are M5's output; they drive curation and migration posture. Per-band
-table in §5.6.
+table in §{section.defensive-migration-at-natural-seams}.
 
 - 🟢 **Comfortable.** Silent. No intervention.
 - 🟡 **Getting warm.** Curation observation in *What's next*. Migration
@@ -384,12 +394,13 @@ table in §5.6.
 - 🔴 **Migrate.** Migration handoff produced; fresh session.
 
 ### 2.6 Cross-section quick-find
+<a id="section-cross-section-quick-find"></a>
 
 If you need to find:
 
-- **A specific construct's full mechanics** → §2.3 construct card →
+- **A specific construct's full mechanics** → §{section.construct-cards} construct card →
   cross-ref to detail.
-- **How constructs flow in a real audit** → §15 worked example.
+- **How constructs flow in a real audit** → §{section.worked-example-flow} worked example.
 - **What changed from v1.10.4** → Appendix D v1.x → v2 surface drift.
 - **Decision rationale on something** → Appendix C tag index → Spec.§
   reference for chosen alternative + rationale.
@@ -398,6 +409,7 @@ If you need to find:
 
 ---
 ## 3. Architecture mechanics
+<a id="section-architecture-mechanics"></a>
 
 v2.0's architecture is the operating skeleton: two session types, the triple
 contract that lets them interoperate cleanly, two artifacts (Master and
@@ -406,6 +418,7 @@ slots for things v2.0 doesn't yet have machinery for, and Vendor Selection
 as the live currency check at dispatch time.
 
 ### 3.1 Two session types `[structural | stable]`
+<a id="section-two-session-types"></a>
 
 **Orchestration session.** A Claude session with the framework attached.
 
@@ -413,7 +426,7 @@ as the live currency check at dispatch time.
   Skill that loads it); the Master; the Lens Library
   (`PRISM_lens_library.md` v0.9); the Prompt Strategy (when separate from
   the Master); subject-brief documents.
-- *Session-open verification*: SP-13 substrate self-check (§10.1.3) — Claude
+- *Session-open verification*: SP-13 substrate self-check (§{section.sp-13-substrate-declaration}) — Claude
   declares model identity and confirms it matches the declared orchestration
   target (Claude Opus 4.6 or 4.7). Halt and ask the operator on mismatch or
   cannot-determine.
@@ -422,17 +435,17 @@ as the live currency check at dispatch time.
 - *Closes by*: writing *What's next* to the Master and surfacing it for the
   operator. Operator hint emitted: `Save Master to cloud drive (E.5).`
 - *Vendor*: Claude (Opus 4.6 / 4.7 verified at v2.0; other Claude models
-  report-worthy per DD §3.5 beta posture).
+  report-worthy per DD §{section.forward-compatibility-commitments} beta posture).
 
 **Execution session.** A vendor session running a single dispatched prompt.
 
 - *Loaded artifacts*: only what the Envelope's `Attachments:` field names.
   Framework not attached.
-- *Session-open verification*: PRISM Execution Self-check (§3.2.2) — vendor
+- *Session-open verification*: PRISM Execution Self-check (§{section.prism-execution-self-check}) — vendor
   declares model identity and confirms match against the Envelope's
   `Vendor:` and `Vendor config:` fields. Halt and report on mismatch.
 - *Outputs*: a single `.md` file wrapped in PRISM Execution Output signature
-  (§3.2.3).
+  (§{section.prism-execution-output}).
 - *Closes by*: producing the file and instructing the operator on filename
   and next action (per Envelope's `Expected output:` and the Output's
   `Operator next:`).
@@ -442,20 +455,22 @@ as the live currency check at dispatch time.
 **Why the split.** Orchestration is the framework's home — Master state,
 Monitor fires, Setup probes, convergence reasoning. Execution is purpose-
 built single-shot work — one prompt, one file out, no framework overhead.
-Crossing the boundary is the triple contract (§3.2). v1.x ran convergence
+Crossing the boundary is the triple contract (§{section.the-triple-contract}). v1.x ran convergence
 inside execution sessions under SP-3; v2 dissolved SP-3 because it was
 incompatible with the split.
 
 ### 3.2 The triple contract `[structural | stable]`
+<a id="section-the-triple-contract"></a>
 
 Three blocks — Envelope (inbound), Self-check (between envelope and task
 body), Output (outbound). All three are visually distinctive, self-contained,
-and produced by orchestration's Vendor Selection step (§3.6) at dispatch
+and produced by orchestration's Vendor Selection step (§{section.vendor-selection-at-dispatch}) at dispatch
 time. The contract is the load-bearing interface between sessions; it
 survives mode changes (manual paste-chat today; automated dispatch later)
 unchanged.
 
 #### 3.2.1 PRISM Execution Envelope
+<a id="section-prism-execution-envelope"></a>
 
 ```
 ━━━ PRISM EXECUTION ENVELOPE ━━━
@@ -482,8 +497,8 @@ Operator hints:     [zero or more one-line cues; see §3.2.4]
   Envelope was produced. Used for reconciliation if state drifts.
 - `Vendor` — single vendor name (`Claude Opus 4.7`, `Gemini Pro Deep
   Research`, `Perplexity`, `ChatGPT o-series`) or the literal `multi-vendor`.
-- `Dispatch shape` — see §4.1 for the three modes.
-- `Dispatch rationale` — one positive-framing line per variant. See §4.2.
+- `Dispatch shape` — see §{section.single-envelope-with-spectrum-shape} for the three modes.
+- `Dispatch rationale` — one positive-framing line per variant. See §{section.rationale-discipline-per-dispatch-variant}.
 - `Vendor config` — vendor-specific configuration (e.g., `Deep Research ON,
   extended thinking ON`).
 - `Session hygiene` — substrate setup the vendor session must satisfy.
@@ -492,12 +507,13 @@ Operator hints:     [zero or more one-line cues; see §3.2.4]
 - `Attachments` — comma-separated filenames the operator must attach. Order
   is significant where the prompt body references attachments by position.
 - `Expected output` — the filename the operator should download the produced
-  file as. Naming convention per §11: `[project]_[promptID]_[vendor].md`.
-- `Operator hints` — zero or more one-line cues. See §3.2.4.
+  file as. Naming convention per §{section.filename-conventions-and-bump-atomicity}: `[project]_[promptID]_[vendor].md`.
+- `Operator hints` — zero or more one-line cues. See §{section.operator-hints-emission-discipline}.
 
 #### 3.2.2 PRISM Execution Self-check
+<a id="section-prism-execution-self-check"></a>
 
-Operationalizes SP-13 (§10.1.3) inside the execution session. Sits between
+Operationalizes SP-13 (§{section.sp-13-substrate-declaration}) inside the execution session. Sits between
 the Envelope and the task body.
 
 ```
@@ -527,14 +543,15 @@ Before doing the task:
 - Mismatch halts the task and emits a Self-check report. The report is the
   deliverable until the operator confirms.
 - "Confirmation to proceed" is a positive operator action (a message in the
-  conversation), not an inferred consent from continued attachment (SP-9).
+  conversation), not an inferred consent from continued attachment (§{principle.SP-9}).
 
 **Multi-vendor empirical footing.** Verified on Claude Opus 4.6/4.7 and
 Sonnet 4.6 at v2.0 release. Gemini, ChatGPT, Perplexity behavior under this
 block is **report-worthy finding** per DD.§3.5 — operators report
-divergences. See §16.
+divergences. See §{section.empirical-calibration-items}.
 
 #### 3.2.3 PRISM Execution Output
+<a id="section-prism-execution-output"></a>
 
 Every execution session produces a `.md` file whose contents are wrapped in
 this signature.
@@ -563,7 +580,7 @@ Attachment warnings:  [optional; one line per warning; see §9.2 spec / §13]
 
 - `Vendor` and `Vendor config` reflect *executed* state, not *recommended*
   state. This is the field orchestration reads for recommended-vs-executed
-  reconciliation (§4.7).
+  reconciliation (§{section.recommended-vs-executed-reconciliation}).
 - `Schema version` — currently `output-v1`. Bumps when the Output block's
   structure changes; orchestration's Layer-1 convergence flags
   incompatibilities at ingestion.
@@ -575,7 +592,7 @@ Attachment warnings:  [optional; one line per warning; see §9.2 spec / §13]
   vendor chats to compute reliable hashes (which they can't, in general).
 - `Operator next` — download filename + attachment instruction for the next
   orchestration turn.
-- `Attachment warnings` — populated only when warranted. See §13 for
+- `Attachment warnings` — populated only when warranted. See §{section.operator-hint-catalog} for
   emission rules and severity tags.
 
 **Production discipline.** The execution session produces the file via the
@@ -585,6 +602,7 @@ is delimited content rendering with explicit warning that paste fallback has
 known clipboard-fidelity issues (DD.§4.1.1).
 
 #### 3.2.4 Operator hints — emission discipline
+<a id="section-operator-hints-emission-discipline"></a>
 
 Hints are optional one-line cues keyed to the upcoming action.
 
@@ -592,25 +610,26 @@ Hints are optional one-line cues keyed to the upcoming action.
 
 - Fire only when a cue applies to *this* dispatch. Routine dispatches carry
   zero hints. Signal-to-noise discipline.
-- One line per hint; pointer to §17 (mobile operator survival guide), not an
+- One line per hint; pointer to §{section.mobile-operator-survival-guide} (mobile operator survival guide), not an
   inline essay.
 - No hint that duplicates a Monitor fire.
 - Substrate calibration attribution where non-obvious — `(Claude mobile,
   Samsung)`. Mismatched substrates self-diagnose rather than silently
   confuse.
 - Hints surface in two places: in the Envelope's `Operator hints:` field
-  when the next action is a dispatch; in the *What's next* artifact (§3.4)
+  when the next action is a dispatch; in the *What's next* artifact (§{section.whats-next})
   when the next action is not a dispatch (review, ratify, save-to-cloud).
 
-The full operator hint catalog is in §13.
+The full operator hint catalog is in §{section.operator-hint-catalog}.
 
 ### 3.3 The Master `[structural | stable]`
+<a id="section-the-master"></a>
 
 The Master is the single canonical project state file. Operator workflow
 treats it as the project — not the chat, not the session, not what
 orchestration remembers.
 
-**Filename convention** (per §11, SP-14):
+**Filename convention** (per §{section.filename-conventions-and-bump-atomicity}, SP-14):
 `[project_name]_prism[version]_master_[phase-derived versioning].md`. E.g.,
 `solace_audit_prism2.0_master_p2.3.md`.
 
@@ -619,34 +638,34 @@ orchestration remembers.
 - *Created* at Setup P0.1 (first orchestration turn).
 - *Updated* at every orchestration turn-close, regardless of band state.
   Updates are append-mostly: the Changelog gains a line; relevant register
-  sections gain entries. Continuous-state mechanic per §5.5.
+  sections gain entries. Continuous-state mechanic per §{section.failsafe-recovery-continuous-state-mechanics}.
 - *Filename version bumps* at phase boundaries (P0→P1, P1→P2). Sub-version
-  increments at convergence rounds within a phase (P2.1 → P2.2). Schema
+  increments at convergence rounds within a phase (§{probe.P2.1} → P2.2). Schema
   version increments tracked in the Master's metadata header. Bump
-  atomicity rules in §11.
+  atomicity rules in §{section.filename-conventions-and-bump-atomicity}.
 - *Single file by principle* — no parallel Masters. Multiple-Master state is
-  itself a Monitor fire (M2 Version Drift, §9.1.2).
+  itself a Monitor fire (§{monitor.M2} Version Drift, §{section.m2-version-drift}).
 - *Authoritative copy* — operator's locally-attached Master at session open
-  is authoritative for that session. Cloud-drive copies (§17 MO-5) are
+  is authoritative for that session. Cloud-drive copies (§{section.mobile-operator-survival-guide} MO-5) are
   durable persistence, not authority.
 
 **Required sections.**
 
 - Metadata header: project name, current Master version, Schema version,
   last updated.
-- Decision brief (Setup artifact, §6.4.1).
-- Stakeholder register (Setup artifact, §6.4.2).
-- Claim inventory (Setup artifact, §6.4.3).
-- Jurisdiction map (Setup artifact, §6.4.4).
+- Decision brief (Setup artifact, §{section.decision-brief}).
+- Stakeholder register (Setup artifact, §{section.stakeholder-register}).
+- Claim inventory (Setup artifact, §{section.claim-inventory}).
+- Jurisdiction map (Setup artifact, §{section.jurisdiction-map}).
 - Prompt Strategy — current ratified version.
 - Dispatch register — table of recommended-vs-executed state per prompt
-  (§4.8).
+  (§{section.master-tracking-dispatch-register}).
 - Findings sections — per-prompt converged findings, with provenance.
 - Open dispatches list — prompts not yet closed.
 - Active probes list — Setup probes still iterating (P0 only).
 - Open monitors list — M2/M3/M4/M6/M7/M8/M9/M10/M11/M12 fires not yet
   resolved.
-- Rerun Register (§9.3.2) — overdue/scheduled/running/complete/cancelled.
+- Rerun Register (§{section.m10-rerun-fix-required}) — overdue/scheduled/running/complete/cancelled.
 - Learnings Register — cross-project pattern accumulator.
 - Changelog.
 
@@ -663,6 +682,7 @@ sections is operator-discretion at Setup; default is *include sections that
 earn their place*.
 
 ### 3.4 *What's next* `[structural | stable]`
+<a id="section-whats-next"></a>
 
 *What's next* is the operator's single source of "what to do next." Not by
 scrolling chat. Not by reading the Master in detail. Just *What's next*.
@@ -704,13 +724,13 @@ Dispatch-ready payload (if applicable):
 
 1. 🔴 context-pressure migration handoff (when band = 🔴).
 2. M2 / M3 / M4 fires (operator-side checks-and-balances) unresolved.
-3. Open Rerun Register items overdue (M10 active).
+3. Open Rerun Register items overdue (§{monitor.M10} active).
 4. M6 HIGH (Premise Shift) unresolved at convergence.
 5. Adaptation pending operator approval.
-6. Layer 2 readiness (M11) when conditions met *and* operator has not
+6. Layer 2 readiness (§{monitor.M11}) when conditions met *and* operator has not
    deferred.
 7. Next canonical Setup probe iteration (when in P0).
-8. Next canonical dispatched prompt (when in P1+ execution).
+8. Next canonical dispatched prompt (when in §{probe.P1}+ execution).
 9. Convergence-round consolidation (Layer 1 batch when ≥2 returns are in).
 10. Curation and migration at natural seam (when band ≥ 🟡).
 
@@ -728,6 +748,7 @@ Operator pick required before proceeding.
 ```
 
 ### 3.5 Forward-compatibility commitments `[structural | stable]`
+<a id="section-forward-compatibility-commitments"></a>
 
 These commitments cost the v2.0 build essentially nothing now and prevent
 later architectural rework when v2.x or v3 wants to plug in automation,
@@ -751,10 +772,11 @@ plugin-equipped execution, or cross-vendor orchestration.
   escalation.
 
 ### 3.6 Vendor Selection at dispatch `[methodological | review-if: vendor landscape changes]`
+<a id="section-vendor-selection-at-dispatch"></a>
 
 Vendor Selection runs every time orchestration is about to produce a
 dispatch-ready Envelope. Not at Setup time; at dispatch time. The mechanic
-operationalizes SP-10 (§10.1.4) at the moment a vendor recommendation
+operationalizes SP-10 (§{section.sp-10-verify-state-before-recommending}) at the moment a vendor recommendation
 matters.
 
 **Three-step routine.**
@@ -794,20 +816,22 @@ search per dispatch) is small.
 
 **SP-10 inheritance.** The principle is verify-state-before-recommending;
 Vendor Selection is the named application. Other applications inherit:
-point refresh (§7.4), Update sessions (§7.5), and any future recommendation
+point refresh (§{section.currency-maintenance-point-refresh}), Update sessions (§{section.currency-maintenance-update-session}), and any future recommendation
 surface.
 
 ---
 
 ## 4. Prompt-package engine
+<a id="section-prompt-package-engine"></a>
 
 The prompt-package engine is the set of mechanics around how prompts are
-shaped, dispatched, and reconciled. The triple contract (§3.2) is the
+shaped, dispatched, and reconciled. The triple contract (§{section.the-triple-contract}) is the
 interface; this section is the dispatch logic that decides what to send,
 how many vendors to send it to, how to read back what came in, and how to
 handle failure.
 
 ### 4.1 Single-Envelope-with-spectrum shape `[structural | stable]`
+<a id="section-single-envelope-with-spectrum-shape"></a>
 
 A single Envelope shape across all dispatch shapes. The mode field tells
 operator and vendor what kind of run this is.
@@ -819,7 +843,7 @@ operator and vendor what kind of run this is.
 
 - **`equivalence`** — dispatch the same prompt body to N vendors, expect
   comparable outputs. Orchestration's Vendor Triangulation fires at N≥2
-  (§4.3).
+  (§{section.vendor-triangulation}).
   - `Vendor:` field reads `multi-vendor`.
   - A `Vendor list:` sub-field enumerates the vendors and configs:
     ```
@@ -829,7 +853,7 @@ operator and vendor what kind of run this is.
       - Perplexity / Sonar Pro
     ```
   - `Dispatch rationale:` carries one positive-framing line per vendor
-    (§4.2).
+    (§{section.rationale-discipline-per-dispatch-variant}).
   - The operator dispatches to each vendor sequentially or in parallel; each
     return carries its own Output signature. Orchestration tracks N expected
     returns.
@@ -847,10 +871,11 @@ operator and vendor what kind of run this is.
   - `Vendor:` field reads the single vendor.
   - `Dispatch rationale:` includes a `Not chosen:` line naming the
     alternative considered and the analytical reason for not choosing it
-    (per §4.2 positive-framing rule). Not the access reason — the framework
+    (per §{section.rationale-discipline-per-dispatch-variant} positive-framing rule). Not the access reason — the framework
     does not gate on operator vendor access (DD.§3.6).
 
 ### 4.2 Rationale discipline per dispatch variant `[methodological | stable]`
+<a id="section-rationale-discipline-per-dispatch-variant"></a>
 
 `Dispatch rationale:` field holds one positive-framing line per dispatch
 variant component. Mobile-legible. No deficit framing.
@@ -886,6 +911,7 @@ variant component. Mobile-legible. No deficit framing.
 - "Not chosen" lines explain the analytical reason, not the access reason.
 
 ### 4.3 Vendor Triangulation `[structural | stable]`
+<a id="section-vendor-triangulation"></a>
 
 Vendor Triangulation is a Layer-1 convergence pass that fires when the
 second return arrives in an `equivalence` dispatch. Re-fires as each
@@ -893,7 +919,7 @@ subsequent return arrives. Tracked via the Master's Dispatch register.
 
 **Lives outside the probe taxonomy.** Operates against returned findings,
 not draft strategy. Single-responsibility separation from Probe 2
-Adversarial Scope (§6.3.2). Different surfaces (draft strategy vs returned
+Adversarial Scope (§{section.probe-2-adversarial-scope-iterates}). Different surfaces (draft strategy vs returned
 findings), different lifecycles (Setup-only vs per Layer-1 batch),
 different output shapes (omission list vs agreement/divergence delta).
 
@@ -901,12 +927,13 @@ different output shapes (omission list vs agreement/divergence delta).
 
 - N=1 return: ingested as a single finding, not triangulated. Master
   records `partial-equivalence: N/expected_N`.
-- N=2: Vendor Triangulation fires. Convergence delta produced (§4.3.1).
+- N=2: Vendor Triangulation fires. Convergence delta produced (§{section.convergence-delta-document}).
 - N=3+: Re-fires; convergence delta updates incrementally.
 - N=expected_N: Delta finalizes; Vendor Triangulation closes for this
   prompt.
 
 #### 4.3.1 Convergence delta document
+<a id="section-convergence-delta-document"></a>
 
 ```
 ━━━ VENDOR TRIANGULATION DELTA ━━━
@@ -931,13 +958,14 @@ is expected, the delta finalizes. The Master's findings section absorbs the
 final delta.
 
 ### 4.4 Asymmetric parallel return handling `[structural | stable]`
+<a id="section-asymmetric-parallel-return-handling"></a>
 
 Convergence proceeds with whatever returned. Failed dispatches are flagged
 with named gaps; operator decides whether to re-dispatch.
 
 **Failure handling.**
 
-- Operator declares a dispatch failed via the close-loop mechanic (§4.9):
+- Operator declares a dispatch failed via the close-loop mechanic (§{section.operator-declaration-close-loop}):
   `P2.3 Gemini failed — Deep Research timed out`.
 - Master's Dispatch register status: `failed: [reason]`.
 - Vendor Triangulation proceeds with available returns. Convergence delta
@@ -955,10 +983,11 @@ candidate. Per DD.§3.6 — design-authority-without-access-gating — the
 framework does not assume the operator can retry on the same vendor.
 
 ### 4.5 Claude-baseline feasibility with named-limitation escape hatch `[vendor-dependent | review-if: vendor landscape changes]`
+<a id="section-claude-baseline-feasibility-with-named-limitation-escape-hatch"></a>
 
 Default execution stance is "Claude alone is feasible." Multi-vendor or
 non-Claude is invoked via explicit declaration in the Prompt Strategy. The
-named-limitation escape hatch (§4.1 `limitation-named`) fires when Claude
+named-limitation escape hatch (§{section.single-envelope-with-spectrum-shape} `limitation-named`) fires when Claude
 is genuinely insufficient for the prompt shape.
 
 **When non-Claude default escapes apply** (Vendor Selection refreshes per
@@ -981,13 +1010,14 @@ dispatch):
 **Default behavior absent declaration.** Single-vendor Claude dispatch.
 
 ### 4.6 Cost signaling `[methodological | stable]`
+<a id="section-cost-signaling"></a>
 
 Implicit. No separate `cost:` field. Cost is signaled by:
 
 - *Dispatch shape*: `equivalence` mode N=3 implies ~3× the operator effort
   and vendor-cost of single dispatch.
 - *Vendor selection*: Gemini Deep Research is more time-expensive than
-  Claude default; Vendor Selection's recommendation bubble (§3.6) carries
+  Claude default; Vendor Selection's recommendation bubble (§{section.vendor-selection-at-dispatch}) carries
   this implicitly via mode rationale.
 - *Mode rationale lines*: positive framing + named alternatives carry
   enough information for the operator to understand the cost tradeoff
@@ -1001,6 +1031,7 @@ framing in *What's next*, they can ask for it; orchestration produces it
 on-demand.
 
 ### 4.7 Recommended-vs-executed reconciliation `[structural | stable]`
+<a id="section-recommended-vs-executed-reconciliation"></a>
 
 The Output signature carries `Vendor:` and `Vendor config:` reflecting
 executed state. Orchestration auto-reconciles against the Envelope's
@@ -1012,7 +1043,7 @@ recommended state at Layer-1 ingestion.
 - *Substitution* — executed Vendor or config differs. Status:
   `substituted`. Both recommended and executed values logged.
 - *Missing* — no Output ever returned. Status: `failed` or `skipped` (per
-  close-loop §4.9).
+  close-loop §{section.operator-declaration-close-loop}).
 
 **Reconciliation algorithm** (orchestration-side, at Layer-1 ingestion):
 
@@ -1035,9 +1066,10 @@ recommended state at Layer-1 ingestion.
 ```
 
 ### 4.8 Master tracking — Dispatch register `[structural | stable]`
+<a id="section-master-tracking-dispatch-register"></a>
 
 Master gains a `Dispatch register` table that tracks recommended-vs-executed
-state per prompt. Required Master section (§3.3).
+state per prompt. Required Master section (§{section.the-master}).
 
 **Schema.**
 
@@ -1050,14 +1082,14 @@ state per prompt. Required Master section (§3.3).
 **Status values** (closed set):
 
 - `dispatched` — Envelope produced; no return yet.
-- `scheduled` — operator declared deferral (§4.9).
+- `scheduled` — operator declared deferral (§{section.operator-declaration-close-loop}).
 - `returned` — single-vendor return absorbed; Match.
 - `substituted` — return absorbed; Vendor or config differs from
   recommended.
 - `partial` — multi-vendor (`equivalence`) dispatch with N < expected_N
   returns absorbed.
-- `failed` — operator declared failed (§4.9); reason recorded.
-- `skipped` — operator declared skipped (§4.9); rationale recorded.
+- `failed` — operator declared failed (§{section.operator-declaration-close-loop}); reason recorded.
+- `skipped` — operator declared skipped (§{section.operator-declaration-close-loop}); rationale recorded.
 - `closed` — all expected returns received and convergence finalized.
 
 **Status transitions** (machine-readable for orchestration's *What's next*
@@ -1074,6 +1106,7 @@ skipped → closed
 ```
 
 ### 4.9 Operator-declaration close-loop `[structural | stable]`
+<a id="section-operator-declaration-close-loop"></a>
 
 Defined declaration set. Each declaration closes an open dispatch in a
 defined way.
@@ -1081,10 +1114,10 @@ defined way.
 **Declarations and effects.**
 
 - **`Done`** — operator attached the Output. Triggers Output reconciliation
-  (§4.7). Dispatch register status updates per §4.8.
+  (§{section.recommended-vs-executed-reconciliation}). Dispatch register status updates per §{section.master-tracking-dispatch-register}.
 - **`Running later`** — dispatch deferred. Status: `scheduled`. Master keeps
   slot open. *What's next* surfaces it as a candidate at next turn-close
-  (priority tier 8 per §3.4).
+  (priority tier 8 per §{section.whats-next}).
 - **`Skipping`** — dispatch abandoned. Status: `skipped`. Operator provides
   rationale (one line). Convergence absorbs the gap.
 - **`Failed: [reason]`** — dispatch attempted but failed (vendor error,
@@ -1104,18 +1137,19 @@ declaration keywords. Examples that orchestration recognizes:
 - `P2.3 substituted — ran on Claude instead, attaching now`
 
 **Ambiguous declarations.** If orchestration cannot confidently parse the
-declaration, M4 (Ambiguous Ask, §9.1.4) fires and asks the operator to
+declaration, M4 (Ambiguous Ask, §{section.m5-context-pressure}) fires and asks the operator to
 clarify before updating Dispatch register. SP-9 lineage.
 
 ### 4.10 Substitution absorption `[structural | stable]`
+<a id="section-substitution-absorption"></a>
 
 Substitution is absorbed at convergence; no re-dispatch demanded. Mechanics
-integrate with §4.7 reconciliation and §4.8 Dispatch register.
+integrate with §{section.recommended-vs-executed-reconciliation} reconciliation and §{section.master-tracking-dispatch-register} Dispatch register.
 
 **Operating sequence.**
 
 1. Output's `Vendor` field differs from Envelope's recommended `Vendor`.
-2. §4.7 reconciliation detects substitution; logs in Dispatch register with
+2. §{section.recommended-vs-executed-reconciliation} reconciliation detects substitution; logs in Dispatch register with
    Status `substituted`.
 3. Layer 1 convergence ingests the output as-is. Findings absorb into
    Master with provenance noting the substitution: *"P2.3 — executed on
@@ -1138,6 +1172,7 @@ access reality the framework absorbs, not a defect the framework demands
 be cured.
 
 ### 4.11 Prompt body convergence provisions `[structural | stable]`
+<a id="section-prompt-body-convergence-provisions"></a>
 
 Composition rules for the prompt body that make convergence orchestration-
 side robust to partial returns.
@@ -1204,6 +1239,7 @@ Default is the structure above.
 ---
 
 ## 5. Context-pressure framework
+<a id="section-context-pressure-framework"></a>
 
 The context-pressure framework is the always-on background mechanism that
 keeps long-running orchestration sessions honest about their own
@@ -1213,6 +1249,7 @@ not running it is a session that produces silently-wrong work because
 recall has frayed.
 
 ### 5.1 Telemetric framework — signal weighting and compounding `[methodological | review-if: substrate shifts]`
+<a id="section-telemetric-framework-signal-weighting-and-compounding"></a>
 
 Qualitative compounding: each signal evaluated as *quiet*, *active*, or
 *strong* per turn-close; band state computed from compounded signals via
@@ -1287,17 +1324,18 @@ rules below. Behavioral signals weight higher than volumetric.
 show lower signal. Prevents flicker. Escalation is immediate.
 
 **Calibration is empirical.** The thresholds above are rev. 1 draft
-estimates. Real-use calibration is a post-release item (§16).
+estimates. Real-use calibration is a post-release item (§{section.empirical-calibration-items}).
 
 ### 5.2 M5 — Context Pressure monitor `[structural | stable]`
+<a id="section-m5-context-pressure-monitor"></a>
 
-Single Monitor (M5) absorbs the retired v1.x M12 (Conversation Pressure).
+Single Monitor (§{monitor.M5}) absorbs the retired v1.x M12 (Conversation Pressure).
 Fires at every orchestration turn-close.
 
 **M5 spec.**
 
 - **Trigger.** Every orchestration turn-close. M5 evaluates the seven
-  signals (§5.1) and assigns a band.
+  signals (§{section.telemetric-framework-signal-weighting-and-compounding}) and assigns a band.
 - **Output.** Band assignment as a header field on *What's next*:
   ```
   Context band: 🟡 — getting warm
@@ -1309,13 +1347,14 @@ Fires at every orchestration turn-close.
   - 🟠: active line — "Curate now. Next natural seam: [seam]. Migration
     strongly recommended."
   - 🔴: handoff line — "Migration is the correct next action. Producing
-    handoff (§5.4)."
-- **Hysteresis** per §5.1.
+    handoff (§{section.migration-handoff})."
+- **Hysteresis** per §{section.telemetric-framework-signal-weighting-and-compounding}.
 - **Interaction with other Monitors.** M5 fires regardless of other
   Monitors. When M5 ≥ 🟠, M5's curation-now directive ranks at priority
   tier 1 in *What's next* (above other Monitor fires).
 
 ### 5.3 Continuous-curation posture `[methodological | stable]`
+<a id="section-continuous-curation-posture"></a>
 
 From band 🟡 onward, every orchestration turn-close ends with a one-line
 curation observation in *What's next*.
@@ -1339,7 +1378,7 @@ curation observation in *What's next*.
   - Compacts state-summary output.
   - Defers non-essential probe iterations.
   - Pushes toward the next natural seam to enable migration.
-- **🔴** — curation has been overrun. Migration is the action (§5.4).
+- **🔴** — curation has been overrun. Migration is the action (§{section.migration-handoff}).
 
 **Natural seams** (defined set):
 
@@ -1357,6 +1396,7 @@ curation observation in *What's next*.
 - Speculative What-if exploration → deferred to a fresh session.
 
 ### 5.4 Migration handoff `[structural | stable]`
+<a id="section-migration-handoff"></a>
 
 Defined handoff artifact. Produced by orchestration at 🔴 (mandatory) and
 offered at 🟠 (operator-elective).
@@ -1409,6 +1449,7 @@ Master for detail. New session reads the handoff first to orient, then
 works with the Master as canonical reference.
 
 ### 5.5 Failsafe recovery — continuous-state mechanics `[structural | stable]`
+<a id="section-failsafe-recovery-continuous-state-mechanics"></a>
 
 "Always written" defined mechanically: Master and *What's next* are written
 at every orchestration turn-close, regardless of band state, regardless of
@@ -1433,10 +1474,10 @@ essentially nothing because state is always recoverable.
     without giving up the always-emit safety property.
   - Append-mostly when content does change: Changelog gains a line;
     relevant register sections gain entries; Dispatch register status
-    updates per §4.8; findings sections absorb any newly-converged
+    updates per §{section.master-tracking-dispatch-register}; findings sections absorb any newly-converged
     Layer-1 outputs.
   - Filename version bump only at phase boundaries or convergence-round
-    increments (per §11 bump atomicity). The `_no_change` suffix is
+    increments (per §{section.filename-conventions-and-bump-atomicity} bump atomicity). The `_no_change` suffix is
     orthogonal to the version field — a no-change emission keeps the
     same version number as the prior content-bearing emission.
   - Operator must *download* the updated Master at session close when
@@ -1444,7 +1485,7 @@ essentially nothing because state is always recoverable.
     the authoritative canonical copy. (Manual step under v2.0.1
     plain-chat substrate.)
   - Cloud-drive save is the Operator hint emitted at every
-    content-bearing turn-close: `Save Master to cloud drive (§17 MO-5).`
+    content-bearing turn-close: `Save Master to cloud drive (§{section.mobile-operator-survival-guide} MO-5).`
 
 - ***What's next* rewrite at every orchestration turn-close.**
   - Replaces in place; no history kept (Changelog carries the historical
@@ -1466,6 +1507,7 @@ essentially nothing because state is always recoverable.
   that escalates the migration recommendation.
 
 ### 5.6 Defensive migration at natural seams `[structural | stable]`
+<a id="section-defensive-migration-at-natural-seams"></a>
 
 Migration posture keyed to band × seam.
 
@@ -1474,7 +1516,7 @@ Migration posture keyed to band × seam.
 | 🟢 | Available | At any natural seam; no urgency. Operator-elective. |
 | 🟡 | Recommended | At the next natural seam; if no seam approaching, finish current sub-task to create one. |
 | 🟠 | Strongly recommended | At the immediate next opportunity; framework actively closes current curation to reach a seam. |
-| 🔴 | Correct action now | Framework produces handoff (§5.4); operator opens fresh session and attaches handoff + Master + Lens Library. |
+| 🔴 | Correct action now | Framework produces handoff (§{section.migration-handoff}); operator opens fresh session and attaches handoff + Master + Lens Library. |
 
 **Operator override.** Operator can decline migration at any band.
 Framework respects but flags continuing-at-band in *What's next*. At 🔴,
@@ -1483,12 +1525,14 @@ the per-turn flag escalates to a migration-overdue counter.
 ---
 
 ## 6. Setup mechanics
+<a id="section-setup-mechanics"></a>
 
 Setup is iterative refinement against the Lens Library. Not waterfall. The
 P0→P1 boundary clears when three independent layers all read ready
 simultaneously.
 
 ### 6.1 From waterfall to library-graded iterative refinement `[structural | stable]`
+<a id="section-from-waterfall-to-library-graded-iterative-refinement"></a>
 
 **Setup iteration loop.**
 
@@ -1497,16 +1541,17 @@ simultaneously.
 3. Probes 6, 7 iterate early in P0.1 (Domain Reconnaissance + User Voice);
    Probes 1, 2, 4 iterate per turn; Probes 3 and 5 run once.
 4. Probe 1 (Coverage grading) outputs tri-state dispositions per Lens
-   (§6.3.1).
+   (§{section.probe-1-coverage-grading-iterates}).
 5. Operator reviews probe outputs.
 6. Orchestration produces P0.2 incorporating closures.
-7. Repeat until §6.2 readiness clears.
+7. Repeat until §{section.three-layer-readiness} readiness clears.
 
 **Iteration numbering** — P0.1, P0.2, …. No artificial cap. Floor: minimum
 2 iterations. Soft ceiling: at 4 iterations without saturation, flag
 *something structural may be wrong — operator intervention recommended*.
 
 ### 6.2 Three-layer readiness `[structural | stable]`
+<a id="section-three-layer-readiness"></a>
 
 All three layers must clear before P0 → P1 boundary.
 
@@ -1515,12 +1560,12 @@ All three layers must clear before P0 → P1 boundary.
 Every planned prompt has the following fields populated:
 
 - Single objective (one-sentence statement).
-- Output format (structured findings per §4.11).
+- Output format (structured findings per §{section.prompt-body-convergence-provisions}).
 - Dependency list (which prior prompts' outputs are inputs; can be empty).
 - Attachment map (filenames per attachment).
 - Enrichment decision (single-vendor / equivalence / split /
   limitation-named).
-- Execution envelope (full Envelope per §3.2.1).
+- Execution envelope (full Envelope per §{section.prism-execution-envelope}).
 
 Verification: orchestration walks the strategy and confirms each prompt has
 all six fields. Any missing field halts P0 → P1.
@@ -1533,7 +1578,7 @@ Every applicable Lens from the Lens Library v0.9 is either:
   *fires-covered*), OR
 - Explicitly marked out of scope with rationale (Probe 1 disposition:
   *doesn't-fire* with rationale captured, OR *fires-maybe* closed via
-  *opt-out* per §6.3.1).
+  *opt-out* per §{section.probe-1-coverage-grading-iterates}).
 
 **Saturation signal.** Two consecutive iterations produce no material
 change to coverage or strategy.
@@ -1556,18 +1601,20 @@ orchestration parses for explicit ratification ("ratify", "approved", "go",
 
 **Ratification triggers P0 → P1.** Master filename bumps to P1 (e.g.,
 `solace_audit_prism2.0_master_p1.0.md`). Setup probes close. Strategy moves
-to "presumed stable, revisable at convergence" per §6.5.
+to "presumed stable, revisable at convergence" per §{section.strategy-stability}.
 
 ### 6.3 The seven probes
+<a id="section-the-seven-probes"></a>
 
 Probes operate against the draft Prompt Strategy at Setup. Vendor
-Triangulation (§4.3) — convergence-time cross-vendor reconciliation —
+Triangulation (§{section.vendor-triangulation}) — convergence-time cross-vendor reconciliation —
 lives outside the probe taxonomy because it operates against returned
-findings, not draft strategy. Result Completeness Check (M12, §9.2.4) is
+findings, not draft strategy. Result Completeness Check (§{monitor.M12}, §{section.m12-result-completeness-check}) is
 a convergence-time monitor. Single-responsibility discipline: probes are
 Setup-time grading constructs only.
 
 #### 6.3.1 Probe 1 — Coverage grading (iterates) `[structural | stable]`
+<a id="section-probe-1-coverage-grading-iterates"></a>
 
 Grade the draft strategy against the Lens Library v0.9. Universal lenses
 (5) always evaluated. Domain lenses (18) evaluated where their `trigger:`
@@ -1617,9 +1664,10 @@ Saturation flag: not-yet (3 changes from P0.2)
 **Operator-fatigue mitigation.** Judging LLM resolves clear cases silently
 (covered or doesn't-fire with obvious rationale). Escalates to operator
 only on genuine ambiguity (*fires-maybe* requiring dig-in vs. opt-out
-decision). Empirical calibration deferred — see §16.
+decision). Empirical calibration deferred — see §{section.empirical-calibration-items}.
 
 #### 6.3.2 Probe 2 — Adversarial Scope (iterates) `[structural | stable]`
+<a id="section-probe-2-adversarial-scope-iterates"></a>
 
 Hunt for silent omissions and under-scoped treatments in the draft Prompt
 Strategy. Library-driven (uses Library entries as starting prompts but
@@ -1627,7 +1675,7 @@ goes beyond catalog); informed by domain context.
 
 **Lifecycle.** Setup-only. Iterates per P0.x turn-close. Does not fire at
 Layer-1 convergence — cross-vendor finding triangulation is a separate
-mechanism (Vendor Triangulation, §4.3) with its own trigger and output
+mechanism (Vendor Triangulation, §{section.vendor-triangulation}) with its own trigger and output
 shape.
 
 **Multi-vendor recommendation.** Independent adversarial passes across
@@ -1639,13 +1687,15 @@ address. Operator reviews; orchestration converts surviving candidates
 into Lens references or new prompt additions in the next iteration.
 
 #### 6.3.3 Probe 3 — Decision Framing (once)
+<a id="section-probe-3-decision-framing-once"></a>
 
 Does the strategy answer what the stakeholder actually needs to decide?
 
 Outputs the Decision brief and Stakeholder register Setup artifacts
-(§6.4.1, §6.4.2).
+(§{section.decision-brief}, §{section.stakeholder-register}).
 
 #### 6.3.4 Probe 4 — Pre-mortem (iterates)
+<a id="section-probe-4-pre-mortem-iterates"></a>
 
 Imagine execution completes. How would the finding fail to answer the
 original question?
@@ -1654,6 +1704,7 @@ original question?
 becomes a new probe in the strategy or is dismissed with rationale.
 
 #### 6.3.5 Probe 5 — Falsifier (once)
+<a id="section-probe-5-falsifier-once"></a>
 
 What findings would invalidate the thesis?
 
@@ -1662,6 +1713,7 @@ that, if observed, would refute the thesis. These become explicit
 success/failure criteria for Layer 2 synthesis.
 
 #### 6.3.6 Probe 6 — Domain Reconnaissance (iterates early)
+<a id="section-probe-6-domain-reconnaissance-iterates-early"></a>
 
 What do practitioners, researchers, and serious analysts of this domain
 actually investigate? What lenses does the domain's own literature treat
@@ -1682,9 +1734,10 @@ citation.
 **Multi-vendor recommended.** Different vendors have different exposure to
 domain-specific literature.
 
-Outputs the Jurisdiction map Setup artifact (§6.4.4).
+Outputs the Jurisdiction map Setup artifact (§{section.jurisdiction-map}).
 
 #### 6.3.7 Probe 7 — User Voice (iterates early) `[structural | stable]`
+<a id="section-probe-7-user-voice-iterates-early"></a>
 
 Imports real end-user / customer / affected-user perspectives into Setup.
 Mines actual user signal from forums, reviews, support tickets, public
@@ -1714,6 +1767,7 @@ probe so user signal informs strategy *before* execution rather than
 enriching findings *after*.
 
 #### 6.3.8 Probe ordering — recommended sequence
+<a id="section-probe-ordering-recommended-sequence"></a>
 
 P0.1: Probe 6 (Domain Reconnaissance — establishes domain context); Probe
 7 (User Voice — imports user signal); Probe 1 (initial coverage); Probe 3
@@ -1729,15 +1783,17 @@ Order is a default; operator may re-sequence per project shape.
 structural overlap-spotting is judgment work the LLM does inside Probe 1
 and Probe 2 grading rather than a checkbox-shaped standalone probe.
 Aligns with v2's principle-heavy / specification-light philosophy. Vendor
-Triangulation extracted from rev. 1's Probe 2 and lives in §4.3, not in
+Triangulation extracted from rev. 1's Probe 2 and lives in §{section.vendor-triangulation}, not in
 the probe taxonomy.
 
 ### 6.4 Setup artifacts
+<a id="section-setup-artifacts"></a>
 
 Four instance-specific artifacts populated during Setup. Live in the
-Master (§3.3 required sections).
+Master (§{section.the-master} required sections).
 
 #### 6.4.1 Decision brief
+<a id="section-decision-brief"></a>
 
 Populated by Probe 3 primarily; refined by Probe 5 (Falsifiers section).
 
@@ -1756,6 +1812,7 @@ Falsifiers:        [list — findings that would refute the thesis]
 ```
 
 #### 6.4.2 Stakeholder register
+<a id="section-stakeholder-register"></a>
 
 Populated by Probe 3 primarily.
 
@@ -1769,6 +1826,7 @@ Populated by Probe 3 primarily.
 ```
 
 #### 6.4.3 Claim inventory
+<a id="section-claim-inventory"></a>
 
 Populated by Setup orchestration as it parses subject brief; refined by
 Probe 6 (Domain Reconnaissance).
@@ -1785,6 +1843,7 @@ Probe 6 (Domain Reconnaissance).
 ```
 
 #### 6.4.4 Jurisdiction map
+<a id="section-jurisdiction-map"></a>
 
 Populated by Probe 6 (Domain Reconnaissance) primarily.
 
@@ -1800,6 +1859,7 @@ Populated by Probe 6 (Domain Reconnaissance) primarily.
 ```
 
 ### 6.5 Strategy stability `[structural | stable]`
+<a id="section-strategy-stability"></a>
 
 **At P0 → P1 boundary.** Strategy moves to "presumed stable, revisable at
 convergence."
@@ -1807,40 +1867,42 @@ convergence."
 **Convergence-time strategy revisions** trigger when Layer-1 convergence
 produces:
 
-- A premise invalidation (M6 Premise Shift fires HIGH).
+- A premise invalidation (§{monitor.M6} Premise Shift fires HIGH).
 - A newly-surfaced domain area (e.g., a regulatory regime not in the
   Jurisdiction map).
 - A falsifier hit (one of the Decision brief's Falsifiers is observed).
-- An assumption conflict between two findings (M7).
+- An assumption conflict between two findings (§{monitor.M7}).
 
 **Revision mechanic** (lighter than v1.x major-bump Adaptation).
 
-1. Convergence finding triggers Monitor (M6 / M7) HIGH.
+1. Convergence finding triggers Monitor (§{monitor.M6} / M7) HIGH.
 2. Orchestration drafts a revision: adds/modifies prompts, updates attach
    maps, updates Setup artifacts as needed.
-3. Operator ratifies (per Layer 3 §6.2).
+3. Operator ratifies (per Layer 3 §{section.three-layer-readiness}).
 4. Master version increments (sub-version bump within phase, e.g., P2.2
    → P2.3).
 5. Strategy continues with revised state.
 
 **Attach map travels with each prompt.** When a prompt adapts, its attach
-map adapts with it (§3.2.1).
+map adapts with it (§{section.prism-execution-envelope}).
 
 ---
 
 ## 7. Library integration
+<a id="section-library-integration"></a>
 
 The Lens Library v0.10 is canonical at `lens/PRISM_lens_library.md`
 (tag `prism-lens-v0.10`). The v0.10 catalog is also embedded in this
 file as **Appendix G** for singleton-attachment use; that embedded copy
 is the default Library source for orchestration. The standalone Library
 file remains authoritative for the artifact's own evolution: Update
-sessions (§7.5) produce new versions of the standalone file, and the
+sessions (§{section.currency-maintenance-update-session}) produce new versions of the standalone file, and the
 next PRISM minor version embeds the new content into Appendix G.
 Operators on a newer standalone Library version pin to it explicitly
-and override Appendix G (§7.1).
+and override Appendix G (§{section.library-reference-at-setup}).
 
 ### 7.1 Library reference at Setup `[structural | stable]`
+<a id="section-library-reference-at-setup"></a>
 
 **Required Library source.** By default, orchestration uses the embedded
 Lens Library v0.10 in Appendix G (this file). A standalone Lens Library
@@ -1849,11 +1911,12 @@ attached only when the operator explicitly pins the project to a newer
 standalone Library version than the embedded copy. When standalone is
 attached, it overrides Appendix G for that session. Recommended: if a
 standalone newer Library is used, live in the Claude Project alongside
-the Master (see §8.1).
+the Master (see §{section.claude-project-as-setup-recommendation}).
 
-**Probe 1 grades against Library entries.** Mechanics in §6.3.1.
+**Probe 1 grades against Library entries.** Mechanics in §{section.probe-1-coverage-grading-iterates}.
 
 ### 7.2 Lens schema — what orchestration consumes
+<a id="section-lens-schema-what-orchestration-consumes"></a>
 
 Per LL.§Schema:
 
@@ -1866,15 +1929,15 @@ Per LL.§Schema:
   domain lenses.
 - `evidence_class:` — one of {document, trace, probe, empirical-test,
   expert-interview, cross-check}. Used in finding output structure
-  (§4.11).
+  (§{section.prompt-body-convergence-provisions}).
 - `specialist_type:` — open taxonomy. Used by judging LLM to promote
   relevant entries as specialist passes under Probe 1.
 - `rubric_anchor:` — optional; version-pinned external spec where present.
-  Two entries at v0.9 (LL-D-002 WCAG 2.2; LL-D-005 OWASP ASVS 5.0.0).
+  Two entries at v0.9 (§{lens.LL-D-002} WCAG 2.2; LL-D-005 OWASP ASVS 5.0.0).
 - `last_verified:` — populated on entries with `rubric_anchor:`.
-  Maintenance signal per §7.4.
+  Maintenance signal per §{section.currency-maintenance-point-refresh}.
 - `verification_basis:` — populated on entries with `last_verified:`;
-  one of `{schema-introduction-only, independent-review}`. Gates §7.4
+  one of `{schema-introduction-only, independent-review}`. Gates §{section.currency-maintenance-point-refresh}
   freshness logic so a schema-introduction date is not silently treated
   as a performed currency check (v0.10).
 - `informed_by:` — provenance only; not a runtime rubric.
@@ -1883,6 +1946,7 @@ Per LL.§Schema:
   disposition.
 
 ### 7.3 Specialist-pass promotion
+<a id="section-specialist-pass-promotion"></a>
 
 The Library *is* the specialist enumeration. Each lens's `specialist_type:`
 field names the practitioner role whose framing the lens channels.
@@ -1891,9 +1955,10 @@ passes within the Prompt Strategy (e.g., "P3.4 — accessibility pass per
 LL-D-002, specialist framing: WCAG-qualified accessibility auditor").
 
 ### 7.4 Currency maintenance — point refresh `[methodological | stable]`
+<a id="section-currency-maintenance-point-refresh"></a>
 
 Two-tier mechanism: point refresh (per-project, in Setup) + Update session
-(standalone, rare, operator-gated, §7.5).
+(standalone, rare, operator-gated, §{section.currency-maintenance-update-session}).
 
 **Point refresh.**
 
@@ -1913,14 +1978,14 @@ Two-tier mechanism: point refresh (per-project, in Setup) + Update session
     file is *not* modified).
   - Else if `last_verified:` is > 12 months old: disposition includes
     `stale-accumulating`. Same inline refresh, but advisory signal
-    accumulates toward an Update session (per §7.5).
+    accumulates toward an Update session (per §{section.currency-maintenance-update-session}).
 - **Output.** Probe 1 output includes per-anchored-entry currency
   disposition.
 - **Inline refresh format.** The refreshed citation appears in the Prompt
   Strategy with provenance:
   ```
   P3.4 — accessibility pass
-  Specialist framing: WCAG-qualified accessibility auditor (LL-D-002)
+  Specialist framing: WCAG-qualified accessibility auditor (§{lens.LL-D-002})
   Anchor: WCAG 2.2 (October 2023) — verified current as of [date]
           via web search; PRISM Lens Library v0.10 last_verified
           2026-04-24 still current.
@@ -1937,6 +2002,7 @@ Two-tier mechanism: point refresh (per-project, in Setup) + Update session
   point-refresh time.
 
 ### 7.5 Currency maintenance — Update session `[methodological | stable]`
+<a id="section-currency-maintenance-update-session"></a>
 
 Standalone session, rarely run, operator-gated. PRISM-file-in /
 PRISM-file-out contract.
@@ -1992,12 +2058,14 @@ Update session.
 ---
 
 ## 8. Parked v2 design ideas
+<a id="section-parked-v2-design-ideas"></a>
 
 These two ideas were parked for v2 from the design-doc-level discussion
-(DD §13.3): they earn their place but the framework treats them as
+(DD §{section.session-hygiene-cues}): they earn their place but the framework treats them as
 recommendations and graceful-degradation paths rather than hard machinery.
 
 ### 8.1 Claude Project as Setup recommendation `[vendor-dependent | review-if: orchestration vendor changes]`
+<a id="section-claude-project-as-setup-recommendation"></a>
 
 Setup at P0.1 includes a recommendation to create a Claude Project as the
 home for project state.
@@ -2033,7 +2101,7 @@ home for project state.
 - Operator uploads the new version to project knowledge (replacing or
   adding).
 - Old version retained in project knowledge as audit trail (or archived to
-  cloud drive per §17 MO-5).
+  cloud drive per §{section.mobile-operator-survival-guide} MO-5).
 
 This is a manual sync step under v2.0's plain-chat substrate. Auto-sync is
 a roadmap adjacency.
@@ -2060,6 +2128,7 @@ SP-12 disclosure language:
 > inside a Project I cannot see from here; confirm before I conclude."*
 
 ### 8.2 Session history as validation/recovery `[vendor-dependent | review-if: orchestration vendor changes]`
+<a id="section-session-history-as-validation-recovery"></a>
 
 Session history (Claude's `conversation_search`) is consulted when state is
 unexpected, ambiguous, or out-of-order. Results are advisory; SP-1 governs
@@ -2104,7 +2173,7 @@ Query length: 3–6 words distinctive content. No long passages.
      - ...
    ```
 2. Orchestration does *not* silently update Master from session-history
-   evidence. Per SP-1: canonical artifacts are not regenerated without
+   evidence. Per §{principle.SP-1}: canonical artifacts are not regenerated without
    operator confirmation.
 3. Orchestration surfaces a recommendation: "Session history suggests
    [interpretation]. Update Master to reflect? [yes/no/clarify]"
@@ -2131,6 +2200,7 @@ different scope I cannot see from here; confirm before concluding.
 ---
 
 ## 9. Monitor specifications
+<a id="section-monitor-specifications"></a>
 
 All Monitors fire orchestration-side. Twelve Monitor slots specified;
 v1.x M12 (Conversation Pressure) retired and absorbed into M5; the M12
@@ -2138,13 +2208,15 @@ slot reused in v2 for Result Completeness Check. Three presentation
 groupings.
 
 ### 9.1 Standalone monitors (M1, M2, M4, M5, M9)
+<a id="section-standalone-monitors-m1-m2-m4-m5-m9"></a>
 
 #### 9.1.1 M1 — Missing Inputs `[structural | stable]`
+<a id="section-m1-missing-inputs"></a>
 
 - **Trigger.** Every orchestration session-open and turn-close.
 - **Detects.** Required attachments missing from current orchestration
   session; attachments declared in Envelopes but not present in returned
-  Outputs (via §13 Attachment warnings).
+  Outputs (via §{section.operator-hint-catalog} Attachment warnings).
 - **Severity.** HIGH on missing canonical attachments (Master, Lens
   Library, Prompt Strategy if separate). MEDIUM on missing prompt-specific
   attachments. LOW on schema mismatches.
@@ -2152,6 +2224,7 @@ groupings.
   intentional absence.
 
 #### 9.1.2 M2 — Version Drift `[structural | stable]`
+<a id="section-m2-version-drift"></a>
 
 - **Trigger.** Every orchestration session-open. Compares attached
   Master's metadata header to expected.
@@ -2166,9 +2239,9 @@ groupings.
   - Schema version mismatch: HIGH.
   - Attached Master == expected: silent pass.
 - **Resolution.** M2 HIGH halts orchestration until operator clarifies.
-  Optional: consult session history per §8.2.
+  Optional: consult session history per §{section.session-history-as-validation-recovery}.
 
-**Why retained despite bump atomicity (§11).** Bump atomicity makes drift
+**Why retained despite bump atomicity (§{section.filename-conventions-and-bump-atomicity}).** Bump atomicity makes drift
 unlikely *by construction* but not impossible. Residual failure modes:
 
 - Operator attaches an old Master from cloud archive by mistake.
@@ -2177,10 +2250,11 @@ unlikely *by construction* but not impossible. Residual failure modes:
 - Multiple Masters from forked sessions (anti-pattern but not impossible).
 
 #### 9.1.3 M4 — Ambiguous Ask `[methodological | stable]`
+<a id="section-m4-ambiguous-ask"></a>
 
 - **Trigger.** Every orchestration turn that processes operator input.
 - **Detects.** Operator declaration that orchestration cannot confidently
-  parse (close-loop §4.9 ambiguity; intent unclear; conflicting
+  parse (close-loop §{section.operator-declaration-close-loop} ambiguity; intent unclear; conflicting
   instructions).
 - **Severity.** HIGH if the next action depends on the ambiguity. LOW if
   orchestration can proceed and clarify post-hoc.
@@ -2190,10 +2264,12 @@ unlikely *by construction* but not impossible. Residual failure modes:
   dispatched prompts; M4 is orchestration-only.
 
 #### 9.1.4 M5 — Context Pressure
+<a id="section-m5-context-pressure"></a>
 
-Spec per §5.2.
+Spec per §{section.m5-context-pressure-monitor}.
 
 #### 9.1.5 M9 — Convergence Type Drift `[methodological | stable]`
+<a id="section-m9-convergence-type-drift"></a>
 
 - **Trigger.** Layer-1 convergence and Layer-2 synthesis steps.
 - **Detects.** Convergence treating findings as if they were a different
@@ -2209,24 +2285,27 @@ Spec per §5.2.
   unconditional benefit of the doubt.
 
 ### 9.2 Convergence-time monitors (M6, M7, M8, M12)
+<a id="section-convergence-time-monitors-m6-m7-m8-m12"></a>
 
 Fire during Layer-1 integration of new findings into the Master. Can chain
 to M10.
 
 #### 9.2.1 M6 — Premise Shift `[structural | stable]`
+<a id="section-m6-premise-shift"></a>
 
 - **Trigger.** Layer-1 convergence — new finding ingested.
 - **Detects.** Finding invalidates a premise the strategy was built on.
   Premises documented in Decision brief, Stakeholder register, Claim
   inventory, Jurisdiction map.
-- **Severity.** HIGH — strategy revision required (§6.5).
-- **Resolution.** Strategy revision mechanic per §6.5. Chains to M10
+- **Severity.** HIGH — strategy revision required (§{section.strategy-stability}).
+- **Resolution.** Strategy revision mechanic per §{section.strategy-stability}. Chains to M10
   (Rerun) for prompts whose premise has shifted.
 - **v1.x → v2 surface drift.** v1.x M6 read premises from prompt context
   sections. v2 M6 reads premises from Setup artifacts. Surface broadened;
   name unchanged because face value still describes the work.
 
 #### 9.2.2 M7 — Claim Conflict `[structural | stable]`
+<a id="section-m7-claim-conflict"></a>
 
 - **Trigger.** Layer-1 convergence — new finding ingested.
 - **Detects.** Two findings make incompatible claims on the same surface.
@@ -2241,6 +2320,7 @@ to M10.
   match the actual surface.
 
 #### 9.2.3 M8 — Stale Source `[structural | stable]`
+<a id="section-m8-stale-source"></a>
 
 - **Trigger.** Layer-1 convergence — orchestration ingesting findings from
   execution sessions.
@@ -2265,16 +2345,17 @@ to M10.
   current sources as required attachments. MEDIUM/LOW recorded in Master's
   findings sections as confidence caveats.
 
-**Scope distinction from §7.4 point refresh.** M8 looks at *evidence inside
-the audit*. §7.4 looks at *framework anchors used to grade the audit's
+**Scope distinction from §{section.currency-maintenance-point-refresh} point refresh.** M8 looks at *evidence inside
+the audit*. §{section.currency-maintenance-point-refresh} looks at *framework anchors used to grade the audit's
 scope*. Different artifacts, different lifecycles, different resolutions.
 
 | Mechanism | Surface | Lifecycle | Resolution |
 |---|---|---|---|
 | **M8** | Cited evidence sources in returned findings | Per finding, at Layer-1 convergence | Re-dispatch with current sources |
-| **§7.4 point-refresh** | Lens Library entry's `rubric_anchor:` / `informed_by:` | Per Setup probe iteration | Inline refresh in Prompt Strategy; advisory signal toward Update session |
+| **§{section.currency-maintenance-point-refresh} point-refresh** | Lens Library entry's `rubric_anchor:` / `informed_by:` | Per Setup probe iteration | Inline refresh in Prompt Strategy; advisory signal toward Update session |
 
 #### 9.2.4 M12 — Result Completeness Check `[structural | stable]`
+<a id="section-m12-result-completeness-check"></a>
 
 - **Trigger.** Layer-1 convergence — new finding ingested.
 - **Detects.** Returned findings within a single prompt's declared domain
@@ -2302,10 +2383,12 @@ scope*. Different artifacts, different lifecycles, different resolutions.
   for Result Completeness Check.
 
 ### 9.3 *What's next* input monitors (M3, M10, M11)
+<a id="section-whats-next-input-monitors-m3-m10-m11"></a>
 
 Feed the priority-ranked candidate list at each orchestration turn-close.
 
 #### 9.3.1 M3 — Sequence Violation `[structural | stable]`
+<a id="section-m3-sequence-violation"></a>
 
 - **Trigger.** Operator declaration or strategy state.
 - **Detects.** A canonical sequence step has been performed before its
@@ -2319,9 +2402,10 @@ Feed the priority-ranked candidate list at each orchestration turn-close.
   documented rationale.
 
 #### 9.3.2 M10 — Rerun / Fix Required `[structural | stable]`
+<a id="section-m10-rerun-fix-required"></a>
 
 - **Trigger.** Triggered by chain from M6 / M7 / M8 / M12 HIGH; or by
-  operator declaration of `failed` (§4.9); or by Probe 5 falsifier hit; or
+  operator declaration of `failed` (§{section.operator-declaration-close-loop}); or by Probe 5 falsifier hit; or
   by Layer-2 synthesis revealing a Layer-1 gap.
 - **Detects.** A previously-completed prompt needs to be rerun (with
   corrections) or a prompt's output needs explicit fix.
@@ -2336,9 +2420,10 @@ Feed the priority-ranked candidate list at each orchestration turn-close.
 - **Status values.** `overdue` | `scheduled` | `running` | `complete` |
   `cancelled`.
 - **Surfaces in *What's next*.** Overdue Rerun Register items rank at
-  priority tier 3 per §3.4.
+  priority tier 3 per §{section.whats-next}.
 
 #### 9.3.3 M11 — Layer 2 Readiness `[structural | stable]`
+<a id="section-m11-layer-2-readiness"></a>
 
 - **Trigger.** Every orchestration turn-close.
 - **Detects.** Conditions for Layer 2 cold synthesis met: all Layer-1
@@ -2349,6 +2434,7 @@ Feed the priority-ranked candidate list at each orchestration turn-close.
   Layer 2.
 
 ### 9.4 Monitor severity report format
+<a id="section-monitor-severity-report-format"></a>
 
 When any Monitor fires HIGH, *What's next* surfaces it with this format:
 
@@ -2369,6 +2455,7 @@ state summary line.
 ---
 
 ## 10. Standing Principles
+<a id="section-standing-principles"></a>
 
 Standing Principles are persistent posture, not discrete fires. They live
 in the orchestration LLM's behavior at all times. Each principle has a
@@ -2376,8 +2463,10 @@ defined application surface; the principle travels even when specific
 mechanics evolve.
 
 ### 10.1 Standing Principles introduced or extended in v2
+<a id="section-standing-principles-introduced-or-extended-in-v2"></a>
 
 #### 10.1.1 SP-1 extended — Canonicity preservation `[operator-scaffolding | stable]`
+<a id="section-sp-1-extended-canonicity-preservation"></a>
 
 - v1.x's SP-1 forbade silently reconstructing missing files from memory.
 - v2 extends to cover *offers* to reconstruct.
@@ -2391,6 +2480,7 @@ mechanics evolve.
   genuinely is.
 
 #### 10.1.2 SP-12 — Bounded-Search Disclosure `[operator-scaffolding | stable]`
+<a id="section-sp-12-bounded-search-disclosure"></a>
 
 - When orchestration answers on the basis of a bounded retrieval, the
   default posture is to disclose the bound.
@@ -2410,13 +2500,14 @@ confirm before I conclude.
 ```
 
 #### 10.1.3 SP-13 — Substrate Declaration `[operator-scaffolding | stable]`
+<a id="section-sp-13-substrate-declaration"></a>
 
 - PRISM-loaded sessions verify substrate against declared target before
   executing dependent work.
 - If self-identification doesn't match declared target, or can't be
   determined, session halts and asks operator.
 - Operationalized inside execution sessions via the Self-check block
-  (§3.2.2).
+  (§{section.prism-execution-self-check}).
 - In orchestration sessions: operationalized as a session-open
   verification — orchestration self-identifies and confirms it matches
   the declared orchestration target (Claude Opus 4.6 or 4.7 at v2.0).
@@ -2433,10 +2524,11 @@ SP-13 verification:
 ```
 
 #### 10.1.4 SP-10 — Verify state before recommending `[operator-scaffolding | stable]`
+<a id="section-sp-10-verify-state-before-recommending"></a>
 
 Carries forward from v1.10.4 as a named principle. The principle's
-mechanics live primarily in Vendor Selection (§3.6) — but holding it as a
-named SP keeps it portable: point refresh (§7.4), Update sessions (§7.5),
+mechanics live primarily in Vendor Selection (§{section.vendor-selection-at-dispatch}) — but holding it as a
+named SP keeps it portable: point refresh (§{section.currency-maintenance-point-refresh}), Update sessions (§{section.currency-maintenance-update-session}),
 and any future recommendation surface inherit the discipline rather than
 re-deriving it.
 
@@ -2455,6 +2547,7 @@ re-deriving it.
   only trigger on fast-moving state, not on stable defaults.
 
 #### 10.1.5 SP-14 — Filename Discipline `[operator-scaffolding | stable]`
+<a id="section-sp-14-filename-discipline"></a>
 
 Extracted from v1.x SP-8 (which bundled two concerns under one number).
 v2 splits SP-8 into Canonical Authority (the original SP-8) and Filename
@@ -2480,15 +2573,16 @@ Discipline (this new SP-14).
 - Migration handoffs (one per migration, dated).
 - Update-session Library output versions.
 
-Full filename-convention canonical reference table in §11.
+Full filename-convention canonical reference table in §{section.filename-conventions-and-bump-atomicity}.
 
 ### 10.2 v1.x Standing Principles — carryforward catalog
+<a id="section-v1-x-standing-principles-carryforward-catalog"></a>
 
 Per-SP disposition explicit:
 
 | SP | v1.10.4 name | v2 disposition | Notes |
 |---|---|---|---|
-| SP-1 | Never reconstruct files from memory | Extended in v2 | Now covers *offers* to reconstruct. See §10.1.1 |
+| SP-1 | Never reconstruct files from memory | Extended in v2 | Now covers *offers* to reconstruct. See §{section.sp-1-extended-canonicity-preservation} |
 | SP-2 | Defer non-critical fixes to natural touchpoint | Carryforward | Direct; principle unchanged |
 | SP-3 | Convergence is part of prompt delivery | **Dissolved** | Incompatible with orchestration/execution split |
 | SP-4 | Every Monitor produces visible output | Carryforward | Direct; applies to v2 monitors at orchestration |
@@ -2498,11 +2592,12 @@ Per-SP disposition explicit:
 | SP-8 | (a) Canonical authority + (b) Filename discipline | **Split** | (a) stays SP-8; (b) becomes SP-14 |
 | SP-9 | Silence is never consent | Carryforward | Direct; applies to operator close-loop, ratification, ambiguity escalation |
 | SP-10 | Verify state before recommending | Carryforward as named principle | Mechanics in Vendor Selection; principle stays SP-tier |
-| SP-12 | Bounded-Search Disclosure | New in v2 | See §10.1.2 |
-| SP-13 | Substrate Declaration | New in v2 | See §10.1.3 |
-| SP-14 | Filename Discipline | New in v2 (extracted from SP-8) | See §10.1.5 |
+| SP-12 | Bounded-Search Disclosure | New in v2 | See §{section.sp-12-bounded-search-disclosure} |
+| SP-13 | Substrate Declaration | New in v2 | See §{section.sp-13-substrate-declaration} |
+| SP-14 | Filename Discipline | New in v2 (extracted from SP-8) | See §{section.sp-14-filename-discipline} |
 
 #### 10.2.1 SP-8 narrowed — Canonical Authority `[operator-scaffolding | stable]`
+<a id="section-sp-8-narrowed-canonical-authority"></a>
 
 After the v2 split, SP-8 carries one concern:
 
@@ -2512,11 +2607,12 @@ After the v2 split, SP-8 carries one concern:
   annotation, external LLM) must be flagged at the start of the next
   session so M2 (Version Drift) can reconcile.
 - Filename discipline (the look-alike disambiguation pattern) extracted to
-  SP-14 (§10.1.5).
+  SP-14 (§{section.sp-14-filename-discipline}).
 
 #### 10.2.2 Carryforward SPs — application surfaces
+<a id="section-carryforward-sps-application-surfaces"></a>
 
-The six pure-carryforward SPs (SP-2, SP-4, SP-5, SP-6, SP-7, SP-9) carry
+The six pure-carryforward SPs (§{principle.SP-2}, SP-4, SP-5, SP-6, SP-7, SP-9) carry
 forward from v1.10.4 verbatim in principle. Their v2 application surfaces:
 
 - **SP-2 (Defer non-critical fixes to natural touchpoint).** Applies in
@@ -2536,7 +2632,7 @@ forward from v1.10.4 verbatim in principle. Their v2 application surfaces:
   session that updates Master, every execution session that produces
   Output, every Update session that produces a new Library file.
   Reinforced structurally by the triple contract's file-based Output
-  (§3.2.3).
+  (§{section.prism-execution-output}).
 - **SP-9 (Silence is never consent).** Applies wherever operator decision
   is required: close-loop declarations, ratification, ambiguity
   escalation, migration override at 🔴, Project recommendation
@@ -2547,11 +2643,13 @@ Full text of every SP in Appendix F.
 ---
 
 ## 11. Filename conventions and bump atomicity `[structural | stable]`
+<a id="section-filename-conventions-and-bump-atomicity"></a>
 
 Canonical reference table for every PRISM v2 artifact's filename pattern,
 plus the atomic-bump routine that produces version increments.
 
 ### 11.1 Filename patterns
+<a id="section-filename-patterns"></a>
 
 | Artifact | Pattern | Example |
 |---|---|---|
@@ -2576,6 +2674,7 @@ active).
 - Phase 2+: `p2.0`, `p2.1`, ...
 
 ### 11.2 Bump atomicity routine
+<a id="section-bump-atomicity-routine"></a>
 
 Master version bumps are mechanically tied to defined triggers. Produced
 atomically at every orchestration turn-close:
@@ -2603,11 +2702,13 @@ by construction without abandoning the safeguard.
 ---
 
 ## 12. Atomic prompt template — v2 form
+<a id="section-atomic-prompt-template-v2-form"></a>
 
 The atomic prompt template wraps the triple contract around the prompt
 body. It's the unit operators paste into execution sessions.
 
 ### 12.1 Template shape `[structural | stable]`
+<a id="section-template-shape"></a>
 
 ```
 ━━━ PRISM EXECUTION ENVELOPE ━━━
@@ -2666,27 +2767,29 @@ signature block per §3.2.3:
 ```
 
 ### 12.2 Composition rules
+<a id="section-composition-rules"></a>
 
 - **No convergence checklists in the prompt body.** Convergence is
   orchestration-side per the triple-contract split. v1.x's per-prompt
-  convergence checklists drop in v2 (SP-3 dissolution).
+  convergence checklists drop in v2 (§{principle.SP-3} dissolution).
 - **No vendor-specific machinery in the body.** Tool requests live in the
   Envelope's `Tools:` field; vendor-specific config in `Vendor config:`.
 - **Attachments referenced by name and order.** When the body references
   `Attachment 1`, that maps to the first filename in the Envelope's
   `Attachments:` list.
-- **Findings discipline per §4.11.** Numbered, attributable, evidence-
+- **Findings discipline per §{section.prompt-body-convergence-provisions}.** Numbered, attributable, evidence-
   classed, confidence-calibrated.
 
 ### 12.3 What v1.x's atomic template carried that v2 reshapes
+<a id="section-what-v1-xs-atomic-template-carried-that-v2-reshapes"></a>
 
 - *Hygiene block* → folded into Envelope and Self-check (substrate
   verification is now structural, not prose discipline).
 - *[UNVERIFIED] tagging* → restored as an explicit Verification status
-  axis in the §4.11 finding structure (v2.0.1). Orthogonal to confidence;
-  see §4.11 *Verification ≠ confidence*.
-- *Discrepancy Check* → orchestration-side at Layer-1 (M7 Claim Conflict).
-- *Live watch for preemptive scope-down* → orchestration-side via M5 +
+  axis in the §{section.prompt-body-convergence-provisions} finding structure (v2.0.1). Orthogonal to confidence;
+  see §{section.prompt-body-convergence-provisions} *Verification ≠ confidence*.
+- *Discrepancy Check* → orchestration-side at Layer-1 (§{monitor.M7} Claim Conflict).
+- *Live watch for preemptive scope-down* → orchestration-side via §{monitor.M5} +
   M6.
 - *Convergence (Layer 1 — mandatory)* → orchestration-side; SP-3
   dissolved.
@@ -2698,18 +2801,21 @@ orchestration-side.
 ---
 
 ## 13. Operator hint catalog `[methodological | stable]`
+<a id="section-operator-hint-catalog"></a>
 
 Hints are optional one-line cues keyed to the upcoming action. Emission
-discipline per §3.2.4. The catalog below is the canonical reference; new
+discipline per §{section.operator-hints-emission-discipline}. The catalog below is the canonical reference; new
 hints accrue here as patterns surface.
 
 ### 13.1 Cloud drive and persistence
+<a id="section-cloud-drive-and-persistence"></a>
 
 - `Save output to cloud drive after download, before switching to the
   next vendor (see E.5).`
 - `Save Master to cloud drive at session close (see E.5).`
 
 ### 13.2 Mobile platform cues
+<a id="section-mobile-platform-cues"></a>
 
 - `On Samsung, expect indexing delay on the downloaded file (E.1).`
 - `If [vendor] mobile fails to download, retry in Firefox Desktop mode
@@ -2718,6 +2824,7 @@ hints accrue here as patterns surface.
   specific).`
 
 ### 13.3 Session hygiene cues
+<a id="section-session-hygiene-cues"></a>
 
 - `Run [vendor] outside any project so it isn't distracted by project
   memory.`
@@ -2725,6 +2832,7 @@ hints accrue here as patterns surface.
 - `New session — paste handoff first, then attach Master and Library.`
 
 ### 13.4 Multi-vendor cues
+<a id="section-multi-vendor-cues"></a>
 
 - `Equivalence dispatch — N=3. Send to all three before attaching any
   return.`
@@ -2732,6 +2840,7 @@ hints accrue here as patterns surface.
   weighting.`
 
 ### 13.5 Recovery cues
+<a id="section-recovery-cues"></a>
 
 - `Master version mismatch — verify which file is current before
   attaching.`
@@ -2739,9 +2848,10 @@ hints accrue here as patterns surface.
   concluding.`
 
 ### 13.6 Attachment warnings
+<a id="section-attachment-warnings"></a>
 
 These are emission targets — the Output's `Attachment warnings:` field
-(§3.2.3 footer) populates with severity-tagged lines:
+(§{section.prism-execution-output} footer) populates with severity-tagged lines:
 
 - `MISSING:` — declared in Envelope but not attached.
 - `UNREADABLE:` — present but the vendor session couldn't read it (format
@@ -2766,20 +2876,22 @@ surfaces re-dispatch with corrected attachment list as a candidate.
 ---
 
 ## 14. Missing-handoff recovery
+<a id="section-missing-handoff-recovery"></a>
 
 What happens when the operator opens a fresh orchestration session
 without a handoff (operator skipped the migration step at 🔴; handoff
 was lost; mid-project session was opened cold)?
 
 ### 14.1 Recovery flow `[methodological | stable]`
+<a id="section-recovery-flow"></a>
 
 1. **Session-open verification fires.** SP-13 substrate check passes;
    M1 detects no handoff attached.
-2. **Orchestration searches for the canonical Master.** Per SP-1
+2. **Orchestration searches for the canonical Master.** Per §{principle.SP-1}
    protocol:
    - Past-conversation search for the project name and likely Master
      filenames (`conversation_search`, bounded by current Project per
-     §8.1; SP-12 disclosure on bound).
+     §{section.claude-project-as-setup-recommendation}; SP-12 disclosure on bound).
    - If a past session is identified that produced a Master version,
      surface the session URL and the Master filename to operator.
 3. **Operator attaches the located Master.** Orchestration runs M2
@@ -2790,18 +2902,19 @@ was lost; mid-project session was opened cold)?
    and Rerun Register together carry sufficient state to reproduce a
    *What's next*. Decision brief / Stakeholder register / Claim inventory
    / Jurisdiction map carry the Setup artifacts.
-5. **No silent regeneration.** Per SP-1: orchestration does not
+5. **No silent regeneration.** Per §{principle.SP-1}: orchestration does not
    reconstruct what's missing from memory. Surface what was located,
    surface what couldn't be located, ask operator how to proceed.
-6. **If Master itself cannot be located.** Escalate per SP-1: name the
+6. **If Master itself cannot be located.** Escalate per §{principle.SP-1}: name the
    consequences of regenerating from memory (authenticity loss, schema
    drift, silent contamination); ask operator whether to proceed with
    reconstruction (and document the reconstruction explicitly in the
    Master's Changelog), or whether to re-Setup.
 
 ### 14.2 Why this matters
+<a id="section-why-this-matters"></a>
 
-The continuous-state mechanic (§5.5) is the front-line defense — every
+The continuous-state mechanic (§{section.failsafe-recovery-continuous-state-mechanics}) is the front-line defense — every
 turn-close writes the Master and *What's next*. The recovery flow is the
 backstop when the front-line defense is bypassed (handoff lost, session
 opened from outside the Project, cross-device churn). SP-1's discipline
@@ -2812,6 +2925,7 @@ mode the discipline exists to prevent.
 ---
 
 ## 15. Worked example flow
+<a id="section-worked-example-flow"></a>
 
 This section walks a complete audit through v2.0's mechanics. Subject:
 hypothetical career-coaching SaaS audit ("Atlas"). Sketch, not rubric;
@@ -2902,6 +3016,7 @@ What this illustrates:
 ---
 
 ## 16. Empirical calibration items
+<a id="section-empirical-calibration-items"></a>
 
 These items v2.0 does not fix because they require real-use signal.
 Surfaces calibrate post-release on the dogfood run and operator
@@ -2911,7 +3026,7 @@ feedback channel.
    ceiling at 4. Calibrate against real Setup runs.
 2. **Probe 1 *fires-maybe* operator-fatigue.** Volume of *maybes* per
    project; mitigation effectiveness of judging-LLM silent resolution.
-3. **§7.4 point-refresh fatigue.** Frequency of `stale-refresh` per
+3. **§{section.currency-maintenance-point-refresh} point-refresh fatigue.** Frequency of `stale-refresh` per
    project; threshold for advisory accumulation toward Update session.
 4. **Probe 7 lens accretion path.** Lenses surfaced by domain-
    practitioner survey that aren't in the catalog. Where do they go:
@@ -2933,6 +3048,7 @@ feeds the v2.1 minor version.
 ---
 
 ## 17. Mobile operator survival guide
+<a id="section-mobile-operator-survival-guide"></a>
 
 v2.0 is mobile-first. Mobile operators routinely encounter patterns —
 both frictions and effective interaction moves — that desktop operators
@@ -2944,7 +3060,7 @@ desktop). Living document: entries accumulate as patterns surface.
 
 Entries here may be surfaced inline as **in-context operator hints** at
 specific orchestration touchpoints — the Execution Envelope's
-`Operator hints` field (§3.2.4) and the *What's next* artifact (§3.4) —
+`Operator hints` field (§{section.operator-hints-emission-discipline}) and the *What's next* artifact (§{section.whats-next}) —
 so an operator sees the relevant cue at the moment of acting rather
 than from memory.
 
@@ -2955,6 +3071,7 @@ the exact case doesn't match).
 ### Vendor-client workarounds
 
 #### E.1 — Samsung file explorer: LLM-downloaded files invisible until indexing catches up
+<a id="appendix-samsung-file-explorer-llm-downloaded-files-invisible-until-indexing-catches-up"></a>
 
 **Platform:** Android, Samsung devices (tested: Galaxy S25+).
 
@@ -2977,6 +3094,7 @@ reader; the file exists the moment the LLM app finishes writing it,
 and MiX respects that.
 
 #### E.2 — Broken file/clipboard operations in LLM mobile apps
+<a id="appendix-broken-file-clipboard-operations-in-llm-mobile-apps"></a>
 
 **Platform:** Android, varies by LLM vendor mobile app.
 
@@ -3001,6 +3119,7 @@ convincing the vendor's site to serve the full-featured client.
 ### Operator interaction patterns
 
 #### E.3 — Artifact + handoff together: "present document with instructions"
+<a id="appendix-artifact-handoff-together-present-document-with-instructions"></a>
 
 **Situation.** A session produces a deliverable that will feed into
 another session's work (e.g., a walkthrough document that a fresh
@@ -3025,10 +3144,11 @@ operating context. Separating them is a mild form of session-forgetting
 reconstructed when the consumer session opens). Asking for both in one
 shot eliminates the reconstruction step and leverages the producing
 session's still-fresh context. This pattern pairs naturally with the
-Execution Envelope discipline (§3.2.1) — same instinct, different
+Execution Envelope discipline (§{section.prism-execution-envelope}) — same instinct, different
 altitude: bake operating context into the artifact.
 
 #### E.4 — Session retrieval: "point me to the relevant session"
+<a id="appendix-session-retrieval-point-me-to-the-relevant-session"></a>
 
 **Situation.** PRISM work routinely crosses sessions (artifact produced
 in session A, used in session B). When an operator is in the wrong
@@ -3049,7 +3169,7 @@ pattern also works as a disambiguation aid — if multiple sessions match
 the topic, Claude can enumerate them with brief summaries before
 committing to a link.
 
-**Caveat — bounded-search disclosure (SP-12).** Past-conversations
+**Caveat — bounded-search disclosure (§{principle.SP-12}).** Past-conversations
 search is scoped: if the operator is in a project, search is confined
 to that project's chats; otherwise it covers non-project chats. If the
 target session lives in a different scope, the search returns null.
@@ -3094,71 +3214,73 @@ load-bearing, and the cost of the extra tap is negligible.
 ---
 
 ## Appendix A — Glossary
+<a id="appendix-glossary"></a>
 
 Combines DD Appendix A and Spec Appendix A. Definitions live here;
 mechanics live in the cross-referenced sections.
 
 | Term | Definition |
 |---|---|
-| **Adversarial Scope Probe** | Setup-time probe (P2). Hunts silent omissions in draft strategy. Library-driven; multi-vendor recommended. §6.3.2. |
-| **Anchor disposition** | Currency state per `rubric_anchor:` entry. States: `fresh`, `stale-refresh`, `stale-accumulating`. §7.4. |
-| **Atomic prompt template** | Template that wraps the triple contract around a prompt body. The unit operators paste into execution sessions. §12. |
-| **Band** | M5's output. Four states: 🟢 Comfortable, 🟡 Getting warm, 🟠 Curate now, 🔴 Migrate. §5.6. |
-| **Bump atomicity** | The mechanic that ties Master version increments to defined triggers (phase transitions, convergence rounds, probe iterations, schema changes). §11. |
-| **Claim Conflict** | M7's surface — two findings with incompatible claims on the same surface. v1.x called this Assumption Conflict. §9.2.2. |
-| **Claim inventory** | Setup artifact. Table of claims the audit must adjudicate, with audit-pass mapping. §6.4.3. |
-| **Continuous-curation** | Per-turn-close curation observation (band ≥ 🟡) or directive (band ≥ 🟠) in *What's next*. §5.3. |
-| **Continuous-state mechanic** | Master + *What's next* written at every orchestration turn-close, regardless of band state. §5.5. |
-| **Convergence delta** | Vendor Triangulation output document for an `equivalence` dispatch. §4.3.1. |
-| **Decision brief** | Setup artifact. Captures the decision under test, decision-maker, deadline, cost-of-error, falsifiers. §6.4.1. |
-| **Decision Framing Probe** | Setup-time probe (P3). Produces Decision brief + Stakeholder register. §6.3.3. |
-| **Delta finalization** | When all expected vendor returns are in for an `equivalence` dispatch and Vendor Triangulation closes the convergence delta. §4.3. |
-| **Dispatch rationale** | Envelope field carrying one positive-framing line per dispatch variant component. §4.2. |
-| **Dispatch register** | Master section tracking recommended-vs-executed state per prompt. §4.8. |
-| **Dispatch shape** | Envelope field carrying the dispatch structural shape: `equivalence`, `split`, or `limitation-named`. §4.1. |
-| **Domain Reconnaissance Probe** | Setup-time probe (P6). Surveys domain practice + authoritative-source detection + Jurisdiction map. §6.3.6. |
-| **Envelope** | The first block of the triple contract — inbound vendor instructions including dispatch metadata, attachments, and operator hints. §3.2.1. |
-| **`equivalence` dispatch** | Same prompt body to N vendors; outputs comparable; triggers Vendor Triangulation at N≥2. §4.1. |
-| **Execution session** | Vendor session running a single dispatched prompt. Framework not attached; loaded artifacts limited to Envelope's `Attachments:` field. §3.1. |
-| **Falsifier** | A finding that, if observed, would refute the audit's thesis. Captured in the Decision brief. §6.3.5, §6.4.1. |
-| **`fires-covered` / `fires-uncovered` / `doesn't-fire` / `fires-maybe`** | Probe 1's tri-state-with-maybe disposition per Lens. §6.3.1. |
-| **Jurisdiction map** | Setup artifact. Per-jurisdiction listing of triggered regulatory regimes and their materiality. §6.4.4. |
+| **Adversarial Scope Probe** | Setup-time probe (§{probe.P2}). Hunts silent omissions in draft strategy. Library-driven; multi-vendor recommended. §{section.probe-2-adversarial-scope-iterates}. |
+| **Anchor disposition** | Currency state per `rubric_anchor:` entry. States: `fresh`, `stale-refresh`, `stale-accumulating`. §{section.currency-maintenance-point-refresh}. |
+| **Atomic prompt template** | Template that wraps the triple contract around a prompt body. The unit operators paste into execution sessions. §{section.atomic-prompt-template-v2-form}. |
+| **Band** | M5's output. Four states: 🟢 Comfortable, 🟡 Getting warm, 🟠 Curate now, 🔴 Migrate. §{section.defensive-migration-at-natural-seams}. |
+| **Bump atomicity** | The mechanic that ties Master version increments to defined triggers (phase transitions, convergence rounds, probe iterations, schema changes). §{section.filename-conventions-and-bump-atomicity}. |
+| **Claim Conflict** | M7's surface — two findings with incompatible claims on the same surface. v1.x called this Assumption Conflict. §{section.m7-claim-conflict}. |
+| **Claim inventory** | Setup artifact. Table of claims the audit must adjudicate, with audit-pass mapping. §{section.claim-inventory}. |
+| **Continuous-curation** | Per-turn-close curation observation (band ≥ 🟡) or directive (band ≥ 🟠) in *What's next*. §{section.continuous-curation-posture}. |
+| **Continuous-state mechanic** | Master + *What's next* written at every orchestration turn-close, regardless of band state. §{section.failsafe-recovery-continuous-state-mechanics}. |
+| **Convergence delta** | Vendor Triangulation output document for an `equivalence` dispatch. §{section.convergence-delta-document}. |
+| **Decision brief** | Setup artifact. Captures the decision under test, decision-maker, deadline, cost-of-error, falsifiers. §{section.decision-brief}. |
+| **Decision Framing Probe** | Setup-time probe (§{probe.P3}). Produces Decision brief + Stakeholder register. §{section.probe-3-decision-framing-once}. |
+| **Delta finalization** | When all expected vendor returns are in for an `equivalence` dispatch and Vendor Triangulation closes the convergence delta. §{section.vendor-triangulation}. |
+| **Dispatch rationale** | Envelope field carrying one positive-framing line per dispatch variant component. §{section.rationale-discipline-per-dispatch-variant}. |
+| **Dispatch register** | Master section tracking recommended-vs-executed state per prompt. §{section.master-tracking-dispatch-register}. |
+| **Dispatch shape** | Envelope field carrying the dispatch structural shape: `equivalence`, `split`, or `limitation-named`. §{section.single-envelope-with-spectrum-shape}. |
+| **Domain Reconnaissance Probe** | Setup-time probe (§{probe.P6}). Surveys domain practice + authoritative-source detection + Jurisdiction map. §{section.probe-6-domain-reconnaissance-iterates-early}. |
+| **Envelope** | The first block of the triple contract — inbound vendor instructions including dispatch metadata, attachments, and operator hints. §{section.prism-execution-envelope}. |
+| **`equivalence` dispatch** | Same prompt body to N vendors; outputs comparable; triggers Vendor Triangulation at N≥2. §{section.single-envelope-with-spectrum-shape}. |
+| **Execution session** | Vendor session running a single dispatched prompt. Framework not attached; loaded artifacts limited to Envelope's `Attachments:` field. §{section.two-session-types}. |
+| **Falsifier** | A finding that, if observed, would refute the audit's thesis. Captured in the Decision brief. §{section.probe-5-falsifier-once}, §{section.decision-brief}. |
+| **`fires-covered` / `fires-uncovered` / `doesn't-fire` / `fires-maybe`** | Probe 1's tri-state-with-maybe disposition per Lens. §{section.probe-1-coverage-grading-iterates}. |
+| **Jurisdiction map** | Setup artifact. Per-jurisdiction listing of triggered regulatory regimes and their materiality. §{section.jurisdiction-map}. |
 | **Layer 1** | Per-prompt convergence — orchestration absorbs returned findings into the Master. Monitors M6/M7/M8/M12 fire here. |
 | **Layer 2** | Cold synthesis across all Layer-1 findings to produce the audit's external deliverable. M9 fires here. M11 surfaces readiness. |
-| **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (18). v0.9 release pinned at `prism-lens-v0.9`. §7. |
-| **`limitation-named` dispatch** | Single-vendor dispatch with explicit `Not chosen:` rationale. §4.1. |
-| **Master** | The single canonical project state file. Updated at every orchestration turn-close. §3.3. |
-| **Migration handoff** | Defined artifact produced at 🔴 (mandatory) or 🟠 (optional) for fresh-session continuity. §5.4. |
-| **Monitor** | Orchestration-side check that fires at a defined lifecycle slot. M1–M12 specified in §9. |
-| **Natural seam** | A transition point where migration is low-cost. Defined set: convergence round complete, phase boundary, deliverable shipped, setup iteration complete. §5.3. |
-| **Orchestration session** | Claude session with the framework attached. Master state, Monitor fires, Setup probes, convergence reasoning all live here. §3.1. |
-| **Output** | The third block of the triple contract — outbound finding signature with executed-state metadata and operator-next instructions. §3.2.3. |
-| **Point refresh** | Per-project, in-Setup currency check on Library `rubric_anchor:` entries. §7.4. |
-| **Pre-mortem** | Setup-time probe (P4). Imagines execution complete; surfaces failure modes. §6.3.4. |
+| **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (18). v0.9 release pinned at `prism-lens-v0.9`. §{section.library-integration}. |
+| **`limitation-named` dispatch** | Single-vendor dispatch with explicit `Not chosen:` rationale. §{section.single-envelope-with-spectrum-shape}. |
+| **Master** | The single canonical project state file. Updated at every orchestration turn-close. §{section.the-master}. |
+| **Migration handoff** | Defined artifact produced at 🔴 (mandatory) or 🟠 (optional) for fresh-session continuity. §{section.migration-handoff}. |
+| **Monitor** | Orchestration-side check that fires at a defined lifecycle slot. M1–M12 specified in §{section.monitor-specifications}. |
+| **Natural seam** | A transition point where migration is low-cost. Defined set: convergence round complete, phase boundary, deliverable shipped, setup iteration complete. §{section.continuous-curation-posture}. |
+| **Orchestration session** | Claude session with the framework attached. Master state, Monitor fires, Setup probes, convergence reasoning all live here. §{section.two-session-types}. |
+| **Output** | The third block of the triple contract — outbound finding signature with executed-state metadata and operator-next instructions. §{section.prism-execution-output}. |
+| **Point refresh** | Per-project, in-Setup currency check on Library `rubric_anchor:` entries. §{section.currency-maintenance-point-refresh}. |
+| **Pre-mortem** | Setup-time probe (§{probe.P4}). Imagines execution complete; surfaces failure modes. §{section.probe-4-pre-mortem-iterates}. |
 | **PRISM** | Prompts · Research · Iteration · Synthesis · Master. The framework. |
-| **Probe** | Setup-time grading construct against the draft Prompt Strategy. Seven probes specified: P1–P7. §6.3. |
-| **Prompt Strategy** | The plan of dispatched prompts produced by Setup. Lives in the Master. Iterates in P0; ratifies at P0→P1; revisable at convergence (§6.5). |
-| **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §9.2.4. |
-| **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §6.2. |
-| **Self-check** | The middle block of the triple contract — substrate verification per SP-13. §3.2.2. |
-| **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §6.4. |
-| **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §4.1. |
-| **Stakeholder register** | Setup artifact. Per-role listing of stake, decision power, communication channel. §6.4.2. |
-| **Standing Principle (SP)** | Persistent posture; not a discrete fire. Twelve SPs in v2 (one dissolved, three new, eight carryforward). §10. |
-| **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §6.5. |
-| **Substitution** | Output's Vendor field differs from Envelope's recommended Vendor. Absorbed at convergence; no automatic re-dispatch. §4.10. |
-| **Three-layer readiness** | The P0→P1 boundary clears when Structural completeness, Library coverage saturation, and Operator ratification all clear. §6.2. |
-| **Triple contract** | Envelope (inbound) + Self-check (substrate verify) + Output (outbound). The load-bearing interface between sessions. §3.2. |
-| **Update session** | Standalone, rare, operator-gated session that maintains Library currency. §7.5. |
-| **User Voice Probe** | Setup-time probe (P7). Imports real end-user signal. §6.3.7. |
-| **Vendor config** | Envelope/Output field carrying vendor-specific configuration flags. §3.2.1. |
-| **Vendor Selection** | Live web-search currency check at every dispatch; produces Envelope. §3.6. |
-| **Vendor Triangulation** | Layer-1 convergence pass that fires at N≥2 for `equivalence` dispatches. §4.3. |
-| ***What's next*** | Per-turn-close artifact. The operator's single source of "what to do next." §3.4. |
+| **Probe** | Setup-time grading construct against the draft Prompt Strategy. Seven probes specified: P1–P7. §{section.the-seven-probes}. |
+| **Prompt Strategy** | The plan of dispatched prompts produced by Setup. Lives in the Master. Iterates in P0; ratifies at P0→P1; revisable at convergence (§{section.strategy-stability}). |
+| **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §{section.m12-result-completeness-check}. |
+| **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §{section.three-layer-readiness}. |
+| **Self-check** | The middle block of the triple contract — substrate verification per §{principle.SP-13}. §{section.prism-execution-self-check}. |
+| **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
+| **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
+| **Stakeholder register** | Setup artifact. Per-role listing of stake, decision power, communication channel. §{section.stakeholder-register}. |
+| **Standing Principle (SP)** | Persistent posture; not a discrete fire. Twelve SPs in v2 (one dissolved, three new, eight carryforward). §{section.standing-principles}. |
+| **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §{section.strategy-stability}. |
+| **Substitution** | Output's Vendor field differs from Envelope's recommended Vendor. Absorbed at convergence; no automatic re-dispatch. §{section.substitution-absorption}. |
+| **Three-layer readiness** | The P0→P1 boundary clears when Structural completeness, Library coverage saturation, and Operator ratification all clear. §{section.three-layer-readiness}. |
+| **Triple contract** | Envelope (inbound) + Self-check (substrate verify) + Output (outbound). The load-bearing interface between sessions. §{section.the-triple-contract}. |
+| **Update session** | Standalone, rare, operator-gated session that maintains Library currency. §{section.currency-maintenance-update-session}. |
+| **User Voice Probe** | Setup-time probe (§{probe.P7}). Imports real end-user signal. §{section.probe-7-user-voice-iterates-early}. |
+| **Vendor config** | Envelope/Output field carrying vendor-specific configuration flags. §{section.prism-execution-envelope}. |
+| **Vendor Selection** | Live web-search currency check at every dispatch; produces Envelope. §{section.vendor-selection-at-dispatch}. |
+| **Vendor Triangulation** | Layer-1 convergence pass that fires at N≥2 for `equivalence` dispatches. §{section.vendor-triangulation}. |
+| ***What's next*** | Per-turn-close artifact. The operator's single source of "what to do next." §{section.whats-next}. |
 
 ---
 
 ## Appendix B — Spec → v2.0 source mapping
+<a id="appendix-spec-v2-0-source-mapping"></a>
 
 How sections of the v2 specification (`PRISM_v2_spec_rev2.md`) map into
 this operating document. Use this when reading rationale-level
@@ -3167,65 +3289,66 @@ here, or vice versa.
 
 | Spec section | Topic | This file |
 |---|---|---|
-| Spec.§1 | Scope of spec | §1 |
-| Spec.§2 | System overview | §2 |
-| Spec.§3.1 | Two session types | §3.1 |
-| Spec.§3.2 | Triple contract | §3.2 |
-| Spec.§3.3 | Master | §3.3 |
-| Spec.§3.4 | *What's next* | §3.4 |
-| Spec.§3.5 | Forward-compatibility commitments | §3.5 |
-| Spec.§3.6 | Vendor Selection | §3.6 |
-| Spec.§4.1 | Single-Envelope-with-spectrum | §4.1 |
-| Spec.§4.2 | Rationale discipline | §4.2 |
-| Spec.§4.3 | Vendor Triangulation | §4.3 |
-| Spec.§4.4 | Asymmetric returns | §4.4 |
-| Spec.§4.5 | Claude-baseline | §4.5 |
-| Spec.§4.6 | Cost signaling | §4.6 |
-| Spec.§4.7 | Reconciliation | §4.7 |
-| Spec.§4.8 | Dispatch register | §4.8 |
-| Spec.§4.9 | Close-loop | §4.9 |
-| Spec.§4.10 | Substitution absorption | §4.10 |
-| Spec.§4.11 | Body convergence provisions | §4.11 |
-| Spec.§5.1 | Telemetric framework | §5.1 |
-| Spec.§5.2 | M5 + M12 consolidation | §5.2 |
-| Spec.§5.3 | Continuous-curation | §5.3 |
-| Spec.§5.4 | Migration handoff | §5.4 |
-| Spec.§5.5 | Continuous-state mechanic | §5.5 |
-| Spec.§5.6 | Migration matrix | §5.6 |
-| Spec.§6.1–6.5 | Setup mechanics | §6.1–§6.5 |
-| Spec.§7.1–7.5 | Library integration | §7.1–§7.5 |
-| Spec.§8.1 | Claude Project recommendation | §8.1 |
-| Spec.§8.2 | Session history | §8.2 |
-| Spec.§9.1 | Bump atomicity / M2 | §11 + §9.1.2 |
-| Spec.§9.2 | Attachment warnings | §13.6 |
-| Spec.§9.3 | M8 vs §7.4 boundary | §9.2.3 |
-| Spec.§10 | Worked example | §15 |
-| Spec.§11 | Monitor specs | §9 |
-| Spec.§12.1 | New / extended SPs | §10.1 |
-| Spec.§12.2 | SP carryforward catalog | §10.2 |
-| Spec.§13 | Resolved direction summary | (provenance — not reproduced) |
-| Spec.§14 | Empirical items | §16 |
-| Spec.§15 | Build residuals | §11, §12, §13, §14, App C |
-| Spec.§16 | Flagged-items register | (provenance — see Spec) |
-| Spec.§17 | Status | (provenance — see Spec) |
+| Spec.§{section.scope} | Scope of spec | §{section.scope} |
+| Spec.§{section.system-overview} | System overview | §{section.system-overview} |
+| Spec.§{section.two-session-types} | Two session types | §{section.two-session-types} |
+| Spec.§{section.the-triple-contract} | Triple contract | §{section.the-triple-contract} |
+| Spec.§{section.the-master} | Master | §{section.the-master} |
+| Spec.§{section.whats-next} | *What's next* | §{section.whats-next} |
+| Spec.§{section.forward-compatibility-commitments} | Forward-compatibility commitments | §{section.forward-compatibility-commitments} |
+| Spec.§{section.vendor-selection-at-dispatch} | Vendor Selection | §{section.vendor-selection-at-dispatch} |
+| Spec.§{section.single-envelope-with-spectrum-shape} | Single-Envelope-with-spectrum | §{section.single-envelope-with-spectrum-shape} |
+| Spec.§{section.rationale-discipline-per-dispatch-variant} | Rationale discipline | §{section.rationale-discipline-per-dispatch-variant} |
+| Spec.§{section.vendor-triangulation} | Vendor Triangulation | §{section.vendor-triangulation} |
+| Spec.§{section.asymmetric-parallel-return-handling} | Asymmetric returns | §{section.asymmetric-parallel-return-handling} |
+| Spec.§{section.claude-baseline-feasibility-with-named-limitation-escape-hatch} | Claude-baseline | §{section.claude-baseline-feasibility-with-named-limitation-escape-hatch} |
+| Spec.§{section.cost-signaling} | Cost signaling | §{section.cost-signaling} |
+| Spec.§{section.recommended-vs-executed-reconciliation} | Reconciliation | §{section.recommended-vs-executed-reconciliation} |
+| Spec.§{section.master-tracking-dispatch-register} | Dispatch register | §{section.master-tracking-dispatch-register} |
+| Spec.§{section.operator-declaration-close-loop} | Close-loop | §{section.operator-declaration-close-loop} |
+| Spec.§{section.substitution-absorption} | Substitution absorption | §{section.substitution-absorption} |
+| Spec.§{section.prompt-body-convergence-provisions} | Body convergence provisions | §{section.prompt-body-convergence-provisions} |
+| Spec.§{section.telemetric-framework-signal-weighting-and-compounding} | Telemetric framework | §{section.telemetric-framework-signal-weighting-and-compounding} |
+| Spec.§{section.m5-context-pressure-monitor} | M5 + M12 consolidation | §{section.m5-context-pressure-monitor} |
+| Spec.§{section.continuous-curation-posture} | Continuous-curation | §{section.continuous-curation-posture} |
+| Spec.§{section.migration-handoff} | Migration handoff | §{section.migration-handoff} |
+| Spec.§{section.failsafe-recovery-continuous-state-mechanics} | Continuous-state mechanic | §{section.failsafe-recovery-continuous-state-mechanics} |
+| Spec.§{section.defensive-migration-at-natural-seams} | Migration matrix | §{section.defensive-migration-at-natural-seams} |
+| Spec.§{section.from-waterfall-to-library-graded-iterative-refinement}–6.5 | Setup mechanics | §{section.from-waterfall-to-library-graded-iterative-refinement}–§{section.strategy-stability} |
+| Spec.§{section.library-reference-at-setup}–7.5 | Library integration | §{section.library-reference-at-setup}–§{section.currency-maintenance-update-session} |
+| Spec.§{section.claude-project-as-setup-recommendation} | Claude Project recommendation | §{section.claude-project-as-setup-recommendation} |
+| Spec.§{section.session-history-as-validation-recovery} | Session history | §{section.session-history-as-validation-recovery} |
+| Spec.§{section.standalone-monitors-m1-m2-m4-m5-m9} | Bump atomicity / M2 | §{section.filename-conventions-and-bump-atomicity} + §{section.m2-version-drift} |
+| Spec.§{section.convergence-time-monitors-m6-m7-m8-m12} | Attachment warnings | §{section.attachment-warnings} |
+| Spec.§{section.whats-next-input-monitors-m3-m10-m11} | M8 vs §{section.currency-maintenance-point-refresh} boundary | §{section.m8-stale-source} |
+| Spec.§{section.standing-principles} | Worked example | §{section.worked-example-flow} |
+| Spec.§{section.filename-conventions-and-bump-atomicity} | Monitor specs | §{section.monitor-specifications} |
+| Spec.§{section.template-shape} | New / extended SPs | §{section.standing-principles-introduced-or-extended-in-v2} |
+| Spec.§{section.composition-rules} | SP carryforward catalog | §{section.v1-x-standing-principles-carryforward-catalog} |
+| Spec.§{section.operator-hint-catalog} | Resolved direction summary | (provenance — not reproduced) |
+| Spec.§{section.missing-handoff-recovery} | Empirical items | §{section.empirical-calibration-items} |
+| Spec.§{section.worked-example-flow} | Build residuals | §{section.filename-conventions-and-bump-atomicity}, §{section.atomic-prompt-template-v2-form}, §{section.operator-hint-catalog}, §{section.missing-handoff-recovery}, App C |
+| Spec.§{section.empirical-calibration-items} | Flagged-items register | (provenance — see Spec) |
+| Spec.§{section.mobile-operator-survival-guide} | Status | (provenance — see Spec) |
 | Spec.App A | Terminology | App A |
 | Spec.App B | Tag index | App C |
 | Spec.App C | v1.x → v2 surface drift | App D |
-| DD.App E | Mobile operator survival guide | §17 |
+| DD.App E | Mobile operator survival guide | §{section.mobile-operator-survival-guide} |
 
 Provenance items (where this file does not reproduce content from spec):
 
-- **Resolved direction summary tables** (Spec.§13). Provenance only —
+- **Resolved direction summary tables** (Spec.§{section.operator-hint-catalog}). Provenance only —
   every direction listed there is implemented in the body of this file.
-- **Flagged-items register** (Spec.§16). Alternatives considered for
+- **Flagged-items register** (Spec.§{section.empirical-calibration-items}). Alternatives considered for
   each design decision live in the spec; this file carries only the
   chosen alternative with its tag.
-- **Status section** (Spec.§17). Build phase is past — this file is the
+- **Status section** (Spec.§{section.mobile-operator-survival-guide}). Build phase is past — this file is the
   build output.
 
 ---
 
 ## Appendix C — Decision tag index
+<a id="appendix-decision-tag-index"></a>
 
 Every decision in this document carries a two-axis tag. This appendix
 indexes decisions by tag for easy review.
@@ -3237,60 +3360,68 @@ indexes decisions by tag for easy review.
 `review-annually`.
 
 ### C.1 `[structural | stable]`
+<a id="appendix-structural-stable"></a>
 
-§1.1 (scope), §1.3 (three-leg constraint), §3.1 (two session types),
-§3.2 (triple contract), §3.3 (Master), §3.4 (*What's next*), §3.5
-(forward-compatibility commitments), §4.1 (single-Envelope-with-
-spectrum), §4.3 (Vendor Triangulation), §4.4 (asymmetric returns), §4.7
-(reconciliation), §4.8 (Dispatch register), §4.9 (close-loop), §4.10
-(substitution absorption), §4.11 (prompt body convergence provisions),
-§5.2 (M5), §5.4 (migration handoff format), §5.5 (continuous-state
-mechanic), §5.6 (defensive migration), §6.2 (three-layer readiness),
-§6.3.1 (Probe 1 Coverage grading), §6.3.2 (Probe 2 Adversarial Scope),
-§6.3.7 (Probe 7 User Voice), §6.5 (strategy stability), §7.1 (Library
-reference at Setup), §9.1.1 (M1 Missing Inputs), §9.1.2 (M2 Version
-Drift), §9.2.1 (M6 Premise Shift), §9.2.2 (M7 Claim Conflict), §9.2.3
-(M8 Stale Source), §9.2.4 (M12 Result Completeness Check), §9.3.1 (M3
-Sequence Violation), §9.3.2 (M10 Rerun/Fix Required), §9.3.3 (M11 Layer
-2 Readiness), §11 (filename conventions and bump atomicity), §12.1
-(atomic prompt template), §18 (project, feedback, updates), §18.1
-(project identity), §18.2 (resource fetch convention), §18.4 (feedback
-and contribution), §18.5 (citation).
+§{section.what-v2-0-1-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
+(forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
+spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
+(reconciliation), §{section.master-tracking-dispatch-register} (Dispatch register), §{section.operator-declaration-close-loop} (close-loop), §{section.substitution-absorption}
+(substitution absorption), §{section.prompt-body-convergence-provisions} (prompt body convergence provisions),
+§{section.m5-context-pressure-monitor} (§{monitor.M5}), §{section.migration-handoff} (migration handoff format), §{section.failsafe-recovery-continuous-state-mechanics} (continuous-state
+mechanic), §{section.defensive-migration-at-natural-seams} (defensive migration), §{section.three-layer-readiness} (three-layer readiness),
+§{section.probe-1-coverage-grading-iterates} (Probe 1 Coverage grading), §{section.probe-2-adversarial-scope-iterates} (Probe 2 Adversarial Scope),
+§{section.probe-7-user-voice-iterates-early} (Probe 7 User Voice), §{section.strategy-stability} (strategy stability), §{section.library-reference-at-setup} (Library
+reference at Setup), §{section.m1-missing-inputs} (§{monitor.M1} Missing Inputs), §{section.m2-version-drift} (§{monitor.M2} Version
+Drift), §{section.m6-premise-shift} (§{monitor.M6} Premise Shift), §{section.m7-claim-conflict} (§{monitor.M7} Claim Conflict), §{section.m8-stale-source}
+(§{monitor.M8} Stale Source), §{section.m12-result-completeness-check} (§{monitor.M12} Result Completeness Check), §{section.m3-sequence-violation} (§{monitor.M3}
+Sequence Violation), §{section.m10-rerun-fix-required} (§{monitor.M10} Rerun/Fix Required), §{section.m11-layer-2-readiness} (§{monitor.M11} Layer
+2 Readiness), §{section.filename-conventions-and-bump-atomicity} (filename conventions and bump atomicity), §{section.template-shape}
+(atomic prompt template), §{section.project-feedback-updates} (project, feedback, updates), §{section.project-identity}
+(project identity), §{section.resource-fetch-convention} (resource fetch convention), §{section.feedback-and-contribution} (feedback
+and contribution), §{section.citation} (citation).
 
 ### C.2 `[methodological | stable]`
+<a id="appendix-methodological-stable"></a>
 
-§4.2 (rationale discipline), §4.6 (cost signaling), §6.1 (iterative
-refinement), §7.4 (point refresh), §7.5 (Update session), §9.1.3 (M4
-Ambiguous Ask), §9.1.5 (M9 Convergence Type Drift), §13 (operator hint
-catalog), §14.1 (missing-handoff recovery flow), §18.3 (currency check
+§{section.rationale-discipline-per-dispatch-variant} (rationale discipline), §{section.cost-signaling} (cost signaling), §{section.from-waterfall-to-library-graded-iterative-refinement} (iterative
+refinement), §{section.currency-maintenance-point-refresh} (point refresh), §{section.currency-maintenance-update-session} (Update session), §{section.m4-ambiguous-ask} (§{monitor.M4}
+Ambiguous Ask), §{section.m9-convergence-type-drift} (§{monitor.M9} Convergence Type Drift), §{section.operator-hint-catalog} (operator hint
+catalog), §{section.recovery-flow} (missing-handoff recovery flow), §{section.currency-check-at-session-open} (currency check
 at session open).
 
 ### C.3 `[methodological | review-if: substrate shifts]`
+<a id="appendix-methodological-review-if-substrate-shifts"></a>
 
-§5.1 (telemetric framework — calibration thresholds empirical).
+§{section.telemetric-framework-signal-weighting-and-compounding} (telemetric framework — calibration thresholds empirical).
 
 ### C.4 `[methodological | review-if: vendor landscape changes]`
+<a id="appendix-methodological-review-if-vendor-landscape-changes"></a>
 
-§3.6 (Vendor Selection routine).
+§{section.vendor-selection-at-dispatch} (Vendor Selection routine).
 
 ### C.5 `[vendor-dependent | review-if: orchestration vendor changes]`
+<a id="appendix-vendor-dependent-review-if-orchestration-vendor-changes"></a>
 
-§8.1 (Claude Project recommendation), §8.2 (session history mechanism).
+§{section.claude-project-as-setup-recommendation} (Claude Project recommendation), §{section.session-history-as-validation-recovery} (session history mechanism).
 
 ### C.6 `[vendor-dependent | review-if: vendor landscape changes]`
+<a id="appendix-vendor-dependent-review-if-vendor-landscape-changes"></a>
 
-§4.5 (Claude-baseline + escape hatch list).
+§{section.claude-baseline-feasibility-with-named-limitation-escape-hatch} (Claude-baseline + escape hatch list).
 
 ### C.7 `[operator-scaffolding | stable]`
+<a id="appendix-operator-scaffolding-stable"></a>
 
-§10.1.1 (SP-1 ext Canonicity), §10.1.2 (SP-12 Bounded-Search Disclosure),
-§10.1.3 (SP-13 Substrate Declaration), §10.1.4 (SP-10 Verify state
-before recommending), §10.1.5 (SP-14 Filename Discipline), §10.2.1
-(SP-8 Canonical Authority — narrowed).
+§{section.sp-1-extended-canonicity-preservation} (§{principle.SP-1} ext Canonicity), §{section.sp-12-bounded-search-disclosure} (§{principle.SP-12} Bounded-Search Disclosure),
+§{section.sp-13-substrate-declaration} (§{principle.SP-13} Substrate Declaration), §{section.sp-10-verify-state-before-recommending} (§{principle.SP-10} Verify state
+before recommending), §{section.sp-14-filename-discipline} (§{principle.SP-14} Filename Discipline), §{section.sp-8-narrowed-canonical-authority}
+(§{principle.SP-8} Canonical Authority — narrowed).
 
 ### C.8 `[empirical | review-annually]`
+<a id="appendix-empirical-review-annually"></a>
 
-§16 (empirical calibration items — collectively; individual items
+§{section.empirical-calibration-items} (empirical calibration items — collectively; individual items
 inherit calibration trigger).
 
 **Tag count summary.**
@@ -3307,12 +3438,14 @@ inherit calibration trigger).
 ---
 
 ## Appendix D — v1.x → v2 surface drift
+<a id="appendix-v1-x-v2-surface-drift"></a>
 
 Construct-by-construct mapping for operators familiar with v1.10.4.
 Direct carryforwards (🔁) and new constructs (🆕) marked; surface drift
 items documented with the change.
 
 ### D.1 Sessions and lifecycle
+<a id="appendix-sessions-and-lifecycle"></a>
 
 | v2 construct | v1.10.4 counterpart | Disposition |
 |---|---|---|
@@ -3324,6 +3457,7 @@ items documented with the change.
 | Lens Library | — | 🆕 — core v2 architecture |
 
 ### D.2 Probes
+<a id="appendix-probes"></a>
 
 | v2 probe | v1.x counterpart | Notes |
 |---|---|---|
@@ -3343,9 +3477,10 @@ items documented with the change.
 - **Fact Check** (Phase 2 enrichment) → absorbed into M8 Stale Source +
   Layer-1 reconciliation.
 - **Deep Research** (Phase 2 enrichment) → Vendor Selection mode field
-  (§3.6).
+  (§{section.vendor-selection-at-dispatch}).
 
 ### D.3 Monitors
+<a id="appendix-monitors"></a>
 
 | v2 | v1.x | Disposition |
 |---|---|---|
@@ -3356,13 +3491,14 @@ items documented with the change.
 | M5 Context Pressure | M5 Attachment Pressure + M12 Conversation Pressure | Merged into single telemetric monitor |
 | M6 Premise Shift | M6 Premise Shift | 🔁 — surface broadened (premises now read from Setup artifacts) |
 | M7 Claim Conflict | M7 Assumption Conflict | Renamed — v1.x had Assumption Register; v2 reads finding-vs-finding directly |
-| M8 Stale Source | M8 Stale Source | 🔁 — surface narrowed (audit evidence only; framework-anchor staleness is point refresh §7.4) |
+| M8 Stale Source | M8 Stale Source | 🔁 — surface narrowed (audit evidence only; framework-anchor staleness is point refresh §{section.currency-maintenance-point-refresh}) |
 | M9 Convergence Type Drift | M9 Convergence Type Drift | 🔁 — surface broadened (also catches dispatch-mode treatment errors) |
 | M10 Rerun/Fix | M10 Rerun/Fix | 🔁 |
 | M11 Layer 2 Readiness | M11 Layer 2 Readiness | 🔁 |
 | M12 Result Completeness Check | (slot was M12 Conversation Pressure — retired) | 🆕 in v2 (slot reused; v1.x M12 absorbed into M5) |
 
 ### D.4 Standing Principles
+<a id="appendix-standing-principles"></a>
 
 | v2 SP | v1.x | Disposition |
 |---|---|---|
@@ -3375,12 +3511,13 @@ items documented with the change.
 | SP-7 | SP-7 (File delivery mandatory) | 🔁 |
 | SP-8 narrowed | SP-8 (Canonical authority + filename disambig) | Split — (a) stays SP-8; (b) becomes SP-14 |
 | SP-9 | SP-9 (Silence is never consent) | 🔁 |
-| SP-10 | SP-10 (Verify state before recommending) | 🔁 as named principle; mechanics live in Vendor Selection §3.6 |
+| SP-10 | SP-10 (Verify state before recommending) | 🔁 as named principle; mechanics live in Vendor Selection §{section.vendor-selection-at-dispatch} |
 | SP-12 | — | 🆕 Bounded-Search Disclosure |
 | SP-13 | — | 🆕 Substrate Declaration |
 | SP-14 | (extracted from SP-8) | 🆕 — Filename Discipline |
 
 ### D.5 Other constructs
+<a id="appendix-other-constructs"></a>
 
 | v2 | v1.x | Disposition |
 |---|---|---|
@@ -3397,6 +3534,7 @@ items documented with the change.
 | Discrepancy Check | Discrepancy Check (prompt-template mechanic) | Absorbed into M7 Claim Conflict + Layer-1 reconciliation |
 
 ### D.6 Nomenclature changes
+<a id="appendix-nomenclature-changes"></a>
 
 | Concept | v1.x | v2 |
 |---|---|---|
@@ -3414,10 +3552,12 @@ items documented with the change.
 ---
 
 ## Appendix E — Templates compendium
+<a id="appendix-templates-compendium"></a>
 
 All paste-ready blocks in one place.
 
 ### E.1 PRISM Execution Envelope
+<a id="appendix-prism-execution-envelope"></a>
 
 ```
 ━━━ PRISM EXECUTION ENVELOPE ━━━
@@ -3438,6 +3578,7 @@ Operator hints:     [zero or more one-line cues]
 ```
 
 ### E.2 PRISM Execution Self-check
+<a id="appendix-prism-execution-self-check"></a>
 
 ```
 ━━━ PRISM EXECUTION SELF-CHECK ━━━
@@ -3459,6 +3600,7 @@ Before doing the task:
 ```
 
 ### E.3 PRISM Execution Output
+<a id="appendix-prism-execution-output"></a>
 
 ```
 ━━━ PRISM EXECUTION OUTPUT ━━━
@@ -3481,6 +3623,7 @@ Attachment warnings:  [optional; one line per warning]
 ```
 
 ### E.4 Vendor Selection block
+<a id="appendix-vendor-selection-block"></a>
 
 ```
 ━━━ VENDOR SELECTION ━━━
@@ -3493,6 +3636,7 @@ Soft notes:          [optional; concerns or alternatives the operator should kno
 ```
 
 ### E.5 *What's next*
+<a id="appendix-whats-next"></a>
 
 ```
 ━━━ WHAT'S NEXT ━━━
@@ -3522,6 +3666,7 @@ Dispatch-ready payload (if applicable):
 ```
 
 ### E.6 Vendor Triangulation delta
+<a id="appendix-vendor-triangulation-delta"></a>
 
 ```
 ━━━ VENDOR TRIANGULATION DELTA ━━━
@@ -3539,6 +3684,7 @@ Operator action:     [recommended next step — accept, dig, or escalate]
 ```
 
 ### E.7 Migration handoff
+<a id="appendix-migration-handoff"></a>
 
 ```
 ━━━ PRISM SESSION HANDOFF ━━━
@@ -3569,6 +3715,7 @@ Next session opens with:
 ```
 
 ### E.8 Probe 1 Coverage grading output
+<a id="appendix-probe-1-coverage-grading-output"></a>
 
 ```
 ━━━ PROBE 1 — COVERAGE GRADING ━━━
@@ -3594,6 +3741,7 @@ Saturation flag: not-yet (3 changes from P0.2)
 ```
 
 ### E.9 Setup artifacts (Master sections)
+<a id="appendix-setup-artifacts-master-sections"></a>
 
 #### Decision brief
 
@@ -3646,6 +3794,7 @@ Falsifiers:        [list — findings that would refute the thesis]
 ```
 
 ### E.10 Dispatch register
+<a id="appendix-dispatch-register"></a>
 
 ```
 ## Dispatch register
@@ -3658,6 +3807,7 @@ Falsifiers:        [list — findings that would refute the thesis]
 ```
 
 ### E.11 Rerun Register
+<a id="appendix-rerun-register"></a>
 
 ```
 ## Rerun Register
@@ -3670,10 +3820,12 @@ Falsifiers:        [list — findings that would refute the thesis]
 ---
 
 ## Appendix F — Standing Principles full text
+<a id="appendix-standing-principles-full-text"></a>
 
 Each Standing Principle stated in full, in canonical order.
 
 ### SP-1 (extended) — Canonicity preservation
+<a id="principle-SP-1"></a>
 
 `[operator-scaffolding | stable]`
 
@@ -3690,9 +3842,10 @@ Order of operations when a canonical artifact is missing:
    consequences named.
 
 Never frame regeneration as "deterministic" or "low-cost" unless it
-genuinely is. Cross-ref: §10.1.1, §14.
+genuinely is. Cross-ref: §{section.sp-1-extended-canonicity-preservation}, §{section.missing-handoff-recovery}.
 
 ### SP-2 — Defer non-critical fixes to natural touchpoint
+<a id="principle-SP-2"></a>
 
 `[methodological | stable]` *(carryforward from v1.10.4)*
 
@@ -3701,13 +3854,15 @@ at the next aligned step rather than mid-flight. M10 (Rerun) fires when
 no natural touchpoint exists.
 
 ### SP-3 — DISSOLVED in v2
+<a id="principle-SP-3"></a>
 
 v1.10.4's SP-3 ("Convergence is part of prompt delivery") is
 incompatible with v2's orchestration/execution split. Convergence moves
 to orchestration; per-prompt convergence checklists drop from the
-atomic prompt template (§12).
+atomic prompt template (§{section.atomic-prompt-template-v2-form}).
 
 ### SP-4 — Every Monitor produces visible output
+<a id="principle-SP-4"></a>
 
 `[methodological | stable]` *(carryforward)*
 
@@ -3715,6 +3870,7 @@ Silent monitors are useless monitors. Applies to all M1–M12 fires.
 *What's next* surfaces every fire at appropriate severity.
 
 ### SP-5 — No heuristic guessing on ambiguous input
+<a id="principle-SP-5"></a>
 
 `[methodological | stable]` *(carryforward)*
 
@@ -3722,6 +3878,7 @@ Wherever orchestration parses operator input, ambiguity halts and
 asks. Pairs with M4 (Ambiguous Ask) firing.
 
 ### SP-6 — Rebuild at threshold
+<a id="principle-SP-6"></a>
 
 `[methodological | stable]` *(carryforward)*
 
@@ -3731,15 +3888,17 @@ Applies to v2 framework builds, Library Update sessions, large Master
 rewrites.
 
 ### SP-7 — File delivery is mandatory
+<a id="principle-SP-7"></a>
 
 `[methodological | stable]` *(carryforward)*
 
 Every orchestration session that updates Master delivers a file. Every
 execution session that produces Output delivers a file. Every Update
 session that produces a new Library file delivers a file. Reinforced
-structurally by the triple contract's file-based Output (§3.2.3).
+structurally by the triple contract's file-based Output (§{section.prism-execution-output}).
 
 ### SP-8 (narrowed) — Canonical Authority
+<a id="principle-SP-8"></a>
 
 `[operator-scaffolding | stable]`
 
@@ -3751,6 +3910,7 @@ Filename discipline (the look-alike disambiguation pattern) extracted
 to SP-14.
 
 ### SP-9 — Silence is never consent
+<a id="principle-SP-9"></a>
 
 `[methodological | stable]` *(carryforward)*
 
@@ -3760,25 +3920,28 @@ recommendation accept/decline. Active operator action required;
 no defaults-on-timeout.
 
 ### SP-10 — Verify state before recommending
+<a id="principle-SP-10"></a>
 
 `[operator-scaffolding | stable]` *(carryforward as named principle)*
 
 When orchestration generates recommendations that depend on current
 platform / vendor / model / best-practice state, verify before
-recommending. Mechanics live in Vendor Selection (§3.6); principle
-travels to point refresh (§7.4), Update sessions (§7.5), and any
+recommending. Mechanics live in Vendor Selection (§{section.vendor-selection-at-dispatch}); principle
+travels to point refresh (§{section.currency-maintenance-point-refresh}), Update sessions (§{section.currency-maintenance-update-session}), and any
 future recommendation surface.
 
 ### SP-12 — Bounded-Search Disclosure
+<a id="principle-SP-12"></a>
 
 `[operator-scaffolding | stable]` *(new in v2)*
 
 When orchestration answers on the basis of a bounded retrieval, the
 default posture is to disclose the bound. "I found no evidence"
 insufficient; "I found no evidence within [named scope]; confirm
-before I proceed" is required. Cross-ref: §10.1.2.
+before I proceed" is required. Cross-ref: §{section.sp-12-bounded-search-disclosure}.
 
 ### SP-13 — Substrate Declaration
+<a id="principle-SP-13"></a>
 
 `[operator-scaffolding | stable]` *(new in v2)*
 
@@ -3786,29 +3949,31 @@ PRISM-loaded sessions verify substrate against declared target before
 executing dependent work. If self-identification doesn't match
 declared target, or can't be determined, session halts and asks
 operator. Operationalized inside execution sessions via the Self-check
-block (§3.2.2); orchestration-side via session-open verification.
-Cross-ref: §10.1.3.
+block (§{section.prism-execution-self-check}); orchestration-side via session-open verification.
+Cross-ref: §{section.sp-13-substrate-declaration}.
 
 ### SP-14 — Filename Discipline
+<a id="principle-SP-14"></a>
 
 `[operator-scaffolding | stable]` *(new in v2; extracted from SP-8)*
 
 Look-alike files produced by multi-vendor execution use the structured
-filename pattern per §11. The em-dash separator stays cross-platform
+filename pattern per §{section.filename-conventions-and-bump-atomicity}. The em-dash separator stays cross-platform
 safe. M1 (Missing Inputs) parses attached filenames against expected
 patterns; mis-named files are flagged at session-open. Cross-ref:
-§10.1.5, §11.
+§{section.sp-14-filename-discipline}, §{section.filename-conventions-and-bump-atomicity}.
 
 ---
 
 ## Appendix G — Embedded Lens Library v0.10
+<a id="appendix-embedded-lens-library-v0-10"></a>
 
 The content below is an embedded, byte-for-byte copy of the canonical
 `lens/PRISM_lens_library.md` v0.10 (tag `prism-lens-v0.10`) at the
 time of this PRISM release. The standalone file remains authoritative
 for the catalog's own evolution; this embedded copy is the **default
 Library source** for orchestration so a single PRISM.md attachment is
-sufficient (mobile-first singleton, per §7.1).
+sufficient (mobile-first singleton, per §{section.library-reference-at-setup}).
 
 When PRISM and the embedded copy disagree (e.g., after the standalone
 Library is bumped via an Update session, before the next PRISM minor
@@ -3816,7 +3981,7 @@ version embeds the new content), the standalone file is authoritative
 on catalog content and PRISM.md's Appendix G is authoritative on
 "what shipped with this PRISM version." Operators on the standalone
 Library at a newer version pin to that version explicitly and attach
-the standalone file alongside the Master (§7.1).
+the standalone file alongside the Master (§{section.library-reference-at-setup}).
 
 ---
 
@@ -3860,7 +4025,7 @@ The gap between fired-lenses and covered-lenses is the silent-omission risk.
 1. **Weak-brief blind spot.** If a subject brief understates facts so that domain predicates fail to fire (a hidden jurisdiction, an undersold efficacy claim, an unreported custody function), the triggering lens stays silent. The Library relies on honest brief population.
 2. **Execution-quality blind spot.** A specialist pass included in scope but executed incompetently still checks the box. The Library catches scope-level omissions only.
 3. **Novel-subject blind spot.** Subjects whose failure modes don't match any covered category may slip past the catalog entirely.
-4. **Anchor currency.** Two entries carry version-pinned rubric anchors (LL-D-002 WCAG 2.2, LL-D-005 OWASP ASVS 5.0.0). At v0.10, both anchored entries carry `verification_basis: schema-introduction-only` to signal that `last_verified: 2026-04-24` reflects schema-introduction date, not an independently performed currency check. Run point refresh (per the adopting framework's Setup) before applying those lenses at the depth the anchor implies. The `verification_basis` field flips to `independent-review` after a real currency review is performed.
+4. **Anchor currency.** Two entries carry version-pinned rubric anchors (§{lens.LL-D-002} WCAG 2.2, LL-D-005 OWASP ASVS 5.0.0). At v0.10, both anchored entries carry `verification_basis: schema-introduction-only` to signal that `last_verified: 2026-04-24` reflects schema-introduction date, not an independently performed currency check. Run point refresh (per the adopting framework's Setup) before applying those lenses at the depth the anchor implies. The `verification_basis` field flips to `independent-review` after a real currency review is performed.
 5. **Pack structure is a convention.** Lenses are grouped into six domain packs as a readability aid. The assignment rule is primary-failure-surface dictates placement; cross-pack concerns are handled via other lenses' triggers. Packs are not orthogonal by construction.
 
 ---
@@ -4652,12 +4817,14 @@ Feedback, patches, and field-observations welcome. Ongoing currency of rubric an
 ---
 
 ## 18. Project, feedback, updates `[structural | stable]`
+<a id="section-project-feedback-updates"></a>
 
 PRISM is an open framework. This file ships with enough information to
 locate the project, check for newer versions, and feed observations back
 to the maintainer.
 
 ### 18.1 Project identity
+<a id="section-project-identity"></a>
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
@@ -4668,6 +4835,7 @@ to the maintainer.
   Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
 
 ### 18.2 Resource fetch convention
+<a id="section-resource-fetch-convention"></a>
 
 The framework and its companion artifacts are addressable on `main` of the
 public repository under stable raw URLs. Orchestration sessions running on
@@ -4690,6 +4858,7 @@ the Lens body. New resources added to the project follow the same path
 pattern (a stable file on `main`, a `VERSION` stamp where versioned).
 
 ### 18.3 Currency check at session open `[methodological | stable]`
+<a id="section-currency-check-at-session-open"></a>
 
 At orchestration session open, when the substrate supports web access,
 orchestration **may** check the framework and Lens version stamps against
@@ -4722,13 +4891,14 @@ working from a saved attachment have an explicit, in-file path back to
 the latest.
 
 ### 18.4 Feedback and contribution
+<a id="section-feedback-and-contribution"></a>
 
 - **Bugs and concrete defects.** GitHub Issues on the public repository,
   using the issue templates under `.github/ISSUE_TEMPLATE/`.
 - **Ideas, proposals, observations from real use.** GitHub Discussions
   on the public repository, *Ideas* category. Field observations from
   applying PRISM to real audits are particularly valuable: the framework
-  ships with several rev. 1 draft thresholds (M5 bands, Update session
+  ships with several rev. 1 draft thresholds (§{monitor.M5} bands, Update session
   triggers, probe iteration ceilings) that calibrate against use, not
   introspection.
 - **Show and tell.** Discussions, *Show-and-tell* category. Adaptations
@@ -4742,6 +4912,7 @@ The four-channel split is codified in `CONTRIBUTING.md`. The Code of
 Conduct is in `CODE_OF_CONDUCT.md`.
 
 ### 18.5 Citation
+<a id="section-citation"></a>
 
 To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
