@@ -1,13 +1,27 @@
 ---
+# Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.0.2. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.1.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+
+# Framework metadata (consumed by PRISM maintenance tooling)
+version: 2.1.0
+released: 2026-05-22
+supersedes: 2.0.2
+lens_library_embedded: "0.10"
+substrate_target: [claude-opus-4-6, claude-opus-4-7]
+normativity:
+  strength_vocabulary: [required, recommended, optional]
+  strength_default: required
+  polarity_vocabulary: ["✅", "⚠️", "🚫"]
+  polarity_default: null
+lint_catalog_version: 1
 ---
 
-# PRISM v2.0.2 — Framework operating document
+# PRISM v2.1.0 — Framework operating document
 
-**Status:** v2.0.2 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.1.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** May 2026
-**Supersedes:** PRISM v2.0.1 (release-hygiene patch; see §{section.project-feedback-updates} for surface and provenance). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.0.2 (MINOR release adding machine-readable frontmatter, normativity vocabulary, and Appendix H — Vendor parsing observations; see §{section.project-feedback-updates} for surface and provenance). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.10 in Appendix G; a singleton PRISM.md attachment is
@@ -25,8 +39,13 @@ points to a Lens Library entry.
 **Tag convention.** Every decision in this document carries a two-axis tag —
 durability axis (`structural` / `methodological` / `vendor-dependent` /
 `empirical` / `operator-scaffolding`) × review-trigger axis
-(`stable` / `review-if: <trigger>` / `review-annually`). The full tag index is
-Appendix C.
+(`stable` / `review-if: <trigger>` / `review-annually`). Decisions may also
+carry a strength token (`required` / `recommended` / `optional`, default
+`required`) and a polarity glyph (✅ always do / ⚠️ ask first / 🚫 never),
+appended after the review-trigger token when present; both vocabularies are
+declared in this file's frontmatter `normativity` block. Per-element marking
+is optional for legacy elements and applied to new ones going forward.
+The full tag index is Appendix C.
 
 **Voice.** This is operating instruction for Claude in an orchestration session.
 Imperative where Claude must act; declarative where defining shape; descriptive
@@ -61,8 +80,8 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.0.2 covers `[structural | stable]`
-<a id="section-what-v2-0-2-covers"></a>
+### 1.1 What v2.1.0 covers `[structural | stable]`
+<a id="section-what-v2-1-0-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -100,8 +119,8 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.0.2 does not cover
-<a id="section-what-v2-0-2-does-not-cover"></a>
+### 1.2 What v2.1.0 does not cover
+<a id="section-what-v2-1-0-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -3418,7 +3437,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-0-2-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-1-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -3480,16 +3499,30 @@ before recommending), §{section.sp-14-filename-discipline} (§{principle.SP-14}
 §{section.empirical-calibration-items} (empirical calibration items — collectively; individual items
 inherit calibration trigger).
 
+### C.9 `[methodological | review-if: release-sweep | recommended]`
+<a id="appendix-methodological-review-if-release-sweep-recommended"></a>
+
+§{appendix.vendor-parsing-observations} (Appendix H preamble — vendor parsing
+observations: empirical, observation-driven; the preamble's maintenance
+protocol carries the tag, the table rows are data).
+
 **Tag count summary.**
+
+The strength axis (`required` default; `recommended` / `optional` non-default)
+and polarity glyphs (✅ / ⚠️ / 🚫) are introduced in v2.1.0 per the
+frontmatter `normativity` block; only non-default strength values appear as
+tokens in tags. The summary below indexes by the original two-axis pair
+(durability × review-trigger); rows whose listed entries include non-default
+strength are noted parenthetically.
 
 | Axis 1 \ Axis 2 | stable | review-if | review-annually | Total |
 |---|---|---|---|---|
 | structural | 41 | 0 | 0 | 41 |
-| methodological | 10 | 2 | 0 | 12 |
+| methodological | 10 | 3 (1 with `recommended`) | 0 | 13 |
 | vendor-dependent | 0 | 3 | 0 | 3 |
 | operator-scaffolding | 6 | 0 | 0 | 6 |
 | empirical | 0 | 0 | 1 | 1 |
-| **Total** | **57** | **5** | **1** | **63** |
+| **Total** | **57** | **6** | **1** | **64** |
 
 ---
 
@@ -4872,6 +4905,69 @@ Feedback, patches, and field-observations welcome. Ongoing currency of rubric an
 
 ---
 
+## Appendix H — Vendor parsing observations
+<a id="appendix-vendor-parsing-observations"></a>
+
+`[methodological | review-if: release-sweep | recommended]`
+
+This appendix records empirical observations of how dispatched-content
+vendors handle PRISM-shaped inputs (envelopes, atomic prompts, attached
+artifacts). Entries are observations, not specifications: a status like
+`stripped` documents what was seen on a given date, not what a vendor
+guarantees. The appendix is consulted at dispatch time when shaping
+envelopes for a target vendor and at release-sweep time to re-test stale
+entries.
+
+**Status taxonomy.** Status column values are drawn from a closed
+vocabulary:
+
+- **passthrough** — vendor preserves the content as-is.
+- **stripped** — vendor removes the content silently from inputs (paste,
+  upload, web fetch).
+- **mangled** — vendor preserves the content but alters it in transit
+  (re-encoding, restructuring, character substitution).
+- **error** — vendor returns an error or refuses to process the content.
+- **not-tested** — no observation on record; placeholder when other
+  vendors in the section have entries.
+- **observed-once** — single anecdotal observation; not generalizable;
+  the entry exists to mark a sighting for follow-up confirmation.
+
+**Maintenance protocol.** Entries are append-only between releases. Any
+orchestration session that surfaces a vendor parsing gap creates a new
+entry (or updates an existing one) under the relevant content-type
+heading. At each MINOR or MAJOR PRISM release, entries with an `Observed`
+date older than twelve months are re-tested or annotated `† stale`. The
+appendix's maintenance surface is shared with the cross-vendor adaptation
+workstream; contributions from that workstream land here as new H3
+sections (new content types) or new rows in existing tables (new vendor
+observations for an existing content type).
+
+**Per-content-type sections.** Each content type is a separate H3
+sub-section so per-vendor tables stay narrow and mobile-readable. New
+content types are added as new H3 sections rather than as additional
+columns in an existing table.
+
+### Markdown / YAML fences in mobile-paste inputs
+
+Behavior when an envelope sent via the mobile-app *paste* input path
+contains fenced Markdown or YAML blocks (` ``` ` / `---`).
+
+| Vendor | Status | Observed | Workaround |
+|---|---|---|---|
+| ChatGPT (mobile paste) | stripped | 2026-05-15 | Treat mobile paste as an unsupported input path for fenced content. Inline-expand per §{section.atomic-prompt-self-containment}; verify the envelope as received before relying on contract structure. |
+| Perplexity DR | not-tested | — | — |
+| Gemini DR | not-tested | — | — |
+| Claude Research | not-tested | — | — |
+
+The ChatGPT mobile observation prompted §{section.atomic-prompt-self-containment}
+in v2.0.2: inline-expanded definitions of PRISM shorthand inside the
+dispatched prompt body ensure semantic integrity even when fences are
+silently dropped in transit. The `not-tested` rows are placeholders;
+re-test at the next release sweep or when a session next dispatches
+fenced content via mobile paste on those vendors.
+
+---
+
 ## 18. Project, feedback, updates `[structural | stable]`
 <a id="section-project-feedback-updates"></a>
 
@@ -4884,7 +4980,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.0.2 (this file)
+- **Framework version.** v2.1.0 (this file)
 - **Embedded Lens Library version.** v0.10 (Appendix G)
 - **Release date.** 2026-05-22
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -4900,12 +4996,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_0_2.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_1_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_10.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.0.2` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.1.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -4931,7 +5027,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.0.2 attached; v{published} available at {releases URL}.`
+   `Framework v2.1.0 attached; v{published} available at {releases URL}.`
    `Lens v0.10 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -4974,8 +5070,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.0.2). https://github.com/Ronkupper/PRISM
+> (v2.1.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.0.2 framework operating document.*
+*End of PRISM v2.1.0 framework operating document.*
