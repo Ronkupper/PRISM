@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 11
+**Version:** 12
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -290,7 +290,15 @@ Codified as SP-9 in v1.9.
 
 ## Shipped
 
-*(moved here when v1.9 is built and the backlog items ship — structure reserved for future use)*
+### Named cross-references migration (v2.1.0 candidate)
+
+**Shipped on:** `feat/named-refs-v1` in `Ronkupper/PRISM`, 2026-05-22. Awaiting merge to main and version-bump decision.
+
+**What landed.** PRISM.md migrated from numbered `§X.Y` cross-references to named `§{namespace.slug}` form. 171 explicit `<a id="{ns}-{slug}"></a>` anchors injected. Single deterministic Python transformation (`PRISM-workshop/scripts/migrate_named_refs.py`). Linter (`scripts/lint_named_refs.py`) implements PRISM-REF-01/02/03/04 per the design DD. Lint run on the migrated file: 0 errors, 55 info-level orphan findings.
+
+**Provenance.** `PRISM-workshop/design/named_refs_taxonomy_dd_rev1.md` (settled D1–D7); `handoffs/named_refs_build_v1.md` (build session). Sequenced via `design/backlog_sequencing_dd_rev1.md` Phase A.3.
+
+**Deferred to follow-up.** Bidirectional alias normalizer for contributor inputs (issue/PR/chat). Split-mode resolver (when partial decomposition of PRISM.md happens). External `prism-md` CLI.
 
 ---
 
