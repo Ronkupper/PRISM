@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 6
+**Version:** 13
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -46,70 +46,51 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 
 **User commitment:** "I would like to do that at some point near future" — v1.10.1 build session, Apr 2026.
 
+**Note:** Appendix H — Vendor parsing observations (shipped in v2.1.0) provides one of the maintenance surfaces this channel will feed into. Cross-vendor adaptation contributions either add new H3 sections (new content types) or new rows in existing tables (new vendor observations for an existing content type). Once the channel itself lands, the appendix is one of the documented destinations.
+
 ---
 
-### Cowork + Computer Use for framework execution
+### Cowork execution mode (`agentic_orchestration`)
 
-**Triggered by:** User note, Apr 2026. Cowork (Anthropic's desktop file/task automation tool) with Computer Use enabled could automate the multi-vendor orchestration PRISM currently runs manually.
-
-**The idea:** Multi-LLM triangulation (Claude / ChatGPT / Gemini / Perplexity) is hand-driven today — open each vendor's interface, paste prompts, collect outputs, hand-off to Convergence. Cowork with Computer Use could in principle drive the browser-based vendors, run prompts in sequence, collect outputs into files, and stage a consolidated set for the synthesis steps. Folds the mechanical cross-vendor work into a single orchestrating session.
-
-**What to investigate:**
-- Whether Cowork + Computer Use handles authenticated web UIs (ChatGPT / Gemini / Perplexity logins, session persistence, file uploads per vendor) reliably enough for a full run, or degrades on the edge cases.
-- How this interacts with SP-5 / SP-9 ("flag, don't assume" / "silence is never consent"). Computer Use makes many micro-decisions; the framework has to decide which surface for operator approval vs. run autonomously. Default should be aggressive surfacing until reliability is established.
-- Whether automated orchestration preserves the epistemic value of multi-vendor triangulation. Different vendors have different failure modes — those still surface regardless of who types the prompts, so probably yes, but the operator's real-time judgment calls ("that Gemini output went off-rails, re-run") need a place to land in the automated flow.
-- Augments the mobile-first workflow with a desktop-mode execution path. If Cowork + Computer Use works reliably, both modes are first-class: mobile-mode retains its advantages (portability, low ceremony, the thinking/doing separation that mobile friction naturally enforces), desktop-mode gains automation of the mechanical cross-vendor work. Neither is the "real" way to run PRISM; the operator picks per project based on what the project needs.
-
-**Open questions:**
-- New Execution Mode flag at Setup (alongside the LLM access flag from v1.9), or a separate build path?
-- Does this compose with PRISM's existing handoff-artifact pattern (thinking/doing separation), or is the temptation to run everything in one agentic session going to collapse the gap that separation exists to preserve?
-
-**Urgency:** Not blocking. Exploratory — depends on Cowork's actual capabilities as they mature, and on Computer Use reliability curves generally.
+*(Active proposal — unchanged.)*
 
 ---
 
 ### Claude Plugins integration (native)
 
-**Triggered by:** User note, Apr 2026. Anthropic maintains an official plugin directory ([claude.com/plugins](https://claude.com/plugins)) bundling MCPs, skills, and tools for Claude Code and Cowork. PRISM currently doesn't reference any of them.
-
-**The idea:** Several plugins in the directory pair directly with PRISM audit work. Naming the right plugin in a prompt's execution envelope could produce higher-quality intermediate artifacts than generic prompting. Exemplar categories and named plugins from the current directory:
-- **Market / competitive research** — ZoomInfo (company & contact enrichment, AI-ranked lookalikes), Nimble Web Data (web crawl + structured extraction)
-- **Live product inspection** — Playwright, Chrome DevTools (drive the audit subject, capture screens, inspect network)
-- **Data ingestion** — Firecrawl (convert product surface to LLM-ready data), Data plugin (SQL / dataset exploration, Cowork-native)
-- **Design surface** — Figma (access design files), Frontend Design (produce UI recommendation artifacts)
-- **PRISM maintenance** — framework iteration, not audit execution — Skill Creator, CLAUDE.md Management, Superpowers
-
-**Hard platform gate:** Plugins run in Claude Code or Cowork, not in stock claude.ai (mobile or web). Plugin integration is therefore unavailable in PRISM's default mobile-first execution mode. Couples tightly to the Cowork + Computer Use proposal above — any execution mode that exposes Claude Plugins is a desktop-mode variant by definition.
-
-**What to investigate:**
-- Which specific plugins clear a usefulness threshold for PRISM (shortlist, not blanket endorsement). The actual audit workload determines the shortlist, not the feature list.
-- **"Need to look them up each time?"** — the directory is browsable but large (80+ plugins already) and still growing. Any PRISM reference would be a curated shortlist of plugin↔prompt pairings, not the whole catalog, and would age faster than the framework itself. Probably lives as a separate reference alongside PRISM.md — same ageing argument as the vendor-to-role mapping in v1.9.
-- Interaction with SP-5 / SP-9 — plugins that take external actions (Firecrawl crawls, Playwright clicks, ZoomInfo lookups consuming credit) need consent surfaces. Same pattern as Computer Use; likely resolvable with the same machinery.
-
-**Open questions:**
-- Does meaningful plugin uplift promote the Cowork + Computer Use proposal from "exploratory" to "recommended for projects where plugin advantage is material"?
-- Is there a "PRISM Plugin" worth building eventually — a single bundle shipping PRISM as a Skill plus a curated set of companion plugins? Out of scope for 2026 but worth flagging.
-
-**Urgency:** Not blocking. Gated on Cowork proposal resolution — no point investing in plugin shortlists if the execution-mode decision lands against desktop variants.
+*(Active proposal — unchanged.)*
 
 ---
 
 ### Multi-vendor skills/plugins ecosystems
 
-**Triggered by:** User note, Apr 2026. Perplexity ships its own Skills library (e.g., `marketing-competitive-analysis`, under its computer-use surface). Claude Plugins are not a Claude-specific anomaly — they're one instance of a broader pattern where every major vendor is building a skill/plugin ecosystem. PRISM's role-based vendor recommendations (v1.9) should account for this.
+*(Active proposal — unchanged.)*
 
-**The idea:** Vendor skill coverage is now a first-class signal of vendor fit for specific prompt roles. "Use Perplexity for competitive analysis" becomes stronger when Perplexity literally ships a `marketing-competitive-analysis` Skill — the vendor has invested in that capability surface deliberately, not just incidentally. Multi-vendor triangulation gets richer, not redundant: different vendors bring different skill libraries, which means different blind spots and different strengths surface in the same audit. Epistemically additive.
+---
 
-**What to investigate:**
-- Survey scope: which vendors currently ship named skill/plugin libraries (Claude and Perplexity confirmed; OpenAI GPTs, Gemini Gems likely analogous but mechanically different). Which PRISM prompt roles have strong skill coverage from at least one vendor? Which don't?
-- **Platform gate consistency:** Claude Plugins require Cowork / Code. Perplexity Skills appear to live in their computer-use context. The pattern across vendors seems to be that skill/plugin ecosystems are gated on agentic/desktop surfaces, not chat-default surfaces. Worth confirming — if general, it generalises the Cowork coupling to "any desktop-mode execution variant, for any vendor," not just Claude.
-- **Vendor-to-role mapping reference:** v1.9 established that this mapping lives outside PRISM.md because it ages fast. Skill-coverage columns (per-vendor skill library, named skills relevant to PRISM roles) are a natural addition to that reference. Doesn't touch PRISM.md.
+### Repo-backed PRISM mode (operator GitHub flow)
 
-**Open questions:**
-- Does skill coverage get weight alongside raw model capability in the vendor-for-role recommendation? Probably yes, but needs explicit framing — capability ∧ skill coverage, not either alone.
-- When a vendor is recommended for a role because of its skill coverage, does PRISM recommend *using* that vendor's specific skill, or treat skill availability as a signal that the vendor has strong latent capability even when invoked in chat-default mode? First is more leveraged, second is more flexible. Likely depends on whether the operator is in a desktop execution variant (gate from the entry above).
+*(Active proposal — unchanged.)*
 
-**Urgency:** Not blocking. Low-cost research — a vendor survey session cataloguing current skill libraries and mapping them to PRISM prompt roles produces the v1.9 mapping reference's next revision without needing framework changes.
+---
+
+### Tooling-conventions Pattern B Phase B2 — legacy element marking sweep
+
+**Status:** Gated on operator ratification of the proposed legacy markers at `PRISM-workshop/notes/pattern_b_legacy_marker_proposals.md` (produced in the v2.1.0 build session).
+
+**Scope.** Pattern B Phase B1 (shipped in v2.1.0) added the strength × polarity vocabulary to the frontmatter `normativity` block and the convention-prose extension in the title block, but did not retroactively mark any existing Standing Principle, Monitor, Gate, or Probe. Phase B2 applies ratified polarity glyphs (and any non-default strength tokens) to all ~35 legacy elements in a single sweep.
+
+**Target release:** v2.2.0. The legacy sweep visibly touches every SP / Monitor / Gate / Probe heading; its own release is the cleanest framing for that surface change (per `design/tooling_conventions_micro_dds_rev1.md` X1).
+
+**Sequence to Phase B2:**
+
+1. v2.1.0 ships proposals document (done).
+2. Operator reviews each proposed marker; ratifies or amends.
+3. Phase B2 handoff written at `handoffs/tooling_conventions_pattern_b_phase_b2_build.md` after ratification.
+4. Phase B2 build session applies ratified markers via deterministic Python transformation.
+5. `PRISM-LINT-06 / element-marking-completeness` (reserved in catalog v1) may promote from `info` to `warning` after Phase B2 ships.
+
+**Provenance.** `PRISM-workshop/design/tooling_conventions_micro_dds_rev1.md` decisions B1–B6. Phase B1 build: `PRISM-workshop/handoffs/tooling_conventions_micro_dds_build.md` (rev1 + amendment).
 
 ---
 
@@ -217,7 +198,52 @@ Codified as SP-9 in v1.9.
 
 ## Shipped
 
-*(moved here when v1.9 is built and the backlog items ship — structure reserved for future use)*
+### Tooling conventions Patterns A + D + B Phase B1 (v2.1.0)
+
+**Shipped on:** `main` of `Ronkupper/PRISM`, 2026-05-22. Tag `v2.1.0`.
+
+**What landed.** Three independently-designed patterns bundled into one MINOR release per `PRISM-workshop/design/tooling_conventions_micro_dds_rev1.md` X1:
+
+- **Pattern A — machine-readable frontmatter.** `PRISM.md` frontmatter expanded into two comment-grouped sections (skill metadata + framework metadata). New fields: `version`, `released`, `supersedes`, `lens_library_embedded`, `substrate_target`, `normativity`, `lint_catalog_version`. Authoritative schema at `PRISM-workshop/schemas/prism_frontmatter.schema.json` (Python `check-jsonschema` validator).
+- **Pattern B Phase B1 — strength × polarity vocabulary.** Frontmatter `normativity` block declares strength vocabulary (`required` / `recommended` / `optional`, default `required`) and polarity glyphs (✅ / ⚠️ / 🚫). Title-block tag-convention paragraph extended (two sentences) to announce the axes; vocabulary source is the frontmatter. New elements use the extended `[durability | review-trigger | strength? | polarity?]` form going forward; legacy element sweep deferred to Phase B2.
+- **Pattern D — Appendix H, Vendor parsing observations.** New appendix indexing empirical observations of vendor parsing behaviour on dispatched content. Six-status closed vocabulary (`passthrough` / `stripped` / `mangled` / `error` / `not-tested` / `observed-once`), per-content-type H3 sections with narrow per-vendor tables, observation-driven appends with release-sweep at 12-month staleness. Seed entry: ChatGPT mobile paste = stripped (the empirical observation that drove §4.12 atomic-prompt self-containment in v2.0.2).
+
+**Pre-shipping ratifications** (per `design/tooling_conventions_micro_dds_rev1.md` rev1 amendment, 2026-05-22): X1 bundle locked; C5 workshop retirement of `lint_named_refs.py` locked; C1 expanded with `PRISM-LINT-07` (description-version-match); X4 review-trigger locked to `review-if: release-sweep`; Step 2b convention-prose location locked to extending the title-block tag-convention paragraph (no new subsection); Step 3a Appendix H seed locked to single ChatGPT-mobile entry.
+
+**Provenance.** `PRISM-workshop/design/tooling_conventions_survey_dd_rev1.md` (survey); `PRISM-workshop/design/tooling_conventions_micro_dds_rev1.md` (combined micro-DD A+B+C+D); `PRISM-workshop/handoffs/tooling_conventions_micro_dds_build.md` (build handoff). Sequenced via `design/backlog_sequencing_dd_rev1.md`.
+
+**Coupling watch-out called out.** Bundling A + D + B Phase B1 into one release silently couples three thinking sessions' delivery dates (per `backlog_sequencing_dd_rev1.md` Watch-out #2). Bundle is justified by review-surface efficiency: all three are independent content additions with no semantic conflict. If any of the three had hit a real blocker, the bundle would have broken rather than waited.
+
+---
+
+### Tooling conventions Pattern C — lint catalog (`lint-v1`)
+
+**Shipped on:** `main` of `Ronkupper/PRISM`, 2026-05-22. Tag `lint-v1`.
+
+**What landed.** Off-cycle reference artifacts for the public lint catalog. No `PRISM.md` content change.
+
+- `lint_rules.md` at repo root — contributor-facing catalog with seven entries: two active (`PRISM-LINT-01 / named-refs-resolve` error; `PRISM-LINT-02 / named-refs-orphan-anchor` info), five reserved (`-03` `-04` `-05` `-07` gated on Pattern A; `-06` gated on Pattern B Phase B1, now active as of v2.1.0).
+- `scripts/lint/lint_named_refs.py` — Python lint script. NDJSON output by default; `--text` flag for human-readable; `--severities` flag for selective emission. Consolidates broken-ref / slug-collision / mixed-ref-style under `PRISM-LINT-01`; emits `PRISM-LINT-02` for orphan anchors. Self-contained (slug-derivation function inlined; no workshop-script dependency).
+- `.github/workflows/lint.yml` — PR-only CI workflow with two jobs: `lint-required` (runs error + warning; translates NDJSON to GitHub `::error` / `::warning` annotations; best-effort frontmatter-schema validation against the workshop-hosted schema) and `lint-info` (runs info; posts NDJSON-rendered summary as a sticky PR comment).
+- `CONTRIBUTING.md` — new section "Reviewing PRs — rendered-diff convention" per `design/tooling_conventions_micro_dds_rev1.md` C7.
+
+**Workshop retirement.** `PRISM-workshop/scripts/lint_named_refs.py` (the working/staging copy under the old `PRISM-REF-NN` rule IDs) is retired immediately on Pattern C ship per C5: single canonical home, no staging duplication.
+
+**Provenance.** Same DD and handoff as the v2.1.0 bundle. Decisions C1–C8.
+
+---
+
+### Named cross-references migration (v2.0.2)
+
+**Shipped on:** PRISM v2.0.2, 2026-05-22.
+
+**What landed.** PRISM.md migrated from numbered `§X.Y` cross-references to named `§{namespace.slug}` form. 171 explicit `<a id="{ns}-{slug}"></a>` anchors injected. Single deterministic Python transformation (`PRISM-workshop/scripts/migrate_named_refs.py`). Initial linter (workshop's `lint_named_refs.py`) implemented `PRISM-REF-01/02/03/04` per the design DD. Lint run on the migrated file: 0 errors, 55 info-level orphan findings.
+
+**Provenance.** `PRISM-workshop/design/named_refs_taxonomy_dd_rev1.md` (settled D1–D7); `handoffs/named_refs_build_v1.md` (build session). Sequenced via `design/backlog_sequencing_dd_rev1.md` Phase A.3.
+
+**Catalog rename.** In `lint-v1` (Pattern C, 2026-05-22), the four `PRISM-REF-NN` rule IDs are consolidated under the public catalog: `REF-01` / `REF-02` / `REF-03` (all error) → `PRISM-LINT-01 / named-refs-resolve`; `REF-04` (info) → `PRISM-LINT-02 / named-refs-orphan-anchor`. Internal sub-mode (`broken-ref` / `slug-collision` / `mixed-ref-style` / `orphan-anchor`) preserved in NDJSON `context` field for diagnosability.
+
+**Deferred to follow-up.** Bidirectional alias normalizer for contributor inputs (issue/PR/chat). Split-mode resolver (when partial decomposition of PRISM.md happens). External `prism-md` CLI.
 
 ---
 

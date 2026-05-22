@@ -9,11 +9,14 @@ abstract: >-
   Perplexity, and converges their outputs into a single living document called
   the Master. v2 introduces the PRISM Lens Library — a reference catalog of
   audit-scope lenses graded against the draft Prompt Strategy at Setup to
-  surface silent omissions before any prompt ships. The framework codifies a
-  triple execution contract (Envelope · Self-check · Output), Monitors,
-  Standing Principles, a telemetric context-pressure framework, and continuous
-  Master + What's-next state — distributed as a single markdown file that can
-  be attached to any LLM session or installed as a Claude Skill.
+  surface silent omissions before any prompt ships. v2.1 adds machine-readable
+  frontmatter, a strength × polarity normativity vocabulary, and an
+  observation-driven appendix indexing vendor parsing behaviour on dispatched
+  content. The framework codifies a triple execution contract
+  (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
+  context-pressure framework, and continuous Master + What's-next state —
+  distributed as a single markdown file that can be attached to any LLM session
+  or installed as a Claude Skill.
 authors:
   - family-names: Kuper
     given-names: Ron
@@ -21,7 +24,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.0.2"
+version: "2.1.0"
 date-released: "2026-05-22"
 keywords:
   - llm
