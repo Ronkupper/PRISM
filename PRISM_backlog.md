@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 13
+**Version:** 14
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -197,6 +197,26 @@ Codified as SP-9 in v1.9.
 ---
 
 ## Shipped
+
+### Release-hygiene patch — SP-15 + §1.1 framing + Prompt-digest semantics (v2.1.1)
+
+**Shipped on:** `main` of `Ronkupper/PRISM`, 2026-05-23. Tag `v2.1.1`.
+
+**What landed.** Three release-hygiene surfaces, bundled as a PATCH over v2.1.0:
+
+- **SP-15 — Triangulation integrity** added at §10.1.6 (with carryforward-catalog row in §10.2, full text in Appendix F, and an inline cross-ref at the top of §4.3 Vendor Triangulation). Codifies the Vendor Triangulation premise as adversarial-not-parallel and names two corollaries: single-vendor multi-agent fan-out is not falsifier-grade triangulation (equivalence dispatch requires distinct vendors); self-triangulation carries no asymmetric weighting (convergence remains mechanical when the orchestration vendor is also a triangulated execution vendor).
+- **§1.1 framing line tightened.** `(orchestration on Claude; execution on any vendor)` → `(orchestration on Claude; execution on selected vendor per Vendor Selection)`. Removes the read-prone summary phrase that compressed-attention readers had been misreading as Claude-exclusion (§4.5's default-stance correction sits 900 lines downstream).
+- **Prompt-digest semantics rewrite.** §3.2.3 field-semantics bullet now leads with purpose ("detects wrong-prompt / wrong-attachment delivery at dispatch boundaries") before mechanism, and adds the explicit anti-pattern callout *Generating the digest at return time provides zero integrity check — there is nothing to compare against.* §3.2.1 Envelope-template token inverted to `[orchestration-generated at dispatch; copy verbatim; never recomputed]`, so the counter-signal sits inside the template itself rather than in detail-section prose downstream.
+
+**Housekeeping.** §1.1 and §1.2 anchors and headings rebumped to v2.1.1 per release-pin convention; one cross-ref in Appendix C updated. All version-touching surfaces (frontmatter, EOF marker, §18.x, snapshot filename, CITATION.cff, README, SKILL.md, VERSION) updated.
+
+**Pre-flight.** Lint 0 errors / 56 info-level orphans (baseline 55 + 1 for the new `principle-SP-15` anchor stub). Snapshot `PRISM_v2_1_1.md` byte-identical to `PRISM.md` at the tag. Customer-name leak-class sweep clean on every public-surface artifact. Commit `b0847ca` signed and GitHub-verified.
+
+**Provenance.** Workshop diagnostic entries in `PRISM-workshop/notes/pending.md`: 2026-05-01 (Cowork irregular PRISM run — digest-at-return; default-vendor-stance inversion; codification drift toward asymmetric mitigation) and 2026-05-08 (single-vendor multi-agent ≠ cross-vendor triangulation). Patch spec at `PRISM-workshop/design/PRISM_v2_1_1_patch_spec.md`. Entries graduated `status: absorbed` with the v2.1.1 ship.
+
+**Deferred to downstream carriers.** Three related pending observations not bundled into this patch: framing-block sweep meta-pattern (rides tooling-conventions optimization-phase or self-elevates on third instance); verbatim-memory operator pattern from Cowork codification drift (Cowork-mode design once that promotes); three-strike agent-substrate addendum (cross-vendor adaptation channel design or Cowork mode design, whichever lands first).
+
+---
 
 ### Tooling conventions Patterns A + D + B Phase B1 (v2.1.0)
 
