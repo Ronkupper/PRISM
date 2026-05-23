@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.1.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.1.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.1.0
-released: 2026-05-22
-supersedes: 2.0.2
+version: 2.1.1
+released: 2026-05-23
+supersedes: 2.1.0
 lens_library_embedded: "0.10"
 substrate_target: [claude-opus-4-6, claude-opus-4-7]
 normativity:
@@ -17,11 +17,11 @@ normativity:
 lint_catalog_version: 1
 ---
 
-# PRISM v2.1.0 — Framework operating document
+# PRISM v2.1.1 — Framework operating document
 
-**Status:** v2.1.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.1.1 release. Canonical framework for Claude orchestration sessions.
 **Date:** May 2026
-**Supersedes:** PRISM v2.0.2 (MINOR release adding machine-readable frontmatter, normativity vocabulary, and Appendix H — Vendor parsing observations; see §{section.project-feedback-updates} for surface and provenance). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.1.0 (PATCH release: codifies triangulation integrity as SP-15; tightens §{section.what-v2-1-1-covers} framing prose to remove a read-prone summary line that compressed-attention readers misread as Claude-exclusion; rewrites the Prompt-digest field semantics in §{section.prism-execution-output} to lead with purpose, and inverts the Envelope-template token in §{section.prism-execution-envelope} to name the never-recomputed semantics explicitly). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.10 in Appendix G; a singleton PRISM.md attachment is
@@ -80,13 +80,13 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.1.0 covers `[structural | stable]`
-<a id="section-what-v2-1-0-covers"></a>
+### 1.1 What v2.1.1 covers `[structural | stable]`
+<a id="section-what-v2-1-1-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
 
-- **Two session types** (orchestration on Claude; execution on any vendor)
+- **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
 - **The triple contract** (Envelope inbound, Self-check, Output outbound) as
   the load-bearing interface between sessions (§{section.the-triple-contract}).
@@ -119,8 +119,8 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.1.0 does not cover
-<a id="section-what-v2-1-0-does-not-cover"></a>
+### 1.2 What v2.1.1 does not cover
+<a id="section-what-v2-1-1-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -496,7 +496,7 @@ unchanged.
 Prompt ID:          [identifier — purpose/title]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
-Prompt digest:      [orchestration-generated short identifier; copy verbatim into Output]
+Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
 Vendor:             [vendor] | multi-vendor
 Dispatch shape:     equivalence | split | limitation-named
 Dispatch rationale: [one positive-framing line per variant; see §4.2]
@@ -603,12 +603,14 @@ Attachment warnings:  [optional; one line per warning; see §9.2 spec / §13]
 - `Schema version` — currently `output-v1`. Bumps when the Output block's
   structure changes; orchestration's Layer-1 convergence flags
   incompatibilities at ingestion.
-- `Prompt digest` — short identifier orchestration generates for the exact
-  dispatched prompt body and writes into the Envelope. Execution copies it
-  verbatim from the Envelope into the Output. Orchestration verifies
-  copy-through, not cryptographic computation by the execution model. This
-  catches wrong-prompt / wrong-attachment delivery without depending on
-  vendor chats to compute reliable hashes (which they can't, in general).
+- `Prompt digest` — detects wrong-prompt / wrong-attachment delivery at
+  dispatch boundaries. Mechanism: orchestration generates the digest at
+  dispatch time and writes it into the Envelope; execution copies it
+  verbatim from the Envelope into the Output signature; orchestration
+  compares the returned copy against the original. Verifies copy-through,
+  not cryptographic computation by the execution model. Generating the
+  digest at return time provides zero integrity check — there is nothing
+  to compare against.
 - `Operator next` — download filename + attachment instruction for the next
   orchestration turn.
 - `Attachment warnings` — populated only when warranted. See §{section.operator-hint-catalog} for
@@ -938,6 +940,8 @@ variant component. Mobile-legible. No deficit framing.
 Vendor Triangulation is a Layer-1 convergence pass that fires when the
 second return arrives in an `equivalence` dispatch. Re-fires as each
 subsequent return arrives. Tracked via the Master's Dispatch register.
+Triangulation integrity discipline is named in SP-15
+(§{section.sp-15-triangulation-integrity}).
 
 **Lives outside the probe taxonomy.** Operates against returned findings,
 not draft strategy. Single-responsibility separation from Probe 2
@@ -2650,6 +2654,32 @@ Discipline (this new SP-14).
 
 Full filename-convention canonical reference table in §{section.filename-conventions-and-bump-atomicity}.
 
+#### 10.1.6 SP-15 — Triangulation integrity `[operator-scaffolding | stable]`
+<a id="section-sp-15-triangulation-integrity"></a>
+
+PRISM's Vendor Triangulation premise is adversarial, not parallel: different
+vendors carry different priors, training distributions, and failure modes,
+which is what makes their convergence (or divergence) load-bearing for
+falsifier-grade findings. Two corollaries follow.
+
+- **Single-vendor multi-agent is not cross-vendor triangulation.** Sub-agents
+  from one vendor — native multi-agent / sub-agent coordination features
+  notwithstanding — share priors with their orchestrating model. They
+  parallelize work; they do not falsify each other across distributions.
+  Equivalence dispatch (§{section.single-envelope-with-spectrum-shape})
+  requires distinct vendors, not distinct sessions on the same vendor.
+
+- **Self-triangulation carries no asymmetric weighting.** When the
+  orchestration vendor is also one of the triangulated execution vendors,
+  convergence remains mechanical: Layer-1 reconciliation, the Vendor
+  Triangulation delta (§{section.convergence-delta-document}), and M6/M7/M8
+  monitors apply identically to every vendor regardless of which substrate
+  also runs orchestration. No finding is up- or down-weighted by virtue of
+  vendor identity matching the orchestrator.
+
+Cross-ref: §{section.vendor-triangulation},
+§{section.claude-baseline-feasibility-with-named-limitation-escape-hatch}.
+
 ### 10.2 v1.x Standing Principles — carryforward catalog
 <a id="section-v1-x-standing-principles-carryforward-catalog"></a>
 
@@ -2670,6 +2700,7 @@ Per-SP disposition explicit:
 | SP-12 | Bounded-Search Disclosure | New in v2 | See §{section.sp-12-bounded-search-disclosure} |
 | SP-13 | Substrate Declaration | New in v2 | See §{section.sp-13-substrate-declaration} |
 | SP-14 | Filename Discipline | New in v2 (extracted from SP-8) | See §{section.sp-14-filename-discipline} |
+| SP-15 | Triangulation integrity | New in v2.1.1 | See §{section.sp-15-triangulation-integrity} |
 
 #### 10.2.1 SP-8 narrowed — Canonical Authority `[operator-scaffolding | stable]`
 <a id="section-sp-8-narrowed-canonical-authority"></a>
@@ -3437,7 +3468,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-1-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-1-1-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -3653,7 +3684,7 @@ All paste-ready blocks in one place.
 Prompt ID:          [identifier — purpose/title]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
-Prompt digest:      [orchestration-generated short identifier; copy verbatim into Output]
+Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
 Vendor:             [vendor] | multi-vendor
 Dispatch shape:     equivalence | split | limitation-named
 Dispatch rationale: [one positive-framing line per variant]
@@ -4051,6 +4082,19 @@ filename pattern per §{section.filename-conventions-and-bump-atomicity}. The em
 safe. M1 (Missing Inputs) parses attached filenames against expected
 patterns; mis-named files are flagged at session-open. Cross-ref:
 §{section.sp-14-filename-discipline}, §{section.filename-conventions-and-bump-atomicity}.
+
+### SP-15 — Triangulation integrity
+<a id="principle-SP-15"></a>
+
+`[operator-scaffolding | stable]` *(new in v2.1.1)*
+
+PRISM's Vendor Triangulation is adversarial, not parallel. Single-vendor
+multi-agent fan-out parallelizes execution but does not falsify across
+distributions; equivalence dispatch
+(§{section.single-envelope-with-spectrum-shape}) requires distinct vendors.
+When the orchestration vendor is among the triangulated execution
+vendors, convergence remains mechanical — no asymmetric weighting by
+vendor identity. Cross-ref: §{section.sp-15-triangulation-integrity}.
 
 ---
 
@@ -4980,9 +5024,9 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.1.0 (this file)
+- **Framework version.** v2.1.1 (this file)
 - **Embedded Lens Library version.** v0.10 (Appendix G)
-- **Release date.** 2026-05-22
+- **Release date.** 2026-05-23
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
   Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
 
@@ -4996,12 +5040,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_1_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_1_1.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_10.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.1.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.1.1` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5027,7 +5071,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.1.0 attached; v{published} available at {releases URL}.`
+   `Framework v2.1.1 attached; v{published} available at {releases URL}.`
    `Lens v0.10 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -5070,8 +5114,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.1.0). https://github.com/Ronkupper/PRISM
+> (v2.1.1). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.1.0 framework operating document.*
+*End of PRISM v2.1.1 framework operating document.*

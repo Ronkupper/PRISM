@@ -24,8 +24,8 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.1.0"
-date-released: "2026-05-22"
+version: "2.1.1"
+date-released: "2026-05-23"
 keywords:
   - llm
   - prompt-engineering
