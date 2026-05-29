@@ -87,10 +87,10 @@ rather than at lint time.
 
 Every Standing Principle, Monitor, Gate, and Probe heading in `PRISM.md`
 carries a parseable decision-tag block (`[durability | review-trigger]`
-plus optional strength and polarity tokens). Info-severity initially
-because Pattern B's Phase B1 ships frontmatter and new-element shape
-only; legacy elements remain unmarked until Phase B2 completes the
-sweep. Severity may promote to warning after Phase B2 ships.
+plus optional strength and polarity tokens). With Pattern B Phase B2
+shipped (v2.2.0), the legacy sweep is complete — all in-scope elements
+now carry markers. Severity remains `info`; promotion to `warning` is a
+separate decision after operators have lived with the marked file.
 
 **Status at catalog v1:** reserved slot. Activates when Pattern B Phase
 B1 ships.
