@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.3.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.4.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.3.1
+version: 2.4.0
 released: 2026-05-30
-supersedes: 2.3.0
+supersedes: 2.3.1
 lens_library_embedded: "0.11"
 substrate_target: [claude-opus-4-6, claude-opus-4-7]
 normativity:
@@ -17,11 +17,11 @@ normativity:
 lint_catalog_version: 1
 ---
 
-# PRISM v2.3.1 — Framework operating document
+# PRISM v2.4.0 — Framework operating document
 
-**Status:** v2.3.1 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.4.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** May 2026
-**Supersedes:** PRISM v2.3.0 (PATCH: reader legibility — the two rubric-anchored lenses (LL-D-002 "Can anyone use?", LL-D-005 "Can attackers get in?") now carry their plain-language names at the prose sites where they appeared as bare IDs; markup-only, no behavior change). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.3.1 (MINOR: three-axis orchestration schema — the single reserved `execution_mode` Setup flag is retired in favor of three orthogonal axes (orchestration surface, execution driver, persistence), each a closed validated enum; SP-15 Triangulation integrity extended with the auto-drive cross-vendor boundary; the triple contract is unchanged). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.11 in Appendix G; a singleton PRISM.md attachment is
@@ -80,8 +80,8 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.3.1 covers `[structural | stable]`
-<a id="section-what-v2-3-0-covers"></a>
+### 1.1 What v2.4.0 covers `[structural | stable]`
+<a id="section-what-v2-4-0-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -114,13 +114,14 @@ and research framework. v2.0 covers:
 - **Standing Principles** governing posture across sessions (§{section.standing-principles}).
 - **Filename discipline** — structured patterns for Outputs, Masters,
   handoffs, and Library files (§{section.filename-conventions-and-bump-atomicity}, SP-14).
-- **Forward-compatibility commitments** — Tools slot in Envelope,
-  execution-mode flag at Setup (§{section.forward-compatibility-commitments}).
+- **Forward-compatibility commitments** — Tools slot in Envelope, and the
+  three-axis execution-configuration schema at Setup
+  (§{section.orchestration-driver-and-persistence-axes}).
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.3.1 does not cover
-<a id="section-what-v2-3-0-does-not-cover"></a>
+### 1.2 What v2.4.0 does not cover
+<a id="section-what-v2-4-0-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -156,8 +157,10 @@ v2.0 honours the constraint inherited from the design document (DD.§8.3):
 
 Mechanics that violate any leg do not earn their place in v2.0. Roadmap
 adjacencies (§{section.monitor-specifications} of DD: automated cross-vendor orchestration, plugin-equipped
-execution, multi-vendor skill ecosystems) live in reserved structural slots
-(`Tools:`, `execution_mode:`) but no machinery beyond the slot.
+execution, multi-vendor skill ecosystems) live in reserved structural
+surfaces — the `Tools:` slot and the reserved values on the
+execution-configuration axes (§{section.orchestration-driver-and-persistence-axes}) —
+but no machinery beyond the reservation.
 
 ---
 ## 2. System overview
@@ -783,14 +786,126 @@ plugin-equipped execution, or cross-vendor orchestration.
   v2.0 defaults to `web search ON/OFF`. Future desktop-mode extensions use
   this slot for plugin/skill enumeration (e.g., `Tools: web search ON,
   Playwright, Firecrawl`). v2.0 adds no machinery for this beyond the slot.
-- **Execution mode flag at Setup.** Setup carries a session-level flag
-  declaring execution mode. v2.0 default: `execution_mode:
-  manual_plain_chat`. Reserved values for future modes:
-  `execution_mode: agentic_orchestration`,
-  `execution_mode: plugin_equipped`,
-  `execution_mode: automated_cross_vendor`. Setup validates the value is
-  one of the reserved set; unrecognized values halt Setup with an operator
-  escalation.
+- **Execution-configuration axes at Setup.** The v2.0 single
+  `execution_mode` flag is retired in favor of three orthogonal axes set at
+  Setup — orchestration surface, execution driver, and persistence — each a
+  closed validated enum. The default cell
+  (`single_chat` / `manual` / `ephemeral`) reproduces v2.0 behavior exactly;
+  the non-default values are the reserved forward-compatibility surface.
+  Full schema in §{section.orchestration-driver-and-persistence-axes}.
+
+#### 3.5.1 Orchestration, driver, and persistence axes
+<a id="section-orchestration-driver-and-persistence-axes"></a>
+
+What v2.0 carried as a single `execution_mode` flag is really three
+independent concerns. v2 splits them into three orthogonal axes, each set at
+Setup and each a **closed validated enum** — Setup validates the value
+against that axis's set and halts with an operator escalation on anything
+unrecognized (the halt-on-unrecognized discipline is preserved *per axis*,
+not abandoned). All three describe the driver/config layer **above** the
+triple contract; the Envelope/Self-check/Output contract stays
+vendor-agnostic and unchanged regardless of axis values
+(§{section.the-triple-contract}).
+
+**Axis 1 — Orchestration surface.** *Where the orchestration session runs;
+gates which capabilities are available.*
+
+- `single_chat` *(default)* — mobile or desktop single chat; prompts and
+  files passed between sessions by hand. No added memory or SI.
+- `projects` — the single-chat surface plus a dedicated SI and a
+  *lightweight* Claude Project memory (in-flight directives, state, and
+  pointers to fuller context held elsewhere). A genuine surface, not a
+  persistence layer — the limited memory is explicitly not an `.md` or
+  long-context store, which is why it sits on this axis and not on
+  persistence.
+- `cowork` — desktop agent surface; carries the broadest capability set
+  (§{section.cowork-surface-capabilities}).
+
+**Axis 2 — Execution driver.** *How the Envelope is executed against the
+chosen LLM(s).*
+
+- `manual` *(default; the only built value)* — the operator follows the
+  Envelope: copies the prompt, downloads named attachments, pastes and
+  attaches at the execution LLM(s). Manual by deliberate choice.
+- `auto_drive` *(reserved; roadmap, not priority)* — Computer Use and/or the
+  Chrome MCP drive the execution LLM's app on the operator's behalf,
+  delegated to per-LLM auto-drive skills rather than one monolith. **Gated
+  to `cowork`** — auto-drive needs the desktop substrate; `single_chat` and
+  `projects` cannot drive another app. Reserved in the sense above: the slot
+  is committed, the machinery is not built. *SP-15 boundary: auto-driving N
+  distinct vendor apps triangulates; auto-drive that collapses to
+  single-vendor sub-agent fan-out does not
+  (§{section.sp-15-triangulation-integrity}).*
+
+**Axis 3 — Persistence.** *Where durable state lives across sessions and
+surfaces.*
+
+- `ephemeral` *(default)* — state lives in chat scrollback, project
+  knowledge, or a local or Cowork folder; not designed for cross-surface
+  continuity.
+- `repo_backed` — durable state lives in a GitHub repo and **layers across
+  any orchestration surface** (the point of the axis: it is orthogonal to
+  *where* orchestration runs). The repo-resident *What's next*
+  (§{section.whats-next}) is the cross-surface pickup point. The value and
+  its contract are fixed here; the mechanics are reserved for a dedicated
+  build.
+
+**Reserved-token re-homing.** The v2.0 `execution_mode` reserved values are
+re-expressed across the axes rather than carried as mode tokens:
+
+- `agentic_orchestration` → the `auto_drive` execution-driver value.
+- `automated_cross_vendor` → retired as a token. It decomposes into
+  (`auto_drive` × cross-vendor equivalence dispatch); the capability is
+  fully expressible without a dedicated token, so nothing is lost.
+- `plugin_equipped` → retired as a token. Plugin and skill enumeration is
+  already the job of the dispatch-time `Tools:` slot in the Envelope
+  (§{section.prism-execution-envelope}); a Setup-time mode token would be
+  redundant and at the wrong altitude — tooling is a per-dispatch property,
+  like Vendor Selection, not a Setup fixture.
+
+**Cross-vendor equivalence is methodology, not an axis value.** Dispatching
+one prompt body to multiple *vendors* and converging on the returns is
+`equivalence` dispatch (§{section.single-envelope-with-spectrum-shape}) — a
+property of the Envelope that rides *any* cell of this matrix, independent
+of surface, driver, and persistence. It is never a mode value. This is the
+SP-15-safe home for triangulation: the asymmetry is carried by the vendor
+set, and `auto_drive` changes only *who pastes*, never how many
+distributions a prompt reached (§{section.sp-15-triangulation-integrity}).
+
+#### 3.5.2 Cowork surface capabilities
+<a id="section-cowork-surface-capabilities"></a>
+
+Under `orchestration_surface: cowork`, Computer Use and the Chrome MCP (the
+Claude Chrome Extension) are exposed as a substrate. Its uses are
+deliberately an **open set** — documented as a capability surface rather
+than a fixed enum, so a new use does not force a schema change. The
+closed-enum discipline governs axis *values*; this capability surface is
+intentionally open. Known uses today:
+
+- **Auto-drive execution** — drive other vendors' execution apps (the
+  Axis-2 `auto_drive` value).
+- **App-under-test** — when the work's scope includes auditing a web (or
+  other) application, Computer Use / Chrome MCP operate the target itself.
+  This is the audit *subject*, distinct from driving execution.
+- **Isolated-context execution of the Claude seat** — in a cross-vendor
+  equivalence run, the Claude seat can execute in a Cowork sub-agent with
+  its own context window rather than inline. This shifts only the
+  context-isolation axis, not epistemic posture — triangulation asymmetry
+  stays carried by the vendor set — so it is SP-15-clean
+  (§{section.sp-15-triangulation-integrity}). It depends on atomic-prompt
+  self-containment (§{section.atomic-prompt-self-containment}): a
+  fresh-context sub-agent carries none of the orchestrator's assumptions,
+  so bare shorthand misreads exactly as it would across vendors.
+- **Subagent investigation** — bounded investigation work
+  (candidate-credibility checks, single-source extraction, methodology
+  lookups, pre-dispatch scoping). Investigation posture only, never a
+  triangulation substitute.
+- **Future uses** — any later capability that benefits from or depends on
+  these primitives lands here without a schema change.
+
+Every sub-agent use lands on the context-isolation axis, never the
+epistemic-posture axis — consistent with SP-15
+(§{section.sp-15-triangulation-integrity}).
 
 ### 3.6 Vendor Selection at dispatch `[methodological | review-if: vendor landscape changes]`
 <a id="section-vendor-selection-at-dispatch"></a>
@@ -2677,8 +2792,19 @@ falsifier-grade findings. Two corollaries follow.
   also runs orchestration. No finding is up- or down-weighted by virtue of
   vendor identity matching the orchestrator.
 
+- **Auto-driven multiplicity must be cross-vendor to triangulate.** When
+  the `auto_drive` execution driver
+  (§{section.orchestration-driver-and-persistence-axes}) drives N *distinct
+  vendor* apps with one Envelope, that is cross-vendor equivalence
+  dispatch — triangulation as intended. When auto-drive instead fans out to
+  sub-agents on the orchestrating vendor, it is parallel execution on a
+  single distribution: no falsification across distributions, hence not
+  triangulation. The driver automates who dispatches; it does not change how
+  many distributions a prompt reached.
+
 Cross-ref: §{section.vendor-triangulation},
-§{section.claude-baseline-feasibility-with-named-limitation-escape-hatch}.
+§{section.claude-baseline-feasibility-with-named-limitation-escape-hatch},
+§{section.orchestration-driver-and-persistence-axes}.
 
 ### 10.2 v1.x Standing Principles — carryforward catalog
 <a id="section-v1-x-standing-principles-carryforward-catalog"></a>
@@ -3468,7 +3594,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-3-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-4-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -4092,6 +4218,9 @@ PRISM's Vendor Triangulation is adversarial, not parallel. Single-vendor
 multi-agent fan-out parallelizes execution but does not falsify across
 distributions; equivalence dispatch
 (§{section.single-envelope-with-spectrum-shape}) requires distinct vendors.
+The same boundary governs the `auto_drive` execution driver: auto-driving N
+distinct vendor apps triangulates; auto-drive that collapses to
+single-vendor sub-agent fan-out is parallel execution, not triangulation.
 When the orchestration vendor is among the triangulated execution
 vendors, convergence remains mechanical — no asymmetric weighting by
 vendor identity. Cross-ref: §{section.sp-15-triangulation-integrity}.
@@ -5037,7 +5166,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.3.1 (this file)
+- **Framework version.** v2.4.0 (this file)
 - **Embedded Lens Library version.** v0.11 (Appendix G)
 - **Release date.** 2026-05-30
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -5053,12 +5182,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_3_1.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_4_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_11.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.3.1` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.4.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5084,7 +5213,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.3.1 attached; v{published} available at {releases URL}.`
+   `Framework v2.4.0 attached; v{published} available at {releases URL}.`
    `Lens v0.11 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -5127,8 +5256,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.3.1). https://github.com/Ronkupper/PRISM
+> (v2.4.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.3.1 framework operating document.*
+*End of PRISM v2.4.0 framework operating document.*

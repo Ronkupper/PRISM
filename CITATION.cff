@@ -12,7 +12,9 @@ abstract: >-
   surface silent omissions before any prompt ships. v2.1 adds machine-readable
   frontmatter, a strength × polarity normativity vocabulary, and an
   observation-driven appendix indexing vendor parsing behaviour on dispatched
-  content. The framework codifies a triple execution contract
+  content. v2.4 generalizes the reserved execution-mode flag into three
+  orthogonal orchestration axes — surface, execution driver, and persistence —
+  each a closed validated enum. The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
   distributed as a single markdown file that can be attached to any LLM session
@@ -24,7 +26,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.3.1"
+version: "2.4.0"
 date-released: "2026-05-30"
 keywords:
   - llm
