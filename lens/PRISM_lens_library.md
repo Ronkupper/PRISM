@@ -1,7 +1,7 @@
-# PRISM Lens Library — v0.10 (pre-release)
+# PRISM Lens Library — v0.11 (pre-release)
 
-**Version:** 0.10
-**Release date:** 2026-04-25
+**Version:** 0.11
+**Release date:** 2026-05-30
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -518,11 +518,22 @@ Every entry uses the following fields:
     Audit overstates novelty or fit because no
     realistic comparator set — especially
     substitutes and do-nothing — was named; a
-    buyer-side read surfaces the gap.
+    buyer-side read surfaces the gap. Common
+    drift: category-bounded rival enumeration
+    is mistaken for substitute analysis.
+    Substitutes are defined by the audience and
+    the job — not by product category — so a
+    hardware device, a different workflow, or a
+    do-nothing default can each be a substitute
+    if it serves the same audience-job pair.
   minimum_scope_binding: >
-    One pass names rivals, substitutes, and
-    do-nothing; differentiation is stated in
-    buyer-language and backed by evidence.
+    One pass names the audience and the job
+    first, then names rivals, substitutes, and
+    do-nothing as alternatives for that
+    audience-job pair (substitutes defined by
+    the job, not the product category);
+    differentiation is stated in buyer-language
+    and backed by evidence.
 
 - id: LL-D-009
   name: Does it pay back?
@@ -819,10 +830,12 @@ Every entry uses the following fields:
 
 ## Version and status
 
-**v0.10 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.11 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+
+v0.11 is a lens-binding refinement on top of v0.10: same 23 lenses, no schema change. It sharpens LL-D-008 ("Compared to what?") to name the category-vs-audience substitution trap in `failure_mode`, and tightens `minimum_scope_binding` to require naming the audience and job before enumerating comparators — substitutes defined by the job, not the product category. The refinement is posture-facilitation, motivated by a real audit that reached a false-uniqueness finding after enumerating category-bounded rivals while an audience-defined substitute went unnamed.
 
 v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.10 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.11 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
 
-*End of PRISM Lens Library v0.10.*
+*End of PRISM Lens Library v0.11.*
