@@ -8,7 +8,7 @@ The framework ships as a single Markdown file (`PRISM.md`) that can be attached 
 
 The fastest path:
 
-1. Attach `PRISM.md` (or `PRISM_v2_3_0.md` for the version-pinned copy) to a fresh Claude chat.
+1. Attach `PRISM.md` (or `PRISM_v2_3_1.md` for the version-pinned copy) to a fresh Claude chat.
 2. Tell Claude the problem you want to audit or research.
 3. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
 
@@ -25,7 +25,7 @@ The framework runs on any capable LLM — Claude is the primary reasoning and bu
 
 ## Current version
 
-**v2.3.0** — current file: [`PRISM.md`](./PRISM.md). v2.3.0 is a MINOR release over v2.2.0 refining the LL-D-008 ("Compared to what?") lens: it names the category-vs-audience substitution trap explicitly and requires naming the audience and job before enumerating comparators, with substitutes defined by the job rather than the product category. The embedded Lens Library bumps to v0.11 to match. Additive lens-binding refinement, no behavior break. The version-pinned snapshot at this tag is [`PRISM_v2_3_0.md`](./PRISM_v2_3_0.md) (byte-identical to PRISM.md at the v2.3.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.3.1** — current file: [`PRISM.md`](./PRISM.md). v2.3.1 is a PATCH over v2.3.0: the two rubric-anchored lenses (LL-D-002 "Can anyone use?", LL-D-005 "Can attackers get in?") now carry their plain-language names at the prose sites where they previously appeared as bare IDs, so a reader needn't cross-reference the Lens Library to know what each anchor points at. Markup-only, no behavior change. The version-pinned snapshot at this tag is [`PRISM_v2_3_1.md`](./PRISM_v2_3_1.md) (byte-identical to PRISM.md at the v2.3.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -56,7 +56,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_3_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_3_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` — standalone skill loader (frontmatter only); use as an alternative to the fused `PRISM.md` when a decoupled skill / body layout is preferred.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
