@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.1.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.2.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.1.1
-released: 2026-05-23
-supersedes: 2.1.0
+version: 2.2.0
+released: 2026-05-30
+supersedes: 2.1.1
 lens_library_embedded: "0.10"
 substrate_target: [claude-opus-4-6, claude-opus-4-7]
 normativity:
@@ -17,11 +17,11 @@ normativity:
 lint_catalog_version: 1
 ---
 
-# PRISM v2.1.1 — Framework operating document
+# PRISM v2.2.0 — Framework operating document
 
-**Status:** v2.1.1 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.2.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** May 2026
-**Supersedes:** PRISM v2.1.0 (PATCH release: codifies triangulation integrity as SP-15; tightens §{section.what-v2-1-1-covers} framing prose to remove a read-prone summary line that compressed-attention readers misread as Claude-exclusion; rewrites the Prompt-digest field semantics in §{section.prism-execution-output} to lead with purpose, and inverts the Envelope-template token in §{section.prism-execution-envelope} to name the never-recomputed semantics explicitly). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.1.1 (MINOR release: Pattern B Phase B2 — retroactively applies strength × polarity normativity markers to all legacy Standing Principle, Monitor, and Probe headings; purely additive metadata, no behavior change). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.10 in Appendix G; a singleton PRISM.md attachment is
@@ -80,8 +80,8 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.1.1 covers `[structural | stable]`
-<a id="section-what-v2-1-1-covers"></a>
+### 1.1 What v2.2.0 covers `[structural | stable]`
+<a id="section-what-v2-2-0-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -119,8 +119,8 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.1.1 does not cover
-<a id="section-what-v2-1-1-does-not-cover"></a>
+### 1.2 What v2.2.0 does not cover
+<a id="section-what-v2-2-0-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -1688,7 +1688,7 @@ findings, not draft strategy. Result Completeness Check (§{monitor.M12}, §{sec
 a convergence-time monitor. Single-responsibility discipline: probes are
 Setup-time grading constructs only.
 
-#### 6.3.1 Probe 1 — Coverage grading (iterates) `[structural | stable]`
+#### 6.3.1 Probe 1 — Coverage grading (iterates) `[structural | stable | ✅]`
 <a id="section-probe-1-coverage-grading-iterates"></a>
 
 Grade the draft strategy against the Lens Library v0.9. Universal lenses
@@ -1741,7 +1741,7 @@ Saturation flag: not-yet (3 changes from P0.2)
 only on genuine ambiguity (*fires-maybe* requiring dig-in vs. opt-out
 decision). Empirical calibration deferred — see §{section.empirical-calibration-items}.
 
-#### 6.3.2 Probe 2 — Adversarial Scope (iterates) `[structural | stable]`
+#### 6.3.2 Probe 2 — Adversarial Scope (iterates) `[structural | stable | ✅]`
 <a id="section-probe-2-adversarial-scope-iterates"></a>
 
 Hunt for silent omissions and under-scoped treatments in the draft Prompt
@@ -1761,7 +1761,7 @@ the same as cross-vendor finding reconciliation.
 address. Operator reviews; orchestration converts surviving candidates
 into Lens references or new prompt additions in the next iteration.
 
-#### 6.3.3 Probe 3 — Decision Framing (once)
+#### 6.3.3 Probe 3 — Decision Framing (once) `[structural | stable | ✅]`
 <a id="section-probe-3-decision-framing-once"></a>
 
 Does the strategy answer what the stakeholder actually needs to decide?
@@ -1769,7 +1769,7 @@ Does the strategy answer what the stakeholder actually needs to decide?
 Outputs the Decision brief and Stakeholder register Setup artifacts
 (§{section.decision-brief}, §{section.stakeholder-register}).
 
-#### 6.3.4 Probe 4 — Pre-mortem (iterates)
+#### 6.3.4 Probe 4 — Pre-mortem (iterates) `[structural | stable | ✅]`
 <a id="section-probe-4-pre-mortem-iterates"></a>
 
 Imagine execution completes. How would the finding fail to answer the
@@ -1778,7 +1778,7 @@ original question?
 **Output.** A list of pre-mortem failure modes; each surviving mode either
 becomes a new probe in the strategy or is dismissed with rationale.
 
-#### 6.3.5 Probe 5 — Falsifier (once)
+#### 6.3.5 Probe 5 — Falsifier (once) `[structural | stable | ✅]`
 <a id="section-probe-5-falsifier-once"></a>
 
 What findings would invalidate the thesis?
@@ -1787,7 +1787,7 @@ What findings would invalidate the thesis?
 that, if observed, would refute the thesis. These become explicit
 success/failure criteria for Layer 2 synthesis.
 
-#### 6.3.6 Probe 6 — Domain Reconnaissance (iterates early)
+#### 6.3.6 Probe 6 — Domain Reconnaissance (iterates early) `[structural | stable | ✅]`
 <a id="section-probe-6-domain-reconnaissance-iterates-early"></a>
 
 What do practitioners, researchers, and serious analysts of this domain
@@ -1811,7 +1811,7 @@ domain-specific literature.
 
 Outputs the Jurisdiction map Setup artifact (§{section.jurisdiction-map}).
 
-#### 6.3.7 Probe 7 — User Voice (iterates early) `[structural | stable]`
+#### 6.3.7 Probe 7 — User Voice (iterates early) `[structural | stable | ✅]`
 <a id="section-probe-7-user-voice-iterates-early"></a>
 
 Imports real end-user / customer / affected-user perspectives into Setup.
@@ -2289,7 +2289,7 @@ inline expansion per §{section.atomic-prompt-self-containment}.
 ### 9.1 Standalone monitors (M1, M2, M4, M5, M9)
 <a id="section-standalone-monitors-m1-m2-m4-m5-m9"></a>
 
-#### 9.1.1 M1 — Missing Inputs `[structural | stable]`
+#### 9.1.1 M1 — Missing Inputs `[structural | stable | ⚠️]`
 <a id="section-m1-missing-inputs"></a>
 
 - **Trigger.** Every orchestration session-open and turn-close.
@@ -2302,7 +2302,7 @@ inline expansion per §{section.atomic-prompt-self-containment}.
 - **Resolution.** Halt until attachments provided; or operator confirms
   intentional absence.
 
-#### 9.1.2 M2 — Version Drift `[structural | stable]`
+#### 9.1.2 M2 — Version Drift `[structural | stable | ⚠️]`
 <a id="section-m2-version-drift"></a>
 
 - **Trigger.** Every orchestration session-open. Compares attached
@@ -2328,7 +2328,7 @@ unlikely *by construction* but not impossible. Residual failure modes:
 - Cross-device syncing serves a previous version.
 - Multiple Masters from forked sessions (anti-pattern but not impossible).
 
-#### 9.1.3 M4 — Ambiguous Ask `[methodological | stable]`
+#### 9.1.3 M4 — Ambiguous Ask `[methodological | stable | ⚠️]`
 <a id="section-m4-ambiguous-ask"></a>
 
 - **Trigger.** Every orchestration turn that processes operator input.
@@ -2342,7 +2342,7 @@ unlikely *by construction* but not impossible. Residual failure modes:
 - **No execution mirror.** Execution sessions receive pre-resolved
   dispatched prompts; M4 is orchestration-only.
 
-#### 9.1.4 M5 — Context Pressure
+#### 9.1.4 M5 — Context Pressure `[structural | stable]`
 <a id="section-m5-context-pressure"></a>
 
 Spec per §{section.m5-context-pressure-monitor}.
@@ -2369,7 +2369,7 @@ Spec per §{section.m5-context-pressure-monitor}.
 Fire during Layer-1 integration of new findings into the Master. Can chain
 to M10.
 
-#### 9.2.1 M6 — Premise Shift `[structural | stable]`
+#### 9.2.1 M6 — Premise Shift `[structural | stable | ⚠️]`
 <a id="section-m6-premise-shift"></a>
 
 - **Trigger.** Layer-1 convergence — new finding ingested.
@@ -2383,7 +2383,7 @@ to M10.
   sections. v2 M6 reads premises from Setup artifacts. Surface broadened;
   name unchanged because face value still describes the work.
 
-#### 9.2.2 M7 — Claim Conflict `[structural | stable]`
+#### 9.2.2 M7 — Claim Conflict `[structural | stable | ⚠️]`
 <a id="section-m7-claim-conflict"></a>
 
 - **Trigger.** Layer-1 convergence — new finding ingested.
@@ -2398,7 +2398,7 @@ to M10.
   Assumption Register; M7 reads finding-vs-finding directly. Renamed to
   match the actual surface.
 
-#### 9.2.3 M8 — Stale Source `[structural | stable]`
+#### 9.2.3 M8 — Stale Source `[structural | stable | ⚠️]`
 <a id="section-m8-stale-source"></a>
 
 - **Trigger.** Layer-1 convergence — orchestration ingesting findings from
@@ -2433,7 +2433,7 @@ scope*. Different artifacts, different lifecycles, different resolutions.
 | **M8** | Cited evidence sources in returned findings | Per finding, at Layer-1 convergence | Re-dispatch with current sources |
 | **§{section.currency-maintenance-point-refresh} point-refresh** | Lens Library entry's `rubric_anchor:` / `informed_by:` | Per Setup probe iteration | Inline refresh in Prompt Strategy; advisory signal toward Update session |
 
-#### 9.2.4 M12 — Result Completeness Check `[structural | stable]`
+#### 9.2.4 M12 — Result Completeness Check `[structural | stable | ⚠️]`
 <a id="section-m12-result-completeness-check"></a>
 
 - **Trigger.** Layer-1 convergence — new finding ingested.
@@ -2466,7 +2466,7 @@ scope*. Different artifacts, different lifecycles, different resolutions.
 
 Feed the priority-ranked candidate list at each orchestration turn-close.
 
-#### 9.3.1 M3 — Sequence Violation `[structural | stable]`
+#### 9.3.1 M3 — Sequence Violation `[structural | stable | ⚠️]`
 <a id="section-m3-sequence-violation"></a>
 
 - **Trigger.** Operator declaration or strategy state.
@@ -2480,7 +2480,7 @@ Feed the priority-ranked candidate list at each orchestration turn-close.
   intentionally skipped, or accept the out-of-order sequence with
   documented rationale.
 
-#### 9.3.2 M10 — Rerun / Fix Required `[structural | stable]`
+#### 9.3.2 M10 — Rerun / Fix Required `[structural | stable | ⚠️]`
 <a id="section-m10-rerun-fix-required"></a>
 
 - **Trigger.** Triggered by chain from M6 / M7 / M8 / M12 HIGH; or by
@@ -2501,7 +2501,7 @@ Feed the priority-ranked candidate list at each orchestration turn-close.
 - **Surfaces in *What's next*.** Overdue Rerun Register items rank at
   priority tier 3 per §{section.whats-next}.
 
-#### 9.3.3 M11 — Layer 2 Readiness `[structural | stable]`
+#### 9.3.3 M11 — Layer 2 Readiness `[structural | stable | ✅]`
 <a id="section-m11-layer-2-readiness"></a>
 
 - **Trigger.** Every orchestration turn-close.
@@ -2544,7 +2544,7 @@ mechanics evolve.
 ### 10.1 Standing Principles introduced or extended in v2
 <a id="section-standing-principles-introduced-or-extended-in-v2"></a>
 
-#### 10.1.1 SP-1 extended — Canonicity preservation `[operator-scaffolding | stable]`
+#### 10.1.1 SP-1 extended — Canonicity preservation `[operator-scaffolding | stable | 🚫]`
 <a id="section-sp-1-extended-canonicity-preservation"></a>
 
 - v1.x's SP-1 forbade silently reconstructing missing files from memory.
@@ -2558,7 +2558,7 @@ mechanics evolve.
 - Never frame regeneration as "deterministic" or "low-cost" unless it
   genuinely is.
 
-#### 10.1.2 SP-12 — Bounded-Search Disclosure `[operator-scaffolding | stable]`
+#### 10.1.2 SP-12 — Bounded-Search Disclosure `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-12-bounded-search-disclosure"></a>
 
 - When orchestration answers on the basis of a bounded retrieval, the
@@ -2578,7 +2578,7 @@ mechanics evolve.
 confirm before I conclude.
 ```
 
-#### 10.1.3 SP-13 — Substrate Declaration `[operator-scaffolding | stable]`
+#### 10.1.3 SP-13 — Substrate Declaration `[operator-scaffolding | stable | ⚠️]`
 <a id="section-sp-13-substrate-declaration"></a>
 
 - PRISM-loaded sessions verify substrate against declared target before
@@ -2602,7 +2602,7 @@ SP-13 verification:
 [If no or cannot-determine: halt; ask operator.]
 ```
 
-#### 10.1.4 SP-10 — Verify state before recommending `[operator-scaffolding | stable]`
+#### 10.1.4 SP-10 — Verify state before recommending `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-10-verify-state-before-recommending"></a>
 
 Carries forward from v1.10.4 as a named principle. The principle's
@@ -2625,7 +2625,7 @@ re-deriving it.
 - Budget discipline: verification searches return substantial context;
   only trigger on fast-moving state, not on stable defaults.
 
-#### 10.1.5 SP-14 — Filename Discipline `[operator-scaffolding | stable]`
+#### 10.1.5 SP-14 — Filename Discipline `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-14-filename-discipline"></a>
 
 Extracted from v1.x SP-8 (which bundled two concerns under one number).
@@ -2702,7 +2702,7 @@ Per-SP disposition explicit:
 | SP-14 | Filename Discipline | New in v2 (extracted from SP-8) | See §{section.sp-14-filename-discipline} |
 | SP-15 | Triangulation integrity | New in v2.1.1 | See §{section.sp-15-triangulation-integrity} |
 
-#### 10.2.1 SP-8 narrowed — Canonical Authority `[operator-scaffolding | stable]`
+#### 10.2.1 SP-8 narrowed — Canonical Authority `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-8-narrowed-canonical-authority"></a>
 
 After the v2 split, SP-8 carries one concern:
@@ -3468,7 +3468,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-1-1-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-2-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -3944,7 +3944,7 @@ Falsifiers:        [list — findings that would refute the thesis]
 
 Each Standing Principle stated in full, in canonical order.
 
-### SP-1 (extended) — Canonicity preservation
+### SP-1 (extended) — Canonicity preservation `[operator-scaffolding | stable | 🚫]`
 <a id="principle-SP-1"></a>
 
 `[operator-scaffolding | stable]`
@@ -3964,7 +3964,7 @@ Order of operations when a canonical artifact is missing:
 Never frame regeneration as "deterministic" or "low-cost" unless it
 genuinely is. Cross-ref: §{section.sp-1-extended-canonicity-preservation}, §{section.missing-handoff-recovery}.
 
-### SP-2 — Defer non-critical fixes to natural touchpoint
+### SP-2 — Defer non-critical fixes to natural touchpoint `[operator-scaffolding | stable | ⚠️]`
 <a id="principle-SP-2"></a>
 
 `[methodological | stable]` *(carryforward from v1.10.4)*
@@ -3973,7 +3973,7 @@ Non-critical issues queue against priority tiers in *What's next*; fix
 at the next aligned step rather than mid-flight. M10 (Rerun) fires when
 no natural touchpoint exists.
 
-### SP-3 — DISSOLVED in v2
+### SP-3 — DISSOLVED in v2 `[operator-scaffolding | stable]`
 <a id="principle-SP-3"></a>
 
 v1.10.4's SP-3 ("Convergence is part of prompt delivery") is
@@ -3981,7 +3981,7 @@ incompatible with v2's orchestration/execution split. Convergence moves
 to orchestration; per-prompt convergence checklists drop from the
 atomic prompt template (§{section.atomic-prompt-template-v2-form}).
 
-### SP-4 — Every Monitor produces visible output
+### SP-4 — Every Monitor produces visible output `[operator-scaffolding | stable | ✅]`
 <a id="principle-SP-4"></a>
 
 `[methodological | stable]` *(carryforward)*
@@ -3989,7 +3989,7 @@ atomic prompt template (§{section.atomic-prompt-template-v2-form}).
 Silent monitors are useless monitors. Applies to all M1–M12 fires.
 *What's next* surfaces every fire at appropriate severity.
 
-### SP-5 — No heuristic guessing on ambiguous input
+### SP-5 — No heuristic guessing on ambiguous input `[operator-scaffolding | stable | ⚠️]`
 <a id="principle-SP-5"></a>
 
 `[methodological | stable]` *(carryforward)*
@@ -3997,7 +3997,7 @@ Silent monitors are useless monitors. Applies to all M1–M12 fires.
 Wherever orchestration parses operator input, ambiguity halts and
 asks. Pairs with M4 (Ambiguous Ask) firing.
 
-### SP-6 — Rebuild at threshold
+### SP-6 — Rebuild at threshold `[operator-scaffolding | stable | recommended | ✅]`
 <a id="principle-SP-6"></a>
 
 `[methodological | stable]` *(carryforward)*
@@ -4007,7 +4007,7 @@ above → create_file rebuild via deterministic transformation script.
 Applies to v2 framework builds, Library Update sessions, large Master
 rewrites.
 
-### SP-7 — File delivery is mandatory
+### SP-7 — File delivery is mandatory `[operator-scaffolding | stable | ✅]`
 <a id="principle-SP-7"></a>
 
 `[methodological | stable]` *(carryforward)*
@@ -4017,7 +4017,7 @@ execution session that produces Output delivers a file. Every Update
 session that produces a new Library file delivers a file. Reinforced
 structurally by the triple contract's file-based Output (§{section.prism-execution-output}).
 
-### SP-8 (narrowed) — Canonical Authority
+### SP-8 (narrowed) — Canonical Authority `[operator-scaffolding | stable | ✅]`
 <a id="principle-SP-8"></a>
 
 `[operator-scaffolding | stable]`
@@ -4029,7 +4029,7 @@ start of the next session so M2 (Version Drift) can reconcile.
 Filename discipline (the look-alike disambiguation pattern) extracted
 to SP-14.
 
-### SP-9 — Silence is never consent
+### SP-9 — Silence is never consent `[operator-scaffolding | stable | ⚠️]`
 <a id="principle-SP-9"></a>
 
 `[methodological | stable]` *(carryforward)*
@@ -4039,7 +4039,7 @@ ratification, ambiguity escalation, migration override at 🔴, Project
 recommendation accept/decline. Active operator action required;
 no defaults-on-timeout.
 
-### SP-10 — Verify state before recommending
+### SP-10 — Verify state before recommending `[operator-scaffolding | stable | ✅]`
 <a id="principle-SP-10"></a>
 
 `[operator-scaffolding | stable]` *(carryforward as named principle)*
@@ -4050,7 +4050,7 @@ recommending. Mechanics live in Vendor Selection (§{section.vendor-selection-at
 travels to point refresh (§{section.currency-maintenance-point-refresh}), Update sessions (§{section.currency-maintenance-update-session}), and any
 future recommendation surface.
 
-### SP-12 — Bounded-Search Disclosure
+### SP-12 — Bounded-Search Disclosure `[operator-scaffolding | stable | ✅]`
 <a id="principle-SP-12"></a>
 
 `[operator-scaffolding | stable]` *(new in v2)*
@@ -4060,7 +4060,7 @@ default posture is to disclose the bound. "I found no evidence"
 insufficient; "I found no evidence within [named scope]; confirm
 before I proceed" is required. Cross-ref: §{section.sp-12-bounded-search-disclosure}.
 
-### SP-13 — Substrate Declaration
+### SP-13 — Substrate Declaration `[operator-scaffolding | stable | ⚠️]`
 <a id="principle-SP-13"></a>
 
 `[operator-scaffolding | stable]` *(new in v2)*
@@ -4072,7 +4072,7 @@ operator. Operationalized inside execution sessions via the Self-check
 block (§{section.prism-execution-self-check}); orchestration-side via session-open verification.
 Cross-ref: §{section.sp-13-substrate-declaration}.
 
-### SP-14 — Filename Discipline
+### SP-14 — Filename Discipline `[operator-scaffolding | stable | ✅]`
 <a id="principle-SP-14"></a>
 
 `[operator-scaffolding | stable]` *(new in v2; extracted from SP-8)*
@@ -5024,7 +5024,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.1.1 (this file)
+- **Framework version.** v2.2.0 (this file)
 - **Embedded Lens Library version.** v0.10 (Appendix G)
 - **Release date.** 2026-05-23
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -5045,7 +5045,7 @@ without that capability can paste the URLs into a browser and download.
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.1.1` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.2.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5071,7 +5071,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.1.1 attached; v{published} available at {releases URL}.`
+   `Framework v2.2.0 attached; v{published} available at {releases URL}.`
    `Lens v0.10 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -5114,8 +5114,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.1.1). https://github.com/Ronkupper/PRISM
+> (v2.2.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.1.1 framework operating document.*
+*End of PRISM v2.2.0 framework operating document.*

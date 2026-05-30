@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 14
+**Version:** 15
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -71,26 +71,6 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 ### Repo-backed PRISM mode (operator GitHub flow)
 
 *(Active proposal — unchanged.)*
-
----
-
-### Tooling-conventions Pattern B Phase B2 — legacy element marking sweep
-
-**Status:** Gated on operator ratification of the proposed legacy markers at `PRISM-workshop/notes/pattern_b_legacy_marker_proposals.md` (produced in the v2.1.0 build session).
-
-**Scope.** Pattern B Phase B1 (shipped in v2.1.0) added the strength × polarity vocabulary to the frontmatter `normativity` block and the convention-prose extension in the title block, but did not retroactively mark any existing Standing Principle, Monitor, Gate, or Probe. Phase B2 applies ratified polarity glyphs (and any non-default strength tokens) to all ~35 legacy elements in a single sweep.
-
-**Target release:** v2.2.0. The legacy sweep visibly touches every SP / Monitor / Gate / Probe heading; its own release is the cleanest framing for that surface change (per `design/tooling_conventions_micro_dds_rev1.md` X1).
-
-**Sequence to Phase B2:**
-
-1. v2.1.0 ships proposals document (done).
-2. Operator reviews each proposed marker; ratifies or amends.
-3. Phase B2 handoff written at `handoffs/tooling_conventions_pattern_b_phase_b2_build.md` after ratification.
-4. Phase B2 build session applies ratified markers via deterministic Python transformation.
-5. `PRISM-LINT-06 / element-marking-completeness` (reserved in catalog v1) may promote from `info` to `warning` after Phase B2 ships.
-
-**Provenance.** `PRISM-workshop/design/tooling_conventions_micro_dds_rev1.md` decisions B1–B6. Phase B1 build: `PRISM-workshop/handoffs/tooling_conventions_micro_dds_build.md` (rev1 + amendment).
 
 ---
 
@@ -197,6 +177,24 @@ Codified as SP-9 in v1.9.
 ---
 
 ## Shipped
+
+### Tooling-conventions Pattern B Phase B2 — legacy element marking sweep (v2.2.0)
+
+**Shipped on:** `main` of `Ronkupper/PRISM`, 2026-05-30. Tag `v2.2.0`.
+
+**What landed.** The retroactive Pattern B sweep: ratified strength × polarity normativity markers applied to all 32 in-scope legacy elements (13 Standing Principles excluding retired SP-11, 12 Monitors, 7 Probes; no Gate elements survive the v2 dissolution). Markup-only — zero body-text change. Released as MINOR (purely additive metadata on existing headings).
+
+- **Distribution:** 28 elements carry a polarity glyph at default strength (three-token form); SP-6 carries the four-token form with non-default strength `recommended`; 3 elements are detection-only / no-glyph (SP-3, M5, M9) and retain the two-token form.
+- **Operator calls.** SP-3 ratified Option 1 — retains its numbering slot with the two-token `[operator-scaffolding | stable]` form (renumber-and-remove declined on citation-stability grounds; a v3.0.0 candidate). M5 ratified detection-only — an override of the proposals-doc `⚠️` lean, on the B2 worked-example principle that M5's four-band behavior (silent / advisory / active / directive) would be distorted by any single polarity glyph.
+- **App F retrospective headings** received the marker alongside the §10 numbered headings, per the proposals doc's "every listed location" instruction.
+
+**Pre-flight.** Lint 0 errors / 0 warnings / 56 info-level orphans — identical to the v2.1.1 baseline (§1.1/§1.2 anchor rename swapped one orphan for another, net unchanged). Idempotent transformation (second pass produces no diff). SP-15 (added in v2.1.1, after the proposals doc) deliberately left untouched at both its §10.1.6 and Appendix F locations. Customer-name leak-class sweep clean on every public-surface artifact.
+
+**Provenance.** `PRISM-workshop/handoffs/tooling_conventions_pattern_b_phase_b2_build.md` (ratified marker set, rev1, 2026-05-23); proposals at `PRISM-workshop/notes/pattern_b_legacy_marker_proposals.md`; vocabulary at `PRISM-workshop/design/tooling_conventions_micro_dds_rev1.md` B1–B6. Transformation scripts `PRISM-workshop/scripts/apply_phase_b2_markers.py` + `bump_v220_version_strings.py`.
+
+**Downstream.** `PRISM-LINT-06 / element-marking-completeness` remains at `info` — promotion to `warning` is a separate decision after operators live with the marked file.
+
+---
 
 ### Release-hygiene patch — SP-15 + §1.1 framing + Prompt-digest semantics (v2.1.1)
 

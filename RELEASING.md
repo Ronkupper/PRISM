@@ -36,7 +36,7 @@ The lint catalog (`lint_rules.md`, `scripts/lint/`, `.github/workflows/lint.yml`
 
 When `PRISM.md` advances to a new framework version (e.g. `v2.1.0`):
 
-1. **Edit `PRISM.md`** with the new framework content. Update the version string in the document header (`# PRISM v{X.Y} — Framework operating document`), the frontmatter `version`, `released`, `supersedes` fields, the inline `Currently v{X.Y.Z}` substring inside the frontmatter `description`, the EOF marker, and any in-document version references (§18.1 project identity, §18.2 pinned-URL column, §18.3 currency example, §18.5 citation).
+1. **Edit `PRISM.md`** with the new framework content. Update the version string in the document header (`# PRISM v{X.Y} — Framework operating document`), the frontmatter `version`, `released`, `supersedes` fields, the inline `Currently v{X.Y.Z}` substring inside the frontmatter `description`, the EOF marker, and any in-document version references (§18.1 project identity, §18.2 pinned-URL column, §18.3 currency example, §18.5 citation). When a release **adds or changes a Standing Principle, Monitor, Gate, or Probe**, give it the normativity marker at creation per the title-block tag convention (`[durability | review-trigger | strength? | polarity?]`) — Pattern B applies to new elements going forward, not just the legacy sweep completed in Phase B2 (v2.2.0), so the sweep never needs repeating.
 2. **Refresh the version-pinned snapshot.** Within the same major line, delete the prior snapshot; at a major boundary, retain the prior major's terminal snapshot (see *Retention*).
    ```bash
    rm PRISM_v{old}.md            # within same major
@@ -142,7 +142,7 @@ Before pushing a framework tag:
 - [ ] `CITATION.cff` version + date + abstract current
 - [ ] `README.md` *Current version* section current
 - [ ] `VERSION` file matches frontmatter `version` and title-block heading
-- [ ] **Lint gate clean** — the CI workflow at `.github/workflows/lint.yml` runs the `scripts/lint/` catalog against `PRISM.md` and reports zero error-severity findings. At v2.1.0, this is `PRISM-LINT-01` (named-refs-resolve). Active rules grow as the catalog evolves: when Pattern A's schema lands, `PRISM-LINT-03`, `-04`, `-05`, and `-07` become active; when Pattern B Phase B2 lands, `PRISM-LINT-06` activates. Info-level findings from `PRISM-LINT-02` (orphan anchors) are acceptable and do not block release.
+- [ ] **Lint gate clean** — the CI workflow at `.github/workflows/lint.yml` runs the `scripts/lint/` catalog against `PRISM.md` and reports zero error-severity findings. At v2.1.0, this is `PRISM-LINT-01` (named-refs-resolve). Active rules grow as the catalog evolves: when Pattern A's schema lands, `PRISM-LINT-03`, `-04`, `-05`, and `-07` become active. `PRISM-LINT-06` (element-marking-completeness) remains catalog-reserved at info-severity after Phase B2 (v2.2.0) — promotion to warning is a separate decision after operators live with the marked file. Info-level findings from `PRISM-LINT-02` (orphan anchors) are acceptable and do not block release.
 - [ ] `design/` updated if MAJOR
 - [ ] Commit signed (`gpg.format=ssh`, `commit.gpgsign=true`)
 - [ ] Discussions announcement drafted (post after tag push and Release creation)

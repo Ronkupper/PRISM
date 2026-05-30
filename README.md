@@ -8,7 +8,7 @@ The framework ships as a single Markdown file (`PRISM.md`) that can be attached 
 
 The fastest path:
 
-1. Attach `PRISM.md` (or `PRISM_v2_1_1.md` for the version-pinned copy) to a fresh Claude chat.
+1. Attach `PRISM.md` (or `PRISM_v2_2_0.md` for the version-pinned copy) to a fresh Claude chat.
 2. Tell Claude the problem you want to audit or research.
 3. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
 
@@ -25,7 +25,7 @@ The framework runs on any capable LLM — Claude is the primary reasoning and bu
 
 ## Current version
 
-**v2.1.1** — current file: [`PRISM.md`](./PRISM.md). v2.1.1 is a PATCH release over v2.1.0 codifying triangulation integrity as SP-15 (single-vendor multi-agent fan-out is not falsifier-grade triangulation; self-triangulation carries no asymmetric weighting), tightening §1.1 framing prose to remove a read-prone summary line, rewriting the Prompt-digest field semantics to lead with purpose, and inverting the Envelope-template token to name the never-recomputed semantics explicitly. The version-pinned snapshot at this tag is [`PRISM_v2_1_1.md`](./PRISM_v2_1_1.md) (byte-identical to PRISM.md at the v2.1.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.2.0** — current file: [`PRISM.md`](./PRISM.md). v2.2.0 is a MINOR release over v2.1.1 completing Pattern B Phase B2 — the retroactive application of strength × polarity normativity markers to all legacy Standing Principle, Monitor, and Probe headings (markup-only; purely additive metadata, no behavior change). The version-pinned snapshot at this tag is [`PRISM_v2_2_0.md`](./PRISM_v2_2_0.md) (byte-identical to PRISM.md at the v2.2.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -56,7 +56,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_1_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_2_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` — standalone skill loader (frontmatter only); use as an alternative to the fused `PRISM.md` when a decoupled skill / body layout is preferred.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
