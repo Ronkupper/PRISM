@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.7.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.8.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.7.0
+version: 2.8.0
 released: 2026-05-31
-supersedes: 2.6.0
+supersedes: 2.7.0
 lens_library_embedded: "0.12"
 substrate_target: [claude-opus-4-6, claude-opus-4-7]
 normativity:
@@ -17,11 +17,11 @@ normativity:
 lint_catalog_version: 2
 ---
 
-# PRISM v2.7.0 — Framework operating document
+# PRISM v2.8.0 — Framework operating document
 
-**Status:** v2.7.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.8.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** May 2026
-**Supersedes:** PRISM v2.6.0 (MINOR: recommended-sources-on-lens — the Lens Library gains an optional `recommended_sources:` field that attaches a framework-curated list of external reference sources, each with a mandatory `framing:` and `recency:` caveat, to a lens's material question. Populated on two high-yield lenses — LL-D-008 "Compared to what?" (competitive substitution) and LL-D-009 "Does it pay back?" (commercial viability) — and absent on the rest. The embedded Lens Library (Appendix G) and its standalone mirror both advance to v0.12. The field is additive and backward-compatible: it carries no behavior change at this release — auto-population of the corpus-access Envelope from this field is the consuming Phase-2 build that follows. `PRISM-LINT-08` is reserved for the field's schema validator). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.7.0 (MINOR: corpus-access dispatch Phase 2 — the lens-anchored auto-trigger. The corpus-access section gains a recognition step: orchestration notices on its own when a lens carrying a `recommended_sources:` entry is in play and the material question it is working matches a recommended source's `answers:` binding. Recognition produces an *advisory* candidate dispatch — orchestration shapes the investigation-posture Envelope and surfaces it for operator ratification rather than auto-dispatching, so SP-9 ("silence is never consent") is preserved: the autonomy is in the recognition, never the dispatch. The matched source record auto-populates the Envelope's `Source framing` and `Temporal frame` — the two caveats Phase 1 made mandatory-but-hand-written — so the caveat is structurally impossible to silently omit. Surfaced candidates are *What's next* material, noise-guarded to once per {lens, source, material-question} per engagement. Additive and backward-compatible: engagements not using the trigger are unaffected. No lens-schema or lint-catalog change — the consumed `recommended_sources:` field shipped at v2.7.0, and `PRISM-LINT-08` remains reserved). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.12 in Appendix G; a singleton PRISM.md attachment is
@@ -80,8 +80,8 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.7.0 covers `[structural | stable]`
-<a id="section-what-v2-7-0-covers"></a>
+### 1.1 What v2.8.0 covers `[structural | stable]`
+<a id="section-what-v2-8-0-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -120,8 +120,8 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.7.0 does not cover
-<a id="section-what-v2-7-0-does-not-cover"></a>
+### 1.2 What v2.8.0 does not cover
+<a id="section-what-v2-8-0-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -1628,7 +1628,7 @@ definitions, in lieu of inline expansion at first use. The glossary-block
 pattern is operator discretion; the inline-at-first-use rule is the
 framework default.
 
-### 4.13 Corpus-access dispatch `[structural | review-if: corpus-access Phases 2-3 land]`
+### 4.13 Corpus-access dispatch `[structural | review-if: corpus-access Phase 3 lands]`
 <a id="section-corpus-access-dispatch"></a>
 
 During a live engagement, a material question is sometimes best answered by an
@@ -1778,14 +1778,116 @@ eventual report; under `ephemeral` it degrades to the local or Cowork folder. No
 a hard dependency — a reason to recommend `repo_backed` whenever corpus-access is
 in play.
 
-**Phase status.** Phase 1 (this release) makes the `manual` and `vendor-executed`
-paths operational under manual invocation ("look this up in [source]" →
-orchestration shapes a self-contained investigation-posture Envelope → the
-operator or an execution vendor runs it → the result returns caveat-attached, with
-an Exhibits bundle where capturable). The `cowork-mcp` path is defined-but-reserved
-(Phase 3, gated on the Cowork substrate maturing), exactly as the `auto_drive`
-execution driver is reserved. Lens-anchored auto-triggering of a lookup is Phase
-2, gated separately.
+**Lens-anchored auto-trigger.** Phase 1 waits to be told ("look this up in
+[source]"); the lens-anchored auto-trigger lets orchestration recognize, on its
+own, that a material question warrants a corpus lookup, and *propose* one. The
+trigger is anchored to a lens: a lens carrying a `recommended_sources:` entry —
+the Lens Library field that binds framework-curated external sources to the lens's
+material question (§{section.library-integration}, the Library-integration surface
+that embeds the Lens Library as Appendix G) — is, by virtue of that field,
+trigger-capable.
+
+*Recognition is the only automatic step.* Orchestration recognizes, on its own,
+the conjunction of three conditions: **(i)** the lens is *in play* — it has fired
+and its disposition is live; **(ii)** the engagement is actively working that
+lens's `material_question:` (a prompt is being shaped against it, or a finding is
+being sought for it); and **(iii)** a recommended source's `answers:` binding
+matches that question. Nothing beyond this recognition becomes automatic.
+
+*Dispatch stays advisory and operator-ratified.* Recognition produces a
+**candidate dispatch, not a dispatch.** Orchestration shapes the
+investigation-posture Envelope — every corpus-access field auto-populated from the
+matched source record (below) — and surfaces it as a ready-to-ratify proposal,
+e.g.: *"The LL-D-008 lens ('Compared to what?', the competitive-substitution lens)
+is in play and your substitution question matches its recommended corpus,
+ideas.rip. Here is a shaped corpus-access dispatch. Ratify to run, edit, or
+skip."* The shaped Envelope is investigation posture, so it routes to a
+recall-merge and never the Vendor Triangulation delta
+(§{section.vendor-triangulation}, the convergence machinery — a coverage fan
+retrieves, it does not triangulate). The operator ratifies, edits, or declines.
+**Silence does nothing.**
+
+*Squaring with SP-9.* The autonomy is in the recognition, never the dispatch.
+SP-9 (§{principle.SP-9}, the "silence is never consent" Standing Principle)
+forbids treating an absent objection as license to act; an auto-*dispatching*
+trigger would spend operator resources — vendor calls, time, possibly
+authenticated-session access — on inferred consent, violating it directly. An
+advisory trigger requires the same explicit ratification SP-9 demands everywhere
+else, reusing the framework's existing propose-then-ratify spine: the Layer-3
+operator-ratification posture at the P0→P1 boundary
+(§{section.three-layer-readiness}, the three-layer-readiness gate, whose Layer 3
+parses for an explicit "ratify / approved / go" and treats silence as
+non-ratification). No new consent model is introduced. Phase 1 is
+operator-initiated ("look this up"); the auto-trigger is
+orchestration-initiated-but-operator-ratified ("you'll want to look this up —
+shall I?"). It moves the *initiative* to orchestration while leaving *authority*
+with the operator.
+
+**Auto-populate — closing the Phase 1 hand-written loop.** When the trigger fires,
+the Envelope's corpus-access fields populate from the matched source record rather
+than being hand-written each dispatch:
+
+| Source record field | Envelope field | Effect |
+|---|---|---|
+| `source` | `Source` | identity |
+| `kind` | `Corpus kind` | conditions Extract / Return form / Temporal frame |
+| `access` | `Source access` | routes the `Driver` via the path-routing table above |
+| `framing` | `Source framing` *(mandatory)* | bias caveat travels by default |
+| `recency` | `Temporal frame` *(mandatory)* | recency / era posture travels by default |
+
+This closes a loop Phase 1 left open. Phase 1 made `Source framing` and `Temporal
+frame` mandatory on the Envelope but hand-written each time; the auto-trigger makes
+them populate from recorded metadata, so the caveat is structurally impossible to
+silently omit — the operator may still edit, but the default is caveat-attached.
+It is the outbound half of the bidirectional self-containment point above
+(§{section.atomic-prompt-self-containment}, atomic-prompt self-containment): the
+`Question` already goes out self-contained, and now the *outbound caveat* travels
+automatically too, so the bare-fact silent-omission failure is prevented at the
+source rather than relying on hand-entry. This is also why the source record's
+`framing:` and `recency:` are mandatory in the lens schema — a blank there would
+become a blank in a *mandatory* Envelope field.
+
+**Where a surfaced candidate lives, and the noise guard.** A surfaced-but-
+unratified candidate is *What's next* material (§{section.whats-next}, the
+*What's next* artifact — the open-loop surface that lists open options and asks the
+operator, on the SP-9 "silence is never consent" lineage), **not** a
+Dispatch-register entry (§{section.master-tracking-dispatch-register}, the
+Dispatch register, which records actually-dispatched prompts). This keeps the
+register clean and reuses the existing open-loop machinery rather than inventing a
+parallel log. The candidate surfaces under *What's next*'s advisory, non-blocking
+candidates, in this shape:
+
+```
+Corpus-access candidate (advisory):
+  Lens:              [LL-code + name] — in play
+  Material question: [the question being worked]
+  Source:            [matched corpus]  (answers: [the matched binding])
+  Shaped Envelope:   [investigation-posture Envelope, auto-populated]
+  Disposition:       awaiting ratification | declined (turn [n])
+```
+
+A material-question-level trigger can fire often, and over-surfacing is its own
+failure — the operator tunes out, which is silent omission in reverse. The noise
+guard: **surface a candidate once per `{lens, source, material-question}` per
+engagement; record a decline; re-surface only on a material change to the
+question.** The re-surface predicate reuses the saturation test the framework
+already applies to Library coverage at the P0→P1 boundary
+(§{section.three-layer-readiness}, the three-layer-readiness gate — its Layer 2
+reaches saturation when two consecutive iterations produce no material change to
+coverage or strategy): a *material change* here is a shift in the question's
+framing, scope, or the finding sought, enough that a prior decline no longer
+settles it; a re-worded restatement of the same question does not re-surface. No
+new bound is introduced.
+
+**Phase status.** Phase 1 (the v2.6.0 release) made the `manual` and
+`vendor-executed` paths operational under manual invocation ("look this up in
+[source]" → orchestration shapes a self-contained investigation-posture Envelope →
+the operator or an execution vendor runs it → the result returns caveat-attached,
+with an Exhibits bundle where capturable). Phase 2 (this release) adds the
+lens-anchored auto-trigger above: orchestration recognizes the need itself and
+surfaces an operator-ratified candidate, rather than waiting to be told. The
+`cowork-mcp` path remains defined-but-reserved (Phase 3, gated on the Cowork
+substrate maturing), exactly as the `auto_drive` execution driver is reserved.
 
 ---
 
@@ -3971,7 +4073,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-7-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-8-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -5706,7 +5808,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.7.0 (this file)
+- **Framework version.** v2.8.0 (this file)
 - **Embedded Lens Library version.** v0.12 (Appendix G)
 - **Release date.** 2026-05-31
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -5722,12 +5824,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_7_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_8_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_12.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.7.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.8.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5753,7 +5855,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.7.0 attached; v{published} available at {releases URL}.`
+   `Framework v2.8.0 attached; v{published} available at {releases URL}.`
    `Lens v0.12 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -5796,8 +5898,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.7.0). https://github.com/Ronkupper/PRISM
+> (v2.8.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.7.0 framework operating document.*
+*End of PRISM v2.8.0 framework operating document.*

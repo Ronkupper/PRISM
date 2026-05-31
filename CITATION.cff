@@ -25,6 +25,11 @@ abstract: >-
   v2.7 adds recommended-sources-on-lens: an optional Lens Library field
   binding framework-curated external reference sources, each with a
   mandatory framing and recency caveat, to a lens's material question.
+  v2.7's consuming behaviour lands in v2.8 as corpus-access Phase 2: a
+  lens-anchored auto-trigger that recognizes when a lens's recommended
+  source answers the question being worked and proposes a lookup for
+  operator ratification rather than auto-dispatching, auto-populating the
+  framing and recency caveats so they cannot be silently omitted.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -37,7 +42,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.7.0"
+version: "2.8.0"
 date-released: "2026-05-31"
 keywords:
   - llm
