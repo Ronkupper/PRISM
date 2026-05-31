@@ -10,7 +10,7 @@ The framework ships as a single Markdown file (`PRISM.md`) that can be attached 
 
 The fastest path:
 
-1. Attach `PRISM.md` (or `PRISM_v2_5_2.md` for the version-pinned copy) to a fresh Claude chat.
+1. Attach `PRISM.md` (or `PRISM_v2_6_0.md` for the version-pinned copy) to a fresh Claude chat.
 2. Tell Claude the problem you want to audit or research.
 3. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
 
@@ -27,7 +27,7 @@ The framework runs on any capable LLM — Claude is the primary reasoning and bu
 
 ## Current version
 
-**v2.5.2** — current file: [`PRISM.md`](./PRISM.md). v2.5.2 is a PATCH over v2.5.1: the `repo_backed` persisted-state set is reframed around the principle that the repo work folder holds the engagement's whole state (inputs in and outputs out), and operator-supplied Inputs — subject brief, reference docs, spreadsheets, decks, information pasted in chat — are named explicitly alongside the working artifacts and Outputs. A documentation clarification of already-shipped behavior, no functional change. v2.5.0 was the MINOR that landed the `repo_backed` persistence mechanics; v2.5.1 made the execution-return path explicit. The version-pinned snapshot at this tag is [`PRISM_v2_5_2.md`](./PRISM_v2_5_2.md) (byte-identical to PRISM.md at the v2.5.2 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.6.0** — current file: [`PRISM.md`](./PRISM.md). v2.6.0 is a MINOR over v2.5.2: it adds **corpus-access dispatch** (Phase 1), a first-class *investigation* posture for retrieving from named sources and document corpora — kept structurally distinct from epistemic triangulation. Investigation-posture Envelopes carry no dispatch shape or vendor list; a new corpus-access Envelope captures the source, its access path, the lookup driver, and a coverage fan that merges returns for recall (never convergence). Returns bundle a signed Master with companion exhibits under a mandatory provenance manifest. Phase 1 makes the manual and vendor-executed lookup paths operational; the cowork-mcp path is defined but reserved, alongside auto_drive. The version-pinned snapshot at this tag is [`PRISM_v2_6_0.md`](./PRISM_v2_6_0.md) (byte-identical to PRISM.md at the v2.6.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -58,7 +58,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_5_2.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_6_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` — standalone skill loader (frontmatter only); use as an alternative to the fused `PRISM.md` when a decoupled skill / body layout is preferred.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.

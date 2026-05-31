@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.5.2. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.6.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.5.2
+version: 2.6.0
 released: 2026-05-31
-supersedes: 2.5.1
+supersedes: 2.5.2
 lens_library_embedded: "0.11"
 substrate_target: [claude-opus-4-6, claude-opus-4-7]
 normativity:
@@ -17,11 +17,11 @@ normativity:
 lint_catalog_version: 1
 ---
 
-# PRISM v2.5.2 — Framework operating document
+# PRISM v2.6.0 — Framework operating document
 
-**Status:** v2.5.2 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.6.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** May 2026
-**Supersedes:** PRISM v2.5.1 (PATCH: the `repo_backed` persisted-state set is reframed around the principle that the repo work folder holds the engagement's whole state — inputs in and outputs out — and operator-supplied Inputs (subject brief, reference docs, spreadsheets, decks, information pasted in chat) are named explicitly alongside the working artifacts and Outputs; documentation clarification of already-shipped behavior, no functional change). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.5.2 (MINOR: corpus-access dispatch — an investigation-posture Execution Envelope that performs a targeted lookup against an external reference corpus, scoped to the engagement's question, and returns a finding-plus-exhibits bundle. The investigation-vs-epistemic posture distinction is lifted from §{section.cowork-surface-capabilities} prose to a first-class Envelope `Posture:` field; SP-15's triangulation guardrail now lives in Envelope structure — a coverage fan retrieves, it does not triangulate; SP-14 gains a companion-artifact filename convention. Phase 1: the `manual` and `vendor-executed` lookup paths are operational, `cowork-mcp` reserved). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.11 in Appendix G; a singleton PRISM.md attachment is
@@ -80,8 +80,8 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.5.2 covers `[structural | stable]`
-<a id="section-what-v2-5-2-covers"></a>
+### 1.1 What v2.6.0 covers `[structural | stable]`
+<a id="section-what-v2-6-0-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -120,8 +120,8 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.5.2 does not cover
-<a id="section-what-v2-5-2-does-not-cover"></a>
+### 1.2 What v2.6.0 does not cover
+<a id="section-what-v2-6-0-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -500,9 +500,10 @@ Prompt ID:          [identifier — purpose/title]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
 Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
-Vendor:             [vendor] | multi-vendor
-Dispatch shape:     equivalence | split | limitation-named
-Dispatch rationale: [one positive-framing line per variant; see §4.2]
+Posture:            epistemic | investigation
+Vendor:             [vendor] | multi-vendor          ← epistemic posture
+Dispatch shape:     equivalence | split | limitation-named   ← epistemic posture
+Dispatch rationale: [one positive-framing line per variant; see §4.2]   ← epistemic posture
 Vendor config:      [vendor-specific config flags]
 Session hygiene:    [fresh session, project attachment posture, web search on/off]
 Tools:              [vendor tools requested; reserved slot for plugins/skills]
@@ -517,6 +518,17 @@ Operator hints:     [zero or more one-line cues; see §3.2.4]
 - `Prompt ID` — short unique identifier + purpose/title, unrelated to phase.
 - `Master version` — the filename of the Master that was current when this
   Envelope was produced. Used for reconciliation if state drifts.
+- `Posture` — `epistemic` or `investigation`. *Epistemic* Envelopes dispatch a
+  prompt body for a vendor to reason over and carry the triangulation fields
+  (`Vendor`, `Dispatch shape`, `Dispatch rationale`). *Investigation* Envelopes
+  retrieve material rather than reason over it — corpus-access lookups
+  (§{section.corpus-access-dispatch}, the external-reference-corpus lookup) and
+  the subagent-investigation uses (§{section.cowork-surface-capabilities}, the
+  Cowork capability surface) — and carry **none** of those fields. An Envelope
+  with no `Dispatch shape` cannot fire Vendor Triangulation
+  (§{section.vendor-triangulation}) and never counts as a triangulation seat
+  (SP-15, §{section.sp-15-triangulation-integrity}). Default for a standard
+  dispatch is `epistemic`.
 - `Vendor` — single vendor name (`Claude Opus 4.7`, `Gemini Pro Deep
   Research`, `Perplexity`, `ChatGPT o-series`) or the literal `multi-vendor`.
 - `Dispatch shape` — see §{section.single-envelope-with-spectrum-shape} for the three modes.
@@ -624,6 +636,32 @@ vendor's file-creation surface (Claude `create_file`; ChatGPT Canvas;
 Gemini's file generation). Where the vendor cannot produce a file, fallback
 is delimited content rendering with explicit warning that paste fallback has
 known clipboard-fidelity issues (DD.§4.1.1).
+
+**Exhibits manifest (corpus-access bundle returns).** A corpus-access lookup
+(§{section.corpus-access-dispatch}, the external-reference-corpus lookup) returns
+a *bundle*: the synthesized finding stays the canonical Output above — same
+signed `.md`, same signature, same digest — and any captured artifacts
+(screenshots, downloaded decks, exported record tables) travel as companion
+files named per SP-14 (§{section.sp-14-filename-discipline}, filename
+discipline). When the Envelope's `Archive:` field is `requested`, the Output
+carries a mandatory `Exhibits` manifest section inside the findings content, one
+entry per artifact:
+
+```
+━━━ EXHIBITS ━━━
+[filename] · [source] · [capture date]
+   query answered: [the scoped question this artifact substantiates]
+   caveat:         [the applicable framing + temporal caveat]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+The manifest is mandatory rather than optional for the same reason `Source
+framing` and `Temporal frame` are mandatory on the lookup Envelope: an exhibit
+stripped of its provenance is, weeks later in the report, an artifact nobody can
+cite because nobody knows what it shows or what caveat applies. Findings return
+caveat-attached; exhibits return provenance-attached. The Output signature and
+`Schema version: output-v1` are unchanged — the manifest is an added section
+within the findings content, not a new return contract.
 
 #### 3.2.4 Operator hints — emission discipline
 <a id="section-operator-hints-emission-discipline"></a>
@@ -914,6 +952,18 @@ Every sub-agent use lands on the context-isolation axis, never the
 epistemic-posture axis — consistent with SP-15
 (§{section.sp-15-triangulation-integrity}).
 
+**Posture, now a first-class Envelope field.** The investigation-vs-epistemic
+distinction described in this surface as prose is, as of the corpus-access
+capability, carried structurally as the Envelope's `Posture:` field
+(§{section.prism-execution-envelope}, the Execution Envelope). Corpus-access
+(§{section.corpus-access-dispatch}, the external-reference-corpus lookup) is the
+first investigation use to earn its own first-class Envelope, which is what forced
+the distinction up from prose into the schema. Its `cowork-mcp` lookup path —
+PRISM driving the Chrome MCP to operate a source directly, including the
+operator's authenticated session — lands in this open capability set (Phase 3,
+reserved) and is App-under-test-shaped, not the `auto_drive` per-vendor
+machinery.
+
 #### 3.5.3 `repo_backed` mechanics
 <a id="section-repo-backed-mechanics"></a>
 
@@ -1136,6 +1186,15 @@ operator and vendor what kind of run this is.
 **Content rule.** Envelope content carrying PRISM-native shorthand
 follows the self-containment rule (§{section.atomic-prompt-self-containment}).
 
+**Posture scope.** The three dispatch shapes are an *epistemic-posture*
+partition — they describe how a prompt body distributes across vendors for
+triangulation. An *investigation-posture* Envelope (a corpus-access lookup,
+§{section.corpus-access-dispatch}, the external-reference-corpus lookup) carries
+no dispatch shape at all: it retrieves material rather than distributing a prompt
+for judgment. The `Posture:` field (§{section.prism-execution-envelope}, the
+Execution Envelope) selects between the two; only `epistemic` Envelopes carry a
+`Dispatch shape`.
+
 ### 4.2 Rationale discipline per dispatch variant `[methodological | stable]`
 <a id="section-rationale-discipline-per-dispatch-variant"></a>
 
@@ -1180,6 +1239,17 @@ second return arrives in an `equivalence` dispatch. Re-fires as each
 subsequent return arrives. Tracked via the Master's Dispatch register.
 Triangulation integrity discipline is named in SP-15
 (§{section.sp-15-triangulation-integrity}).
+
+**Posture guard.** Vendor Triangulation fires only on *epistemic-posture*
+`equivalence` dispatch. A *coverage fan* — `Fan: coverage (N)` on a
+corpus-access lookup (§{section.corpus-access-dispatch}, the
+external-reference-corpus lookup) — is investigation posture: the N vendors each
+*retrieve* the same material rather than *reason over* it, so multiplicity buys
+recall, not falsification across distributions. A coverage fan is handled by
+recall-merge with a retrieval-consistency note and is **never** routed here.
+Because an investigation-posture Envelope structurally lacks `Dispatch shape`,
+this guard is mechanical, not a matter of operator discipline (SP-15,
+§{section.sp-15-triangulation-integrity}).
 
 **Lives outside the probe taxonomy.** Operates against returned findings,
 not draft strategy. Single-responsibility separation from Probe 2
@@ -1543,11 +1613,179 @@ terms, or Envelope field names themselves. Future PRISM-native shorthand
 additions inherit this rule; the scope set here is illustrative, not
 exhaustive.
 
+**Bidirectional for corpus-access.** A corpus-access lookup
+(§{section.corpus-access-dispatch}, the external-reference-corpus lookup) applies
+self-containment in *both* directions. The `Question` goes out self-contained, as
+any dispatched body must. The `Return` must also come *back* self-contained —
+caveat-attached: a bare retrieved fact ("raised $12M Series A in 2019") stripped
+of its source framing and temporal caveat is itself the silent-omission failure
+the rule exists to prevent. Outbound the risk is bare shorthand; inbound the risk
+is a bare fact.
+
 **Optional template.** Operators may include a per-envelope glossary
 block listing all codes referenced in that envelope and their
 definitions, in lieu of inline expansion at first use. The glossary-block
 pattern is operator discretion; the inline-at-first-use rule is the
 framework default.
+
+### 4.13 Corpus-access dispatch `[structural | review-if: corpus-access Phases 2-3 land]`
+<a id="section-corpus-access-dispatch"></a>
+
+During a live engagement, a material question is sometimes best answered by an
+*external reference corpus* — a startup-idea database, a pitch-deck library, a
+funding-record service — rather than by a vendor reasoning from its own training.
+Corpus-access dispatch is the **investigation-posture** Envelope that performs a
+targeted lookup against such a source, scoped to the engagement's actual
+question, and brings the result back caveat-attached. The corpus stays external
+and is queried on demand; nothing is mined into the framework or a lens.
+
+It is *investigation*, not execution: no prompt body is distributed across vendors
+and there is no triangulation question, so the Envelope carries
+`Posture: investigation` (§{section.prism-execution-envelope}, the Execution
+Envelope) and none of the triangulation fields. That absence is what keeps a
+retrieval step from masquerading as a judgment step.
+
+**The Envelope.**
+
+```
+━━━ PRISM CORPUS-ACCESS ENVELOPE ━━━
+Prompt ID:        [identifier — purpose/title]
+Project:          [project name]
+Master version:   [filename at dispatch]
+Prompt digest:    [orchestration-generated; copy verbatim]
+Posture:          investigation        ← no Dispatch shape exists
+Source:           [named corpus]
+Corpus kind:      narrative | structured-record
+Source access:    open-web | operator-authenticated   ← routes the path
+Driver:           vendor-executed | cowork-mcp | manual
+Fan:              none | coverage (N)   ← coverage only; never equivalence
+Tools:            web search ON [, Playwright]         ← vendor-executed path
+Question:         [engagement question, scoped, self-contained]
+Extract:          [exactly what to pull; fields / form]
+Return form:      [finding structure]
+Archive:          requested | none      ← screenshots / downloads / exports
+Source framing:   [mandatory bias caveat — e.g. survivor bias]
+Temporal frame:   [mandatory recency / coverage-window constraint]
+Return handling:  [recall-merge; agreement = retrieval-consistency note]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Corpus-access fields.**
+
+- `Source` — the named corpus (e.g. a startup-idea database, a funding-record
+  service).
+- `Corpus kind` — `narrative` (read/search corpora returning prose findings or
+  artifact patterns) or `structured-record` (queryable databases returning
+  records — funding rounds, comparable transactions). The kind conditions
+  `Extract`, `Return form`, and `Temporal frame`; it is not a fork into two
+  capabilities.
+- `Source access` — `open-web` or `operator-authenticated`. Routes the lookup
+  path (below).
+- `Driver` — `vendor-executed | cowork-mcp | manual`. The locus that performs the
+  retrieval (below).
+- `Fan` — `none` or `coverage (N)`. A coverage fan retrieves the same material
+  across N vendors for recall; it is **never** equivalence dispatch and never
+  triangulates (see *Coverage fan*).
+- `Tools` — on the vendor-executed path, the vendor tools the lookup requests
+  (`web search ON`, optionally `Playwright`); rides the reserved `Tools:` slot
+  (§{section.prism-execution-envelope}, the Execution Envelope).
+- `Question` — the engagement question, scoped and **self-contained**
+  (§{section.atomic-prompt-self-containment}, atomic-prompt self-containment): no
+  bare PRISM shorthand, since the executing locus may not share PRISM context.
+- `Extract` — exactly what to pull: fields/records for the structured-record
+  kind, the prose finding or pattern for the narrative kind.
+- `Return form` — the structure the finding comes back in (tabular for records,
+  prose for narrative).
+- `Archive` — `requested` or `none`. `requested` triggers the mandatory Exhibits
+  manifest on return (§{section.prism-execution-output}, the Execution Output).
+- `Source framing` *(mandatory)* — the bias caveat the source carries (e.g.
+  survivor bias in a startup-idea corpus). Mandatory because a finding stripped of
+  it is a silent-omission failure.
+- `Temporal frame` *(mandatory)* — the recency / coverage-window constraint.
+  Narrative corpora *age* (era-conditional vs durable: "is this stale?");
+  structured-record databases are continuously updated ("what historical depth —
+  does it cover my era?"). Same field, different question per kind.
+- `Return handling` — how the return routes: recall-merge for a coverage fan,
+  with agreement recorded as a retrieval-consistency note — never the Vendor
+  Triangulation delta (§{section.vendor-triangulation}, Vendor Triangulation).
+
+**Lookup-path `Driver` — a capability-local enum, distinct from the Axis-2
+execution driver.** The corpus-access `Driver` answers a different question than
+the Axis-2 execution-driver enum
+(§{section.orchestration-driver-and-persistence-axes}, the orchestration / driver
+/ persistence axes). Axis-2 (`manual | auto_drive`) governs *who moves the
+Envelope into the execution vendor's chat* — the paste-driver. Corpus-access
+`Driver` governs *what locus performs the retrieval against the source*. The two
+compose orthogonally rather than collapsing: a `vendor-executed` lookup still
+reaches the vendor via the paste-driver (Axis-2 `manual` today, `auto_drive`
+later), so it is not a third Axis-2 value. The enum is therefore capability-local,
+not an Axis-2 extension:
+
+- `manual` — the operator runs the lookup in their own authenticated browser and
+  pastes the result back. The universal fallback; coincides with Axis-2 `manual`
+  (the operator does the legwork). Not surface-gated.
+- `vendor-executed` — the lookup is dispatched to an execution vendor that
+  performs it with its own **web search**, escalating to **Playwright**
+  (vendor-side browser automation in its code-execution sandbox) when retrieval
+  needs live page interaction. Rides the `Tools:` slot; orthogonal to the
+  paste-driver. **Open-web only.** Not surface-gated.
+- `cowork-mcp` — PRISM drives the Chrome MCP under the `cowork` surface
+  (§{section.cowork-surface-capabilities}, the Cowork capability surface) to
+  operate the source directly, including the operator's own authenticated session
+  for paywalled sources. App-under-test-shaped, **not** `auto_drive`'s per-vendor
+  machinery. `cowork`-gated; reserved for Phase 3.
+
+**Path routing (by `Source access`).**
+
+| Source access | Default path | Fallbacks | Barred |
+|---|---|---|---|
+| open-web | vendor-executed | cowork-mcp, manual | — |
+| operator-authenticated | cowork-mcp | manual | vendor-executed |
+
+The credential boundary is hard: a vendor-executed lookup is **open-web only**,
+because authenticating a paywall would mean handing the operator's seat
+credentials to an execution vendor, which is never done. Whether a given vendor
+honors a `Playwright` request, and whether captured binaries return across the
+dispatch boundary, is vendor-empirical — the same class as the Self-check
+substrate-declaration items (§{section.prism-execution-self-check}, the Execution
+Self-check): the Envelope *requests* the tool, the Self-check *confirms* what the
+vendor actually has, and the rationale names the fallback.
+
+**Coverage fan.** Fanning a lookup across N vendors looks like equivalence
+dispatch, but posture decides routing, not vendor count. In a coverage fan the N
+vendors each *retrieve* the same material — different web-search indexes surface
+different sources — so multiplicity buys **recall**, not judgment. Agreement
+across the fan is a **retrieval-consistency** signal ("this fact is robustly
+findable") recorded as a note, never promoted to convergence. The marker is
+`Fan: coverage (N)`, structurally distinct from `Dispatch shape: equivalence`, so
+Vendor Triangulation cannot fire on it (§{section.vendor-triangulation}, Vendor
+Triangulation). If the engagement then wants multi-vendor *judgment on* the
+retrieved material, that is a *separate* `equivalence` dispatch with the retrieved
+corpus as its attachment — epistemic posture, routed to Vendor Triangulation
+normally.
+
+**Self-containment is bidirectional here**
+(§{section.atomic-prompt-self-containment}, atomic-prompt self-containment): the
+`Question` goes out self-contained, and the `Return` must come back
+caveat-attached — a bare fact stripped of its framing and recency caveat is itself
+the silent-omission failure.
+
+**Storage.** A corpus-access return is durable engagement state. Corpus-access
+emits the bundle; the persistence axis (§{section.repo-backed-mechanics},
+repo-backed mechanics) decides where it lives. Its archive value is fullest under
+`repo_backed`, where exhibits survive across sessions and surfaces to reach the
+eventual report; under `ephemeral` it degrades to the local or Cowork folder. Not
+a hard dependency — a reason to recommend `repo_backed` whenever corpus-access is
+in play.
+
+**Phase status.** Phase 1 (this release) makes the `manual` and `vendor-executed`
+paths operational under manual invocation ("look this up in [source]" →
+orchestration shapes a self-contained investigation-posture Envelope → the
+operator or an execution vendor runs it → the result returns caveat-attached, with
+an Exhibits bundle where capturable). The `cowork-mcp` path is defined-but-reserved
+(Phase 3, gated on the Cowork substrate maturing), exactly as the `auto_drive`
+execution driver is reserved. Lens-anchored auto-triggering of a lookup is Phase
+2, gated separately.
 
 ---
 
@@ -2875,6 +3113,10 @@ Discipline (this new SP-14).
   `[project_name]_prism[version]_master_[phase-versioning].md` for Masters,
   `PRISM_lens_library_[version].md` for Library files, dated handoffs for
   migrations.
+- Corpus-access companion artifacts (the captured exhibits a corpus-access
+  bundle returns, §{section.corpus-access-dispatch}) extend the Output pattern to
+  `[project]_[promptID]_[source]_[seq].{png,pdf,xlsx}`, so the archive is a
+  provenance-bearing set rather than a bag of `screenshot1.png`.
 - The em-dash (` — `) separator stays cross-platform safe (pipe is illegal
   on Windows, shell-active on Unix).
 - M1 (Missing Inputs) parses attached filenames against expected patterns;
@@ -2925,9 +3167,20 @@ falsifier-grade findings. Two corollaries follow.
   triangulation. The driver automates who dispatches; it does not change how
   many distributions a prompt reached.
 
+- **A corpus-access / coverage-fan lookup adds no triangulation seat.** A
+  corpus-access dispatch (§{section.corpus-access-dispatch}, the
+  external-reference-corpus lookup) is investigation posture: it retrieves
+  material rather than reasoning over it. A fan across N vendors
+  (`Fan: coverage (N)`) buys recall, not falsification across distributions, so it
+  is recorded as a retrieval-consistency note and never counted as a
+  triangulation seat. The guardrail is structural — an investigation-posture
+  Envelope lacks `Dispatch shape`, so Vendor Triangulation
+  (§{section.vendor-triangulation}) cannot fire on it.
+
 Cross-ref: §{section.vendor-triangulation},
 §{section.claude-baseline-feasibility-with-named-limitation-escape-hatch},
-§{section.orchestration-driver-and-persistence-axes}.
+§{section.orchestration-driver-and-persistence-axes},
+§{section.corpus-access-dispatch}.
 
 ### 10.2 v1.x Standing Principles — carryforward catalog
 <a id="section-v1-x-standing-principles-carryforward-catalog"></a>
@@ -3010,6 +3263,7 @@ plus the atomic-bump routine that produces version increments.
 |---|---|---|
 | Master | `[project]_prism[major.minor]_master_[phase-versioning].md` | `acme_audit_prism2.0_master_p2.3.md` |
 | Execution Output | `[project]_[promptID]_[vendor].md` | `acme_audit_p2.3_gemini.md` |
+| Corpus-access exhibit | `[project]_[promptID]_[source]_[seq].{png,pdf,xlsx}` | `acme_audit_p3.1_ideasrip_01.png` |
 | Migration handoff | `[project]_handoff_[YYYY-MM-DD]_[seq].md` | `acme_audit_handoff_2026-04-25_01.md` |
 | Lens Library file | `PRISM_lens_library_[version].md` | `PRISM_lens_library_v0_9.md` |
 | Update session output | `PRISM_lens_library_[new-version].md` + delta document | `PRISM_lens_library_v0_9_1.md` |
@@ -3717,7 +3971,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-5-2-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-6-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -3934,9 +4188,10 @@ Prompt ID:          [identifier — purpose/title]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
 Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
-Vendor:             [vendor] | multi-vendor
-Dispatch shape:     equivalence | split | limitation-named
-Dispatch rationale: [one positive-framing line per variant]
+Posture:            epistemic | investigation
+Vendor:             [vendor] | multi-vendor          ← epistemic posture
+Dispatch shape:     equivalence | split | limitation-named   ← epistemic posture
+Dispatch rationale: [one positive-framing line per variant]   ← epistemic posture
 Vendor config:      [vendor-specific config flags]
 Session hygiene:    [fresh session, project attachment posture, web search on/off]
 Tools:              [vendor tools requested; reserved slot for plugins/skills]
@@ -3988,6 +4243,18 @@ Prompt digest:    [copied verbatim from Envelope]
 ━━━ END PRISM EXECUTION OUTPUT ━━━
 Operator next:        [download instruction; attach instruction]
 Attachment warnings:  [optional; one line per warning]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Exhibits manifest** — appended inside the findings content on a corpus-access
+bundle return when `Archive: requested` (§{section.prism-execution-output}, the
+Execution Output):
+
+```
+━━━ EXHIBITS ━━━
+[filename] · [source] · [capture date]
+   query answered: [the scoped question this artifact substantiates]
+   caveat:         [the applicable framing + temporal caveat]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -4186,6 +4453,32 @@ Falsifiers:        [list — findings that would refute the thesis]
 | P2.1 | M6 — premise shifted | M6 HIGH P2.4 ingestion | overdue |
 ```
 
+### E.12 Corpus-access Envelope
+<a id="appendix-corpus-access-envelope"></a>
+
+```
+━━━ PRISM CORPUS-ACCESS ENVELOPE ━━━
+Prompt ID:        [identifier — purpose/title]
+Project:          [project name]
+Master version:   [filename at dispatch]
+Prompt digest:    [orchestration-generated; copy verbatim]
+Posture:          investigation        ← no Dispatch shape exists
+Source:           [named corpus]
+Corpus kind:      narrative | structured-record
+Source access:    open-web | operator-authenticated   ← routes the path
+Driver:           vendor-executed | cowork-mcp | manual
+Fan:              none | coverage (N)   ← coverage only; never equivalence
+Tools:            web search ON [, Playwright]         ← vendor-executed path
+Question:         [engagement question, scoped, self-contained]
+Extract:          [exactly what to pull; fields / form]
+Return form:      [finding structure]
+Archive:          requested | none      ← screenshots / downloads / exports
+Source framing:   [mandatory bias caveat — e.g. survivor bias]
+Temporal frame:   [mandatory recency / coverage-window constraint]
+Return handling:  [recall-merge; agreement = retrieval-consistency note]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
 ---
 
 ## Appendix F — Standing Principles full text
@@ -4328,7 +4621,9 @@ Cross-ref: §{section.sp-13-substrate-declaration}.
 
 Look-alike files produced by multi-vendor execution use the structured
 filename pattern per §{section.filename-conventions-and-bump-atomicity}. The em-dash separator stays cross-platform
-safe. M1 (Missing Inputs) parses attached filenames against expected
+safe. Corpus-access companion artifacts extend the Output pattern to
+`[project]_[promptID]_[source]_[seq].{png,pdf,xlsx}`
+(§{section.corpus-access-dispatch}). M1 (Missing Inputs) parses attached filenames against expected
 patterns; mis-named files are flagged at session-open. Cross-ref:
 §{section.sp-14-filename-discipline}, §{section.filename-conventions-and-bump-atomicity}.
 
@@ -4346,7 +4641,11 @@ distinct vendor apps triangulates; auto-drive that collapses to
 single-vendor sub-agent fan-out is parallel execution, not triangulation.
 When the orchestration vendor is among the triangulated execution
 vendors, convergence remains mechanical — no asymmetric weighting by
-vendor identity. Cross-ref: §{section.sp-15-triangulation-integrity}.
+vendor identity. A corpus-access / coverage-fan lookup
+(§{section.corpus-access-dispatch}) is investigation posture and adds no
+triangulation seat: it lacks `Dispatch shape`, so Vendor Triangulation cannot
+fire on it. Cross-ref: §{section.sp-15-triangulation-integrity},
+§{section.corpus-access-dispatch}.
 
 ---
 
@@ -5289,7 +5588,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.5.2 (this file)
+- **Framework version.** v2.6.0 (this file)
 - **Embedded Lens Library version.** v0.11 (Appendix G)
 - **Release date.** 2026-05-31
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -5305,12 +5604,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_5_2.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_6_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_11.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.5.2` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.6.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5336,7 +5635,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.5.2 attached; v{published} available at {releases URL}.`
+   `Framework v2.6.0 attached; v{published} available at {releases URL}.`
    `Lens v0.11 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -5379,8 +5678,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.5.2). https://github.com/Ronkupper/PRISM
+> (v2.6.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.5.2 framework operating document.*
+*End of PRISM v2.6.0 framework operating document.*
