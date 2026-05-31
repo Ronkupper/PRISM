@@ -1,7 +1,7 @@
-# PRISM Lens Library — v0.11 (pre-release)
+# PRISM Lens Library — v0.12 (pre-release)
 
-**Version:** 0.11
-**Release date:** 2026-05-30
+**Version:** 0.12
+**Release date:** 2026-05-31
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -57,6 +57,13 @@ Every entry uses the following fields:
 - `rubric_anchor:` optional — a version-pinned external rubric the lens recommends binding to
 - `last_verified:` populated on entries carrying `rubric_anchor:`
 - `verification_basis:` populated on entries carrying `last_verified:`; one of `{schema-introduction-only, independent-review}`. Gates freshness logic in adopting frameworks: a `schema-introduction-only` basis must not be treated as fresh on the strength of date alone
+- `recommended_sources:` optional — a framework-curated list of external reference sources this lens recommends consulting, each bound to the lens's material question. Populated only on lenses with a high-signal source; absent on the rest (like `rubric_anchor:`). Each source record carries:
+  - `source:` the named corpus or reference
+  - `kind:` one of `{narrative, structured-record}`
+  - `access:` one of `{open-web, operator-authenticated}`
+  - `framing:` MANDATORY — the bias or handling caveat that must travel with any use of the source
+  - `recency:` MANDATORY — the source-scoped era/recency posture (how the source's currency bears on its use; distinct from any lens-level findings-recency)
+  - `answers:` the lens material-question(s) this source helps address
 - `informed_by:` frameworks, standards, and practice traditions that inform the lens (indicative, not exhaustive; not a compliance claim)
 - `failure_mode:` the silent omission this lens catches, in plain language
 - `minimum_scope_binding:` the minimum scope commitment that counts as "covered" for this lens
@@ -510,6 +517,59 @@ Every entry uses the following fields:
   evidence_class: cross-check
   specialist_type: competitive analyst / market researcher
   rubric_anchor: ~
+  recommended_sources:
+    - source: ideas.rip
+      kind: narrative
+      access: open-web
+      framing: >
+        Founder-selection bias; retrospective failure
+        narratives optimized for teaching. Funded ≠
+        correct — a documented startup is a survivor of
+        the funding filter, not a validated answer.
+      recency: >
+        Era-conditional: capital-climate and
+        category-maturity details age; substitution
+        patterns are more durable. Weight recent cases
+        for current priors.
+      answers: >
+        Substitute and do-nothing enumeration for an
+        audience-job pair: what realistic alternatives
+        a comparable subject was measured against.
+    - source: pitch-deck libraries
+      kind: narrative
+      access: open-web
+      framing: >
+        Survivor bias — how a category presents itself
+        to investors, not ground truth. Funded ≠
+        correct. Premium tiers are paywalled; the
+        free corpus is browsable.
+      recency: >
+        Era-conditional: deck conventions evolve with
+        capital climate and category maturity. Match
+        the library era to the question's era.
+      answers: >
+        "Compared to what?" framing patterns — how
+        comparable subjects name their competitive set
+        and differentiate against substitutes.
+    - source: CB Insights / PitchBook / Tracxn
+      kind: structured-record
+      access: operator-authenticated
+      framing: >
+        Coverage gaps by region, stage, and era;
+        stealth rounds absent and bootstrapped
+        companies under-represented. Classification
+        quality is platform-decided. Funding ≠
+        business signal. Access via employer or
+        library subscriptions; do not gatekeep on a
+        free-only basis.
+      recency: >
+        Continuously updated, so the question is not
+        "is this stale?" but "what historical depth
+        does it carry, and does it cover my era?"
+      answers: >
+        Competitor and comparable-population selection:
+        which firms constitute the realistic
+        alternative set for the audience-job pair.
   informed_by:
     - Porter five-forces and strategy literature
     - Jobs-to-be-Done (substitute analysis)
@@ -550,6 +610,61 @@ Every entry uses the following fields:
   evidence_class: document
   specialist_type: unit-economics analyst / FP&A
   rubric_anchor: ~
+  recommended_sources:
+    - source: ideas.rip
+      kind: narrative
+      access: open-web
+      framing: >
+        Founder-selection bias; retrospective failure
+        narratives optimized for teaching. Funded ≠
+        correct — a documented startup is a survivor of
+        the funding filter, not a validated answer.
+      recency: >
+        Era-conditional: capital-climate and
+        category-maturity details age; substitution
+        patterns are more durable. Weight recent cases
+        for current priors.
+      answers: >
+        Demand-validation and willingness-to-pay priors:
+        whether comparable subjects found a market that
+        actually paid, and where demand assumptions
+        broke down.
+    - source: pitch-deck libraries
+      kind: narrative
+      access: open-web
+      framing: >
+        Survivor bias — how a category presents itself
+        to investors, not ground truth. Funded ≠
+        correct. Premium tiers are paywalled; the
+        free corpus is browsable.
+      recency: >
+        Era-conditional: deck conventions evolve with
+        capital climate and category maturity. Match
+        the library era to the question's era.
+      answers: >
+        TAM/SAM/SOM construction patterns and
+        demand-claim conventions: how comparable
+        subjects sized their market and framed the
+        revenue opportunity.
+    - source: CB Insights / PitchBook / Tracxn
+      kind: structured-record
+      access: operator-authenticated
+      framing: >
+        Coverage gaps by region, stage, and era;
+        stealth rounds absent and bootstrapped
+        companies under-represented. Classification
+        quality is platform-decided. Funding ≠
+        business signal. Access via employer or
+        library subscriptions; do not gatekeep on a
+        free-only basis.
+      recency: >
+        Continuously updated, so the question is not
+        "is this stale?" but "what historical depth
+        does it carry, and does it cover my era?"
+      answers: >
+        Comparable transactions, valuations, and
+        funding history as a market-sizing and
+        commercial-viability cross-check.
   informed_by:
     - SaaS unit-economics literature (CAC, LTV, payback)
     - OECD RIA (counterfactual analysis)
@@ -824,18 +939,21 @@ Every entry uses the following fields:
 
 - **Total entries:** 23 (5 universal + 18 domain across 6 packs)
 - **Rubric-anchored entries:** 2 (8.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
+- **`recommended_sources:`-bearing entries:** 2 (8.7%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
 - **`specialist_type:` population:** 23 / 23
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
 - **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.11 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.12 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+
+v0.12 is an additive schema bump on top of v0.11: same 23 lenses, same triggers. It adds the optional `recommended_sources:` field, which attaches a framework-curated list of external reference sources — each with a mandatory `framing:` and `recency:` caveat — to the lens's material question. The field is populated on two high-yield lenses (LL-D-008 "Compared to what?" and LL-D-009 "Does it pay back?") and absent on the rest. Like `rubric_anchor:`, it is optional and backward-compatible: entries without it remain valid, so v0.12 introduces no behavior change for existing lenses.
 
 v0.11 is a lens-binding refinement on top of v0.10: same 23 lenses, no schema change. It sharpens LL-D-008 ("Compared to what?") to name the category-vs-audience substitution trap in `failure_mode`, and tightens `minimum_scope_binding` to require naming the audience and job before enumerating comparators — substitutes defined by the job, not the product category. The refinement is posture-facilitation, motivated by a real audit that reached a false-uniqueness finding after enumerating category-bounded rivals while an audience-defined substitute went unnamed.
 
 v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.11 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.12 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
 
-*End of PRISM Lens Library v0.11.*
+*End of PRISM Lens Library v0.12.*

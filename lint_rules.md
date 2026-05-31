@@ -1,6 +1,6 @@
 # PRISM lint catalog
 
-**Catalog version:** 1
+**Catalog version:** 2
 
 This file is the contributor-facing reference catalog of lint rules
 enforced against `PRISM.md` by the workflow at `.github/workflows/lint.yml`.
@@ -105,6 +105,12 @@ description copy is operator-facing and version-bound.
 
 **Status at catalog v1:** reserved slot. Activates when Pattern A ships.
 
+### `PRISM-LINT-08` / `lens-recommended-sources-valid` — error  *(reserved — gated on the lint-catalog micro-DD)*
+
+Every `recommended_sources:` entry in the embedded Lens Library (Appendix G) is well-formed: the mandatory sub-fields (`source`, `kind`, `access`, `framing`, `recency`, `answers`) are present, and the closed-enum fields validate (`kind ∈ {narrative, structured-record}`, `access ∈ {open-web, operator-authenticated}`). Severity `error` because a missing `framing:` or `recency:` is schema-invalid in the catalog's exact sense and produces a silent-omission failure downstream — auto-population of a consuming Envelope would yield a blank *mandatory* caveat.
+
+**Status at catalog v2:** reserved slot. The field it validates (`recommended_sources:`) ships at v2.7.0; activation is deferred to the lint-catalog micro-DD that owns catalog evolution, so the sibling schema-validators (LINT-03/04/05/07) and this one activate under one coherent decision rather than piecemeal.
+
 ## Output format
 
 All lint scripts emit NDJSON (newline-delimited JSON), one violation per
@@ -128,3 +134,4 @@ meaningfully (rule added; severity changed; rule removed).
 | Catalog version | Active rules | Reserved rules |
 |---|---|---|
 | 1 | `LINT-01`, `LINT-02` | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07` |
+| 2 | `LINT-01`, `LINT-02` | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08` |

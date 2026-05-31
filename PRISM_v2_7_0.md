@@ -1,30 +1,30 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.6.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.7.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.6.0
+version: 2.7.0
 released: 2026-05-31
-supersedes: 2.5.2
-lens_library_embedded: "0.11"
+supersedes: 2.6.0
+lens_library_embedded: "0.12"
 substrate_target: [claude-opus-4-6, claude-opus-4-7]
 normativity:
   strength_vocabulary: [required, recommended, optional]
   strength_default: required
   polarity_vocabulary: ["✅", "⚠️", "🚫"]
   polarity_default: null
-lint_catalog_version: 1
+lint_catalog_version: 2
 ---
 
-# PRISM v2.6.0 — Framework operating document
+# PRISM v2.7.0 — Framework operating document
 
-**Status:** v2.6.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.7.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** May 2026
-**Supersedes:** PRISM v2.5.2 (MINOR: corpus-access dispatch — an investigation-posture Execution Envelope that performs a targeted lookup against an external reference corpus, scoped to the engagement's question, and returns a finding-plus-exhibits bundle. The investigation-vs-epistemic posture distinction is lifted from §{section.cowork-surface-capabilities} prose to a first-class Envelope `Posture:` field; SP-15's triangulation guardrail now lives in Envelope structure — a coverage fan retrieves, it does not triangulate; SP-14 gains a companion-artifact filename convention. Phase 1: the `manual` and `vendor-executed` lookup paths are operational, `cowork-mcp` reserved). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.6.0 (MINOR: recommended-sources-on-lens — the Lens Library gains an optional `recommended_sources:` field that attaches a framework-curated list of external reference sources, each with a mandatory `framing:` and `recency:` caveat, to a lens's material question. Populated on two high-yield lenses — LL-D-008 "Compared to what?" (competitive substitution) and LL-D-009 "Does it pay back?" (commercial viability) — and absent on the rest. The embedded Lens Library (Appendix G) and its standalone mirror both advance to v0.12. The field is additive and backward-compatible: it carries no behavior change at this release — auto-population of the corpus-access Envelope from this field is the consuming Phase-2 build that follows. `PRISM-LINT-08` is reserved for the field's schema validator). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
-Lens Library v0.11 in Appendix G; a singleton PRISM.md attachment is
+Lens Library v0.12 in Appendix G; a singleton PRISM.md attachment is
 sufficient for normal operation. Attach a standalone Lens Library only
 when the project explicitly pins to a newer Library version than the
 embedded copy (see §{section.library-reference-at-setup}).
@@ -80,8 +80,8 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.6.0 covers `[structural | stable]`
-<a id="section-what-v2-6-0-covers"></a>
+### 1.1 What v2.7.0 covers `[structural | stable]`
+<a id="section-what-v2-7-0-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -99,7 +99,7 @@ and research framework. v2.0 covers:
 - **Seven Setup probes** (§{probe.P1} Coverage grading, P2 Adversarial Scope, P3
   Decision Framing, P4 Pre-mortem, P5 Falsifier, P6 Domain Reconnaissance,
   P7 User Voice) — Setup-time grading constructs only (§{section.the-seven-probes}).
-- **Library integration** — the Lens Library v0.11 as canonical reference
+- **Library integration** — the Lens Library v0.12 as canonical reference
   catalog (embedded as Appendix G; standalone at `lens/PRISM_lens_library.md`
   for explicit override); point-refresh in Setup; Update sessions for
   currency maintenance (§{section.library-integration}).
@@ -120,15 +120,15 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.6.0 does not cover
-<a id="section-what-v2-6-0-does-not-cover"></a>
+### 1.2 What v2.7.0 does not cover
+<a id="section-what-v2-7-0-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog ships embedded
-  in Appendix G (v0.11 at this release) for singleton-attachment use. The
-  standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.11`)
+  in Appendix G (v0.12 at this release) for singleton-attachment use. The
+  standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.12`)
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
 - **Empirical calibration.** Several thresholds in v2.0 are rev. 1 draft
@@ -2442,8 +2442,8 @@ map adapts with it (§{section.prism-execution-envelope}).
 ## 7. Library integration
 <a id="section-library-integration"></a>
 
-The Lens Library v0.11 is canonical at `lens/PRISM_lens_library.md`
-(tag `prism-lens-v0.11`). The v0.11 catalog is also embedded in this
+The Lens Library v0.12 is canonical at `lens/PRISM_lens_library.md`
+(tag `prism-lens-v0.12`). The v0.12 catalog is also embedded in this
 file as **Appendix G** for singleton-attachment use; that embedded copy
 is the default Library source for orchestration. The standalone Library
 file remains authoritative for the artifact's own evolution: Update
@@ -2456,8 +2456,8 @@ and override Appendix G (§{section.library-reference-at-setup}).
 <a id="section-library-reference-at-setup"></a>
 
 **Required Library source.** By default, orchestration uses the embedded
-Lens Library v0.11 in Appendix G (this file). A standalone Lens Library
-file (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.11` or newer) is
+Lens Library v0.12 in Appendix G (this file). A standalone Lens Library
+file (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.12` or newer) is
 attached only when the operator explicitly pins the project to a newer
 standalone Library version than the embedded copy. When standalone is
 attached, it overrides Appendix G for that session. Recommended: if a
@@ -2538,7 +2538,7 @@ Two-tier mechanism: point refresh (per-project, in Setup) + Update session
   P3.4 — accessibility pass
   Specialist framing: WCAG-qualified accessibility auditor (§{lens.LL-D-002} "Can anyone use?")
   Anchor: WCAG 2.2 (October 2023) — verified current as of [date]
-          via web search; PRISM Lens Library v0.11 last_verified
+          via web search; PRISM Lens Library v0.12 last_verified
           2026-04-24 still current.
   ```
   If the web-search currency check finds a newer version (e.g., WCAG 3.0
@@ -3971,7 +3971,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-6-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-7-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -4649,11 +4649,11 @@ fire on it. Cross-ref: §{section.sp-15-triangulation-integrity},
 
 ---
 
-## Appendix G — Embedded Lens Library v0.11
-<a id="appendix-embedded-lens-library-v0-11"></a>
+## Appendix G — Embedded Lens Library v0.12
+<a id="appendix-embedded-lens-library-v0-12"></a>
 
 The content below is an embedded, byte-for-byte copy of the canonical
-`lens/PRISM_lens_library.md` v0.11 (tag `prism-lens-v0.11`) at the
+`lens/PRISM_lens_library.md` v0.12 (tag `prism-lens-v0.12`) at the
 time of this PRISM release. The standalone file remains authoritative
 for the catalog's own evolution; this embedded copy is the **default
 Library source** for orchestration so a single PRISM.md attachment is
@@ -4669,10 +4669,10 @@ the standalone file alongside the Master (§{section.library-reference-at-setup}
 
 ---
 
-# PRISM Lens Library — v0.11 (pre-release)
+# PRISM Lens Library — v0.12 (pre-release)
 
-**Version:** 0.11
-**Release date:** 2026-05-30
+**Version:** 0.12
+**Release date:** 2026-05-31
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -4728,6 +4728,13 @@ Every entry uses the following fields:
 - `rubric_anchor:` optional — a version-pinned external rubric the lens recommends binding to
 - `last_verified:` populated on entries carrying `rubric_anchor:`
 - `verification_basis:` populated on entries carrying `last_verified:`; one of `{schema-introduction-only, independent-review}`. Gates freshness logic in adopting frameworks: a `schema-introduction-only` basis must not be treated as fresh on the strength of date alone
+- `recommended_sources:` optional — a framework-curated list of external reference sources this lens recommends consulting, each bound to the lens's material question. Populated only on lenses with a high-signal source; absent on the rest (like `rubric_anchor:`). Each source record carries:
+  - `source:` the named corpus or reference
+  - `kind:` one of `{narrative, structured-record}`
+  - `access:` one of `{open-web, operator-authenticated}`
+  - `framing:` MANDATORY — the bias or handling caveat that must travel with any use of the source
+  - `recency:` MANDATORY — the source-scoped era/recency posture (how the source's currency bears on its use; distinct from any lens-level findings-recency)
+  - `answers:` the lens material-question(s) this source helps address
 - `informed_by:` frameworks, standards, and practice traditions that inform the lens (indicative, not exhaustive; not a compliance claim)
 - `failure_mode:` the silent omission this lens catches, in plain language
 - `minimum_scope_binding:` the minimum scope commitment that counts as "covered" for this lens
@@ -5181,6 +5188,59 @@ Every entry uses the following fields:
   evidence_class: cross-check
   specialist_type: competitive analyst / market researcher
   rubric_anchor: ~
+  recommended_sources:
+    - source: ideas.rip
+      kind: narrative
+      access: open-web
+      framing: >
+        Founder-selection bias; retrospective failure
+        narratives optimized for teaching. Funded ≠
+        correct — a documented startup is a survivor of
+        the funding filter, not a validated answer.
+      recency: >
+        Era-conditional: capital-climate and
+        category-maturity details age; substitution
+        patterns are more durable. Weight recent cases
+        for current priors.
+      answers: >
+        Substitute and do-nothing enumeration for an
+        audience-job pair: what realistic alternatives
+        a comparable subject was measured against.
+    - source: pitch-deck libraries
+      kind: narrative
+      access: open-web
+      framing: >
+        Survivor bias — how a category presents itself
+        to investors, not ground truth. Funded ≠
+        correct. Premium tiers are paywalled; the
+        free corpus is browsable.
+      recency: >
+        Era-conditional: deck conventions evolve with
+        capital climate and category maturity. Match
+        the library era to the question's era.
+      answers: >
+        "Compared to what?" framing patterns — how
+        comparable subjects name their competitive set
+        and differentiate against substitutes.
+    - source: CB Insights / PitchBook / Tracxn
+      kind: structured-record
+      access: operator-authenticated
+      framing: >
+        Coverage gaps by region, stage, and era;
+        stealth rounds absent and bootstrapped
+        companies under-represented. Classification
+        quality is platform-decided. Funding ≠
+        business signal. Access via employer or
+        library subscriptions; do not gatekeep on a
+        free-only basis.
+      recency: >
+        Continuously updated, so the question is not
+        "is this stale?" but "what historical depth
+        does it carry, and does it cover my era?"
+      answers: >
+        Competitor and comparable-population selection:
+        which firms constitute the realistic
+        alternative set for the audience-job pair.
   informed_by:
     - Porter five-forces and strategy literature
     - Jobs-to-be-Done (substitute analysis)
@@ -5221,6 +5281,61 @@ Every entry uses the following fields:
   evidence_class: document
   specialist_type: unit-economics analyst / FP&A
   rubric_anchor: ~
+  recommended_sources:
+    - source: ideas.rip
+      kind: narrative
+      access: open-web
+      framing: >
+        Founder-selection bias; retrospective failure
+        narratives optimized for teaching. Funded ≠
+        correct — a documented startup is a survivor of
+        the funding filter, not a validated answer.
+      recency: >
+        Era-conditional: capital-climate and
+        category-maturity details age; substitution
+        patterns are more durable. Weight recent cases
+        for current priors.
+      answers: >
+        Demand-validation and willingness-to-pay priors:
+        whether comparable subjects found a market that
+        actually paid, and where demand assumptions
+        broke down.
+    - source: pitch-deck libraries
+      kind: narrative
+      access: open-web
+      framing: >
+        Survivor bias — how a category presents itself
+        to investors, not ground truth. Funded ≠
+        correct. Premium tiers are paywalled; the
+        free corpus is browsable.
+      recency: >
+        Era-conditional: deck conventions evolve with
+        capital climate and category maturity. Match
+        the library era to the question's era.
+      answers: >
+        TAM/SAM/SOM construction patterns and
+        demand-claim conventions: how comparable
+        subjects sized their market and framed the
+        revenue opportunity.
+    - source: CB Insights / PitchBook / Tracxn
+      kind: structured-record
+      access: operator-authenticated
+      framing: >
+        Coverage gaps by region, stage, and era;
+        stealth rounds absent and bootstrapped
+        companies under-represented. Classification
+        quality is platform-decided. Funding ≠
+        business signal. Access via employer or
+        library subscriptions; do not gatekeep on a
+        free-only basis.
+      recency: >
+        Continuously updated, so the question is not
+        "is this stale?" but "what historical depth
+        does it carry, and does it cover my era?"
+      answers: >
+        Comparable transactions, valuations, and
+        funding history as a market-sizing and
+        commercial-viability cross-check.
   informed_by:
     - SaaS unit-economics literature (CAC, LTV, payback)
     - OECD RIA (counterfactual analysis)
@@ -5495,21 +5610,24 @@ Every entry uses the following fields:
 
 - **Total entries:** 23 (5 universal + 18 domain across 6 packs)
 - **Rubric-anchored entries:** 2 (8.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
+- **`recommended_sources:`-bearing entries:** 2 (8.7%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
 - **`specialist_type:` population:** 23 / 23
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
 - **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.11 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.12 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+
+v0.12 is an additive schema bump on top of v0.11: same 23 lenses, same triggers. It adds the optional `recommended_sources:` field, which attaches a framework-curated list of external reference sources — each with a mandatory `framing:` and `recency:` caveat — to the lens's material question. The field is populated on two high-yield lenses (LL-D-008 "Compared to what?" and LL-D-009 "Does it pay back?") and absent on the rest. Like `rubric_anchor:`, it is optional and backward-compatible: entries without it remain valid, so v0.12 introduces no behavior change for existing lenses.
 
 v0.11 is a lens-binding refinement on top of v0.10: same 23 lenses, no schema change. It sharpens LL-D-008 ("Compared to what?") to name the category-vs-audience substitution trap in `failure_mode`, and tightens `minimum_scope_binding` to require naming the audience and job before enumerating comparators — substitutes defined by the job, not the product category. The refinement is posture-facilitation, motivated by a real audit that reached a false-uniqueness finding after enumerating category-bounded rivals while an audience-defined substitute went unnamed.
 
 v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.11 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.12 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
 
-*End of PRISM Lens Library v0.11.*
+*End of PRISM Lens Library v0.12.*
 
 ---
 
@@ -5588,8 +5706,8 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.6.0 (this file)
-- **Embedded Lens Library version.** v0.11 (Appendix G)
+- **Framework version.** v2.7.0 (this file)
+- **Embedded Lens Library version.** v0.12 (Appendix G)
 - **Release date.** 2026-05-31
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
   Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
@@ -5604,12 +5722,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_6_0.md` |
-| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_11.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_7_0.md` |
+| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_12.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.6.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.7.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5635,8 +5753,8 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.6.0 attached; v{published} available at {releases URL}.`
-   `Lens v0.11 attached; v{published} available at {releases URL}.`
+   `Framework v2.7.0 attached; v{published} available at {releases URL}.`
+   `Lens v0.12 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
    runtime.
@@ -5678,8 +5796,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.6.0). https://github.com/Ronkupper/PRISM
+> (v2.7.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.6.0 framework operating document.*
+*End of PRISM v2.7.0 framework operating document.*

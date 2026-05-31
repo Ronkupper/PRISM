@@ -22,6 +22,9 @@ abstract: >-
   structurally distinct from epistemic triangulation, with a coverage fan
   that merges returns for recall and a mandatory exhibits manifest carrying
   per-item provenance.
+  v2.7 adds recommended-sources-on-lens: an optional Lens Library field
+  binding framework-curated external reference sources, each with a
+  mandatory framing and recency caveat, to a lens's material question.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -34,7 +37,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.6.0"
+version: "2.7.0"
 date-released: "2026-05-31"
 keywords:
   - llm
