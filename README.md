@@ -4,6 +4,8 @@
 
 The framework ships as a single Markdown file (`PRISM.md`) that can be attached to any LLM chat or installed as a Claude Skill. It carries its own machine-readable frontmatter, lint contract, Lens Library (embedded as Appendix G), and vendor-parsing escape-hatch (Appendix H) so the file self-documents across sessions and vendors.
 
+> **New in v2.5.0 — repo-backed persistence.** Point a PRISM engagement at a GitHub repo and it becomes the durable home for the whole engagement: your inputs, the Master, every dispatched prompt and returned report, and the running *What's next*. Any session resumes exactly where the last one left off — even a fresh chat — and you can switch surfaces freely, desktop to mobile and back, with the repo as the shared state. It's the `repo_backed` value on the persistence axis; see the [v2.5.0 release](https://github.com/Ronkupper/PRISM/releases/tag/v2.5.0).
+
 ## Quick start
 
 The fastest path:
