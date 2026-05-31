@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 15
+**Version:** 16
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -50,9 +50,9 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 
 ---
 
-### Cowork execution mode (`agentic_orchestration`)
+### Cowork execution mode (`cowork` orchestration surface)
 
-*(Active proposal — unchanged.)*
+*(Active proposal — promotion gate cleared in v2.4.0; this is the `cowork` orchestration-surface value plus its capability set (PRISM.md §3.5.2, the Cowork capability surface). Build pending; the prose-adaptation layer is gated on the orthodox baseline run. The reserved `agentic_orchestration` token was retired in v2.4.0 and re-homed to the `auto_drive` execution driver.)*
 
 ---
 
@@ -68,73 +68,9 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 
 ---
 
-### Repo-backed PRISM mode (operator GitHub flow)
+## Accepted for next version
 
-*(Active proposal — unchanged.)*
-
----
-
-## Accepted for v1.9
-
-### ask_user_input UX integration
-
-**Proposed mechanism:** Use the `ask_user_input` tool (where available) for decision points that have clean discrete options. Specifically:
-- **Setup Scope Flags** — one bundled multi-question call covering the five flags, with "Keep all defaults" as a single-option shortcut for users who want to proceed quickly
-- **Enrichment Scoping** — per-prompt approve/decline/defer choices
-- **M10 classification** — rerun / injected prompt / standalone fix
-- **Adaptation confirmation** — approve / modify / reject
-
-**Not used for:**
-- GATE-0 pass/fail output (informational, no decision)
-- Monitor triggers that log rather than decide (M2, M7, M8)
-- Free-text clarifications (SP-5 territory — "stop and ask" is rarely two or three clean options)
-
-**Fallback:** When `ask_user_input` is unavailable (API contexts, non-tool-enabled sessions), Claude falls back to prose ask — the current behaviour. Codified via new SP-9.
-
-**No timer.** Explicitly rejected. A timer that auto-picks the default would make *silence* a decision, which inverts PRISM's core "flag, don't assume" ethos (SP-5, full-decline flag rule). SP-9 generalises this stance.
-
-**Decisions made in workshop session:**
-- Binary is fine; "Keep all defaults" shortcut for Scope Flags is the most common path
-- Prose fallback, not feature-required
-
----
-
-### LLM access Scope Flag + execution envelope
-
-**Proposed mechanism:** Two linked additions.
-
-**1. New Scope Flag: LLM access**
-- Options: `claude-only` / `multi-vendor`
-- Default: `claude-only` (conservative — PRISM is a Claude skill, Claude is always available)
-- When `multi-vendor`, user declares which vendors/tiers they have access to at Setup. Per-project declaration (not persisted across projects) — access churns and a 10-second tap at Setup is honest about current state.
-- Consistency check: if enrichment flag is `full` or `minimal` but LLM access flag is `claude-only`, flag the mismatch (same pattern as full-decline flag rule).
-
-**2. Execution envelope on the attach map**
-- New columns on the attach map (not a separate table — keeps it in one place, mobile scroll is acceptable): Web Search (y/n), Deep Research mode (y/n), Recommended vendor (role-based, not hardcoded)
-- Adaptive Thinking: recommended on at Setup as a one-time flag, not per-prompt. Claude doesn't override per-prompt because the model itself is deciding per-turn when Adaptive Thinking is on.
-
-**Role-based vendor recommendation:** The framework describes *roles* ("use a vendor with strong multi-document synthesis for DR"), not named vendors. Vendor-to-role mapping is a separate, shorter-lived reference (either a project-level note or a user-level default table) that ages without forcing PRISM.md to age with it.
-
-**Fallback language when best vendor is unavailable:** "Recommended: [best vendor]. Not in your access set — falling back to [alternative]. Caveat: [what's lost in the swap]." Same flag-don't-assume ethos.
-
-**Claude as default:** Stated explicitly in the framework — when no vendor recommendation is given, Claude is assumed.
-
-**Decisions made in workshop session:**
-- Binary for access flag (claude-only / multi-vendor)
-- Execution envelope as new columns on attach map, not separate table
-- Role-based recommendations, not named-vendor hardcoding
-- Adaptive Thinking as Setup-level recommendation only; no per-prompt thinking-depth matrix (platform is already deciding per-turn, framework recommendation would be redundant or wrong)
-- Vendor access declaration is per-project, not user-level persisted
-
----
-
-### SP-9: Silence is never consent
-
-**Proposed mechanism:** New Standing Principle generalising the no-timer rationale and codifying the `ask_user_input`/prose-fallback behaviour.
-
-**Text:** When a decision requires the user's input, Claude stops and asks — either via `ask_user_input` (when available) or via prose question (fallback). Silence, timeouts, and assumed-default auto-advance are never valid substitutes. This applies to Scope Flags, Enrichment Scoping, M10 classification, Adaptation confirmation, and any future decision point added to the framework.
-
-**Rationale for SP status (not just a behavioural note):** The principle generalises beyond ask_user_input — it's a framework-wide stance that applies everywhere an ambiguous input or decision surfaces. SP-5 already says "no heuristic guessing"; SP-9 extends that to cover tool-mediated interaction patterns. Adding an SP is the appropriate signal that this is a load-bearing default, not an implementation detail.
+*(none currently — v1.9 foundation items shipped; see Shipped.)*
 
 ---
 
@@ -177,6 +113,16 @@ Codified as SP-9 in v1.9.
 ---
 
 ## Shipped
+
+### Repo-backed PRISM mode (v2.5.0)
+
+**Shipped on:** `main` of `Ronkupper/PRISM`, 2026-05-31. Tag `v2.5.0` (mechanics build), with same-day clarifying PATCHes v2.5.1 (execution-return persistence) and v2.5.2 (operator-input persistence).
+
+**What landed.** The build for the persistence axis's `repo_backed` value (value + contract were fixed in v2.4.0's three-axis modes model). New §3.5.3 mechanics: 6-step Setup flow, Claude-as-committer model (operator-as-committer fallback), operator-side PAT hygiene, 8-section engagement-SI skeleton; §3.4 extended with the repo-resident *What's next* variant. MINOR — default `ephemeral` cell and the triple contract untouched.
+
+**Lineage.** Promotion gate cleared by the modes-architecture decision (v2.4.0), which reframed this from a standalone "mode" into the `repo_backed` value on the persistence axis. Provenance: `PRISM-workshop/design/backlog_sequencing_dd_rev1.md` (2026-05-31 amendments). Was an Active proposal in this file; moved here on ship.
+
+---
 
 ### Tooling-conventions Pattern B Phase B2 — legacy element marking sweep (v2.2.0)
 
@@ -262,6 +208,14 @@ Codified as SP-9 in v1.9.
 **Catalog rename.** In `lint-v1` (Pattern C, 2026-05-22), the four `PRISM-REF-NN` rule IDs are consolidated under the public catalog: `REF-01` / `REF-02` / `REF-03` (all error) → `PRISM-LINT-01 / named-refs-resolve`; `REF-04` (info) → `PRISM-LINT-02 / named-refs-orphan-anchor`. Internal sub-mode (`broken-ref` / `slug-collision` / `mixed-ref-style` / `orphan-anchor`) preserved in NDJSON `context` field for diagnosability.
 
 **Deferred to follow-up.** Bidirectional alias normalizer for contributor inputs (issue/PR/chat). Split-mode resolver (when partial decomposition of PRISM.md happens). External `prism-md` CLI.
+
+---
+
+### v1.9 foundation items — ask_user_input UX, LLM-access Scope Flag + execution envelope, SP-9 (v1.9)
+
+**Shipped on:** PRISM v1.9 (the three items previously held under "Accepted for v1.9" in this file; cleared here as backlog housekeeping).
+
+**What landed.** `ask_user_input` UX integration for discrete decision points (Scope Flags, Enrichment Scoping, M10 classification, Adaptation confirmation) with prose fallback; the LLM-access Scope Flag (`claude-only` / `multi-vendor`) plus the execution envelope on the attach map (role-based vendor recommendations, not named-vendor hardcoding); and **SP-9 (Silence is never consent)**, generalizing the no-timer / flag-don't-assume stance framework-wide. Full mechanism and decisions live in PRISM.md's §18 Version History; the timer-with-auto-advance variant was Declined (see Declined).
 
 ---
 
