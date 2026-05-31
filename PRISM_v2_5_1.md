@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.5.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.5.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.5.0
+version: 2.5.1
 released: 2026-05-31
-supersedes: 2.4.0
+supersedes: 2.5.0
 lens_library_embedded: "0.11"
 substrate_target: [claude-opus-4-6, claude-opus-4-7]
 normativity:
@@ -17,11 +17,11 @@ normativity:
 lint_catalog_version: 1
 ---
 
-# PRISM v2.5.0 — Framework operating document
+# PRISM v2.5.1 — Framework operating document
 
-**Status:** v2.5.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.5.1 release. Canonical framework for Claude orchestration sessions.
 **Date:** May 2026
-**Supersedes:** PRISM v2.4.0 (MINOR: `repo_backed` persistence mechanics — the persistence axis's `repo_backed` value, whose value and contract were fixed in v2.4.0, gains its build: a GitHub repo as durable engagement state, the running *What's next* artifact made repo-resident as the cross-surface pickup point, operator-side PAT hygiene, and the engagement-SI skeleton; the default `ephemeral` cell and the triple contract are unchanged). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.5.0 (PATCH: the `repo_backed` persistence mechanics now make explicit that execution Outputs — the Markdown / Word / PDF reports a vendor returns — persist to the repo work folder via the operator's normal attach-back step under Claude-as-committer, with a git-enabled execution session noted as a future direction; documentation clarification of already-shipped behavior, no functional change). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.11 in Appendix G; a singleton PRISM.md attachment is
@@ -80,8 +80,8 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.5.0 covers `[structural | stable]`
-<a id="section-what-v2-5-0-covers"></a>
+### 1.1 What v2.5.1 covers `[structural | stable]`
+<a id="section-what-v2-5-1-covers"></a>
 
 PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
 and research framework. v2.0 covers:
@@ -120,8 +120,8 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.5.0 does not cover
-<a id="section-what-v2-5-0-does-not-cover"></a>
+### 1.2 What v2.5.1 does not cover
+<a id="section-what-v2-5-1-does-not-cover"></a>
 
 - **Re-debating direction.** v2.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
@@ -960,6 +960,19 @@ prefers not to place a PAT in a Project can instead run
 the operator commits it by hand. This is the conservative fallback; it
 reintroduces the manual round-trip `repo_backed` exists to remove, so it is
 not the default.
+
+**Execution returns.** Execution Outputs — the reports a vendor produces from a
+dispatched Envelope, in whatever form they come back (Markdown, a Word or PDF
+document, pasted text) — persist the same way as every other artifact. Under
+the manual execution driver (§{section.orchestration-driver-and-persistence-axes},
+the only built driver), the operator attaches the returned Output to the
+orchestration session as it already does in the normal lifecycle, and
+orchestration commits it to the work folder; this works today under the
+Claude-as-committer model with no extra machinery. A future git-enabled
+execution session that commits its own returns directly is a possible later
+direction — lower priority, not built — the persistence-side parallel to the
+reserved `auto_drive` execution driver. Either way the returns land in the same
+work folder as the Master, Envelopes, handoffs, and *What's next*.
 
 **Operator PAT hygiene.** The PAT is the operator's credential for the
 operator's repo. The discipline below mirrors token handling PRISM's own
@@ -3693,7 +3706,7 @@ indexes decisions by tag for easy review.
 ### C.1 `[structural | stable]`
 <a id="appendix-structural-stable"></a>
 
-§{section.what-v2-5-0-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
+§{section.what-v2-5-1-covers} (scope), §{section.three-leg-constraint} (three-leg constraint), §{section.two-session-types} (two session types),
 §{section.the-triple-contract} (triple contract), §{section.the-master} (Master), §{section.whats-next} (*What's next*), §{section.forward-compatibility-commitments}
 (forward-compatibility commitments), §{section.single-envelope-with-spectrum-shape} (single-Envelope-with-
 spectrum), §{section.vendor-triangulation} (Vendor Triangulation), §{section.asymmetric-parallel-return-handling} (asymmetric returns), §{section.recommended-vs-executed-reconciliation}
@@ -5265,7 +5278,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.5.0 (this file)
+- **Framework version.** v2.5.1 (this file)
 - **Embedded Lens Library version.** v0.11 (Appendix G)
 - **Release date.** 2026-05-31
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -5281,12 +5294,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_5_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_5_1.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_11.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.5.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.5.1` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5312,7 +5325,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.5.0 attached; v{published} available at {releases URL}.`
+   `Framework v2.5.1 attached; v{published} available at {releases URL}.`
    `Lens v0.11 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -5355,8 +5368,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.5.0). https://github.com/Ronkupper/PRISM
+> (v2.5.1). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.5.0 framework operating document.*
+*End of PRISM v2.5.1 framework operating document.*

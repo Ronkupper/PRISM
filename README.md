@@ -8,7 +8,7 @@ The framework ships as a single Markdown file (`PRISM.md`) that can be attached 
 
 The fastest path:
 
-1. Attach `PRISM.md` (or `PRISM_v2_5_0.md` for the version-pinned copy) to a fresh Claude chat.
+1. Attach `PRISM.md` (or `PRISM_v2_5_1.md` for the version-pinned copy) to a fresh Claude chat.
 2. Tell Claude the problem you want to audit or research.
 3. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
 
@@ -25,7 +25,7 @@ The framework runs on any capable LLM — Claude is the primary reasoning and bu
 
 ## Current version
 
-**v2.5.0** — current file: [`PRISM.md`](./PRISM.md). v2.5.0 is a MINOR over v2.4.0: it lands the mechanics for the persistence axis's `repo_backed` value (whose value and contract were fixed in v2.4.0) — a GitHub repo as durable engagement state, the running *What's next* artifact made repo-resident as the cross-surface pickup point, operator-side PAT hygiene, and an engagement-SI skeleton. The default `ephemeral` cell and the triple execution contract are unchanged. The version-pinned snapshot at this tag is [`PRISM_v2_5_0.md`](./PRISM_v2_5_0.md) (byte-identical to PRISM.md at the v2.5.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.5.1** — current file: [`PRISM.md`](./PRISM.md). v2.5.1 is a PATCH over v2.5.0: §3.5.3 now makes explicit that execution Outputs (the Markdown / Word / PDF reports a vendor returns) persist to the repo work folder via the operator's normal attach-back step under Claude-as-committer, with a git-enabled execution session noted as a future direction — a documentation clarification of already-shipped behavior, no functional change. v2.5.0 was the MINOR that landed the `repo_backed` persistence mechanics. The version-pinned snapshot at this tag is [`PRISM_v2_5_1.md`](./PRISM_v2_5_1.md) (byte-identical to PRISM.md at the v2.5.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -56,7 +56,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_5_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_5_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` — standalone skill loader (frontmatter only); use as an alternative to the fused `PRISM.md` when a decoupled skill / body layout is preferred.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
