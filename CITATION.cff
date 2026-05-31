@@ -14,7 +14,10 @@ abstract: >-
   observation-driven appendix indexing vendor parsing behaviour on dispatched
   content. v2.4 generalizes the reserved execution-mode flag into three
   orthogonal orchestration axes — surface, execution driver, and persistence —
-  each a closed validated enum. The framework codifies a triple execution contract
+  each a closed validated enum; v2.5 lands the repo-backed persistence
+  mechanics, holding durable state in a GitHub repo with the running
+  What's-next artifact made repo-resident as the cross-surface pickup point.
+  The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
   distributed as a single markdown file that can be attached to any LLM session
@@ -26,8 +29,8 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.4.0"
-date-released: "2026-05-30"
+version: "2.5.0"
+date-released: "2026-05-31"
 keywords:
   - llm
   - prompt-engineering
