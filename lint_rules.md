@@ -1,6 +1,6 @@
 # PRISM lint catalog
 
-**Catalog version:** 2
+**Catalog version:** 3
 
 This file is the contributor-facing reference catalog of lint rules
 enforced against `PRISM.md` by the workflow at `.github/workflows/lint.yml`.
@@ -111,6 +111,25 @@ Every `recommended_sources:` entry in the embedded Lens Library (Appendix G) is 
 
 **Status at catalog v2:** reserved slot. The field it validates (`recommended_sources:`) ships at v2.7.0; activation is deferred to the lint-catalog micro-DD that owns catalog evolution, so the sibling schema-validators (LINT-03/04/05/07) and this one activate under one coherent decision rather than piecemeal.
 
+### Cross-file resolution — the Skill archive (catalog v3, v2.9.0)
+
+The v2.9.0 decomposition splits the framework into a lean core
+(`plugins/prism/skills/prism/PRISM_core.md`) plus on-demand bundles
+(`reference/*.md`) and the standalone lens, so named refs now cross files. Two
+linters, same rules:
+
+- `scripts/lint/lint_named_refs.py` continues to gate the **assembled
+  `PRISM.md`** (single file) — unchanged.
+- `scripts/lint/lint_cross_file_refs.py` gates the **Skill archive**: it builds
+  one union index over the manifest (core + bundles + lens) and runs the same
+  `PRISM-LINT-01` / `PRISM-LINT-02` checks against it, so a core ref into a
+  bundle resolves, and orphan/collision detection runs across the whole set. A
+  ref whose target bundle is absent from the manifest surfaces as a
+  `PRISM-LINT-01` broken-ref.
+
+No new rule IDs — the same two rules over a wider surface. (This catalog-surface
+extension is why `lint_catalog_version` advances 2 → 3.)
+
 ## Output format
 
 All lint scripts emit NDJSON (newline-delimited JSON), one violation per
@@ -135,3 +154,4 @@ meaningfully (rule added; severity changed; rule removed).
 |---|---|---|
 | 1 | `LINT-01`, `LINT-02` | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07` |
 | 2 | `LINT-01`, `LINT-02` | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08` |
+| 3 | `LINT-01`, `LINT-02` — single-file (`PRISM.md`) **and** cross-file (Skill archive) | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08` |

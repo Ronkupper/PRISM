@@ -30,6 +30,10 @@ abstract: >-
   source answers the question being worked and proposes a lookup for
   operator ratification rather than auto-dispatching, auto-populating the
   framing and recency caveats so they cannot be silently omitted.
+  v2.9 declares the orchestration substrate by vendor and tier (Claude,
+  Opus-class) rather than pinned model versions, and decomposes the framework
+  into a lean always-loaded core plus on-demand reference bundles, packaged as
+  a Claude Skill plugin alongside the canonical single-file form.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -42,8 +46,8 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.8.0"
-date-released: "2026-05-31"
+version: "2.9.0"
+date-released: "2026-06-04"
 keywords:
   - llm
   - prompt-engineering

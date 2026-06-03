@@ -1,0 +1,15 @@
+{
+  "name": "prism",
+  "owner": { "name": "Ron Kuper", "url": "https://github.com/Ronkupper" },
+  "metadata": {
+    "description": "PRISM framework, distributed as a Claude Skill plugin.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "prism",
+      "source": "./plugins/prism",
+      "description": "PRISM — structured, multi-session, multi-vendor LLM-orchestrated audit & research framework. Loads a lean core and fetches reference bundles (Lens Library, templates, appendices) on demand."
+    }
+  ]
+}

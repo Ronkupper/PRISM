@@ -132,6 +132,17 @@ def build_index(lines: list[str], path: str) -> Index:
                 idx.id_inventory["lens"].add(ym.group(1))
             continue
 
+        # Standing-Principle IDs are catalogued one row per SP in the §10.2
+        # disposition table; harvest them there so principle.SP-N refs resolve
+        # against the canonical SP catalog. This is the v2.9.0 source of truth
+        # for principle IDs (the §10/Appendix-F de-dup removed Appendix F, whose
+        # `### SP-N` headings the in_appendix_f path below used to harvest; that
+        # path is now inert pending the cross-file linter rework).
+        tm = re.match(r"^\|\s*(SP-\d+)\s*\|", line)
+        if tm:
+            idx.id_inventory["principle"].add(tm.group(1))
+            continue
+
         am = RE_APPENDIX_TOP.match(line)
         if am:
             letter = am.group(2)

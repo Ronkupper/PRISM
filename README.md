@@ -10,7 +10,7 @@ The framework ships as a single Markdown file (`PRISM.md`) that can be attached 
 
 The fastest path:
 
-1. Attach `PRISM.md` (or `PRISM_v2_8_0.md` for the version-pinned copy) to a fresh Claude chat.
+1. Attach `PRISM.md` (or `PRISM_v2_9_0.md` for the version-pinned copy) to a fresh Claude chat.
 2. Tell Claude the problem you want to audit or research.
 3. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
 
@@ -27,7 +27,7 @@ The framework runs on any capable LLM — Claude is the primary reasoning and bu
 
 ## Current version
 
-**v2.8.0** — current file: [`PRISM.md`](./PRISM.md). v2.8.0 is a MINOR over v2.7.0: it lands **corpus-access dispatch Phase 2**, the lens-anchored auto-trigger. Orchestration now recognizes on its own when a lens carrying a `recommended_sources:` entry is in play and the material question it is working matches a recommended source's binding, and *proposes* a corpus-access lookup — shaping the investigation-posture Envelope and surfacing it for operator ratification rather than auto-dispatching, so the framework's "silence is never consent" principle (SP-9) holds: the autonomy is in the recognition, never the dispatch. The matched source record auto-populates the Envelope's mandatory `Source framing` and `Temporal frame` caveats — the two fields Phase 1 left hand-written — closing the silent-omission loop. Surfaced candidates are *What's next* material, noise-guarded to once per {lens, source, material-question} per engagement. The `recommended_sources:` field it consumes shipped at v2.7.0; this release adds the consuming behavior and is otherwise additive and backward-compatible. The version-pinned snapshot at this tag is [`PRISM_v2_8_0.md`](./PRISM_v2_8_0.md) (byte-identical to PRISM.md at the v2.8.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.9.0** — current file: [`PRISM.md`](./PRISM.md). v2.9.0 is a MINOR over v2.8.0, two additive and behavior-preserving changes. First, **SP-13 (substrate declaration) is rewritten to vendor + tier**: PRISM declares its orchestration substrate as Claude, Opus-class / flagship tier — a capability floor, version-agnostic, latest by default — rather than enumerated model versions, removing the version-halt so it runs on the latest Opus. Second, **the framework is decomposed into a Skill archive**: a lean always-loaded core plus on-demand reference bundles (the Lens Library, the templates compendium, and the appendices), packaged as a Claude Skill plugin under [`plugins/prism/`](./plugins/prism). The canonical [`PRISM.md`](./PRISM.md) remains the assembled single-file form; the packaged core references the standalone bundled Lens Library and drops the embedded copy. This release also consolidates the Standing Principles into one canonical home (the former Appendix F folds into §10) and adds cross-file named-reference linting. The version-pinned snapshot at this tag is [`PRISM_v2_9_0.md`](./PRISM_v2_9_0.md) (byte-identical to PRISM.md at the v2.9.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -58,7 +58,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_8_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_9_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` — standalone skill loader (frontmatter only); use as an alternative to the fused `PRISM.md` when a decoupled skill / body layout is preferred.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.

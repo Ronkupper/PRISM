@@ -1,0 +1,11 @@
+# Packaged Skill archive — release artifact only.
+# The source-visible archive (SKILL.md + PRISM_core.md + reference/ + lens/ +
+# .claude-plugin/) IS the installable form; the zipped/.skill package is built
+# at release time and attached to the GitHub Release, never committed.
+*.skill
+*.zip
+prism-skill-*.tgz
+
+# OS / editor cruft
+.DS_Store
+*.swp
