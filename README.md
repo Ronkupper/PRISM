@@ -2,17 +2,25 @@
 
 **PRISM** (Prompts · Research · Iteration · Synthesis · Master) is a structured multi-session, multi-vendor LLM-orchestrated audit and research framework. It splits a research problem into atomic specialist prompts, dispatches each where it runs best across Claude, ChatGPT, Gemini, and Perplexity, and converges their outputs into a single living document called the **Master**.
 
-The framework ships as a single Markdown file (`PRISM.md`) that can be attached to any LLM chat or installed as a Claude Skill. It carries its own machine-readable frontmatter, lint contract, Lens Library (embedded as Appendix G), and vendor-parsing escape-hatch (Appendix H) so the file self-documents across sessions and vendors.
+The framework comes in two forms built from the same source: a single Markdown file (`PRISM.md`) you attach to any LLM chat, and a **Claude Skill plugin** that installs a lean core and fetches reference material on demand. The single file carries its own machine-readable frontmatter, lint contract, embedded Lens Library (Appendix G), and vendor-parsing escape-hatch (Appendix H) so it self-documents across sessions and vendors; the Skill is a verified, deterministic projection of that same content. See [Which form should I use?](#which-form-should-i-use).
 
-> **New in v2.5.0 — repo-backed persistence.** Point a PRISM engagement at a GitHub repo and it becomes the durable home for the whole engagement: your inputs, the Master, every dispatched prompt and returned report, and the running *What's next*. Any session resumes exactly where the last one left off — even a fresh chat — and you can switch surfaces freely, desktop to mobile and back, with the repo as the shared state. It's the `repo_backed` value on the persistence axis; see the [v2.5.0 release](https://github.com/Ronkupper/PRISM/releases/tag/v2.5.0).
+> **New in v2.9.0 — installable as a Claude Skill.** PRISM now ships as a Claude plugin that loads a lean core and fetches reference material (the Lens Library, templates, appendices) only as a task needs it, alongside the single-file form. Install with `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`. The substrate declaration is also rewritten to a capability tier — Claude, Opus-class — so the framework no longer pins to specific model versions. See the [v2.9.0 release](https://github.com/Ronkupper/PRISM/releases/tag/v2.9.0).
 
 ## Quick start
 
-The fastest path:
+On Claude, install the Skill (recommended):
 
-1. Attach `PRISM.md` (or `PRISM_v2_9_0.md` for the version-pinned copy) to a fresh Claude chat.
-2. Tell Claude the problem you want to audit or research.
-3. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
+```
+/plugin marketplace add Ronkupper/PRISM
+/plugin install prism@prism
+```
+
+Invoke PRISM and it activates on its own. On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_9_0.md` for the version-pinned copy) to a fresh chat. Either way:
+
+1. Tell the model the problem you want to audit or research.
+2. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
+
+For the full comparison, see [Which form should I use?](#which-form-should-i-use).
 
 For a worked example, see §17 of `PRISM.md`. For repository conventions (versioning, contribution channels, lint), see [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`RELEASING.md`](./RELEASING.md).
 
@@ -24,6 +32,25 @@ For a worked example, see §17 of `PRISM.md`. For repository conventions (versio
 - **Explicit scope-completeness**: the Lens Library catalogs audit-scope lenses and grades the draft Prompt Strategy against them at Setup, so silent omissions surface before any prompt ships.
 
 The framework runs on any capable LLM — Claude is the primary reasoning and build environment, with ChatGPT, Gemini, and Perplexity used in deliberate multi-vendor triangulation sequences.
+
+## Which form should I use?
+
+Both forms carry the identical framework — the Skill is a verified, deterministic projection of `PRISM.md`, not a different version or a subset. Choose by where you're running it.
+
+**Use the Skill plugin (recommended) when you're on Claude.** It installs once and activates automatically whenever you invoke PRISM, loading a lean core (~3,400 lines) and fetching reference bundles — the Lens Library, the templates compendium, the appendices — only when a task actually needs them. The advantages compound: far less sitting in context each session, faster and more responsive turns, automatic triggering so there's nothing to attach, and headroom to grow — the framework can keep expanding without every session paying for the whole thing up front. Install:
+
+```
+/plugin marketplace add Ronkupper/PRISM
+/plugin install prism@prism
+```
+
+**Use the single file (`PRISM.md`) when:**
+
+- You're on a non-Claude vendor (ChatGPT, Gemini, Perplexity) or any chat where a Claude plugin can't be installed — attach the file instead.
+- You want the whole framework in one artifact — for citation, offline reading, sharing with a collaborator, or a stable raw URL.
+- You're moving fast on mobile and just want to attach a single file.
+
+The single file keeps the Lens Library embedded (Appendix G), so a lone `PRISM.md` attachment is fully self-sufficient. The Skill drops that embedded copy and points to the bundled Lens Library instead — the same catalog, fetched on demand.
 
 ## Current version
 
@@ -53,14 +80,15 @@ What they share: one file, dual-audience (human-readable rationale + machine-par
 
 The **PRISM Lens Library** ([`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md)) is a reference catalog of audit-scope lenses. As of v2.0 it is required attachment to every orchestration session and is graded against the draft Prompt Strategy by the seven Setup probes.
 
-The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contributor-facing reference for what's checked mechanically on PRs. Two rules active at `lint-v1`: `PRISM-LINT-01 / named-refs-resolve` (error) and `PRISM-LINT-02 / named-refs-orphan-anchor` (info). Five reserved slots activate as their dependencies ship.
+The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contributor-facing reference for what's checked mechanically on PRs. Two rules active (`PRISM-LINT-01 / named-refs-resolve`, error; `PRISM-LINT-02 / named-refs-orphan-anchor`, info); catalog version 3. A companion cross-file linter extends the same rule IDs across the Skill archive's files (core ↔ bundles ↔ lens). Six reserved slots activate as their dependencies ship.
 
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
 - `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_9_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
-- `SKILL.md` — standalone skill loader (frontmatter only); use as an alternative to the fused `PRISM.md` when a decoupled skill / body layout is preferred.
+- `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
+- `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
 - `PRISM_backlog_v{n}.md` — versioned copy of the backlog (e.g., `PRISM_backlog_v13.md`).
 - `lens/PRISM_lens_library.md` — canonical reference catalog of audit-scope lenses (stable filename). Authoritative for Library evolution; embedded into `PRISM.md` Appendix G for singleton-attach convenience.
