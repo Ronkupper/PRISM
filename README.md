@@ -6,6 +6,16 @@ The framework comes in two forms built from the same source: a single Markdown f
 
 > **New in v2.9.0 — installable as a Claude Skill.** PRISM now ships as a Claude plugin that loads a lean core and fetches reference material (the Lens Library, templates, appendices) only as a task needs it, alongside the single-file form. Install with `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`. The substrate declaration is also rewritten to a capability tier — Claude, Opus-class — so the framework no longer pins to specific model versions. See the [v2.9.0 release](https://github.com/Ronkupper/PRISM/releases/tag/v2.9.0).
 
+## Orchestration and execution
+
+PRISM separates two layers, and several things in this README make sense only once that split is clear.
+
+**Orchestration** is the reasoning layer that runs the framework — parsing your problem, sequencing atomic prompts, grading scope against the Lens Library, and maintaining the Master across sessions. It was built and tested on **Claude (Opus-class)**. Running orchestration on another vendor's model is likely workable but is untested; a port is a welcome contribution.
+
+**Execution** is the dispatched work — each atomic prompt sent to whichever model suits it best. Execution is deliberately **multi-vendor**: routing prompts across Claude, ChatGPT, Gemini, and Perplexity in triangulation sequences is a core method, not a fallback.
+
+So "PRISM runs on Claude" (orchestration) and "PRISM uses several vendors" (execution) are both true — they describe different layers. The two distribution forms below, and the vendor notes throughout, all concern the *orchestration* layer.
+
 ## Quick start
 
 On Claude, install the Skill (recommended):
@@ -31,7 +41,7 @@ For a worked example, see §17 of `PRISM.md`. For repository conventions (versio
 - **Mobile-first operation**: structured filenames, file-based outputs, operator hints, narrow tables, and a "What's next?" prompt are all designed for someone moving artifacts between vendor chats on a phone.
 - **Explicit scope-completeness**: the Lens Library catalogs audit-scope lenses and grades the draft Prompt Strategy against them at Setup, so silent omissions surface before any prompt ships.
 
-The framework runs on any capable LLM — Claude is the primary reasoning and build environment, with ChatGPT, Gemini, and Perplexity used in deliberate multi-vendor triangulation sequences.
+Orchestration is built and tested on Claude; execution spans Claude, ChatGPT, Gemini, and Perplexity in deliberate triangulation (see [Orchestration and execution](#orchestration-and-execution) above). Porting orchestration to another vendor is untested but likely, and contributions are welcome.
 
 ## Which form should I use?
 
@@ -46,11 +56,11 @@ Both forms carry the identical framework — the Skill is a verified, determinis
 
 **Use the single file (`PRISM.md`) when:**
 
-- You're on a non-Claude vendor (ChatGPT, Gemini, Perplexity) or any chat where a Claude plugin can't be installed — attach the file instead.
+- You're orchestrating on a non-Claude vendor. The Skill is Claude-only; on ChatGPT, Gemini, or Perplexity you run PRISM by attaching the single file (porting orchestration as needed — see [Orchestration and execution](#orchestration-and-execution)).
 - You want the whole framework in one artifact — for citation, offline reading, sharing with a collaborator, or a stable raw URL.
 - You're moving fast on mobile and just want to attach a single file.
 
-The single file keeps the Lens Library embedded (Appendix G), so a lone `PRISM.md` attachment is fully self-sufficient. The Skill drops that embedded copy and points to the bundled Lens Library instead — the same catalog, fetched on demand.
+The single file keeps the Lens Library embedded (Appendix G), so a lone `PRISM.md` attachment is fully self-sufficient. The Skill drops that embedded copy and points to the bundled Lens Library instead — the same catalog, fetched on demand. The Skill is specific to Claude's plugin format; the equivalent on other vendors (a Custom GPT, a Gem) would mean rebuilding PRISM in that format, which is contribution territory rather than something provided here.
 
 ## Current version
 
