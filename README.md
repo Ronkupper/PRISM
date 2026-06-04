@@ -12,7 +12,7 @@ PRISM separates two layers, and several things in this README make sense only on
 
 **Orchestration** is the reasoning layer that runs the framework — parsing your problem, sequencing atomic prompts, grading scope against the Lens Library, and maintaining the Master across sessions. It was built and tested on **Claude (Opus-class)**. Running orchestration on another vendor's model is likely workable but is untested; a port is a welcome contribution.
 
-**Execution** is the dispatched work — each atomic prompt sent to whichever model suits it best. Execution is deliberately **multi-vendor**: routing prompts across Claude, ChatGPT, Gemini, and Perplexity in triangulation sequences is a core method, not a fallback.
+**Execution** is the dispatched work — each atomic prompt sent to whichever model suits it best. Only the orchestration layer runs PRISM; the dispatched prompts are **self-contained, standalone prompts the orchestration layer produced**, so the executing model needs no knowledge of the framework. That is what lets execution be deliberately **multi-vendor** — routing prompts across Claude, ChatGPT, Gemini, and Perplexity in triangulation sequences is a core method.
 
 So "PRISM runs on Claude" (orchestration) and "PRISM uses several vendors" (execution) are both true — they describe different layers. The two distribution forms below, and the vendor notes throughout, all concern the *orchestration* layer.
 
