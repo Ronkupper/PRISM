@@ -81,6 +81,17 @@ Both forms carry the identical framework — the Skill is a verified, determinis
 
 The single file keeps the Lens Library embedded (Appendix G), so a lone `PRISM.md` attachment is fully self-sufficient. The Skill drops that embedded copy and points to the bundled Lens Library instead — the same catalog, fetched on demand. The Skill is specific to Claude's plugin format; the equivalent on other vendors (a Custom GPT, a Gem) would mean rebuilding PRISM in that format, which is contribution territory rather than something provided here.
 
+## Adherence testing
+
+PRISM is checked two ways:
+
+- **Static audit** — a four-dimension review of the framework body for internal consistency: no conflicting Standing Principles or Monitors, and named cross-references resolve. (This is the audit the v2.9.1 PATCH acted on.)
+- **Behavioral adherence simulation** — a blind A/B harness measuring whether an Opus-class orchestrator actually *follows* each construct at runtime, graded turn-by-turn by an independent adversarial grader across two scenarios (a trap-laden dispatch and a missing-Master recovery), run against both delivery forms — the Skill core and the single file.
+
+**Bottom line: 92.7% construct adherence — near-ceiling.** The anti-default traps that tend to fail in the wild — placing the prompt digest at dispatch, never regenerating a missing Master from memory — held at 100%, and the Skill core and the single file scored identically. The one soft spot, M2 framework-version drift, was a framework ambiguity (since clarified in v2.9.1), not a model limitation.
+
+*Scope: a floor estimate on a favorable single-vendor substrate (Opus-class, fresh load); it does not reproduce long-session context pressure or use a cross-vendor grader.*
+
 ## Current version
 
 **v2.9.1** — current file: [`PRISM.md`](./PRISM.md). v2.9.1 is a PATCH over v2.9.0: a framework-body consistency pass with no behavior change and no capability added or removed. It completes the half-finished `E.5`→`MO-5` mobile-guide subsection rename and repoints the stale operator-hint references, corrects three mis-targeted cross-references and the SP-15 corollary count, mints discrete anchors for three Standing Principles, documents the dual named-reference resolution rule, pins M2's framework-version-stamp behavior (operator-ratified — a framework stamp older than the running session is not drift), and corrects residual `v2.0` self-naming in the scope/overview prose. v2.9.0's surface carries forward unchanged: the **SP-13 substrate declaration as vendor + tier** (Claude, Opus-class / flagship tier — a capability floor, version-agnostic, latest by default) and the **decomposition into a Skill archive** — a lean always-loaded core plus on-demand reference bundles (the Lens Library, the templates compendium, and the appendices) packaged as a Claude Skill plugin under [`plugins/prism/`](./plugins/prism). The version-pinned snapshot at this tag is [`PRISM_v2_9_1.md`](./PRISM_v2_9_1.md) (byte-identical to PRISM.md at the v2.9.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
