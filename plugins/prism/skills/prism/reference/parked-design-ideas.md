@@ -1,11 +1,11 @@
-<!-- PRISM v2.9.0 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
+<!-- PRISM v2.9.1 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 8. Parked v2 design ideas
 <a id="section-parked-v2-design-ideas"></a>
 
 These two ideas were parked for v2 from the design-doc-level discussion
-(DD §{section.session-hygiene-cues}): they earn their place but the framework treats them as
+(DD.§13.3): they earn their place but the framework treats them as
 recommendations and graceful-degradation paths rather than hard machinery.
 
 ### 8.1 Claude Project as Setup recommendation `[vendor-dependent | review-if: orchestration vendor changes]`

@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.9.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.9.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.9.0
-released: 2026-06-04
-supersedes: 2.8.0
+version: 2.9.1
+released: 2026-06-05
+supersedes: 2.9.0
 lens_library_embedded: "0.12"
 substrate_target:
   vendor: claude
@@ -20,11 +20,11 @@ normativity:
 lint_catalog_version: 3
 ---
 
-# PRISM v2.9.0 — Framework operating document
+# PRISM v2.9.1 — Framework operating document
 
-**Status:** v2.9.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.9.1 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.8.0 (MINOR: two changes, both additive and behavior-preserving — no capability removed. **(1) SP-13 substrate declaration rewritten to vendor + tier.** The orchestration substrate is now declared as Claude, Opus-class / flagship tier — a capability floor, version-agnostic, latest by default — rather than enumerated model versions; this removes the version-halt so the framework runs on the latest Opus. **(2) Decomposition into a Skill archive.** The framework is split into a lean always-loaded core plus on-demand reference bundles (the Lens Library, the templates compendium, and the appendices), packaged as a Claude Skill plugin. The canonical `PRISM.md` remains the assembled singleton (this file); the packaged core references the standalone bundled Lens Library and drops the embedded Appendix-G copy. Folds in the Standing-Principles de-duplication — one canonical home for full SP text in §{section.standing-principles}, replacing the former Appendix-F restatement — and adds cross-file named-reference linting; `lint_catalog_version` advances to 3). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.9.0 (PATCH: framework-body consistency — editorial / reference / label / count fixes only, no behavior change and no capability added or removed. Completes the half-finished `E.5`→`MO-5` mobile-guide subsection rename (§{section.mobile-operator-survival-guide}) and repoints the stale `(E.N)` operator-hint references; corrects three mis-targeted cross-references (an M4 monitor anchor and two design-document citations); mints discrete anchors for SP-2 / SP-3 / SP-9; documents the dual `§{…}` namespace-resolution contract; pins M2's framework-version-stamp behavior as operator-ratified — a framework stamp older than the running session is not drift; and corrects the SP-15 corollary count and the residual `v2.0` self-naming in the scope/overview prose. `lint_catalog_version` stays 3.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.12 in Appendix G; a singleton PRISM.md attachment is
@@ -39,6 +39,16 @@ is report-worthy per §{section.two-session-types}.
 References to source artifacts: `Spec.§X.Y` points to PRISM_v2_spec_rev2.md;
 `DD.§X.Y` points to PRISM_v2_rev8_design_document.md; `LL.LL-{U|D}-NNN`
 points to a Lens Library entry.
+
+**Reference resolution.** Internal cross-references are written in braces
+after the section glyph (`§`) and resolve by namespace. A `section.` or
+`appendix.` reference resolves directly to the matching `section-…` /
+`appendix-…` anchor — its slug is the anchor id with the namespace prefix
+removed. A `monitor.`, `principle.`, `probe.`, or `lens.` reference resolves
+by typed token instead: the token (`M4`, `SP-9`, `P1`, `LL-D-002`) names the
+construct, and the reference resolves to that construct's home-section anchor
+— `§{monitor.M4}` → `section-m4-…`, `§{principle.SP-9}` → `section-sp-9-…`.
+Both forms are validated by the named-reference linter under `scripts/lint/`.
 
 **Tag convention.** Every decision in this document carries a two-axis tag —
 durability axis (`structural` / `methodological` / `vendor-dependent` /
@@ -61,7 +71,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.0 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.9.1 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -76,7 +86,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.0 after running a session:
+Reading order for an operator returning to v2.9.1 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -84,11 +94,11 @@ Reading order for an operator returning to v2.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.9.0 covers `[structural | stable]`
+### 1.1 What v2.9.1 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.0 covers:
+PRISM v2.9.1 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.9.1 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -124,10 +134,10 @@ and research framework. v2.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.9.0 does not cover
+### 1.2 What v2.9.1 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.0 implements the spec; the spec implements
+- **Re-debating direction.** v2.9.1 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog ships embedded
@@ -135,14 +145,14 @@ and research framework. v2.0 covers:
   standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.12`)
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
-- **Empirical calibration.** Several thresholds in v2.0 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.9.1 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.0's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.9.1's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -150,7 +160,7 @@ and research framework. v2.0 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.0 honours the constraint inherited from the design document (DD.§8.3):
+v2.9.1 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -159,8 +169,8 @@ v2.0 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.0. Roadmap
-adjacencies (§{section.monitor-specifications} of DD: automated cross-vendor orchestration, plugin-equipped
+Mechanics that violate any leg do not earn their place in v2.9.1. Roadmap
+adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
 execution-configuration axes (§{section.orchestration-driver-and-persistence-axes}) —
@@ -170,14 +180,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.0 mechanics for the
+**Read this section first if you are encountering v2.9.1 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.0 has the following constructs, grouped by category.
+PRISM v2.9.1 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -459,7 +469,7 @@ as the live currency check at dispatch time.
 - *Outputs*: Master updates, *What's next* artifacts, Envelopes for next
   dispatch, convergence findings, Monitor fires.
 - *Closes by*: writing *What's next* to the Master and surfacing it for the
-  operator. Operator hint emitted: `Save Master to cloud drive (E.5).`
+  operator. Operator hint emitted: `Save Master to cloud drive (MO-5).`
 - *Vendor*: Claude, Opus-class (flagship tier; version-agnostic, latest by
   default — lighter-tier Claude report-worthy per DD §{section.forward-compatibility-commitments} beta posture).
 
@@ -706,7 +716,7 @@ orchestration remembers.
   Updates are append-mostly: the Changelog gains a line; relevant register
   sections gain entries. Continuous-state mechanic per §{section.failsafe-recovery-continuous-state-mechanics}.
 - *Filename version bumps* at phase boundaries (P0→P1, P1→P2). Sub-version
-  increments at convergence rounds within a phase (§{probe.P2.1} → P2.2). Schema
+  increments at convergence rounds within a phase (P2.1 → P2.2). Schema
   version increments tracked in the Master's metadata header. Bump
   atomicity rules in §{section.filename-conventions-and-bump-atomicity}.
 - *Single file by principle* — no parallel Masters. Multiple-Master state is
@@ -1475,7 +1485,7 @@ declaration keywords. Examples that orchestration recognizes:
 - `P2.3 substituted — ran on Claude instead, attaching now`
 
 **Ambiguous declarations.** If orchestration cannot confidently parse the
-declaration, M4 (Ambiguous Ask, §{section.m5-context-pressure}) fires and asks the operator to
+declaration, M4 (Ambiguous Ask, §{section.m4-ambiguous-ask}) fires and asks the operator to
 clarify before updating Dispatch register. SP-9 lineage.
 
 ### 4.10 Substitution absorption `[structural | stable]`
@@ -2718,7 +2728,7 @@ Update session.
 <a id="section-parked-v2-design-ideas"></a>
 
 These two ideas were parked for v2 from the design-doc-level discussion
-(DD §{section.session-hygiene-cues}): they earn their place but the framework treats them as
+(DD.§13.3): they earn their place but the framework treats them as
 recommendations and graceful-degradation paths rather than hard machinery.
 
 ### 8.1 Claude Project as Setup recommendation `[vendor-dependent | review-if: orchestration vendor changes]`
@@ -2901,6 +2911,14 @@ inline expansion per §{section.atomic-prompt-self-containment}.
   - Attached Master == expected: silent pass.
 - **Resolution.** M2 HIGH halts orchestration until operator clarifies.
   Optional: consult session history per §{section.session-history-as-validation-recovery}.
+- **Framework-stamp clarification (operator-ratified, 2026-06-05).** The fire
+  conditions above evaluate the *Master's project-state version*, not the
+  *framework version* the Master was stamped under. A Master stamped under a
+  framework **older** than the running session's is **not** drift: by PRISM's
+  SemVer contract the running framework is a behavior-preserving superset of
+  the older stamp, so M2 does not fire — orchestration proceeds (optionally
+  surface a 🟢 advisory note; no halt). This pins a case the conditions above
+  left undefined; it adds no halt.
 
 **Why retained despite bump atomicity (§{section.filename-conventions-and-bump-atomicity}).** Bump atomicity makes drift
 unlikely *by construction* but not impossible. Residual failure modes:
@@ -3251,7 +3269,7 @@ Full filename-convention canonical reference table in §{section.filename-conven
 PRISM's Vendor Triangulation premise is adversarial, not parallel: different
 vendors carry different priors, training distributions, and failure modes,
 which is what makes their convergence (or divergence) load-bearing for
-falsifier-grade findings. Two corollaries follow.
+falsifier-grade findings. Four corollaries follow.
 
 - **Single-vendor multi-agent is not cross-vendor triangulation.** Sub-agents
   from one vendor — native multi-agent / sub-agent coordination features
@@ -3335,6 +3353,7 @@ The six pure-carryforward SPs (§{principle.SP-2}, SP-4, SP-5, SP-6, SP-7, SP-9)
 forward from v1.10.4 verbatim in principle. Each is stated in full with its
 v2 application surface:
 
+<a id="section-sp-2-defer-non-critical-fixes-to-natural-touchpoint"></a>
 - **SP-2 (Defer non-critical fixes to natural touchpoint).** Applies in
   orchestration's *What's next* ladder — non-critical issues queue against
   priority tiers, fix at next aligned step. M10 fires when no natural
@@ -3354,11 +3373,13 @@ v2 application surface:
   Output, every Update session that produces a new Library file.
   Reinforced structurally by the triple contract's file-based Output
   (§{section.prism-execution-output}).
+<a id="section-sp-9-silence-is-never-consent"></a>
 - **SP-9 (Silence is never consent).** Applies wherever operator decision
   is required: close-loop declarations, ratification, ambiguity
   escalation, migration override at 🔴, Project recommendation
   accept/decline. Active operator action required; no defaults-on-timeout.
 
+<a id="section-sp-3-dissolved"></a>
 **SP-3 — dissolved.** v1.10.4's SP-3 ("Convergence is part of prompt
 delivery") is incompatible with v2's orchestration/execution split.
 Convergence moves to orchestration; per-prompt convergence checklists drop
@@ -3536,15 +3557,15 @@ hints accrue here as patterns surface.
 <a id="section-cloud-drive-and-persistence"></a>
 
 - `Save output to cloud drive after download, before switching to the
-  next vendor (see E.5).`
-- `Save Master to cloud drive at session close (see E.5).`
+  next vendor (see MO-5).`
+- `Save Master to cloud drive at session close (see MO-5).`
 
 ### 13.2 Mobile platform cues
 <a id="section-mobile-platform-cues"></a>
 
-- `On Samsung, expect indexing delay on the downloaded file (E.1).`
+- `On Samsung, expect indexing delay on the downloaded file (MO-1).`
 - `If [vendor] mobile fails to download, retry in Firefox Desktop mode
-  (E.2).`
+  (MO-2).`
 - `On iOS, the download lands in Files → Downloads folder (vendor-
   specific).`
 
@@ -3795,8 +3816,7 @@ the exact case doesn't match).
 
 ### Vendor-client workarounds
 
-#### E.1 — Samsung file explorer: LLM-downloaded files invisible until indexing catches up
-<a id="appendix-samsung-file-explorer-llm-downloaded-files-invisible-until-indexing-catches-up"></a>
+#### MO-1 — Samsung file explorer: LLM-downloaded files invisible until indexing catches up
 
 **Platform:** Android, Samsung devices (tested: Galaxy S25+).
 
@@ -3818,8 +3838,7 @@ relying on the system indexing service. Same filesystem, different
 reader; the file exists the moment the LLM app finishes writing it,
 and MiX respects that.
 
-#### E.2 — Broken file/clipboard operations in LLM mobile apps
-<a id="appendix-broken-file-clipboard-operations-in-llm-mobile-apps"></a>
+#### MO-2 — Broken file/clipboard operations in LLM mobile apps
 
 **Platform:** Android, varies by LLM vendor mobile app.
 
@@ -3843,8 +3862,7 @@ convincing the vendor's site to serve the full-featured client.
 
 ### Operator interaction patterns
 
-#### E.3 — Artifact + handoff together: "present document with instructions"
-<a id="appendix-artifact-handoff-together-present-document-with-instructions"></a>
+#### MO-3 — Artifact + handoff together: "present document with instructions"
 
 **Situation.** A session produces a deliverable that will feed into
 another session's work (e.g., a walkthrough document that a fresh
@@ -3872,8 +3890,7 @@ session's still-fresh context. This pattern pairs naturally with the
 Execution Envelope discipline (§{section.prism-execution-envelope}) — same instinct, different
 altitude: bake operating context into the artifact.
 
-#### E.4 — Session retrieval: "point me to the relevant session"
-<a id="appendix-session-retrieval-point-me-to-the-relevant-session"></a>
+#### MO-4 — Session retrieval: "point me to the relevant session"
 
 **Situation.** PRISM work routinely crosses sessions (artifact produced
 in session A, used in session B). When an operator is in the wrong
@@ -3905,7 +3922,7 @@ before I conclude it doesn't exist."*
 
 #### MO-5 — Persisting artifacts across device/session loss
 
-*(v2.0.1: renamed from `E.5` to `MO-5` to disambiguate from Appendix E.5 — *What's next* template. Mobile-guide subsections are now MO-1 through MO-5; Appendix E template subsections remain E.1 through E.5.)*
+*(v2.0.1: renamed from `E.5` to `MO-5` to disambiguate from Appendix E.5 — *What's next* template. v2.9.1 completed the rename: `E.1`–`E.4` → `MO-1`–`MO-4`. Mobile-guide subsections are now MO-1 through MO-5; Appendix E template subsections remain E.1 through E.5.)*
 
 **Situation.** Mobile operators work primarily through vendor apps.
 Execution outputs downloaded to the device live in local storage,
@@ -5654,7 +5671,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.9.0 (this file)
+- **Framework version.** v2.9.1 (this file)
 - **Embedded Lens Library version.** v0.12 (Appendix G)
 - **Release date.** 2026-05-31
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -5670,12 +5687,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_9_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_9_1.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_12.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.9.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.9.1` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5701,7 +5718,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.9.0 attached; v{published} available at {releases URL}.`
+   `Framework v2.9.1 attached; v{published} available at {releases URL}.`
    `Lens v0.12 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -5744,8 +5761,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.9.0). https://github.com/Ronkupper/PRISM
+> (v2.9.1). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.9.0 framework operating document.*
+*End of PRISM v2.9.1 framework operating document.*

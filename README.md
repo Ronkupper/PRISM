@@ -34,14 +34,14 @@ On Claude, install the Skill (recommended):
 /plugin install prism@prism
 ```
 
-Invoke PRISM and it activates on its own. On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_9_0.md` for the version-pinned copy) to a fresh chat. Either way:
+Invoke PRISM and it activates on its own. On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_9_1.md` for the version-pinned copy) to a fresh chat. Either way:
 
 1. Tell the model the problem you want to audit or research.
 2. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
 
 For the full comparison, see [Which form should I use?](#which-form-should-i-use).
 
-For a worked example, see §17 of `PRISM.md`. For repository conventions (versioning, contribution channels, lint), see [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`RELEASING.md`](./RELEASING.md).
+For a worked example, see §15 of `PRISM.md`. For repository conventions (versioning, contribution channels, lint), see [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`RELEASING.md`](./RELEASING.md).
 
 ## The Lens Library
 
@@ -83,7 +83,7 @@ The single file keeps the Lens Library embedded (Appendix G), so a lone `PRISM.m
 
 ## Current version
 
-**v2.9.0** — current file: [`PRISM.md`](./PRISM.md). v2.9.0 is a MINOR over v2.8.0, two additive and behavior-preserving changes. First, **SP-13 (substrate declaration) is rewritten to vendor + tier**: PRISM declares its orchestration substrate as Claude, Opus-class / flagship tier — a capability floor, version-agnostic, latest by default — rather than enumerated model versions, removing the version-halt so it runs on the latest Opus. Second, **the framework is decomposed into a Skill archive**: a lean always-loaded core plus on-demand reference bundles (the Lens Library, the templates compendium, and the appendices), packaged as a Claude Skill plugin under [`plugins/prism/`](./plugins/prism). The canonical [`PRISM.md`](./PRISM.md) remains the assembled single-file form; the packaged core references the standalone bundled Lens Library and drops the embedded copy. This release also consolidates the Standing Principles into one canonical home (the former Appendix F folds into §10) and adds cross-file named-reference linting. The version-pinned snapshot at this tag is [`PRISM_v2_9_0.md`](./PRISM_v2_9_0.md) (byte-identical to PRISM.md at the v2.9.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.9.1** — current file: [`PRISM.md`](./PRISM.md). v2.9.1 is a PATCH over v2.9.0: a framework-body consistency pass with no behavior change and no capability added or removed. It completes the half-finished `E.5`→`MO-5` mobile-guide subsection rename and repoints the stale operator-hint references, corrects three mis-targeted cross-references and the SP-15 corollary count, mints discrete anchors for three Standing Principles, documents the dual named-reference resolution rule, pins M2's framework-version-stamp behavior (operator-ratified — a framework stamp older than the running session is not drift), and corrects residual `v2.0` self-naming in the scope/overview prose. v2.9.0's surface carries forward unchanged: the **SP-13 substrate declaration as vendor + tier** (Claude, Opus-class / flagship tier — a capability floor, version-agnostic, latest by default) and the **decomposition into a Skill archive** — a lean always-loaded core plus on-demand reference bundles (the Lens Library, the templates compendium, and the appendices) packaged as a Claude Skill plugin under [`plugins/prism/`](./plugins/prism). The version-pinned snapshot at this tag is [`PRISM_v2_9_1.md`](./PRISM_v2_9_1.md) (byte-identical to PRISM.md at the v2.9.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -114,7 +114,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_9_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_9_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
 - `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`.

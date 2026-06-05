@@ -1,4 +1,4 @@
-<!-- PRISM v2.9.0 Skill bundle (on-demand reference). Mobile operator survival guide (section 17). Operator-facing reference.
+<!-- PRISM v2.9.1 Skill bundle (on-demand reference). Mobile operator survival guide (section 17). Operator-facing reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 17. Mobile operator survival guide
@@ -24,8 +24,7 @@ the exact case doesn't match).
 
 ### Vendor-client workarounds
 
-#### E.1 — Samsung file explorer: LLM-downloaded files invisible until indexing catches up
-<a id="appendix-samsung-file-explorer-llm-downloaded-files-invisible-until-indexing-catches-up"></a>
+#### MO-1 — Samsung file explorer: LLM-downloaded files invisible until indexing catches up
 
 **Platform:** Android, Samsung devices (tested: Galaxy S25+).
 
@@ -47,8 +46,7 @@ relying on the system indexing service. Same filesystem, different
 reader; the file exists the moment the LLM app finishes writing it,
 and MiX respects that.
 
-#### E.2 — Broken file/clipboard operations in LLM mobile apps
-<a id="appendix-broken-file-clipboard-operations-in-llm-mobile-apps"></a>
+#### MO-2 — Broken file/clipboard operations in LLM mobile apps
 
 **Platform:** Android, varies by LLM vendor mobile app.
 
@@ -72,8 +70,7 @@ convincing the vendor's site to serve the full-featured client.
 
 ### Operator interaction patterns
 
-#### E.3 — Artifact + handoff together: "present document with instructions"
-<a id="appendix-artifact-handoff-together-present-document-with-instructions"></a>
+#### MO-3 — Artifact + handoff together: "present document with instructions"
 
 **Situation.** A session produces a deliverable that will feed into
 another session's work (e.g., a walkthrough document that a fresh
@@ -101,8 +98,7 @@ session's still-fresh context. This pattern pairs naturally with the
 Execution Envelope discipline (§{section.prism-execution-envelope}) — same instinct, different
 altitude: bake operating context into the artifact.
 
-#### E.4 — Session retrieval: "point me to the relevant session"
-<a id="appendix-session-retrieval-point-me-to-the-relevant-session"></a>
+#### MO-4 — Session retrieval: "point me to the relevant session"
 
 **Situation.** PRISM work routinely crosses sessions (artifact produced
 in session A, used in session B). When an operator is in the wrong
@@ -134,7 +130,7 @@ before I conclude it doesn't exist."*
 
 #### MO-5 — Persisting artifacts across device/session loss
 
-*(v2.0.1: renamed from `E.5` to `MO-5` to disambiguate from Appendix E.5 — *What's next* template. Mobile-guide subsections are now MO-1 through MO-5; Appendix E template subsections remain E.1 through E.5.)*
+*(v2.0.1: renamed from `E.5` to `MO-5` to disambiguate from Appendix E.5 — *What's next* template. v2.9.1 completed the rename: `E.1`–`E.4` → `MO-1`–`MO-4`. Mobile-guide subsections are now MO-1 through MO-5; Appendix E template subsections remain E.1 through E.5.)*
 
 **Situation.** Mobile operators work primarily through vendor apps.
 Execution outputs downloaded to the device live in local storage,
