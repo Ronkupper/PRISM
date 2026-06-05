@@ -1,4 +1,4 @@
-<!-- PRISM v2.9.1 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
+<!-- PRISM v2.10.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix E — Templates compendium
@@ -153,7 +153,7 @@ Operator action:     [recommended next step — accept, dig, or escalate]
 ━━━ PRISM SESSION HANDOFF ━━━
 Project:                [name]
 Master version:         [filename of attached Master]
-Lens Library version:   [v0.9 | filename pinned]
+Lens Library version:   [v0.13 | filename pinned]
 Producing session:      [orchestration session URL or descriptor, if known]
 Reason for migration:   [band-state, named driver(s)]
 Migration timestamp:    [YYYY-MM-DD]

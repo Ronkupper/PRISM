@@ -1,7 +1,7 @@
-# PRISM Lens Library — v0.12 (pre-release)
+# PRISM Lens Library — v0.13 (pre-release)
 
-**Version:** 0.12
-**Release date:** 2026-05-31
+**Version:** 0.13
+**Release date:** 2026-06-06
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -67,6 +67,7 @@ Every entry uses the following fields:
 - `informed_by:` frameworks, standards, and practice traditions that inform the lens (indicative, not exhaustive; not a compliance claim)
 - `failure_mode:` the silent omission this lens catches, in plain language
 - `minimum_scope_binding:` the minimum scope commitment that counts as "covered" for this lens
+- `scope_integrity_probe:` optional — a sharpened, lens-specific falsifier an adopting framework can pose at coverage time to test whether `minimum_scope_binding:` was genuinely satisfied rather than asserted. When present it overrides any generic scope-completeness challenge the adopting framework derives from `minimum_scope_binding:`; populated only on lenses with a ground-truth worked miss, absent on the rest (like `rubric_anchor:`). Backward-compatible: entries without it remain valid.
 
 ---
 
@@ -594,6 +595,20 @@ Every entry uses the following fields:
     the job, not the product category);
     differentiation is stated in buyer-language
     and backed by evidence.
+  scope_integrity_probe: >
+    The named comparator set claims to cover
+    this audience-job pair's realistic
+    alternatives. Name at least one substitute
+    that serves the same audience and the same
+    job through a different form factor — a
+    hardware device, a manual workflow, an
+    adjacent-category product, or a do-nothing
+    default — that the set omits. Pass only if
+    either (a) at least one such audience-job
+    substitute is named and incorporated, or
+    (b) its absence is documented with explicit
+    rationale for why no cross-form-factor
+    substitute serves this audience-job pair.
 
 - id: LL-D-009
   name: Does it pay back?
@@ -940,13 +955,16 @@ Every entry uses the following fields:
 - **Total entries:** 23 (5 universal + 18 domain across 6 packs)
 - **Rubric-anchored entries:** 2 (8.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
 - **`recommended_sources:`-bearing entries:** 2 (8.7%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
+- **`scope_integrity_probe:`-bearing entries:** 1 (4.3%) — LL-D-008 ("Compared to what?")
 - **`specialist_type:` population:** 23 / 23
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
 - **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.12 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.13 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+
+v0.13 is an additive schema bump on top of v0.12: same 23 lenses, same triggers. It adds the optional `scope_integrity_probe:` field, which carries a sharpened, lens-specific falsifier an adopting framework poses at coverage time to test whether `minimum_scope_binding:` was genuinely satisfied rather than waved through. The field is populated on one lens (LL-D-008 "Compared to what?", whose category-vs-audience substitution trap has a ground-truth worked miss) and absent on the rest. Like `recommended_sources:`, it is optional and backward-compatible: entries without it remain valid and fall back to the generic scope-completeness challenge derived from `minimum_scope_binding:`, so v0.13 introduces no behavior change for existing lenses.
 
 v0.12 is an additive schema bump on top of v0.11: same 23 lenses, same triggers. It adds the optional `recommended_sources:` field, which attaches a framework-curated list of external reference sources — each with a mandatory `framing:` and `recency:` caveat — to the lens's material question. The field is populated on two high-yield lenses (LL-D-008 "Compared to what?" and LL-D-009 "Does it pay back?") and absent on the rest. Like `rubric_anchor:`, it is optional and backward-compatible: entries without it remain valid, so v0.12 introduces no behavior change for existing lenses.
 
@@ -954,6 +972,6 @@ v0.11 is a lens-binding refinement on top of v0.10: same 23 lenses, no schema ch
 
 v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.12 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.13 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
 
-*End of PRISM Lens Library v0.12.*
+*End of PRISM Lens Library v0.13.*

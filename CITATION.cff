@@ -34,6 +34,11 @@ abstract: >-
   Opus-class) rather than pinned model versions, and decomposes the framework
   into a lean always-loaded core plus on-demand reference bundles, packaged as
   a Claude Skill plugin alongside the canonical single-file form.
+  v2.10 adds the Scope-Integrity Test: a coverage-time falsifier gate that
+  enforces that a lens's minimum scope binding was actually satisfied, not
+  waved through, on a rigor ladder from inline self-check to cross-vendor
+  probe, with an optional per-lens sharpened-probe field; the embedded Lens
+  Library advances to v0.13.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -46,8 +51,8 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.9.1"
-date-released: "2026-06-05"
+version: "2.10.0"
+date-released: "2026-06-06"
 keywords:
   - llm
   - prompt-engineering

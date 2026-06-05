@@ -1,6 +1,6 @@
 # PRISM lint catalog
 
-**Catalog version:** 3
+**Catalog version:** 4
 
 This file is the contributor-facing reference catalog of lint rules
 enforced against `PRISM.md` by the workflow at `.github/workflows/lint.yml`.
@@ -111,6 +111,12 @@ Every `recommended_sources:` entry in the embedded Lens Library (Appendix G) is 
 
 **Status at catalog v2:** reserved slot. The field it validates (`recommended_sources:`) ships at v2.7.0; activation is deferred to the lint-catalog micro-DD that owns catalog evolution, so the sibling schema-validators (LINT-03/04/05/07) and this one activate under one coherent decision rather than piecemeal.
 
+### `PRISM-LINT-09` / `scope-integrity-probe-valid` — error  *(reserved — gated on the lint-catalog micro-DD)*
+
+Every `scope_integrity_probe:` field in the embedded Lens Library (Appendix G) is well-formed: a non-empty falsifier string carrying an explicit pass predicate (the condition under which coverage may be marked satisfied). Severity `error` because a malformed or empty probe silently disables the sharpened Scope-Integrity Test gate for its lens — coverage would fall back to the generic `minimum_scope_binding:` challenge with no signal that the lens's hand-authored falsifier was lost, exactly the kind of silent-omission failure the catalog exists to catch.
+
+**Status at catalog v4:** reserved slot. The field it validates (`scope_integrity_probe:`) ships at v2.10.0; activation is deferred to the same lint-catalog micro-DD as LINT-08, so it activates alongside the sibling schema-validators (LINT-03/04/05/07/08) under one coherent decision rather than piecemeal.
+
 ### Cross-file resolution — the Skill archive (catalog v3, v2.9.0)
 
 The v2.9.0 decomposition splits the framework into a lean core
@@ -155,3 +161,4 @@ meaningfully (rule added; severity changed; rule removed).
 | 1 | `LINT-01`, `LINT-02` | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07` |
 | 2 | `LINT-01`, `LINT-02` | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08` |
 | 3 | `LINT-01`, `LINT-02` — single-file (`PRISM.md`) **and** cross-file (Skill archive) | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08` |
+| 4 | `LINT-01`, `LINT-02` — single-file (`PRISM.md`) **and** cross-file (Skill archive) | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08`, `LINT-09` |

@@ -34,7 +34,7 @@ On Claude, install the Skill (recommended):
 /plugin install prism@prism
 ```
 
-Invoke PRISM and it activates on its own. On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_9_1.md` for the version-pinned copy) to a fresh chat. Either way:
+Invoke PRISM and it activates on its own. On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_10_0.md` for the version-pinned copy) to a fresh chat. Either way:
 
 1. Tell the model the problem you want to audit or research.
 2. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
@@ -60,7 +60,7 @@ Each fired lens is graded *fires-covered* (a planned pass already addresses it),
 
 **Richer than a checklist.** Two lenses bind to version-pinned external rubrics — `LL-D-002` ("Can anyone use?") to WCAG 2.2 for accessibility, `LL-D-005` ("Can attackers get in?") to OWASP ASVS 5.0.0 for security — and the Library is explicit that keeping those anchors current is the adopting framework's responsibility, not something it does automatically. Two others — `LL-D-008` ("Compared to what?") and `LL-D-009` ("Does it pay back?") — carry `recommended_sources:`, a framework-curated list of external references, each shipped with a mandatory bias-and-handling caveat and a recency posture so a source never travels without its warning label.
 
-**Versioning.** The Lens Library is on its own release track, independent of the framework's MINOR releases, and is currently at **v0.12 (pre-release)** — awaiting at least one real-world calibration before promotion to a v1.0 stable. The canonical copy is [`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md); the single-file `PRISM.md` carries the same catalog embedded as Appendix G so a lone attachment is self-sufficient, and the Skill plugin drops that embedded copy in favor of fetching the bundled Library on demand.
+**Versioning.** The Lens Library is on its own release track, independent of the framework's MINOR releases, and is currently at **v0.13 (pre-release)** — awaiting at least one real-world calibration before promotion to a v1.0 stable. The canonical copy is [`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md); the single-file `PRISM.md` carries the same catalog embedded as Appendix G so a lone attachment is self-sufficient, and the Skill plugin drops that embedded copy in favor of fetching the bundled Library on demand.
 
 ## Which form should I use?
 
@@ -94,7 +94,7 @@ PRISM is checked two ways:
 
 ## Current version
 
-**v2.9.1** — current file: [`PRISM.md`](./PRISM.md). v2.9.1 is a PATCH over v2.9.0: a framework-body consistency pass with no behavior change and no capability added or removed. It completes the half-finished `E.5`→`MO-5` mobile-guide subsection rename and repoints the stale operator-hint references, corrects three mis-targeted cross-references and the SP-15 corollary count, mints discrete anchors for three Standing Principles, documents the dual named-reference resolution rule, pins M2's framework-version-stamp behavior (operator-ratified — a framework stamp older than the running session is not drift), and corrects residual `v2.0` self-naming in the scope/overview prose. v2.9.0's surface carries forward unchanged: the **SP-13 substrate declaration as vendor + tier** (Claude, Opus-class / flagship tier — a capability floor, version-agnostic, latest by default) and the **decomposition into a Skill archive** — a lean always-loaded core plus on-demand reference bundles (the Lens Library, the templates compendium, and the appendices) packaged as a Claude Skill plugin under [`plugins/prism/`](./plugins/prism). The version-pinned snapshot at this tag is [`PRISM_v2_9_1.md`](./PRISM_v2_9_1.md) (byte-identical to PRISM.md at the v2.9.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.10.0** — current file: [`PRISM.md`](./PRISM.md). v2.10.0 is a MINOR over v2.9.1 that adds the **Scope-Integrity Test (SIT)** — the enforcement half of the Lens Library's `minimum_scope_binding:`. SIT is a coverage-time falsifier gate: at Probe 1, a lens cannot be marked *covered* until its scope binding passes a yes/no falsifier — generic for all 23 lenses, on a documented rigor ladder (inline self-check floor → fresh-context probe → cross-vendor probe = full triangulation). A new optional lens-schema field `scope_integrity_probe:` carries a sharpened per-lens falsifier that overrides the generic gate; the embedded Lens Library advances to **v0.13**, shipping the first hand-authored probe on `LL-D-008` ("Compared to what?"). Additive and behavior-strengthening: no capability removed, the default cell and triple execution contract untouched, and the lint catalog advances to v4 (reserving `scope-integrity-probe-valid`). The version-pinned snapshot at this tag is [`PRISM_v2_10_0.md`](./PRISM_v2_10_0.md) (byte-identical to PRISM.md at the v2.10.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -120,12 +120,12 @@ What they share: one file, dual-audience (human-readable rationale + machine-par
 
 The **PRISM Lens Library** ([`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md)) is the reference catalog of audit-scope lenses that grades scope-completeness at Setup — see [The Lens Library](#the-lens-library) for what it is and how it works.
 
-The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contributor-facing reference for what's checked mechanically on PRs. Two rules active (`PRISM-LINT-01 / named-refs-resolve`, error; `PRISM-LINT-02 / named-refs-orphan-anchor`, info); catalog version 3. A companion cross-file linter extends the same rule IDs across the Skill archive's files (core ↔ bundles ↔ lens). Six reserved slots activate as their dependencies ship.
+The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contributor-facing reference for what's checked mechanically on PRs. Two rules active (`PRISM-LINT-01 / named-refs-resolve`, error; `PRISM-LINT-02 / named-refs-orphan-anchor`, info); catalog version 4. A companion cross-file linter extends the same rule IDs across the Skill archive's files (core ↔ bundles ↔ lens). Seven reserved slots activate as their dependencies ship.
 
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_9_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_10_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
 - `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`.

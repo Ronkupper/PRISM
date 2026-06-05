@@ -1,4 +1,4 @@
-<!-- PRISM v2.9.1 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
+<!-- PRISM v2.10.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix A — Glossary
@@ -34,7 +34,7 @@ mechanics live in the cross-referenced sections.
 | **Jurisdiction map** | Setup artifact. Per-jurisdiction listing of triggered regulatory regimes and their materiality. §{section.jurisdiction-map}. |
 | **Layer 1** | Per-prompt convergence — orchestration absorbs returned findings into the Master. Monitors M6/M7/M8/M12 fire here. |
 | **Layer 2** | Cold synthesis across all Layer-1 findings to produce the audit's external deliverable. M9 fires here. M11 surfaces readiness. |
-| **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (18). v0.9 release pinned at `prism-lens-v0.9`. §{section.library-integration}. |
+| **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (18). v0.13 release pinned at `prism-lens-v0.13`. §{section.library-integration}. |
 | **`limitation-named` dispatch** | Single-vendor dispatch with explicit `Not chosen:` rationale. §{section.single-envelope-with-spectrum-shape}. |
 | **Master** | The single canonical project state file. Updated at every orchestration turn-close. §{section.the-master}. |
 | **Migration handoff** | Defined artifact produced at 🔴 (mandatory) or 🟠 (optional) for fresh-session continuity. §{section.migration-handoff}. |
