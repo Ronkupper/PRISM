@@ -6,6 +6,15 @@ The framework comes in two forms built from the same source: a single Markdown f
 
 > **New in v2.9.0 — installable as a Claude Skill.** PRISM now ships as a Claude plugin that loads a lean core and fetches reference material (the [Lens Library](#the-lens-library), templates, appendices) only as a task needs it, alongside the single-file form. Install with `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`. The substrate declaration is also rewritten to a capability tier — Claude, Opus-class — so the framework no longer pins to specific model versions. See the [v2.9.0 release](https://github.com/Ronkupper/PRISM/releases/tag/v2.9.0).
 
+## What PRISM is for
+
+- **Multi-vendor research and audits** where one prompt isn't enough and one vendor isn't enough.
+- **Coherence across sessions**: continuous Master + *What's next* state means a session you open next week can pick up exactly where the last one closed, even on a fresh chat.
+- **Mobile-first operation**: structured filenames, file-based outputs, operator hints, narrow tables, and a "What's next?" prompt are all designed for someone moving artifacts between vendor chats on a phone.
+- **Explicit scope-completeness**: the [Lens Library](#the-lens-library) catalogs audit-scope lenses and grades the draft Prompt Strategy against them at Setup, so silent omissions surface before any prompt ships.
+
+Orchestration is built and tested on Claude; execution spans Claude, ChatGPT, Gemini, and Perplexity in deliberate triangulation (see [Orchestration and execution](#orchestration-and-execution) below). Porting orchestration to another vendor is untested but likely, and contributions are welcome.
+
 ## Orchestration and execution
 
 PRISM separates two layers, and several things in this README make sense only once that split is clear.
@@ -33,15 +42,6 @@ Invoke PRISM and it activates on its own. On any other vendor — or if you'd ra
 For the full comparison, see [Which form should I use?](#which-form-should-i-use).
 
 For a worked example, see §17 of `PRISM.md`. For repository conventions (versioning, contribution channels, lint), see [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`RELEASING.md`](./RELEASING.md).
-
-## What PRISM is for
-
-- **Multi-vendor research and audits** where one prompt isn't enough and one vendor isn't enough.
-- **Coherence across sessions**: continuous Master + *What's next* state means a session you open next week can pick up exactly where the last one closed, even on a fresh chat.
-- **Mobile-first operation**: structured filenames, file-based outputs, operator hints, narrow tables, and a "What's next?" prompt are all designed for someone moving artifacts between vendor chats on a phone.
-- **Explicit scope-completeness**: the [Lens Library](#the-lens-library) catalogs audit-scope lenses and grades the draft Prompt Strategy against them at Setup, so silent omissions surface before any prompt ships.
-
-Orchestration is built and tested on Claude; execution spans Claude, ChatGPT, Gemini, and Perplexity in deliberate triangulation (see [Orchestration and execution](#orchestration-and-execution) above). Porting orchestration to another vendor is untested but likely, and contributions are welcome.
 
 ## The Lens Library
 
