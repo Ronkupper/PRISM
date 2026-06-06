@@ -1,4 +1,4 @@
-<!-- PRISM v2.11.1 Skill bundle (on-demand reference). Worked example flow + empirical calibration items (sections 15-16). Reference.
+<!-- PRISM v2.12.0 Skill bundle (on-demand reference). Worked example flow + empirical calibration items (sections 15-16). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 15. Worked example flow

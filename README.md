@@ -33,7 +33,7 @@ Same framework on every surface — only install and invocation differ. **New he
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`.
-- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_11_1.md` for the version-pinned copy) to a fresh chat.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_12_0.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
 
@@ -41,7 +41,7 @@ Same framework on every surface — only install and invocation differ. **New he
 Run a PRISM audit on [your subject].
 ```
 
-Or, on the Skill: `/prism-start <subject>` (Claude / Claude Code; untested in Cowork). The natural-language form works everywhere and is the portable path on non-Claude vendors.
+Or, on the Skill: `/prism-start <subject>` to begin, `/prism-whats-next` to resume a later session (Claude / Claude Code; untested in Cowork). The natural-language form works everywhere and is the portable path on non-Claude vendors.
 
 Then tell it your subject, work the Setup probes (P1–P7), iterate against the Lens Library to three-layer readiness, and dispatch the atomic prompts per the *What's next* artifact.
 
@@ -98,7 +98,7 @@ PRISM is checked two ways:
 
 ## Current version
 
-**v2.11.1** — current file: [`PRISM.md`](./PRISM.md). v2.11.1 is a PATCH over v2.11.0 that renames the Skill slash-command to **`/prism-start <subject>`** so it is self-identifying: plugin commands surface in the slash menu by their bare filename, so a bare `/start` read as orphaned next to other plugins' commands (observed in Cowork and Claude Code). The command (added in v2.11.0) activates PRISM and begins Setup — the seven probes P1–P7 — for the supplied subject. Invocation-surface fix only, no framework-body change: no Standing Principle, Monitor, Probe, or section moved, the embedded Lens Library stays **v0.13**, the lint catalog stays at **v4**, and the natural-language invocation (asking for PRISM by name) is unchanged and remains the portable form on every vendor. Confirmed on Claude / Claude Code; end-to-end firing in Cowork is still report-worthy. The version-pinned snapshot at this tag is [`PRISM_v2_11_1.md`](./PRISM_v2_11_1.md) (byte-identical to PRISM.md at the v2.11.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.12.0** — current file: [`PRISM.md`](./PRISM.md). v2.12.0 is a MINOR over v2.11.1 that adds a second Skill convenience command, **`/prism-whats-next`**, which resumes an engagement from the Master's *What's next* artifact — the companion to **`/prism-start <subject>`** (start vs. resume). Both are Claude-Skill plugin slash-commands invoked by their bare filename; additive, no framework-body change: no Standing Principle, Monitor, Probe, or section moved, the embedded Lens Library stays **v0.13**, the lint catalog stays at **v4**, and the natural-language invocations (asking for PRISM by name, or "What's next?") are unchanged and remain the portable form on every vendor. Confirmed on Claude / Claude Code; end-to-end firing in Cowork is still report-worthy. The version-pinned snapshot at this tag is [`PRISM_v2_12_0.md`](./PRISM_v2_12_0.md) (byte-identical to PRISM.md at the v2.12.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -129,10 +129,10 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_11_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_12_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
-- `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`. It ships a `/prism-start <subject>` slash command (`plugins/prism/commands/prism-start.md`) that begins a PRISM engagement; the Skill also triggers on plain-language PRISM requests.
+- `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`. It ships two slash commands under `plugins/prism/commands/` — `/prism-start <subject>` (begin an engagement) and `/prism-whats-next` (resume from the Master's *What's next*) — and the Skill also triggers on plain-language PRISM requests.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
 - `PRISM_backlog_v{n}.md` — versioned copy of the backlog (e.g., `PRISM_backlog_v13.md`).
 - `lens/PRISM_lens_library.md` — canonical reference catalog of audit-scope lenses (stable filename). Authoritative for Library evolution; embedded into `PRISM.md` Appendix G for singleton-attach convenience.

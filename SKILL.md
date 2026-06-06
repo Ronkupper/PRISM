@@ -10,7 +10,7 @@ structured multi-session, multi-vendor LLM-orchestrated audit and research.
 
 ## When triggered
 
-1. Read `PRISM_v2_11_1.md` (version-pinned) or `PRISM.md` (always-current) from
+1. Read `PRISM_v2_12_0.md` (version-pinned) or `PRISM.md` (always-current) from
    this Skill's folder, the operator's project, or the attached copy in full
    before responding to the operator's request.
 2. Run SP-13 substrate self-check (§10.1.3): declare your model identity and
@@ -43,7 +43,7 @@ structured multi-session, multi-vendor LLM-orchestrated audit and research.
 
 ## Files this Skill expects in the Project or attached
 
-- `PRISM.md` (always-current) or `PRISM_v2_11_1.md` (version-pinned)
+- `PRISM.md` (always-current) or `PRISM_v2_12_0.md` (version-pinned)
 - `PRISM_lens_library.md` v0.13 (canonical catalog; `prism-lens-v0.13` tag)
 - `[project]_prism2.0_master_*.md` (the Master)
 - `[project]_brief.md` (subject brief, at Setup)
@@ -52,7 +52,7 @@ structured multi-session, multi-vendor LLM-orchestrated audit and research.
 
 `PRISM.md` at the repo root carries its own skill frontmatter (`name: prism`,
 v1.x fused-file pattern). This `SKILL.md` is the v2-native loader pattern
-(`name: prism-v2`) — separate loader, body lives in `PRISM_v2_11_1.md`.
+(`name: prism-v2`) — separate loader, body lives in `PRISM_v2_12_0.md`.
 Either pattern works; pick whichever fits your environment.
 
 ## What this Skill does NOT do

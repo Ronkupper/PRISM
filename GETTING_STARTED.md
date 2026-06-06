@@ -68,7 +68,7 @@ Skills from plugins work in chat too.
 
 ### Option B — attach the single file
 
-1. Download `PRISM.md` (stable) or `PRISM_v2_11_1.md` (version-pinned) from the repo.
+1. Download `PRISM.md` (stable) or `PRISM_v2_12_0.md` (version-pinned) from the repo.
    Raw URL: `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md`
 2. *Recommended:* create a **Project** (sidebar → **Projects** → **Create Project** → name it), then add `PRISM.md` to project knowledge so every chat in it has the framework loaded. Or attach `PRISM.md` directly to a single chat.
 
@@ -139,7 +139,7 @@ Once PRISM is active, the flow is the same on every surface:
 2. **Setup probes (P1–P7).** Answer the seven scope-definition probes. They grade your draft strategy against the **Lens Library** (the audit-scope catalog) so silent gaps surface *before* any prompt ships.
 3. **Iterate to readiness.** Refine scope until you clear three-layer readiness.
 4. **Dispatch.** Send the atomic prompts it produces to whichever model suits each one. They're self-contained, so the executing model needs no knowledge of PRISM.
-5. **Continue across sessions.** Each session updates the Master and a *What's next* note. Reopen later — even in a fresh chat — and ask `What's next?` to resume exactly where you left off.
+5. **Continue across sessions.** Each session updates the Master and a *What's next* note. Reopen later — even in a fresh chat — and ask `What's next?` (or run `/prism-whats-next` on the Skill) to resume exactly where you left off.
 
 Worked example: §15 of `PRISM.md`.
 
