@@ -27,29 +27,25 @@ So "PRISM runs on Claude" (orchestration) and "PRISM uses several vendors" (exec
 
 ## Quick start
 
-On Claude, install the Skill (recommended):
+Same framework on every surface — only install and invocation differ. **New here? Follow the step-by-step [Getting started guide](./GETTING_STARTED.md)** (Cowork, Chat, and Code, from scratch). The short version:
 
-```
-/plugin marketplace add Ronkupper/PRISM
-/plugin install prism@prism
-```
+**Install** (paid plan required — Pro, Max, Team, or Enterprise):
 
-There's no separate load or activation step: you invoke PRISM just by asking for the work in plain language — naming PRISM so it triggers reliably — and it activates on its own. For example:
+- **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
+- **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_11_0.md` for the version-pinned copy) to a fresh chat.
+
+**Invoke** — ask in plain language:
 
 ```
 Run a PRISM audit on [your subject].
 ```
 
-Once installed on Claude, you can also start an audit with the **`/prism:start <subject>`** slash command — type `/prism` in the slash menu to find it, then pass your subject as the argument. It activates PRISM and begins the Setup probes for that subject. The command is additive and Claude / Claude Code–only: the plain-language invocation above is equivalent, and remains the way to run PRISM on every other vendor. *(Plugin slash-commands are untested in Cowork.)*
+Or, on the Skill: `/prism:start <subject>` (Claude / Claude Code; untested in Cowork). The natural-language form works everywhere and is the portable path on non-Claude vendors.
 
-On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_11_0.md` for the version-pinned copy) to a fresh chat. Either way:
+Then tell it your subject, work the Setup probes (P1–P7), iterate against the Lens Library to three-layer readiness, and dispatch the atomic prompts per the *What's next* artifact.
 
-1. Tell the model the problem you want to audit or research.
-2. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
-
-For the full comparison, see [Which form should I use?](#which-form-should-i-use).
-
-For a worked example, see §15 of `PRISM.md`. For repository conventions (versioning, contribution channels, lint), see [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`RELEASING.md`](./RELEASING.md).
+For the full comparison, see [Which form should I use?](#which-form-should-i-use). For a worked example, see §15 of `PRISM.md`. For repository conventions (versioning, contribution channels, lint), see [`CONTRIBUTING.md`](./CONTRIBUTING.md) and [`RELEASING.md`](./RELEASING.md).
 
 ## The Lens Library
 
@@ -145,6 +141,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 - `scripts/lint/` — lint scripts executed by the CI workflow.
 - `.github/workflows/lint.yml` — PR-only lint workflow.
 - `VERSION` — single-line framework-version stamp.
+- `GETTING_STARTED.md` — step-by-step install and first-engagement guide for Cowork, Claude Chat, and Claude Code; linked from Quick start.
 - `CONTRIBUTING.md`, `RELEASING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, `CITATION.cff`, `README.md` — repo conventions.
 
 ## License
