@@ -34,7 +34,13 @@ On Claude, install the Skill (recommended):
 /plugin install prism@prism
 ```
 
-There's no separate load or activation step: you invoke PRISM just by asking for the work in plain language — naming PRISM so it triggers reliably — and it activates on its own. For example: *Run a PRISM audit on [your subject].* On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_10_0.md` for the version-pinned copy) to a fresh chat. Either way:
+There's no separate load or activation step: you invoke PRISM just by asking for the work in plain language — naming PRISM so it triggers reliably — and it activates on its own. For example:
+
+```
+Run a PRISM audit on [your subject].
+```
+
+On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_10_0.md` for the version-pinned copy) to a fresh chat. Either way:
 
 1. Tell the model the problem you want to audit or research.
 2. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
