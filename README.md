@@ -40,7 +40,9 @@ There's no separate load or activation step: you invoke PRISM just by asking for
 Run a PRISM audit on [your subject].
 ```
 
-On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_10_0.md` for the version-pinned copy) to a fresh chat. Either way:
+Once installed on Claude, you can also start an audit with the **`/prism:start <subject>`** slash command — type `/prism` in the slash menu to find it, then pass your subject as the argument. It activates PRISM and begins the Setup probes for that subject. The command is additive and Claude / Claude Code–only: the plain-language invocation above is equivalent, and remains the way to run PRISM on every other vendor. *(Plugin slash-commands are untested in Cowork.)*
+
+On any other vendor — or if you'd rather use one file — attach `PRISM.md` (or `PRISM_v2_11_0.md` for the version-pinned copy) to a fresh chat. Either way:
 
 1. Tell the model the problem you want to audit or research.
 2. Follow the Setup probes (P1–P7), iterate against the Lens Library until you clear three-layer readiness, then dispatch atomic prompts per the *What's next* artifact.
@@ -100,7 +102,7 @@ PRISM is checked two ways:
 
 ## Current version
 
-**v2.10.0** — current file: [`PRISM.md`](./PRISM.md). v2.10.0 is a MINOR over v2.9.1 that adds the **Scope-Integrity Test (SIT)** — the enforcement half of the Lens Library's `minimum_scope_binding:`. SIT is a coverage-time falsifier gate: at Probe 1, a lens cannot be marked *covered* until its scope binding passes a yes/no falsifier — generic for all 23 lenses, on a documented rigor ladder (inline self-check floor → fresh-context probe → cross-vendor probe = full triangulation). A new optional lens-schema field `scope_integrity_probe:` carries a sharpened per-lens falsifier that overrides the generic gate; the embedded Lens Library advances to **v0.13**, shipping the first hand-authored probe on `LL-D-008` ("Compared to what?"). Additive and behavior-strengthening: no capability removed, the default cell and triple execution contract untouched, and the lint catalog advances to v4 (reserving `scope-integrity-probe-valid`). The version-pinned snapshot at this tag is [`PRISM_v2_10_0.md`](./PRISM_v2_10_0.md) (byte-identical to PRISM.md at the v2.10.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.11.0** — current file: [`PRISM.md`](./PRISM.md). v2.11.0 is a MINOR over v2.10.0 that adds an explicit **Skill slash-command invocation path**: on Claude, **`/prism:start <subject>`** activates PRISM and begins Setup (the seven probes P1–P7) for the supplied subject — type `/prism` in the slash menu to discover it. It's additive and Claude-Skill-only — a packaging and invocation affordance carried by a plugin slash-command, not a framework-body change: no Standing Principle, Monitor, Probe, or section moved, the embedded Lens Library stays **v0.13**, the lint catalog stays at v4, and the natural-language invocation (asking for PRISM by name) is unchanged and remains the portable form on every vendor. Confirmed on Claude / Claude Code; plugin slash-commands are untested in Cowork. The version-pinned snapshot at this tag is [`PRISM_v2_11_0.md`](./PRISM_v2_11_0.md) (byte-identical to PRISM.md at the v2.11.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -131,10 +133,10 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_10_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_11_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
-- `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`.
+- `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`. It ships a `/prism:start <subject>` slash command (`plugins/prism/commands/start.md`) that begins a PRISM engagement; the Skill also triggers on plain-language PRISM requests.
 - `PRISM_backlog.md` — active/deferred/declined roadmap items. Working document, not canonical.
 - `PRISM_backlog_v{n}.md` — versioned copy of the backlog (e.g., `PRISM_backlog_v13.md`).
 - `lens/PRISM_lens_library.md` — canonical reference catalog of audit-scope lenses (stable filename). Authoritative for Library evolution; embedded into `PRISM.md` Appendix G for singleton-attach convenience.
