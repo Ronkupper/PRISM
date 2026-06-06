@@ -40,7 +40,7 @@ abstract: >-
   probe, with an optional per-lens sharpened-probe field; the embedded Lens
   Library advances to v0.13.
   v2.11 adds an explicit Skill slash-command invocation path on Claude —
-  `/prism:start <subject>` activates PRISM and begins Setup for the supplied
+  `/prism-start <subject>` activates PRISM and begins Setup for the supplied
   subject — a Claude-Skill packaging affordance carried by a plugin slash-command,
   alongside the unchanged natural-language invocation that remains the portable
   form on every vendor.
@@ -56,7 +56,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.11.0"
+version: "2.11.1"
 date-released: "2026-06-06"
 keywords:
   - llm

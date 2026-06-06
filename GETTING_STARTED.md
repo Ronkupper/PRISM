@@ -48,7 +48,7 @@ In a Cowork session, ask in plain language:
 Run a PRISM audit on <your subject>.
 ```
 
-(On Claude / Claude Code you can also use the `/prism:start <subject>` command. It's untested in Cowork, so use the plain-language form there if the command doesn't appear in the `/` menu.)
+(On Claude / Claude Code you can also use the `/prism-start <subject>` command. It's untested in Cowork, so use the plain-language form there if the command doesn't appear in the `/` menu.)
 
 Then follow **[Run the engagement](#run-the-engagement)**.
 
@@ -68,7 +68,7 @@ Skills from plugins work in chat too.
 
 ### Option B — attach the single file
 
-1. Download `PRISM.md` (stable) or `PRISM_v2_11_0.md` (version-pinned) from the repo.
+1. Download `PRISM.md` (stable) or `PRISM_v2_11_1.md` (version-pinned) from the repo.
    Raw URL: `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md`
 2. *Recommended:* create a **Project** (sidebar → **Projects** → **Create Project** → name it), then add `PRISM.md` to project knowledge so every chat in it has the framework loaded. Or attach `PRISM.md` directly to a single chat.
 
@@ -78,7 +78,7 @@ Skills from plugins work in chat too.
 Run a PRISM audit on <your subject>.
 ```
 
-On the Skill you can also use `/prism:start <subject>`. Then follow **[Run the engagement](#run-the-engagement)**.
+On the Skill you can also use `/prism-start <subject>`. Then follow **[Run the engagement](#run-the-engagement)**.
 
 ---
 
@@ -116,7 +116,7 @@ In a Claude Code session:
 ### 3. Start an engagement
 
 ```
-/prism:start <your subject>
+/prism-start <your subject>
 ```
 
 Or ask in plain language: `Run a PRISM audit on <your subject>.` Then follow **[Run the engagement](#run-the-engagement)**.
@@ -147,6 +147,6 @@ Worked example: §15 of `PRISM.md`.
 
 ## Notes
 
-- **`/prism:start` scope.** Confirmed on Claude and Claude Code; untested in Cowork. The natural-language form (`Run a PRISM audit on…`) works everywhere and is the portable path on non-Claude vendors.
+- **`/prism-start` scope.** Confirmed on Claude and Claude Code; untested in Cowork. The natural-language form (`Run a PRISM audit on…`) works everywhere and is the portable path on non-Claude vendors.
 - **Installing via the app vs. the CLI.** In Cowork and Chat you install through the **Customize → Plugins** UI — typing `/plugin …` in the chat box won't work there (that syntax is Claude Code only).
 - **Updating the Skill.** Cowork / Chat: Customize → Plugins → refresh the marketplace. Code: `/plugin marketplace update`, then `/plugin install prism@prism`.
