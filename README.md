@@ -33,7 +33,7 @@ Same framework on every surface — only install and invocation differ. **New he
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`.
-- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_12_1.md` for the version-pinned copy) to a fresh chat.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_12_2.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
 
@@ -98,7 +98,7 @@ PRISM is checked two ways:
 
 ## Current version
 
-**v2.12.1** — current file: [`PRISM.md`](./PRISM.md). v2.12.1 is a PATCH over v2.12.0 with documentation-consistency fixes: the §2 system map now lists **SP-15 (Triangulation integrity)** — in the framework since v2.1.1 — in its construct list and Standing-Principles table; the §10.2 per-SP catalog records that **SP-11 was never assigned** (the principle series continues at SP-12); and the §18.1 release-date stamp is corrected. Documentation only, no framework-body mechanic change: no Standing Principle, Monitor, Probe, or section semantics changed, the embedded Lens Library stays **v0.13**, and the lint catalog stays at **v4**. The version-pinned snapshot at this tag is [`PRISM_v2_12_1.md`](./PRISM_v2_12_1.md) (byte-identical to PRISM.md at the v2.12.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.12.2** — current file: [`PRISM.md`](./PRISM.md). v2.12.2 is a PATCH over v2.12.1 repairing the rendering of the §2.2 visual map: the ASCII diagram's outer right border drifted across four columns line-to-line, one connector rail sat a column off the border piece it descends from, and an in-diagram emoji rendered double-width — together garbling the map in strict monospace renderers, most visibly on mobile. The diagram is now machine-verified to a single fixed border column with aligned rails and no variable-width glyphs. Rendering only, no framework-body mechanic change: no Standing Principle, Monitor, Probe, or section semantics changed, the embedded Lens Library stays **v0.13**, and the lint catalog stays at **v4**. The version-pinned snapshot at this tag is [`PRISM_v2_12_2.md`](./PRISM_v2_12_2.md) (byte-identical to PRISM.md at the v2.12.2 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -129,7 +129,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_12_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_12_2.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
 - `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`. It ships two slash commands under `plugins/prism/commands/` — `/prism-start <subject>` (begin an engagement) and `/prism-whats-next` (resume from the Master's *What's next*) — and the Skill also triggers on plain-language PRISM requests.
