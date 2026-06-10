@@ -1,4 +1,4 @@
-<!-- PRISM v2.12.3 Skill bundle (on-demand reference). Mobile operator survival guide (section 17). Operator-facing reference.
+<!-- PRISM v2.13.0 Skill bundle (on-demand reference). Mobile operator survival guide (section 17). Operator-facing reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 17. Mobile operator survival guide

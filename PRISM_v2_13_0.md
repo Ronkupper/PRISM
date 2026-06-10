@@ -1,13 +1,13 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.12.3. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.13.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.12.3
+version: 2.13.0
 released: 2026-06-10
 supersedes: 2.12.2
-lens_library_embedded: "0.13"
+lens_library_embedded: "0.14"
 substrate_target:
   vendor: claude
   tier: opus-class       # flagship/frontier tier — a capability floor, not a lightweight model
@@ -20,14 +20,14 @@ normativity:
 lint_catalog_version: 4
 ---
 
-# PRISM v2.12.3 — Framework operating document
+# PRISM v2.13.0 — Framework operating document
 
-**Status:** v2.12.3 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.13.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.12.2 (PATCH: §{section.visual-map} visual map converted to pure-ASCII drawing characters. v2.12.2 fixed the source-level border drift, but the map still rendered crooked on mobile: Unicode box-drawing and arrow glyphs are missing from many mobile monospace fonts and substitute from wider fallback faces, so even character-aligned columns draw unevenly. The map now uses printable ASCII only (+, -, |, v, ->), which every font renders at uniform advance; geometry, 72-column width, and content are otherwise unchanged and machine-verified (ASCII-only, uniform width, rails aligned). Rendering fix only — no construct, flow, or semantic change; the embedded Lens Library stays v0.13 and the lint catalog stays v4.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.12.3 (MINOR: adds §{section.sp-16-the-elephant-rule} SP-16 "The Elephant Rule" — negation as a targeting decision, not a style choice. Prose may negate only a live alternative the reader demonstrably brings (a common prior, a named risk, or an inference the document's own numbers invite); uncalled-for denials plant the very frame they deny and are rewritten positively before release. Wired as step 5 of the Execution Self-check (§{section.prism-execution-self-check}) — an output-side audit that enumerates and tags every negation before the Output is emitted — and into the Lens Library as document-review lens LL-D-019 "Who said otherwise?" (Pack 1). Embedded Lens Library bumps v0.13 → v0.14 (additive: one new domain lens, 23 → 24 entries, no schema change); lint catalog stays v4.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
-Lens Library v0.13 in Appendix G; a singleton PRISM.md attachment is
+Lens Library v0.14 in Appendix G; a singleton PRISM.md attachment is
 sufficient for normal operation. Attach a standalone Lens Library only
 when the project explicitly pins to a newer Library version than the
 embedded copy (see §{section.library-reference-at-setup}).
@@ -71,7 +71,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.12.3 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.13.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -86,7 +86,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.12.3 after running a session:
+Reading order for an operator returning to v2.13.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -94,11 +94,11 @@ Reading order for an operator returning to v2.12.3 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.12.3 covers `[structural | stable]`
+### 1.1 What v2.13.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.12.3 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.12.3 covers:
+PRISM v2.13.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.13.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -108,12 +108,12 @@ and research framework. v2.12.3 covers:
   orchestration turn-close, regardless of band state (§{section.the-master}, §{section.whats-next}, §{section.failsafe-recovery-continuous-state-mechanics}).
 - **Vendor Selection at dispatch** with live web-search currency check
   (§{section.vendor-selection-at-dispatch}).
-- **Setup as iterative refinement** against the Lens Library v0.13, with
+- **Setup as iterative refinement** against the Lens Library v0.14, with
   three-layer readiness clearing the P0→P1 boundary (§{section.setup-mechanics}).
 - **Seven Setup probes** (§{probe.P1} Coverage grading, P2 Adversarial Scope, P3
   Decision Framing, P4 Pre-mortem, P5 Falsifier, P6 Domain Reconnaissance,
   P7 User Voice) — Setup-time grading constructs only (§{section.the-seven-probes}).
-- **Library integration** — the Lens Library v0.13 as canonical reference
+- **Library integration** — the Lens Library v0.14 as canonical reference
   catalog (embedded as Appendix G; standalone at `lens/PRISM_lens_library.md`
   for explicit override); point-refresh in Setup; Update sessions for
   currency maintenance (§{section.library-integration}).
@@ -134,25 +134,25 @@ and research framework. v2.12.3 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.12.3 does not cover
+### 1.2 What v2.13.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.12.3 implements the spec; the spec implements
+- **Re-debating direction.** v2.13.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog ships embedded
-  in Appendix G (v0.13 at this release) for singleton-attachment use. The
-  standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.13`)
+  in Appendix G (v0.14 at this release) for singleton-attachment use. The
+  standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.14`)
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
-- **Empirical calibration.** Several thresholds in v2.12.3 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.13.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.12.3's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.13.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -160,7 +160,7 @@ and research framework. v2.12.3 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.12.3 honours the constraint inherited from the design document (DD.§8.3):
+v2.13.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -169,7 +169,7 @@ v2.12.3 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.12.3. Roadmap
+Mechanics that violate any leg do not earn their place in v2.13.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -180,14 +180,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.12.3 mechanics for the
+**Read this section first if you are encountering v2.13.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.12.3 has the following constructs, grouped by category.
+PRISM v2.13.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -225,7 +225,7 @@ PRISM v2.12.3 has the following constructs, grouped by category.
   (outbound)
 
 **Standing Principles** (§{section.standing-principles})
-- v2-new/extended: SP-1 ext, SP-12, SP-13, SP-14, SP-15
+- v2-new/extended: SP-1 ext, SP-12, SP-13, SP-14, SP-15, SP-16
 - Carryforward: SP-2, SP-4, SP-5, SP-6, SP-7, SP-8 (narrowed), SP-9, SP-10
 - Dissolved: SP-3
 
@@ -399,6 +399,7 @@ v1.x M12 Conversation Pressure retired into M5
 | SP-13 Substrate declaration | New in v2 | §{section.sp-13-substrate-declaration} |
 | SP-14 Filename discipline | New in v2 | §{section.sp-14-filename-discipline} |
 | SP-15 Triangulation integrity | New in v2.1.1 | §{section.sp-15-triangulation-integrity} |
+| SP-16 The Elephant Rule (negation discipline) | New in v2.13.0 | §{section.sp-16-the-elephant-rule} |
 
 ### 2.4 Lifecycle slots
 <a id="section-lifecycle-slots"></a>
@@ -461,7 +462,7 @@ as the live currency check at dispatch time.
 
 - *Loaded artifacts at session open*: this framework file (or the PRISM v2
   Skill that loads it); the Master; the Lens Library
-  (`PRISM_lens_library.md` v0.13); the Prompt Strategy (when separate from
+  (`PRISM_lens_library.md` v0.14); the Prompt Strategy (when separate from
   the Master); subject-brief documents.
 - *Session-open verification*: SP-13 substrate self-check (§{section.sp-13-substrate-declaration}) — Claude
   declares model identity and confirms it matches the declared orchestration
@@ -562,8 +563,11 @@ Operator hints:     [zero or more one-line cues; see §3.2.4]
 #### 3.2.2 PRISM Execution Self-check
 <a id="section-prism-execution-self-check"></a>
 
-Operationalizes SP-13 (§{section.sp-13-substrate-declaration}) inside the execution session. Sits between
-the Envelope and the task body.
+Operationalizes SP-13 (§{section.sp-13-substrate-declaration}) inside the execution session, and carries
+the SP-16 negation audit (§{section.sp-16-the-elephant-rule}, the Elephant
+Rule) as its output-side step. Sits between the Envelope and the task
+body; steps 1–4 fire before the task, step 5 fires before the Output is
+emitted.
 
 ```
 ━━━ PRISM EXECUTION SELF-CHECK ━━━
@@ -581,6 +585,14 @@ Before doing the task:
 4. Proceed only if (a) the substrate matches, or
    (b) the operator has explicitly confirmed to proceed
    despite mismatch.
+5. Before emitting the Output: enumerate every
+   negation in the findings content ("not Y",
+   "X, not Y", "rather than Y", "no Y"); tag
+   each called-for (naming the live alternative
+   it answers) or uncalled-for (rewrite
+   positively before release). Headings and
+   opening sentences first (SP-16, the
+   Elephant Rule).
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -593,6 +605,10 @@ Before doing the task:
   deliverable until the operator confirms.
 - "Confirmation to proceed" is a positive operator action (a message in the
   conversation), not an inferred consent from continued attachment (§{principle.SP-9}).
+- Step 5 is an output gate, not substrate verification: it fires once
+  the findings content is drafted, before the Output block is emitted.
+  Uncalled-for negations are rewritten positively, not annotated
+  (§{section.sp-16-the-elephant-rule}, the Elephant Rule).
 
 **Multi-vendor empirical footing.** Verified on Claude Opus-class and
 Sonnet-class models. Gemini, ChatGPT, Perplexity behavior under this
@@ -2075,7 +2091,7 @@ offered at 🟠 (operator-elective).
 ━━━ PRISM SESSION HANDOFF ━━━
 Project:                [name]
 Master version:         [filename of attached Master]
-Lens Library version:   [v0.13 | filename pinned]
+Lens Library version:   [v0.14 | filename pinned]
 Producing session:      [orchestration session URL or descriptor, if known]
 Reason for migration:   [band-state, named driver(s)]
 Migration timestamp:    [YYYY-MM-DD]
@@ -2240,7 +2256,7 @@ all six fields. Any missing field halts P0 → P1.
 
 #### Layer 2 — Library coverage saturation
 
-Every applicable Lens from the Lens Library v0.13 is either:
+Every applicable Lens from the Lens Library v0.14 is either:
 
 - Covered by at least one planned prompt (Probe 1 disposition:
   *fires-covered*), OR
@@ -2284,7 +2300,7 @@ Setup-time grading constructs only.
 #### 6.3.1 Probe 1 — Coverage grading (iterates) `[structural | stable | ✅]`
 <a id="section-probe-1-coverage-grading-iterates"></a>
 
-Grade the draft strategy against the Lens Library v0.13. Universal lenses
+Grade the draft strategy against the Lens Library v0.14. Universal lenses
 (5) always evaluated. Domain lenses (18) evaluated where their `trigger:`
 predicate is met by the subject.
 
@@ -2571,8 +2587,8 @@ map adapts with it (§{section.prism-execution-envelope}).
 ## 7. Library integration
 <a id="section-library-integration"></a>
 
-The Lens Library v0.13 is canonical at `lens/PRISM_lens_library.md`
-(tag `prism-lens-v0.13`). The v0.13 catalog is also embedded in this
+The Lens Library v0.14 is canonical at `lens/PRISM_lens_library.md`
+(tag `prism-lens-v0.14`). The v0.14 catalog is also embedded in this
 file as **Appendix G** for singleton-attachment use; that embedded copy
 is the default Library source for orchestration. The standalone Library
 file remains authoritative for the artifact's own evolution: Update
@@ -2585,8 +2601,8 @@ and override Appendix G (§{section.library-reference-at-setup}).
 <a id="section-library-reference-at-setup"></a>
 
 **Required Library source.** By default, orchestration uses the embedded
-Lens Library v0.13 in Appendix G (this file). A standalone Lens Library
-file (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.13` or newer) is
+Lens Library v0.14 in Appendix G (this file). A standalone Lens Library
+file (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.14` or newer) is
 attached only when the operator explicitly pins the project to a newer
 standalone Library version than the embedded copy. When standalone is
 attached, it overrides Appendix G for that session. Recommended: if a
@@ -2744,7 +2760,7 @@ Two-tier mechanism: point refresh (per-project, in Setup) + Update session
   P3.4 — accessibility pass
   Specialist framing: WCAG-qualified accessibility auditor (§{lens.LL-D-002} "Can anyone use?")
   Anchor: WCAG 2.2 (October 2023) — verified current as of [date]
-          via web search; PRISM Lens Library v0.13 last_verified
+          via web search; PRISM Lens Library v0.14 last_verified
           2026-04-24 still current.
   ```
   If the web-search currency check finds a newer version (e.g., WCAG 3.0
@@ -2845,7 +2861,7 @@ home for project state.
 **Project contents at Setup completion** (recommended):
 
 - `[project]_prism2.0_master_p0.1.md` (Master, current version)
-- `PRISM_lens_library.md` (v0.13 or pinned tag)
+- `PRISM_lens_library.md` (v0.14 or pinned tag)
 - `[project]_brief.md` (subject brief)
 - `[project]_prompt_strategy_p0.1.md` (current Prompt Strategy, optional —
   Master can carry this)
@@ -3401,6 +3417,63 @@ Cross-ref: §{section.vendor-triangulation},
 §{section.orchestration-driver-and-persistence-axes},
 §{section.corpus-access-dispatch}.
 
+#### 10.1.7 SP-16 — The Elephant Rule `[methodological | stable | 🚫]`
+<a id="section-sp-16-the-elephant-rule"></a>
+
+New in v2.13.0. Negation is a targeting decision, not a style choice
+(Lakoff: don't think of an elephant).
+
+- A sentence may negate only a **live** alternative — a belief the
+  reader demonstrably brings: a common prior, a named risk, or an
+  inference the document's own numbers invite.
+- Negating anything else plants the accusation it denies: the reader
+  leaves carrying the frame, the author reads as defensive, and the
+  text implies a critic nobody heard from.
+
+**Test** — run on every negation ("not Y", "X, not Y", "rather than
+Y", "no Y"):
+
+1. Would a cold reader plausibly arrive believing Y, or derive Y from
+   the document itself?
+2. Yes → **called-for**. Keep; the contrast carries information.
+   Record which live alternative it negates.
+3. No → **uncalled-for**. Rewrite positively: assert what is true
+   without referencing Y at all.
+
+**Called-for (keep) — examples.**
+
+- "The limit is export permission, not customer demand." (Both
+  hypotheses are live; the contrast names the binding constraint.)
+- "Maximum at full coverage (not current revenue)." (Prevents a real
+  chart misread.)
+- "~40 accounts is roughly one per country, not a near-monopoly."
+  (Pre-empts arithmetic the reader will actually do.)
+
+**Uncalled-for (rewrite) — examples.**
+
+- "Why it's a real market, not a hyped one" → "What anchors the $2.0
+  billion." (Nobody alleged hype; the heading now asserts the anchor.)
+- "…lowers the figure to 45–60% of the total, rather than inflating
+  it" → end the sentence at "of the total." ("Inflate" existed only
+  to be denied.)
+- "This is X — not the giant Z it's often confused with" → "This is X
+  of its own — far narrower than Z." (Scoping kept, denial form
+  dropped.)
+
+**Application surfaces.**
+
+- Every prose deliverable PRISM produces: Layer-2 synthesis, findings
+  content inside Execution Outputs, Setup artifacts, *What's next*
+  bodies. Headings, titles, and opening sentences get the strictest
+  scrutiny — they set frames the rest of the document inherits.
+- Execution-side operationalization: step 5 of the Execution
+  Self-check (§{section.prism-execution-self-check}) — before emitting
+  the Output, enumerate every negation; tag each called-for (naming
+  the live alternative) or uncalled-for (rewrite before release).
+- Audit-side: the Lens Library carries the same discipline as a
+  document-review lens (LL-D-019 "Who said otherwise?", Pack 1) for
+  reviewing existing documents.
+
 ### 10.2 v1.x Standing Principles — carryforward catalog
 <a id="section-v1-x-standing-principles-carryforward-catalog"></a>
 
@@ -3423,6 +3496,7 @@ Per-SP disposition explicit:
 | SP-13 | Substrate Declaration | New in v2 | See §{section.sp-13-substrate-declaration} |
 | SP-14 | Filename Discipline | New in v2 (extracted from SP-8) | See §{section.sp-14-filename-discipline} |
 | SP-15 | Triangulation integrity | New in v2.1.1 | See §{section.sp-15-triangulation-integrity} |
+| SP-16 | The Elephant Rule (negation discipline) | New in v2.13.0 | See §{section.sp-16-the-elephant-rule} |
 
 #### 10.2.1 SP-8 narrowed — Canonical Authority `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-8-narrowed-canonical-authority"></a>
@@ -3784,7 +3858,7 @@ Atlas career coaching SaaS. Brief attached: atlas_brief.md."
     APA ethics for coaching adjacent to therapy. Outputs Jurisdiction
     map (§6.4.4): US (federal) FTC + state UPL rules; EU AI Act for
     any algorithmic matching.
-  Probe 1 grades against Lens Library v0.13. Initial coverage map:
+  Probe 1 grades against Lens Library v0.14. Initial coverage map:
     LL-U-001..005 — three covered, two uncovered. Domain triggers:
     Pack 1 (using product), Pack 4 (proving results), Pack 5 (laws).
     Pack 2 partial, Pack 6 doesn't-fire.
@@ -3878,6 +3952,10 @@ feedback channel.
 7. **Update session trigger threshold.** Rev. 1 draft: 3 stale-pattern
    accumulations across 6+ months. Calibrate against real maintenance
    cadence.
+8. **SP-16 negation-audit signal.** Volume of called-for /
+   uncalled-for tags per Output; false-flag rate on legitimate
+   contrastive framing; LL-D-019 ("Who said otherwise?") fire rate on
+   document-review subjects. Calibrates Elephant-Rule strictness.
 
 These ride into the dogfood run as flagged items. Telemetry on each
 feeds the v2.1 minor version.
@@ -4079,7 +4157,7 @@ mechanics live in the cross-referenced sections.
 | **Jurisdiction map** | Setup artifact. Per-jurisdiction listing of triggered regulatory regimes and their materiality. §{section.jurisdiction-map}. |
 | **Layer 1** | Per-prompt convergence — orchestration absorbs returned findings into the Master. Monitors M6/M7/M8/M12 fire here. |
 | **Layer 2** | Cold synthesis across all Layer-1 findings to produce the audit's external deliverable. M9 fires here. M11 surfaces readiness. |
-| **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (18). v0.13 release pinned at `prism-lens-v0.13`. §{section.library-integration}. |
+| **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (19). v0.14 release pinned at `prism-lens-v0.14`. §{section.library-integration}. |
 | **`limitation-named` dispatch** | Single-vendor dispatch with explicit `Not chosen:` rationale. §{section.single-envelope-with-spectrum-shape}. |
 | **Master** | The single canonical project state file. Updated at every orchestration turn-close. §{section.the-master}. |
 | **Migration handoff** | Defined artifact produced at 🔴 (mandatory) or 🟠 (optional) for fresh-session continuity. §{section.migration-handoff}. |
@@ -4094,7 +4172,7 @@ mechanics live in the cross-referenced sections.
 | **Prompt Strategy** | The plan of dispatched prompts produced by Setup. Lives in the Master. Iterates in P0; ratifies at P0→P1; revisable at convergence (§{section.strategy-stability}). |
 | **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §{section.m12-result-completeness-check}. |
 | **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §{section.three-layer-readiness}. |
-| **Self-check** | The middle block of the triple contract — substrate verification per §{principle.SP-13}. §{section.prism-execution-self-check}. |
+| **Self-check** | The middle block of the triple contract — substrate verification per §{principle.SP-13}, plus the §{principle.SP-16} output-side negation audit (step 5). §{section.prism-execution-self-check}. |
 | **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
 | **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
 | **Stakeholder register** | Setup artifact. Per-role listing of stake, decision power, communication channel. §{section.stakeholder-register}. |
@@ -4221,7 +4299,8 @@ and contribution), §{section.citation} (citation).
 refinement), §{section.currency-maintenance-point-refresh} (point refresh), §{section.currency-maintenance-update-session} (Update session), §{section.m4-ambiguous-ask} (§{monitor.M4}
 Ambiguous Ask), §{section.m9-convergence-type-drift} (§{monitor.M9} Convergence Type Drift), §{section.operator-hint-catalog} (operator hint
 catalog), §{section.recovery-flow} (missing-handoff recovery flow), §{section.currency-check-at-session-open} (currency check
-at session open).
+at session open), §{section.sp-16-the-elephant-rule} (§{principle.SP-16} The
+Elephant Rule — negation discipline).
 
 ### C.3 `[methodological | review-if: substrate shifts]`
 <a id="appendix-methodological-review-if-substrate-shifts"></a>
@@ -4444,6 +4523,14 @@ Before doing the task:
 4. Proceed only if (a) the substrate matches, or
    (b) the operator has explicitly confirmed to proceed
    despite mismatch.
+5. Before emitting the Output: enumerate every
+   negation in the findings content ("not Y",
+   "X, not Y", "rather than Y", "no Y"); tag
+   each called-for (naming the live alternative
+   it answers) or uncalled-for (rewrite
+   positively before release). Headings and
+   opening sentences first (SP-16, the
+   Elephant Rule).
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -4550,7 +4637,7 @@ Operator action:     [recommended next step — accept, dig, or escalate]
 ━━━ PRISM SESSION HANDOFF ━━━
 Project:                [name]
 Master version:         [filename of attached Master]
-Lens Library version:   [v0.13 | filename pinned]
+Lens Library version:   [v0.14 | filename pinned]
 Producing session:      [orchestration session URL or descriptor, if known]
 Reason for migration:   [band-state, named driver(s)]
 Migration timestamp:    [YYYY-MM-DD]
@@ -4705,11 +4792,11 @@ Return handling:  [recall-merge; agreement = retrieval-consistency note]
 
 ---
 
-## Appendix G — Embedded Lens Library v0.13
-<a id="appendix-embedded-lens-library-v0-13"></a>
+## Appendix G — Embedded Lens Library v0.14
+<a id="appendix-embedded-lens-library-v0-14"></a>
 
 The content below is an embedded, byte-for-byte copy of the canonical
-`lens/PRISM_lens_library.md` v0.13 (tag `prism-lens-v0.13`) at the
+`lens/PRISM_lens_library.md` v0.14 (tag `prism-lens-v0.14`) at the
 time of this PRISM release. The standalone file remains authoritative
 for the catalog's own evolution; this embedded copy is the **default
 Library source** for orchestration so a single PRISM.md attachment is
@@ -4725,10 +4812,10 @@ the standalone file alongside the Master (§{section.library-reference-at-setup}
 
 ---
 
-# PRISM Lens Library — v0.13 (pre-release)
+# PRISM Lens Library — v0.14 (pre-release)
 
-**Version:** 0.13
-**Release date:** 2026-06-06
+**Version:** 0.14
+**Release date:** 2026-06-10
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -4736,7 +4823,7 @@ the standalone file alongside the Master (§{section.library-reference-at-setup}
 
 ## What this is
 
-The PRISM Lens Library is a reference catalog of 23 audit-scope lenses. Each entry is a (material-question × evidence-class × specialist-type) triple that names a specific class of silent omission an audit can plausibly miss.
+The PRISM Lens Library is a reference catalog of 24 audit-scope lenses. Each entry is a (material-question × evidence-class × specialist-type) triple that names a specific class of silent omission an audit can plausibly miss.
 
 The Library is used as a coverage map at scope-definition time. For a given audit subject, an auditor evaluates every lens against the subject:
 
@@ -4933,7 +5020,7 @@ Every entry uses the following fields:
 
 ---
 
-## Domain lenses (18 entries across 6 packs)
+## Domain lenses (19 entries across 6 packs)
 
 ### Pack 1 — Using the product
 
@@ -5029,6 +5116,44 @@ Every entry uses the following fields:
     independent references or qualified
     subject-matter reviewers, with a sampling
     plan and accuracy criteria.
+
+- id: LL-D-019
+  name: Who said otherwise?
+  material_question: >
+    Does every negation in the document under
+    review answer a live alternative — a belief
+    the reader demonstrably brings, or an
+    inference the document's own content
+    invites — rather than denying an accusation
+    nobody made?
+  tier: domain
+  trigger: >
+    predicate: subject is or includes a prose
+    deliverable — report, pitch, marketing or
+    position copy, expository document — whose
+    framing shapes reader belief or action
+  evidence_class: document
+  specialist_type: communications editor / framing reviewer
+  rubric_anchor: ~
+  informed_by:
+    - Lakoff, "Don't Think of an Elephant!" (frame activation by negation)
+    - Misinformation-correction research (negation reinforces familiarity)
+    - Plain-language editorial tradition
+  failure_mode: >
+    Scope reviews the document's claims but
+    never audits its negations; uncalled-for
+    denials plant the very frames they deny,
+    the author reads as defensive, and readers
+    leave carrying alternatives nobody asserted.
+  minimum_scope_binding: >
+    One pass enumerates every negation
+    construct ("not Y", "X, not Y", "rather
+    than Y", "no Y") in the deliverable and
+    tags each as called-for (naming the live
+    alternative it answers) or uncalled-for
+    (flagged for positive rewrite); headings,
+    titles, and opening sentences audited
+    first.
 ```
 
 ### Pack 2 — Running the system
@@ -5679,17 +5804,19 @@ Every entry uses the following fields:
 
 ## Summary counts
 
-- **Total entries:** 23 (5 universal + 18 domain across 6 packs)
-- **Rubric-anchored entries:** 2 (8.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
-- **`recommended_sources:`-bearing entries:** 2 (8.7%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
-- **`scope_integrity_probe:`-bearing entries:** 1 (4.3%) — LL-D-008 ("Compared to what?")
-- **`specialist_type:` population:** 23 / 23
+- **Total entries:** 24 (5 universal + 19 domain across 6 packs)
+- **Rubric-anchored entries:** 2 (8.3%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
+- **`recommended_sources:`-bearing entries:** 2 (8.3%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
+- **`scope_integrity_probe:`-bearing entries:** 1 (4.2%) — LL-D-008 ("Compared to what?")
+- **`specialist_type:` population:** 24 / 24
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
 - **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.13 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.14 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+
+v0.14 is an additive catalog bump on top of v0.13: one new domain lens, no schema change. It adds LL-D-019 ("Who said otherwise?") to Pack 1 — a document-review lens that audits negation targeting in prose deliverables. Every negation must answer a live alternative the reader demonstrably brings (a common prior, a named risk, or an inference the document's own content invites); a denial of a belief nobody holds plants the very frame it denies, reads as defensive, and implies a critic nobody heard from. The lens carries the standard fields only — no rubric anchor, no recommended sources, no scope-integrity probe at introduction — and existing lenses are untouched, so v0.14 introduces no behavior change for them. Total entries 23 → 24 (5 universal + 19 domain).
 
 v0.13 is an additive schema bump on top of v0.12: same 23 lenses, same triggers. It adds the optional `scope_integrity_probe:` field, which carries a sharpened, lens-specific falsifier an adopting framework poses at coverage time to test whether `minimum_scope_binding:` was genuinely satisfied rather than waved through. The field is populated on one lens (LL-D-008 "Compared to what?", whose category-vs-audience substitution trap has a ground-truth worked miss) and absent on the rest. Like `recommended_sources:`, it is optional and backward-compatible: entries without it remain valid and fall back to the generic scope-completeness challenge derived from `minimum_scope_binding:`, so v0.13 introduces no behavior change for existing lenses.
 
@@ -5699,9 +5826,9 @@ v0.11 is a lens-binding refinement on top of v0.10: same 23 lenses, no schema ch
 
 v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.13 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.14 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
 
-*End of PRISM Lens Library v0.13.*
+*End of PRISM Lens Library v0.14.*
 
 ---
 
@@ -5780,8 +5907,8 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.12.3 (this file)
-- **Embedded Lens Library version.** v0.13 (Appendix G)
+- **Framework version.** v2.13.0 (this file)
+- **Embedded Lens Library version.** v0.14 (Appendix G)
 - **Release date.** 2026-06-10
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
   Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
@@ -5796,12 +5923,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_12_3.md` |
-| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_13.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_13_0.md` |
+| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_14.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.12.3` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.13.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5827,8 +5954,8 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.12.3 attached; v{published} available at {releases URL}.`
-   `Lens v0.13 attached; v{published} available at {releases URL}.`
+   `Framework v2.13.0 attached; v{published} available at {releases URL}.`
+   `Lens v0.14 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
    runtime.
@@ -5870,8 +5997,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.12.3). https://github.com/Ronkupper/PRISM
+> (v2.13.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.12.3 framework operating document.*
+*End of PRISM v2.13.0 framework operating document.*

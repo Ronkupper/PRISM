@@ -38,7 +38,7 @@ abstract: >-
   enforces that a lens's minimum scope binding was actually satisfied, not
   waved through, on a rigor ladder from inline self-check to cross-vendor
   probe, with an optional per-lens sharpened-probe field; the embedded Lens
-  Library advances to v0.13.
+  Library advances to v0.14.
   v2.11 adds an explicit Skill slash-command invocation path on Claude —
   `/prism-start <subject>` activates PRISM and begins Setup for the supplied
   subject — a Claude-Skill packaging affordance carried by a plugin slash-command,
@@ -58,7 +58,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.12.3"
+version: "2.13.0"
 date-released: "2026-06-10"
 keywords:
   - llm

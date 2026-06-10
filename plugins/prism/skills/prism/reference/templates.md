@@ -1,4 +1,4 @@
-<!-- PRISM v2.12.3 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
+<!-- PRISM v2.13.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix E — Templates compendium
@@ -47,6 +47,14 @@ Before doing the task:
 4. Proceed only if (a) the substrate matches, or
    (b) the operator has explicitly confirmed to proceed
    despite mismatch.
+5. Before emitting the Output: enumerate every
+   negation in the findings content ("not Y",
+   "X, not Y", "rather than Y", "no Y"); tag
+   each called-for (naming the live alternative
+   it answers) or uncalled-for (rewrite
+   positively before release). Headings and
+   opening sentences first (SP-16, the
+   Elephant Rule).
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -153,7 +161,7 @@ Operator action:     [recommended next step — accept, dig, or escalate]
 ━━━ PRISM SESSION HANDOFF ━━━
 Project:                [name]
 Master version:         [filename of attached Master]
-Lens Library version:   [v0.13 | filename pinned]
+Lens Library version:   [v0.14 | filename pinned]
 Producing session:      [orchestration session URL or descriptor, if known]
 Reason for migration:   [band-state, named driver(s)]
 Migration timestamp:    [YYYY-MM-DD]
