@@ -1,6 +1,6 @@
-# PRISM Lens Library — v0.14 (pre-release)
+# PRISM Lens Library — v0.15 (pre-release)
 
-**Version:** 0.14
+**Version:** 0.15
 **Release date:** 2026-06-10
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
@@ -9,7 +9,7 @@
 
 ## What this is
 
-The PRISM Lens Library is a reference catalog of 24 audit-scope lenses. Each entry is a (material-question × evidence-class × specialist-type) triple that names a specific class of silent omission an audit can plausibly miss.
+The PRISM Lens Library is a reference catalog of 26 audit-scope lenses. Each entry is a (material-question × evidence-class × specialist-type) triple that names a specific class of silent omission an audit can plausibly miss.
 
 The Library is used as a coverage map at scope-definition time. For a given audit subject, an auditor evaluates every lens against the subject:
 
@@ -206,7 +206,7 @@ Every entry uses the following fields:
 
 ---
 
-## Domain lenses (19 entries across 6 packs)
+## Domain lenses (21 entries across 6 packs)
 
 ### Pack 1 — Using the product
 
@@ -306,12 +306,12 @@ Every entry uses the following fields:
 - id: LL-D-019
   name: Who said otherwise?
   material_question: >
-    Does every negation in the document under
-    review answer a live alternative — a belief
-    the reader demonstrably brings, or an
-    inference the document's own content
-    invites — rather than denying an accusation
-    nobody made?
+    Does every uninvited frame in the document
+    under review — a negation, a defensive
+    intensifier, or a temporal hedge — answer
+    a live alternative the reader demonstrably
+    brings, rather than planting a doubt or
+    trajectory nobody raised?
   tier: domain
   trigger: >
     predicate: subject is or includes a prose
@@ -327,19 +327,122 @@ Every entry uses the following fields:
     - Plain-language editorial tradition
   failure_mode: >
     Scope reviews the document's claims but
-    never audits its negations; uncalled-for
-    denials plant the very frames they deny,
-    the author reads as defensive, and readers
-    leave carrying alternatives nobody asserted.
+    never audits its framing devices;
+    uncalled-for denials plant the frames
+    they deny, defensive intensifiers
+    ("real", "actual", "truly") imply doubts
+    nobody raised, and temporal hedges ("for
+    now", "currently") concede adverse
+    trajectories the evidence never put on
+    the table.
   minimum_scope_binding: >
-    One pass enumerates every negation
-    construct ("not Y", "X, not Y", "rather
-    than Y", "no Y") in the deliverable and
-    tags each as called-for (naming the live
+    One pass enumerates every negation ("not
+    Y", "X, not Y", "rather than Y", "no Y"),
+    defensive intensifier ("real", "actual",
+    "genuine", "truly", "clearly"), and
+    temporal hedge ("for now", "today",
+    "currently") in the deliverable and tags
+    each as called-for (naming the live
     alternative it answers) or uncalled-for
-    (flagged for positive rewrite); headings,
-    titles, and opening sentences audited
-    first.
+    (flagged for positive, informative
+    rewrite). Where the positive verb already
+    bounds the claim ("shrink", "slow",
+    "narrow"), a trailing denial of the
+    unbounded case is uncalled-for by
+    default; inside a section whose explicit
+    job is worst-case assessment, the extreme
+    is a called question. Headings, titles,
+    and opening sentences audited first.
+
+- id: LL-D-020
+  name: Help or ammunition?
+  material_question: >
+    Read sentence by sentence as the named
+    audience — analyst, quant, banker, per the
+    document's audience line — does every
+    sentence make sense, read clearly, and
+    land as positive or at least defensible
+    for the subject, rather than handing a
+    hostile expert ammunition?
+  tier: domain
+  trigger: >
+    predicate: subject is or includes a prose
+    deliverable addressed to a named expert
+    audience whose reading affects the
+    subject's interests
+  evidence_class: document
+  specialist_type: named-audience expert reviewer (hostile-but-fair posture)
+  rubric_anchor: ~
+  informed_by:
+    - Hostile-review / red-team editorial practice
+    - Equity-research and credit-memo review conventions
+    - Plain-language editorial tradition
+  failure_mode: >
+    The deliverable is reviewed for accuracy
+    but never read as its audience reads it;
+    a sentence that is true and clear still
+    hands a hostile-but-fair expert
+    ammunition — an implied arithmetic that
+    computes against the subject, a framing a
+    quant reads as evasion — and the audit
+    passes what the audience punishes.
+  minimum_scope_binding: >
+    One pass reads every sentence through
+    three lenses in order: (1) does it make
+    sense; (2) is it clear, preferring the
+    plain word over compressed jargon;
+    (3) read as the named audience, is it
+    problematic or positive for the subject —
+    recomputing any arithmetic the sentence
+    implies and asking what a hostile-but-
+    fair expert does with it. Findings route
+    to rewrite, with the triggering lens
+    named.
+
+- id: LL-D-021
+  name: Does a stranger follow?
+  material_question: >
+    Can a zero-context reader resolve every
+    referent in the document — every quoted
+    figure attributed, every acronym defined
+    at first use, every premise the logic
+    depends on stated on the page — without
+    access to anything the author knows but
+    the page omits?
+  tier: domain
+  trigger: >
+    predicate: subject is or includes a prose
+    deliverable intended to travel beyond its
+    authors, reaching readers who arrive
+    without the production context
+  evidence_class: document
+  specialist_type: cold reader / new-to-file editor
+  rubric_anchor: ~
+  informed_by:
+    - Technical-writing review practice (cold-read pass)
+    - Curse-of-knowledge research (Camerer et al.; Heath & Heath framing)
+    - Plain-language editorial tradition
+  failure_mode: >
+    Everyone who reviews the document already
+    knows the context, so nobody notices the
+    often-quoted figure quoted nowhere, the
+    acronym never defined, or the unstated
+    premise an entire calculation silently
+    assumes — a report whose export-limit
+    arithmetic depended on the company's home
+    jurisdiction, stated nowhere — until a
+    real stranger reads it.
+  minimum_scope_binding: >
+    One pass reads the deliverable as a
+    zero-context stranger: every third-party
+    claim attributed (quoted where, by whom),
+    every acronym defined at first use,
+    insider jargon expanded, and every
+    premise the document's logic depends on
+    stated on the page. Headings and opening
+    sentences audited first; unresolved
+    referents and unstated premises route to
+    rewrite.
 ```
 
 ### Pack 2 — Running the system
@@ -990,17 +1093,19 @@ Every entry uses the following fields:
 
 ## Summary counts
 
-- **Total entries:** 24 (5 universal + 19 domain across 6 packs)
-- **Rubric-anchored entries:** 2 (8.3%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
-- **`recommended_sources:`-bearing entries:** 2 (8.3%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
-- **`scope_integrity_probe:`-bearing entries:** 1 (4.2%) — LL-D-008 ("Compared to what?")
-- **`specialist_type:` population:** 24 / 24
+- **Total entries:** 26 (5 universal + 21 domain across 6 packs)
+- **Rubric-anchored entries:** 2 (7.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
+- **`recommended_sources:`-bearing entries:** 2 (7.7%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
+- **`scope_integrity_probe:`-bearing entries:** 1 (3.8%) — LL-D-008 ("Compared to what?")
+- **`specialist_type:` population:** 26 / 26
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
 - **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.14 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.15 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+
+v0.15 is an additive catalog bump on top of v0.14: two new domain lenses and one amended lens, no schema change. It broadens LL-D-019 ("Who said otherwise?") from negations alone to the full uninvited-frame family — negations, defensive intensifiers ("real", "actual", "truly"), and temporal hedges ("for now", "currently") — with a fast path for self-bounding verbs (a verb like "shrink" already bounds the claim, so a trailing denial of the unbounded case is uncalled-for by default) and an exception for sections whose explicit job is worst-case assessment, where the extreme is a called question. It adds LL-D-020 ("Help or ammunition?"), a per-sentence triple audit that reads a deliverable as its named expert audience reads it — sense, clarity, and effect for the subject, recomputing any implied arithmetic under a hostile-but-fair posture — and LL-D-021 ("Does a stranger follow?"), a cold-reader pass requiring every referent to resolve on the page: third-party claims attributed, acronyms defined at first use, and the premises the document's logic depends on stated rather than assumed. Both new lenses carry the standard fields only, and existing lenses beyond LL-D-019 are untouched. Total entries 24 → 26 (5 universal + 21 domain).
 
 v0.14 is an additive catalog bump on top of v0.13: one new domain lens, no schema change. It adds LL-D-019 ("Who said otherwise?") to Pack 1 — a document-review lens that audits negation targeting in prose deliverables. Every negation must answer a live alternative the reader demonstrably brings (a common prior, a named risk, or an inference the document's own content invites); a denial of a belief nobody holds plants the very frame it denies, reads as defensive, and implies a critic nobody heard from. The lens carries the standard fields only — no rubric anchor, no recommended sources, no scope-integrity probe at introduction — and existing lenses are untouched, so v0.14 introduces no behavior change for them. Total entries 23 → 24 (5 universal + 19 domain).
 
@@ -1012,6 +1117,6 @@ v0.11 is a lens-binding refinement on top of v0.10: same 23 lenses, no schema ch
 
 v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.14 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.15 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
 
-*End of PRISM Lens Library v0.14.*
+*End of PRISM Lens Library v0.15.*
