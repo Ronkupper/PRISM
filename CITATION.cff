@@ -58,7 +58,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.12.2"
+version: "2.12.3"
 date-released: "2026-06-10"
 keywords:
   - llm
