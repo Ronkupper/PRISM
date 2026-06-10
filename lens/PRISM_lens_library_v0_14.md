@@ -1,7 +1,7 @@
-# PRISM Lens Library — v0.13 (pre-release)
+# PRISM Lens Library — v0.14 (pre-release)
 
-**Version:** 0.13
-**Release date:** 2026-06-06
+**Version:** 0.14
+**Release date:** 2026-06-10
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -9,7 +9,7 @@
 
 ## What this is
 
-The PRISM Lens Library is a reference catalog of 23 audit-scope lenses. Each entry is a (material-question × evidence-class × specialist-type) triple that names a specific class of silent omission an audit can plausibly miss.
+The PRISM Lens Library is a reference catalog of 24 audit-scope lenses. Each entry is a (material-question × evidence-class × specialist-type) triple that names a specific class of silent omission an audit can plausibly miss.
 
 The Library is used as a coverage map at scope-definition time. For a given audit subject, an auditor evaluates every lens against the subject:
 
@@ -206,7 +206,7 @@ Every entry uses the following fields:
 
 ---
 
-## Domain lenses (18 entries across 6 packs)
+## Domain lenses (19 entries across 6 packs)
 
 ### Pack 1 — Using the product
 
@@ -302,6 +302,44 @@ Every entry uses the following fields:
     independent references or qualified
     subject-matter reviewers, with a sampling
     plan and accuracy criteria.
+
+- id: LL-D-019
+  name: Who said otherwise?
+  material_question: >
+    Does every negation in the document under
+    review answer a live alternative — a belief
+    the reader demonstrably brings, or an
+    inference the document's own content
+    invites — rather than denying an accusation
+    nobody made?
+  tier: domain
+  trigger: >
+    predicate: subject is or includes a prose
+    deliverable — report, pitch, marketing or
+    position copy, expository document — whose
+    framing shapes reader belief or action
+  evidence_class: document
+  specialist_type: communications editor / framing reviewer
+  rubric_anchor: ~
+  informed_by:
+    - Lakoff, "Don't Think of an Elephant!" (frame activation by negation)
+    - Misinformation-correction research (negation reinforces familiarity)
+    - Plain-language editorial tradition
+  failure_mode: >
+    Scope reviews the document's claims but
+    never audits its negations; uncalled-for
+    denials plant the very frames they deny,
+    the author reads as defensive, and readers
+    leave carrying alternatives nobody asserted.
+  minimum_scope_binding: >
+    One pass enumerates every negation
+    construct ("not Y", "X, not Y", "rather
+    than Y", "no Y") in the deliverable and
+    tags each as called-for (naming the live
+    alternative it answers) or uncalled-for
+    (flagged for positive rewrite); headings,
+    titles, and opening sentences audited
+    first.
 ```
 
 ### Pack 2 — Running the system
@@ -952,17 +990,19 @@ Every entry uses the following fields:
 
 ## Summary counts
 
-- **Total entries:** 23 (5 universal + 18 domain across 6 packs)
-- **Rubric-anchored entries:** 2 (8.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
-- **`recommended_sources:`-bearing entries:** 2 (8.7%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
-- **`scope_integrity_probe:`-bearing entries:** 1 (4.3%) — LL-D-008 ("Compared to what?")
-- **`specialist_type:` population:** 23 / 23
+- **Total entries:** 24 (5 universal + 19 domain across 6 packs)
+- **Rubric-anchored entries:** 2 (8.3%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
+- **`recommended_sources:`-bearing entries:** 2 (8.3%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
+- **`scope_integrity_probe:`-bearing entries:** 1 (4.2%) — LL-D-008 ("Compared to what?")
+- **`specialist_type:` population:** 24 / 24
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
 - **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.13 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.14 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+
+v0.14 is an additive catalog bump on top of v0.13: one new domain lens, no schema change. It adds LL-D-019 ("Who said otherwise?") to Pack 1 — a document-review lens that audits negation targeting in prose deliverables. Every negation must answer a live alternative the reader demonstrably brings (a common prior, a named risk, or an inference the document's own content invites); a denial of a belief nobody holds plants the very frame it denies, reads as defensive, and implies a critic nobody heard from. The lens carries the standard fields only — no rubric anchor, no recommended sources, no scope-integrity probe at introduction — and existing lenses are untouched, so v0.14 introduces no behavior change for them. Total entries 23 → 24 (5 universal + 19 domain).
 
 v0.13 is an additive schema bump on top of v0.12: same 23 lenses, same triggers. It adds the optional `scope_integrity_probe:` field, which carries a sharpened, lens-specific falsifier an adopting framework poses at coverage time to test whether `minimum_scope_binding:` was genuinely satisfied rather than waved through. The field is populated on one lens (LL-D-008 "Compared to what?", whose category-vs-audience substitution trap has a ground-truth worked miss) and absent on the rest. Like `recommended_sources:`, it is optional and backward-compatible: entries without it remain valid and fall back to the generic scope-completeness challenge derived from `minimum_scope_binding:`, so v0.13 introduces no behavior change for existing lenses.
 
@@ -972,6 +1012,6 @@ v0.11 is a lens-binding refinement on top of v0.10: same 23 lenses, no schema ch
 
 v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.13 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.14 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
 
-*End of PRISM Lens Library v0.13.*
+*End of PRISM Lens Library v0.14.*
