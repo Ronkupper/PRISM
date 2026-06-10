@@ -1,4 +1,4 @@
-<!-- PRISM v2.13.0 Skill bundle (on-demand reference). Worked example flow + empirical calibration items (sections 15-16). Reference.
+<!-- PRISM v2.14.0 Skill bundle (on-demand reference). Worked example flow + empirical calibration items (sections 15-16). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 15. Worked example flow
@@ -24,7 +24,7 @@ Atlas career coaching SaaS. Brief attached: atlas_brief.md."
     APA ethics for coaching adjacent to therapy. Outputs Jurisdiction
     map (§6.4.4): US (federal) FTC + state UPL rules; EU AI Act for
     any algorithmic matching.
-  Probe 1 grades against Lens Library v0.14. Initial coverage map:
+  Probe 1 grades against Lens Library v0.15. Initial coverage map:
     LL-U-001..005 — three covered, two uncovered. Domain triggers:
     Pack 1 (using product), Pack 4 (proving results), Pack 5 (laws).
     Pack 2 partial, Pack 6 doesn't-fire.
@@ -122,6 +122,12 @@ feedback channel.
    uncalled-for tags per Output; false-flag rate on legitimate
    contrastive framing; LL-D-019 ("Who said otherwise?") fire rate on
    document-review subjects. Calibrates Elephant-Rule strictness.
+9. **SP-16-family and output-gate signal.** Intensifier and hedge
+   false-flag rates on legitimate usage; step-6 recompute catch rate;
+   validation-dispatch yield (findings per run that the producing
+   session had passed); LL-D-020 ("Help or ammunition?") and LL-D-021
+   ("Does a stranger follow?") fire rates. Calibrates family
+   strictness and validation-dispatch cadence.
 
 These ride into the dogfood run as flagged items. Telemetry on each
 feeds the v2.1 minor version.

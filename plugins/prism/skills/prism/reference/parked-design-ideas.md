@@ -1,4 +1,4 @@
-<!-- PRISM v2.13.0 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
+<!-- PRISM v2.14.0 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 8. Parked v2 design ideas
@@ -32,7 +32,7 @@ home for project state.
 **Project contents at Setup completion** (recommended):
 
 - `[project]_prism2.0_master_p0.1.md` (Master, current version)
-- `PRISM_lens_library.md` (v0.14 or pinned tag)
+- `PRISM_lens_library.md` (v0.15 or pinned tag)
 - `[project]_brief.md` (subject brief)
 - `[project]_prompt_strategy_p0.1.md` (current Prompt Strategy, optional —
   Master can carry this)

@@ -1,4 +1,4 @@
-<!-- PRISM v2.13.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
+<!-- PRISM v2.14.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix E — Templates compendium
@@ -48,13 +48,28 @@ Before doing the task:
    (b) the operator has explicitly confirmed to proceed
    despite mismatch.
 5. Before emitting the Output: enumerate every
-   negation in the findings content ("not Y",
-   "X, not Y", "rather than Y", "no Y"); tag
-   each called-for (naming the live alternative
-   it answers) or uncalled-for (rewrite
-   positively before release). Headings and
-   opening sentences first (SP-16, the
-   Elephant Rule).
+   negation ("not Y", "X, not Y", "rather than
+   Y", "no Y"), defensive intensifier ("real",
+   "actual", "truly"), and temporal hedge ("for
+   now", "currently") in the findings content;
+   tag each called-for (naming the live
+   alternative it answers) or uncalled-for
+   (rewrite positively before release). A
+   self-bounding verb ("shrink", "slow",
+   "narrow") makes a trailing denial of the
+   unbounded case uncalled-for by default; a
+   worst-case section makes the extreme a
+   called question. Headings and opening
+   sentences first (SP-16, the Elephant Rule).
+6. Before emitting the Output: recompute every
+   stated quantitative relationship from the
+   document's own numbers; re-count every
+   enumeration intro against its list; verify
+   repeated structures as a set; re-read every
+   sourced claim against its source — same
+   noun, same metric. Exact match or rewrite;
+   never round silently (SP-18, It must
+   recompute).
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -161,7 +176,7 @@ Operator action:     [recommended next step — accept, dig, or escalate]
 ━━━ PRISM SESSION HANDOFF ━━━
 Project:                [name]
 Master version:         [filename of attached Master]
-Lens Library version:   [v0.14 | filename pinned]
+Lens Library version:   [v0.15 | filename pinned]
 Producing session:      [orchestration session URL or descriptor, if known]
 Reason for migration:   [band-state, named driver(s)]
 Migration timestamp:    [YYYY-MM-DD]
@@ -311,6 +326,39 @@ Archive:          requested | none      ← screenshots / downloads / exports
 Source framing:   [mandatory bias caveat — e.g. survivor bias]
 Temporal frame:   [mandatory recency / coverage-window constraint]
 Return handling:  [recall-merge; agreement = retrieval-consistency note]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### E.13 Validation Dispatch Envelope
+<a id="appendix-validation-dispatch-envelope"></a>
+
+```
+━━━ PRISM VALIDATION DISPATCH ENVELOPE ━━━
+Prompt ID:        [identifier — purpose/title]
+Project:          [project name]
+Master version:   [filename at dispatch]
+Prompt digest:    [orchestration-generated; copy verbatim]
+Posture:          epistemic
+Dispatch shape:   limitation-named     ← never a triangulation seat
+Not chosen:       [producing vendor/session] — the producing thread
+                  cannot validate its own framing
+Vendor:           [single vendor; fresh session mandatory]
+Vendor config:    [vendor-specific flags; web search OFF unless
+                  validation scope includes source-checking]
+Tools:            [minimal — only what validation requires]
+Attachments:      [deliverable(s); cross-consistency materials when
+                  in scope]
+Excluded context: author rationale, structure notes, known-weak-spots
+                  list (the independence rule)
+Validation axes:  logic | defensibility | internal consistency |
+                  consistency against attached materials |
+                  readability | quality
+Lens kit:         LL-D-019, LL-D-020, LL-D-021 + SP-18-style
+                  recompute sweep
+Return form:      severity-tagged findings list, routed to the
+                  producing thread
+Expected output:  [filename to download as]
+Operator hints:   [zero or more one-line cues]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 

@@ -1,9 +1,9 @@
 ---
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.13.0
+version: 2.14.0
 released: 2026-06-10
-supersedes: 2.12.2
-lens_library_bundled: "0.14"
+supersedes: 2.13.0
+lens_library_bundled: "0.15"
 substrate_target:
   vendor: claude
   tier: opus-class       # flagship/frontier tier — a capability floor, not a lightweight model
@@ -16,18 +16,18 @@ normativity:
 lint_catalog_version: 4
 ---
 
-<!-- PRISM v2.13.0 Skill core (lean, always-loaded). Generated from the assembled
+<!-- PRISM v2.14.0 Skill core (lean, always-loaded). Generated from the assembled
      PRISM.md by scripts/decompose/project_skill_archive.py — edit PRISM.md, not this.
      Reference-grade material is in reference/*.md and lens/, fetched on demand. -->
 
-# PRISM v2.13.0 — Framework operating document
+# PRISM v2.14.0 — Framework operating document
 
-**Status:** v2.13.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.14.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.12.3 (MINOR: adds §{section.sp-16-the-elephant-rule} SP-16 "The Elephant Rule" — negation as a targeting decision, not a style choice. Prose may negate only a live alternative the reader demonstrably brings (a common prior, a named risk, or an inference the document's own numbers invite); uncalled-for denials plant the very frame they deny and are rewritten positively before release. Wired as step 5 of the Execution Self-check (§{section.prism-execution-self-check}) — an output-side audit that enumerates and tags every negation before the Output is emitted — and into the Lens Library as document-review lens LL-D-019 "Who said otherwise?" (Pack 1). Embedded Lens Library bumps v0.13 → v0.14 (additive: one new domain lens, 23 → 24 entries, no schema change); lint catalog stays v4.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.13.0 (MINOR: output-discipline rev. Broadens §{section.sp-16-the-elephant-rule} SP-16 "The Elephant Rule" from negations alone to the uninvited-frame family — negations, defensive intensifiers, and temporal hedges, with a self-bounding-verb fast path and a worst-case-section exception. Adds four Standing Principles: §{section.sp-17-plain-words-first} SP-17 "Plain words first" (prefer the plain word; compression that costs comprehension is a defect), §{section.sp-18-it-must-recompute} SP-18 "It must recompute" (arithmetic, structure, and citation-claim congruence re-derive exactly from the document's own content), §{section.sp-19-claims-carry-their-basis} SP-19 "Claims carry their basis" (the reader sees what supports a claim at the point of reading it), and §{section.sp-20-editions-stand-alone} SP-20 "Editions stand alone" (deliverable editions are fully self-contained). Extends the Execution Self-check (§{section.prism-execution-self-check}): step 5 broadens to the full frame family; new step 6 is the SP-18 recompute gate. Adds the Independent Validation Dispatch (§{section.independent-validation-dispatch}) — a post-synthesis fresh-session validation pass with its own Envelope template (§{appendix.validation-dispatch-envelope}, Appendix E.13). Lens track: LL-D-019 "Who said otherwise?" broadens to the family; new lenses LL-D-020 "Help or ammunition?" and LL-D-021 "Does a stranger follow?" (Pack 1). Embedded Lens Library bumps v0.14 → v0.15 (additive: two new domain lenses + one amended, 24 → 26 entries, no schema change); lint catalog stays v4.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** the PRISM Skill
 (its core loads automatically) and the project's Master. The Skill bundles
-Lens Library v0.14 at `lens/PRISM_lens_library.md`, fetched on demand. Pin a
+Lens Library v0.15 at `lens/PRISM_lens_library.md`, fetched on demand. Pin a
 newer standalone Library version only when the project explicitly requires
 one (see §{section.library-reference-at-setup}).
 **Substrate:** Claude, Opus-class (flagship tier) — a capability floor,
@@ -70,7 +70,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.13.0 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.14.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -85,7 +85,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.13.0 after running a session:
+Reading order for an operator returning to v2.14.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -93,11 +93,11 @@ Reading order for an operator returning to v2.13.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.13.0 covers `[structural | stable]`
+### 1.1 What v2.14.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.13.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.13.0 covers:
+PRISM v2.14.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.14.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -107,12 +107,12 @@ and research framework. v2.13.0 covers:
   orchestration turn-close, regardless of band state (§{section.the-master}, §{section.whats-next}, §{section.failsafe-recovery-continuous-state-mechanics}).
 - **Vendor Selection at dispatch** with live web-search currency check
   (§{section.vendor-selection-at-dispatch}).
-- **Setup as iterative refinement** against the Lens Library v0.14, with
+- **Setup as iterative refinement** against the Lens Library v0.15, with
   three-layer readiness clearing the P0→P1 boundary (§{section.setup-mechanics}).
 - **Seven Setup probes** (§{probe.P1} Coverage grading, P2 Adversarial Scope, P3
   Decision Framing, P4 Pre-mortem, P5 Falsifier, P6 Domain Reconnaissance,
   P7 User Voice) — Setup-time grading constructs only (§{section.the-seven-probes}).
-- **Library integration** — the Lens Library v0.14 as canonical reference
+- **Library integration** — the Lens Library v0.15 as canonical reference
   catalog (bundled at `lens/PRISM_lens_library.md`, fetched on demand);
   point-refresh in Setup; Update sessions for
   currency maintenance (§{section.library-integration}).
@@ -133,24 +133,24 @@ and research framework. v2.13.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.13.0 does not cover
+### 1.2 What v2.14.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.13.0 implements the spec; the spec implements
+- **Re-debating direction.** v2.14.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog is bundled at
-  `lens/PRISM_lens_library.md` (tag `prism-lens-v0.14`, v0.14 at this release),
+  `lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`, v0.15 at this release),
   fetched on demand. The bundled file remains authoritative for the Library's
   own evolution and for projects that explicitly pin to a newer Library version.
-- **Empirical calibration.** Several thresholds in v2.13.0 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.14.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.13.0's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.14.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -158,7 +158,7 @@ and research framework. v2.13.0 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.13.0 honours the constraint inherited from the design document (DD.§8.3):
+v2.14.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -167,7 +167,7 @@ v2.13.0 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.13.0. Roadmap
+Mechanics that violate any leg do not earn their place in v2.14.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -178,14 +178,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.13.0 mechanics for the
+**Read this section first if you are encountering v2.14.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.13.0 has the following constructs, grouped by category.
+PRISM v2.14.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -223,7 +223,8 @@ PRISM v2.13.0 has the following constructs, grouped by category.
   (outbound)
 
 **Standing Principles** (§{section.standing-principles})
-- v2-new/extended: SP-1 ext, SP-12, SP-13, SP-14, SP-15, SP-16
+- v2-new/extended: SP-1 ext, SP-12, SP-13, SP-14, SP-15, SP-16, SP-17,
+  SP-18, SP-19, SP-20
 - Carryforward: SP-2, SP-4, SP-5, SP-6, SP-7, SP-8 (narrowed), SP-9, SP-10
 - Dissolved: SP-3
 
@@ -232,7 +233,7 @@ PRISM v2.13.0 has the following constructs, grouped by category.
   (§{section.standalone-monitors-m1-m2-m4-m5-m9} spec / §{section.filename-conventions-and-bump-atomicity}) · Telemetric framework (§{section.telemetric-framework-signal-weighting-and-compounding}) · Point refresh (§{section.currency-maintenance-point-refresh}) ·
   Update session (§{section.currency-maintenance-update-session}) · Continuous-curation (§{section.continuous-curation-posture}) · Strategy stability
   (§{section.strategy-stability}) · Three-layer readiness (§{section.three-layer-readiness}) · Two-layer convergence · Triple
-  contract
+  contract · Independent Validation Dispatch (§{section.independent-validation-dispatch})
 
 **Bands** — 🟢 Comfortable · 🟡 Getting warm · 🟠 Curate now · 🔴 Migrate
 
@@ -397,7 +398,11 @@ v1.x M12 Conversation Pressure retired into M5
 | SP-13 Substrate declaration | New in v2 | §{section.sp-13-substrate-declaration} |
 | SP-14 Filename discipline | New in v2 | §{section.sp-14-filename-discipline} |
 | SP-15 Triangulation integrity | New in v2.1.1 | §{section.sp-15-triangulation-integrity} |
-| SP-16 The Elephant Rule (negation discipline) | New in v2.13.0 | §{section.sp-16-the-elephant-rule} |
+| SP-16 The Elephant Rule (uninvited-frame discipline) | New in v2.13.0 | §{section.sp-16-the-elephant-rule} |
+| SP-17 Plain words first | New in v2.14.0 | §{section.sp-17-plain-words-first} |
+| SP-18 It must recompute | New in v2.14.0 | §{section.sp-18-it-must-recompute} |
+| SP-19 Claims carry their basis | New in v2.14.0 | §{section.sp-19-claims-carry-their-basis} |
+| SP-20 Editions stand alone | New in v2.14.0 | §{section.sp-20-editions-stand-alone} |
 
 ### 2.4 Lifecycle slots
 <a id="section-lifecycle-slots"></a>
@@ -460,7 +465,7 @@ as the live currency check at dispatch time.
 
 - *Loaded artifacts at session open*: this framework file (or the PRISM v2
   Skill that loads it); the Master; the Lens Library
-  (`PRISM_lens_library.md` v0.14); the Prompt Strategy (when separate from
+  (`PRISM_lens_library.md` v0.15); the Prompt Strategy (when separate from
   the Master); subject-brief documents.
 - *Session-open verification*: SP-13 substrate self-check (§{section.sp-13-substrate-declaration}) — Claude
   declares model identity and confirms it matches the declared orchestration
@@ -562,9 +567,10 @@ Operator hints:     [zero or more one-line cues; see §3.2.4]
 <a id="section-prism-execution-self-check"></a>
 
 Operationalizes SP-13 (§{section.sp-13-substrate-declaration}) inside the execution session, and carries
-the SP-16 negation audit (§{section.sp-16-the-elephant-rule}, the Elephant
-Rule) as its output-side step. Sits between the Envelope and the task
-body; steps 1–4 fire before the task, step 5 fires before the Output is
+the SP-16 uninvited-frame audit (§{section.sp-16-the-elephant-rule}, the
+Elephant Rule) and the SP-18 recompute gate (§{section.sp-18-it-must-recompute})
+as its output-side steps. Sits between the Envelope and the task body;
+steps 1–4 fire before the task, steps 5–6 fire before the Output is
 emitted.
 
 ```
@@ -584,13 +590,28 @@ Before doing the task:
    (b) the operator has explicitly confirmed to proceed
    despite mismatch.
 5. Before emitting the Output: enumerate every
-   negation in the findings content ("not Y",
-   "X, not Y", "rather than Y", "no Y"); tag
-   each called-for (naming the live alternative
-   it answers) or uncalled-for (rewrite
-   positively before release). Headings and
-   opening sentences first (SP-16, the
-   Elephant Rule).
+   negation ("not Y", "X, not Y", "rather than
+   Y", "no Y"), defensive intensifier ("real",
+   "actual", "truly"), and temporal hedge ("for
+   now", "currently") in the findings content;
+   tag each called-for (naming the live
+   alternative it answers) or uncalled-for
+   (rewrite positively before release). A
+   self-bounding verb ("shrink", "slow",
+   "narrow") makes a trailing denial of the
+   unbounded case uncalled-for by default; a
+   worst-case section makes the extreme a
+   called question. Headings and opening
+   sentences first (SP-16, the Elephant Rule).
+6. Before emitting the Output: recompute every
+   stated quantitative relationship from the
+   document's own numbers; re-count every
+   enumeration intro against its list; verify
+   repeated structures as a set; re-read every
+   sourced claim against its source — same
+   noun, same metric. Exact match or rewrite;
+   never round silently (SP-18, It must
+   recompute).
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -603,10 +624,20 @@ Before doing the task:
   deliverable until the operator confirms.
 - "Confirmation to proceed" is a positive operator action (a message in the
   conversation), not an inferred consent from continued attachment (§{principle.SP-9}).
-- Step 5 is an output gate, not substrate verification: it fires once
+- Steps 5–6 are output gates, not substrate verification: they fire once
   the findings content is drafted, before the Output block is emitted.
-  Uncalled-for negations are rewritten positively, not annotated
+- Step 5 audits framing across the full uninvited-frame family —
+  negations, defensive intensifiers, temporal hedges. Uncalled-for
+  frames are rewritten positively, not annotated
   (§{section.sp-16-the-elephant-rule}, the Elephant Rule).
+- Step 6 is mechanical only (§{section.sp-18-it-must-recompute}, It
+  must recompute): recompute arithmetic, re-count enumerations, verify
+  repeated structures as a set, re-read sourced claims for
+  noun-and-metric congruence. Exact match or rewrite; silent rounding
+  is a violation. Judgment-class principles (§{principle.SP-17},
+  §{principle.SP-19}, §{principle.SP-20}) enforce via the Independent
+  Validation Dispatch (§{section.independent-validation-dispatch}) and
+  the Lens Library, with no Self-check step.
 
 **Multi-vendor empirical footing.** Verified on Claude Opus-class and
 Sonnet-class models. Gemini, ChatGPT, Perplexity behavior under this
@@ -1755,6 +1786,48 @@ surfaces an operator-ratified candidate, rather than waiting to be told. The
 `cowork-mcp` path remains defined-but-reserved (Phase 3, gated on the Cowork
 substrate maturing), exactly as the `auto_drive` execution driver is reserved.
 
+### 4.14 Independent Validation Dispatch `[methodological | stable | ✅]`
+<a id="section-independent-validation-dispatch"></a>
+
+A post-synthesis validation pattern: after substantial deliverable work
+completes, orchestration generates a very short prompt for a fresh
+execution session whose only context is the deliverable itself, plus the
+project's other client-facing materials when cross-document consistency
+is in scope. The validator checks logic, defensibility, internal
+consistency, consistency against the attached materials, readability,
+and overall quality — and returns a severity-tagged findings list,
+routed back to the producing thread for disposition.
+
+**The independence rule is the point of the construct.** The validation
+prompt stays minimal, and the author's rationale, structure notes, and
+known-weak-spots list stay out of the validator's context: a validator
+told where to look confirms the author's map; a validator given only
+the artifact draws its own. For the same reason the producing session
+never validates its own output — the dispatch always lands on a fresh
+session.
+
+**Kinship and distinction.** M12 (§{section.m12-result-completeness-check},
+Result Completeness Check) audits each Layer-1 return for within-domain
+coverage gaps at convergence; the Validation Dispatch fires once per
+deliverable, post-production, and audits the finished artifact as its
+audience will read it. The Setup probes (P1–P7, §{section.the-seven-probes})
+grade the draft Prompt Strategy before execution; this construct grades
+the output after it.
+
+**Default lens kit.** LL-D-019 "Who said otherwise?", LL-D-020 "Help or
+ammunition?", and LL-D-021 "Does a stranger follow?" from the Lens
+Library (§{section.library-integration}), plus an SP-18-style recompute
+sweep (§{section.sp-18-it-must-recompute}) over the deliverable's
+arithmetic, counts, and sourced claims.
+
+**Mechanics.** The dispatch uses its own Envelope template
+(§{appendix.validation-dispatch-envelope}, Appendix E.13). Posture is
+epistemic; the Dispatch shape is `limitation-named` with the producing
+session as the named limitation — single-vendor by design, so it fires
+no Vendor Triangulation and never counts as a triangulation seat
+(§{principle.SP-15}). Web search stays off unless the validation scope
+includes source-checking.
+
 ---
 
 ## 5. Context-pressure framework
@@ -1926,7 +1999,7 @@ offered at 🟠 (operator-elective).
 ━━━ PRISM SESSION HANDOFF ━━━
 Project:                [name]
 Master version:         [filename of attached Master]
-Lens Library version:   [v0.14 | filename pinned]
+Lens Library version:   [v0.15 | filename pinned]
 Producing session:      [orchestration session URL or descriptor, if known]
 Reason for migration:   [band-state, named driver(s)]
 Migration timestamp:    [YYYY-MM-DD]
@@ -2091,7 +2164,7 @@ all six fields. Any missing field halts P0 → P1.
 
 #### Layer 2 — Library coverage saturation
 
-Every applicable Lens from the Lens Library v0.14 is either:
+Every applicable Lens from the Lens Library v0.15 is either:
 
 - Covered by at least one planned prompt (Probe 1 disposition:
   *fires-covered*), OR
@@ -2135,7 +2208,7 @@ Setup-time grading constructs only.
 #### 6.3.1 Probe 1 — Coverage grading (iterates) `[structural | stable | ✅]`
 <a id="section-probe-1-coverage-grading-iterates"></a>
 
-Grade the draft strategy against the Lens Library v0.14. Universal lenses
+Grade the draft strategy against the Lens Library v0.15. Universal lenses
 (5) always evaluated. Domain lenses (18) evaluated where their `trigger:`
 predicate is met by the subject.
 
@@ -2422,8 +2495,8 @@ map adapts with it (§{section.prism-execution-envelope}).
 ## 7. Library integration
 <a id="section-library-integration"></a>
 
-The Lens Library v0.14 is canonical and bundled at
-`lens/PRISM_lens_library.md` (tag `prism-lens-v0.14`). In this Skill
+The Lens Library v0.15 is canonical and bundled at
+`lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`). In this Skill
 archive the Library is a bundled file fetched on demand — the default
 Library source for orchestration — not embedded in the core. The bundled
 file is also authoritative for the artifact's own evolution: Update
@@ -2434,7 +2507,7 @@ Library version pin to it explicitly (§{section.library-reference-at-setup}).
 <a id="section-library-reference-at-setup"></a>
 
 **Required Library source.** By default, orchestration fetches the bundled
-Lens Library v0.14 (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.14`)
+Lens Library v0.15 (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.15`)
 on demand. A newer standalone Library version is used only when the
 operator explicitly pins the project to it, overriding the bundled copy
 for that session. Recommended: if a newer Library is used, live in the
@@ -2591,7 +2664,7 @@ Two-tier mechanism: point refresh (per-project, in Setup) + Update session
   P3.4 — accessibility pass
   Specialist framing: WCAG-qualified accessibility auditor (§{lens.LL-D-002} "Can anyone use?")
   Anchor: WCAG 2.2 (October 2023) — verified current as of [date]
-          via web search; PRISM Lens Library v0.14 last_verified
+          via web search; PRISM Lens Library v0.15 last_verified
           2026-04-24 still current.
   ```
   If the web-search currency check finds a newer version (e.g., WCAG 3.0
@@ -3109,27 +3182,39 @@ Cross-ref: §{section.vendor-triangulation},
 #### 10.1.7 SP-16 — The Elephant Rule `[methodological | stable | 🚫]`
 <a id="section-sp-16-the-elephant-rule"></a>
 
-New in v2.13.0. Negation is a targeting decision, not a style choice
-(Lakoff: don't think of an elephant).
+New in v2.13.0; broadened to the uninvited-frame family in v2.14.0.
+Framing is a targeting decision, not a style choice (Lakoff: don't
+think of an elephant). A sentence may invoke an adverse frame — by
+denying it, defending against it, or conceding it — only when that
+frame is **live**: a belief the reader demonstrably brings (a common
+prior, a named risk, or an inference the document's own content
+invites). Invoking anything else plants the frame it answers: the
+reader leaves carrying it, the author reads as defensive, and the text
+implies a critic nobody heard from.
 
-- A sentence may negate only a **live** alternative — a belief the
-  reader demonstrably brings: a common prior, a named risk, or an
-  inference the document's own numbers invite.
-- Negating anything else plants the accusation it denies: the reader
-  leaves carrying the frame, the author reads as defensive, and the
-  text implies a critic nobody heard from.
+**Test** — run on every member of the family:
 
-**Test** — run on every negation ("not Y", "X, not Y", "rather than
-Y", "no Y"):
-
-1. Would a cold reader plausibly arrive believing Y, or derive Y from
+1. Would a cold reader plausibly arrive holding Y, or derive Y from
    the document itself?
 2. Yes → **called-for**. Keep; the contrast carries information.
-   Record which live alternative it negates.
+   Record which live alternative it answers.
 3. No → **uncalled-for**. Rewrite positively: assert what is true
    without referencing Y at all.
 
-**Called-for (keep) — examples.**
+**SP-16(a) — Negations** ("not Y", "X, not Y", "rather than Y",
+"no Y"). The shipped rule, with two refinements:
+
+- *Self-bounding-verb fast path*: when the positive verb already
+  bounds the claim ("shrink", "slow", "narrow", "delay"), a trailing
+  denial of the unbounded case ("…they don't eliminate it") is
+  uncalled-for by default — the verb did the bounding; the denial
+  only plants the extreme.
+- *Context can call the question*: inside a section whose explicit
+  job is worst-case assessment, "how bad can it get?" is a called
+  question — the document itself makes the extreme live. Section
+  purpose is a legitimate source of liveness.
+
+Called-for (keep) — examples:
 
 - "The limit is export permission, not customer demand." (Both
   hypotheses are live; the contrast names the binding constraint.)
@@ -3138,7 +3223,7 @@ Y", "no Y"):
 - "~40 accounts is roughly one per country, not a near-monopoly."
   (Pre-empts arithmetic the reader will actually do.)
 
-**Uncalled-for (rewrite) — examples.**
+Uncalled-for (rewrite) — examples:
 
 - "Why it's a real market, not a hyped one" → "What anchors the $2.0
   billion." (Nobody alleged hype; the heading now asserts the anchor.)
@@ -3149,6 +3234,24 @@ Y", "no Y"):
   of its own — far narrower than Z." (Scoping kept, denial form
   dropped.)
 
+**SP-16(b) — Defensive intensifiers** ("real", "actual", "genuine",
+"truly", "clearly"). These defend rather than inform; they imply a
+doubt nobody raised. When the sentence's evidence already proves the
+property, the intensifier signals insecurity. Remedy: replace with an
+informative qualifier, or delete.
+
+- "public companies with real reported revenue" → "public companies
+  with disclosed revenue." (Listing already guarantees realness;
+  "disclosed" adds information.)
+
+**SP-16(c) — Temporal hedges** ("for now", "today", "currently").
+These concede an adverse trajectory the evidence may never have put
+on the table. Same test: does the reader bring the adverse
+expectation, or do the document's own numbers invite it? Where the
+evidence supports stability, replace with the present-tense fact plus
+its support ("— and they are not: the picture is stable, and the EU's
+2025 plan actively supports demand").
+
 **Application surfaces.**
 
 - Every prose deliverable PRISM produces: Layer-2 synthesis, findings
@@ -3157,11 +3260,102 @@ Y", "no Y"):
   scrutiny — they set frames the rest of the document inherits.
 - Execution-side operationalization: step 5 of the Execution
   Self-check (§{section.prism-execution-self-check}) — before emitting
-  the Output, enumerate every negation; tag each called-for (naming
-  the live alternative) or uncalled-for (rewrite before release).
+  the Output, enumerate every negation, defensive intensifier, and
+  temporal hedge; tag each called-for (naming the live alternative)
+  or uncalled-for (rewrite before release).
 - Audit-side: the Lens Library carries the same discipline as a
   document-review lens (LL-D-019 "Who said otherwise?", Pack 1) for
   reviewing existing documents.
+
+#### 10.1.8 SP-17 — Plain words first `[methodological | stable | ✅]`
+<a id="section-sp-17-plain-words-first"></a>
+
+New in v2.14.0. Prefer the plain word. Compression that costs
+comprehension is a defect with the same standing as an arithmetic
+defect — a reader who has to decode a phrase pays a tax the document
+imposed for no return.
+
+- "sellable-country discipline intact" → "the approved-country list
+  stays tightly controlled."
+
+Production-side rule for every prose deliverable PRISM produces. The
+review-side check lives in the Lens Library's per-sentence clarity
+audit (LL-D-020 "Help or ammunition?", Pack 1) and in the Independent
+Validation Dispatch's readability axis
+(§{section.independent-validation-dispatch}); SP-17 carries no
+Self-check step.
+
+#### 10.1.9 SP-18 — It must recompute `[methodological | stable | 🚫]`
+<a id="section-sp-18-it-must-recompute"></a>
+
+New in v2.14.0. Every stated relationship recomputes exactly from the
+document's own content and cited sources. Three clauses:
+
+- **SP-18(a) Arithmetic.** Every quantitative relationship recomputes
+  from the document's own numbers. Silent rounding is a violation —
+  "we use the midpoint" of 105 and 130 ≠ 115; reword to "just under
+  the midpoint" or use 117.5.
+- **SP-18(b) Structure.** Enumeration intros ("Three things drive…")
+  track their lists through every edit; counts, parallel
+  capitalization, and label styles in repeated structures verify as a
+  set, never per-instance.
+- **SP-18(c) Citation-claim congruence.** The sentence claims
+  precisely what its source supports — same noun, same metric
+  ("investment tripled" vs. the source's "number of investors
+  tripled"; "revenue" vs. "ARR").
+
+One test shape — re-derive, compare, zero silent drift — across three
+target classes. Mechanical and machine-assistable; enforced at step 6
+of the Execution Self-check (§{section.prism-execution-self-check}).
+
+#### 10.1.10 SP-19 — Claims carry their basis `[methodological | stable | 🚫]`
+<a id="section-sp-19-claims-carry-their-basis"></a>
+
+New in v2.14.0. The reader sees what supports a claim at the point of
+reading it. Three clauses:
+
+- **SP-19(a) Hint, don't assert, under uncertainty.** Where a
+  rationale is plausible but unconfirmed, place the facts so the
+  reader can connect them; the document never states the rationale as
+  its own claim. "The asymmetry of the range above leans the same
+  way" — rather than "the ceiling is allowance for unobserved
+  demand."
+- **SP-19(b) Method-not-target front matter.** Cover and meta lines
+  describe how a figure was built; a headline number leading the
+  "build basis" reads as reverse-engineered from a target. The figure
+  is stated where it is derived.
+- **SP-19(c) Mixed-basis ratios labeled at point of use.** When
+  numerator and denominator rest on different assumptions
+  (conservative pricing ÷ target pricing), say so where the ratio
+  appears — especially when the mixing is conservative, since stating
+  it converts a vulnerability into credibility.
+
+All three are positioning rules for the claim/basis relationship —
+epistemic weight (a), derivation order (b), basis disclosure (c).
+Judgment-class: enforced by the Independent Validation Dispatch
+(§{section.independent-validation-dispatch}) and the Lens Library's
+named-audience review (LL-D-020 "Help or ammunition?"), with no
+Self-check step.
+
+#### 10.1.11 SP-20 — Editions stand alone `[methodological | stable | 🚫]`
+<a id="section-sp-20-editions-stand-alone"></a>
+
+New in v2.14.0. When work forks into versions for the client to
+choose between, each is fully self-contained: it carries everything
+its reader needs and reads as the only document — the choice between
+editions belongs to the presenter, invisibly. A cross-reference to a
+sibling ("a longer version is available separately") hands the
+audience a decision that was the presenter's to make.
+
+**Vocabulary.** The framework term is **deliverable editions**.
+"Variant" stays reserved for dispatch variants — the per-vendor
+branches of a dispatched prompt and their rationale records
+(§{section.rationale-discipline-per-dispatch-variant}). The two live
+at different layers: editions face the client; dispatch variants face
+the execution fleet.
+
+Judgment-class: enforced by the Independent Validation Dispatch
+(§{section.independent-validation-dispatch}), with no Self-check step.
 
 ### 10.2 v1.x Standing Principles — carryforward catalog
 <a id="section-v1-x-standing-principles-carryforward-catalog"></a>
@@ -3185,7 +3379,11 @@ Per-SP disposition explicit:
 | SP-13 | Substrate Declaration | New in v2 | See §{section.sp-13-substrate-declaration} |
 | SP-14 | Filename Discipline | New in v2 (extracted from SP-8) | See §{section.sp-14-filename-discipline} |
 | SP-15 | Triangulation integrity | New in v2.1.1 | See §{section.sp-15-triangulation-integrity} |
-| SP-16 | The Elephant Rule (negation discipline) | New in v2.13.0 | See §{section.sp-16-the-elephant-rule} |
+| SP-16 | The Elephant Rule (uninvited-frame discipline) | New in v2.13.0 | See §{section.sp-16-the-elephant-rule} |
+| SP-17 | Plain words first | New in v2.14.0 | See §{section.sp-17-plain-words-first} |
+| SP-18 | It must recompute | New in v2.14.0 | See §{section.sp-18-it-must-recompute} |
+| SP-19 | Claims carry their basis | New in v2.14.0 | See §{section.sp-19-claims-carry-their-basis} |
+| SP-20 | Editions stand alone | New in v2.14.0 | See §{section.sp-20-editions-stand-alone} |
 
 #### 10.2.1 SP-8 narrowed — Canonical Authority `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-8-narrowed-canonical-authority"></a>
@@ -3536,8 +3734,8 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.13.0 (this file)
-- **Bundled Lens Library version.** v0.14 (`lens/PRISM_lens_library.md`)
+- **Framework version.** v2.14.0 (this file)
+- **Bundled Lens Library version.** v0.15 (`lens/PRISM_lens_library.md`)
 - **Release date.** 2026-06-10
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
   Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
@@ -3552,12 +3750,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_13_0.md` |
-| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_14.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_14_0.md` |
+| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_15.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.13.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.14.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -3583,8 +3781,8 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.13.0 attached; v{published} available at {releases URL}.`
-   `Lens v0.14 attached; v{published} available at {releases URL}.`
+   `Framework v2.14.0 attached; v{published} available at {releases URL}.`
+   `Lens v0.15 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
    runtime.
@@ -3626,8 +3824,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.13.0). https://github.com/Ronkupper/PRISM
+> (v2.14.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.13.0 framework operating document.*
+*End of PRISM v2.14.0 framework operating document.*

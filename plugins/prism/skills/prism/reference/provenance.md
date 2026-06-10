@@ -1,4 +1,4 @@
-<!-- PRISM v2.13.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
+<!-- PRISM v2.14.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix B — Spec → v2.0 source mapping
@@ -111,7 +111,12 @@ refinement), §{section.currency-maintenance-point-refresh} (point refresh), §{
 Ambiguous Ask), §{section.m9-convergence-type-drift} (§{monitor.M9} Convergence Type Drift), §{section.operator-hint-catalog} (operator hint
 catalog), §{section.recovery-flow} (missing-handoff recovery flow), §{section.currency-check-at-session-open} (currency check
 at session open), §{section.sp-16-the-elephant-rule} (§{principle.SP-16} The
-Elephant Rule — negation discipline).
+Elephant Rule — uninvited-frame discipline), §{section.sp-17-plain-words-first}
+(§{principle.SP-17} Plain words first), §{section.sp-18-it-must-recompute}
+(§{principle.SP-18} It must recompute), §{section.sp-19-claims-carry-their-basis}
+(§{principle.SP-19} Claims carry their basis), §{section.sp-20-editions-stand-alone}
+(§{principle.SP-20} Editions stand alone), §{section.independent-validation-dispatch}
+(Independent Validation Dispatch).
 
 ### C.3 `[methodological | review-if: substrate shifts]`
 <a id="appendix-methodological-review-if-substrate-shifts"></a>
