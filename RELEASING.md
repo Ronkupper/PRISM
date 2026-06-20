@@ -43,19 +43,23 @@ When `PRISM.md` advances to a new framework version (e.g. `v2.1.0`):
    cp PRISM.md PRISM_v{new}.md
    ```
 3. **Update `SKILL.md`** if the loader contract changed — at minimum, update the `name:` field if the major changed (`name: prism-v{N}`), and any references to `PRISM_v{X_Y_Z}.md` in the load instructions. SKILL.md tracks the framework's MAJOR.MINOR; PATCH releases typically don't require SKILL.md changes.
-4. **Update `CITATION.cff`** — bump `version`, update `date-released` to today (UTC), and refresh the `abstract` if the surface changed materially (any MAJOR; most MINORs).
-5. **Update `README.md`** *Current version* section: new version number, new snapshot filename link, refreshed surface description.
-6. **Update `VERSION`** — single-line file containing the new framework version on its own line (no trailing whitespace).
-7. **Refresh `design/`** at MAJOR boundaries — check in the design document and specification that produced the release. MINOR/PATCH releases typically don't add to `design/`; if they do (substantial design rationale worth preserving), add but don't restructure.
-8. **Commit, tag, push, release.**
+4. **Update `.claude-plugin/marketplace.json`** — bump the `version` field on the `prism` entry in `plugins[]` to match the new `plugin.json` version. This is what the Claude desktop update-checker reads; if it is out of sync the Update button stays greyed even though a newer `plugin.json` exists.
+   ```json
+   { "name": "prism", "version": "{X.Y.Z}", ... }
+   ```
+5. **Update `CITATION.cff`** — bump `version`, update `date-released` to today (UTC), and refresh the `abstract` if the surface changed materially (any MAJOR; most MINORs).
+6. **Update `README.md`** *Current version* section: new version number, new snapshot filename link, refreshed surface description.
+7. **Update `VERSION`** — single-line file containing the new framework version on its own line (no trailing whitespace).
+8. **Refresh `design/`** at MAJOR boundaries — check in the design document and specification that produced the release. MINOR/PATCH releases typically don't add to `design/`; if they do (substantial design rationale worth preserving), add but don't restructure.
+9. **Commit, tag, push, release.**
    ```bash
    git add -A
    git commit -m "Release v{X.Y.Z}"
    git tag -a v{X.Y.Z} -m "Release v{X.Y.Z}"
    git push origin main v{X.Y.Z}
    ```
-9. **Create a GitHub Release** at the tag (`https://github.com/Ronkupper/PRISM/releases/new?tag=v{X.Y.Z}`). Title: `PRISM v{X.Y.Z}`. Body: surface summary + calibration / report-back items + link to design provenance.
-10. **Post a Discussions announcement** in *Announcements* category. Title: `PRISM v{X.Y.Z} released`. Body: link to the release tag, surface highlights, calibration items worth reporting back, link to surface-drift map (Appendix D for v2.x; analogous appendix for future majors), link to `design/` artifacts at the tag. See the `v2.0.0` announcement for shape reference.
+10. **Create a GitHub Release** at the tag (`https://github.com/Ronkupper/PRISM/releases/new?tag=v{X.Y.Z}`). Title: `PRISM v{X.Y.Z}`. Body: surface summary + calibration / report-back items + link to design provenance.
+11. **Post a Discussions announcement** in *Announcements* category. Title: `PRISM v{X.Y.Z} released`. Body: link to the release tag, surface highlights, calibration items worth reporting back, link to surface-drift map (Appendix D for v2.x; analogous appendix for future majors), link to `design/` artifacts at the tag. See the `v2.0.0` announcement for shape reference.
 
 ## Lens Library release
 
@@ -139,6 +143,7 @@ Before pushing a framework tag:
 - [ ] Document version string updated in header and any in-document references (frontmatter `version`, frontmatter `released`, frontmatter `supersedes`, frontmatter `description` inline `Currently v{X.Y.Z}`, EOF marker, §18 references)
 - [ ] Version-pinned snapshot file present and byte-identical to stable file (`diff PRISM.md PRISM_v{X_Y_Z}.md` returns no output)
 - [ ] `SKILL.md` reviewed for version drift (loader instructions reference current snapshot filename); description prefix matches release
+- [ ] `.claude-plugin/marketplace.json` `plugins[].version` bumped to match `plugin.json` (enables the desktop Update button)
 - [ ] `CITATION.cff` version + date + abstract current
 - [ ] `README.md` *Current version* section current
 - [ ] `VERSION` file matches frontmatter `version` and title-block heading
