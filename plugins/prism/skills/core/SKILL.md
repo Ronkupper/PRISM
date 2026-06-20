@@ -1,5 +1,5 @@
 ---
-name: prism
+name: core
 description: >-
   PRISM — a structured, multi-session, multi-vendor LLM-orchestrated audit and
   research framework (orchestration on Claude, Opus-class). Trigger when the user
