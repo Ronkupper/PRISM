@@ -4,7 +4,7 @@
 
 The framework comes in two forms built from the same source: a single Markdown file (`PRISM.md`) you attach to any LLM chat, and a **Claude Skill plugin** that installs a lean core and fetches reference material on demand. The single file carries its own machine-readable frontmatter, lint contract, embedded [Lens Library](#the-lens-library) (Appendix G), and vendor-parsing escape-hatch (Appendix H) so it self-documents across sessions and vendors; the Skill is a verified, deterministic projection of that same content. See [Which form should I use?](#which-form-should-i-use).
 
-> **New in v2.9.0 — installable as a Claude Skill.** PRISM now ships as a Claude plugin that loads a lean core and fetches reference material (the [Lens Library](#the-lens-library), templates, appendices) only as a task needs it, alongside the single-file form. Install with `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`. The substrate declaration is also rewritten to a capability tier — Claude, Opus-class — so the framework no longer pins to specific model versions. See the [v2.9.0 release](https://github.com/Ronkupper/PRISM/releases/tag/v2.9.0).
+> **New in v2.9.0 — installable as a Claude Skill.** PRISM now ships as a Claude plugin that loads a lean core and fetches reference material (the [Lens Library](#the-lens-library), templates, appendices) only as a task needs it, alongside the single-file form. Install with `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`. The substrate declaration is also rewritten to a capability tier — Claude, Opus-class — so the framework no longer pins to specific model versions. See the [v2.9.0 release](https://github.com/Ronkupper/PRISM/releases/tag/v2.9.0).
 
 ## What PRISM is for
 
@@ -32,8 +32,8 @@ Same framework on every surface — only install and invocation differ. **New he
 **Install** (paid plan required — Pro, Max, Team, or Enterprise):
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
-- **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`.
-- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_14_0.md` for the version-pinned copy) to a fresh chat.
+- **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_14_1.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
 
@@ -74,7 +74,7 @@ Both forms carry the identical framework — the Skill is a verified, determinis
 
 ```
 /plugin marketplace add Ronkupper/PRISM
-/plugin install prism@prism
+/plugin install prism@core
 ```
 
 **Use the single file (`PRISM.md`) when:**
@@ -98,7 +98,7 @@ PRISM is checked two ways:
 
 ## Current version
 
-**v2.14.0** — current file: [`PRISM.md`](./PRISM.md). v2.14.0 is a MINOR over v2.13.0 — the output-discipline rev. **SP-16 — The Elephant Rule** (§10.1.7) broadens from negations alone to the **uninvited-frame family**: negations, defensive intensifiers ("real", "actual"), and temporal hedges ("for now"), with a self-bounding-verb fast path and a worst-case-section exception. Four Standing Principles join the catalog: **SP-17 — Plain words first** (§10.1.8), **SP-18 — It must recompute** (§10.1.9: arithmetic, structure, and citation-claim congruence re-derive exactly from the document's own content), **SP-19 — Claims carry their basis** (§10.1.10), and **SP-20 — Editions stand alone** (§10.1.11). The Execution Self-check gains a mechanical **step 6** (the SP-18 recompute gate) and its step 5 broadens to the full family; a new **Independent Validation Dispatch** (§4.14, template Appendix E.13) sends finished deliverables to a fresh session for severity-tagged findings under the independence rule. The Lens Library advances to **v0.15** (24 → 26 entries): LL-D-019 "Who said otherwise?" broadens to the family, and **LL-D-020 "Help or ammunition?"** and **LL-D-021 "Does a stranger follow?"** join Pack 1. Monitor, Probe, and Gate semantics are unchanged; the lint catalog stays at **v4**. The version-pinned snapshot at this tag is [`PRISM_v2_14_0.md`](./PRISM_v2_14_0.md) (byte-identical to PRISM.md at the v2.14.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.14.1** — current file: [`PRISM.md`](./PRISM.md). v2.14.1 is a PATCH over v2.14.0 — renames the Claude Code plugin skill identifier from `prism` to `core` (`prism:prism` → `prism:core`). No framework content change. The version-pinned snapshot at this tag is [`PRISM_v2_14_1.md`](./PRISM_v2_14_1.md) (byte-identical to PRISM.md at the v2.14.1 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -129,7 +129,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_14_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_14_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
 - `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`. It ships two slash commands under `plugins/prism/commands/` — `/prism-start <subject>` (begin an engagement) and `/prism-whats-next` (resume from the Master's *What's next*) — and the Skill also triggers on plain-language PRISM requests.
