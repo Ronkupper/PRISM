@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="PRISM" width="360">
+</p>
+
 # PRISM
 
 **PRISM** (Prompts · Research · Iteration · Synthesis · Master) is a structured multi-session, multi-vendor LLM-orchestrated audit and research framework. It splits a research problem into atomic specialist prompts, dispatches each where it runs best across Claude, ChatGPT, Gemini, and Perplexity, and converges their outputs into a single living document called the **Master**.
