@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="PRISM" width="360">
+  <img src="assets/social_card.png" alt="PRISM: a framework for LLM-orchestrated research and audits" width="100%">
 </p>
 
 # PRISM
