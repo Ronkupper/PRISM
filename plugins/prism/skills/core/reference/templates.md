@@ -1,4 +1,4 @@
-<!-- PRISM v2.14.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
+<!-- PRISM v2.15.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix E — Templates compendium
@@ -237,6 +237,7 @@ Saturation flag: not-yet (3 changes from P0.2)
 Subject:           [name]
 Decision under test: [one sentence]
 Decision-maker:    [name or role]
+Commissioner positioning: [operator/commissioner role, motivation, angle/conflict — stated positively]
 Deadline:          [date or trigger]
 Cost of error:    
   - False positive: [cost]
@@ -250,9 +251,11 @@ Falsifiers:        [list — findings that would refute the thesis]
 ```
 ## Stakeholder register
 
-| Role | Stake | Decision power | Communication channel |
-|---|---|---|---|
-| [name] | [decision/outcome stake] | [yes/advisory/none] | [channel] |
+| Role | Stake | Motivation | Positioning/angle | Decision power | Communication channel |
+|---|---|---|---|---|---|
+| [operator/commissioner] | [decision/outcome stake] | [why they want this engagement / this outcome] | [advisor / investor / competitor / partner / regulator / arms-length / advocacy; + any conflict] | [yes/advisory/none] | [channel] |
+| [name] | [decision/outcome stake] | [motivation] | [positioning/angle; + any conflict] | [yes/advisory/none] | [channel] |
+| ... | ... | ... | ... | ... | ... |
 ```
 
 #### Claim inventory

@@ -1,4 +1,4 @@
-<!-- PRISM v2.14.0 Skill bundle (on-demand reference). Cowork capability surface + repo_backed mechanics (sections 3.5.2-3.5.3). Fetch when a non-default orchestration surface or persistence value is in play.
+<!-- PRISM v2.15.0 Skill bundle (on-demand reference). Cowork capability surface + repo_backed mechanics (sections 3.5.2-3.5.3). Fetch when a non-default orchestration surface or persistence value is in play.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 #### 3.5.2 Cowork surface capabilities

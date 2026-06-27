@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.14.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.15.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.14.1
-released: 2026-06-20
-supersedes: 2.14.0
+version: 2.15.0
+released: 2026-06-28
+supersedes: 2.14.1
 lens_library_embedded: "0.15"
 substrate_target:
   vendor: claude
@@ -20,11 +20,11 @@ normativity:
 lint_catalog_version: 4
 ---
 
-# PRISM v2.14.1 — Framework operating document
+# PRISM v2.15.0 — Framework operating document
 
-**Status:** v2.14.1 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.15.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.14.0 (PATCH: renames the Claude Code plugin skill identifier from `prism` to `core`; surface reference changes from `prism:prism` → `prism:core`. No framework content change.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.14.1 (MINOR — "Foundations": adds Standing Principles SP-21 *Trust structure, self-report advisory* and SP-22 *Surface translation*; a `retrieved | inferred` finding-basis axis with SP-12 extended to inferences; a filename-authoritative vendor-reconciliation rewrite (D4); SP-16's visual-polarity channel, SP-10 widened to operator-world state and external-send events, and an SP-13 substrate self-ID corroboration-only note; defect fixes D1–D3 and D5; the M10-rerun vs Follow-up distinction (R1); the M2 clobbered-pointer tie-break; Setup stakeholder-positioning; the Setup-artifact re-audit; and accumulate-never-overwrite for canonical state. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.15 in Appendix G; a singleton PRISM.md attachment is
@@ -71,7 +71,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.14.1 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.15.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -86,7 +86,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.14.1 after running a session:
+Reading order for an operator returning to v2.15.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -94,11 +94,11 @@ Reading order for an operator returning to v2.14.1 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.14.1 covers `[structural | stable]`
+### 1.1 What v2.15.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.14.1 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.14.1 covers:
+PRISM v2.15.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.15.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -134,10 +134,10 @@ and research framework. v2.14.1 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.14.1 does not cover
+### 1.2 What v2.15.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.14.1 implements the spec; the spec implements
+- **Re-debating direction.** v2.15.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog ships embedded
@@ -145,14 +145,14 @@ and research framework. v2.14.1 covers:
   standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`)
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
-- **Empirical calibration.** Several thresholds in v2.14.1 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.15.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.14.1's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.15.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -160,7 +160,7 @@ and research framework. v2.14.1 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.14.1 honours the constraint inherited from the design document (DD.§8.3):
+v2.15.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -169,7 +169,7 @@ v2.14.1 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.14.1. Roadmap
+Mechanics that violate any leg do not earn their place in v2.15.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -180,14 +180,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.14.1 mechanics for the
+**Read this section first if you are encountering v2.15.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.14.1 has the following constructs, grouped by category.
+PRISM v2.15.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -226,7 +226,7 @@ PRISM v2.14.1 has the following constructs, grouped by category.
 
 **Standing Principles** (§{section.standing-principles})
 - v2-new/extended: SP-1 ext, SP-12, SP-13, SP-14, SP-15, SP-16, SP-17,
-  SP-18, SP-19, SP-20
+  SP-18, SP-19, SP-20, SP-21, SP-22
 - Carryforward: SP-2, SP-4, SP-5, SP-6, SP-7, SP-8 (narrowed), SP-9, SP-10
 - Dissolved: SP-3
 
@@ -405,6 +405,8 @@ v1.x M12 Conversation Pressure retired into M5
 | SP-18 It must recompute | New in v2.14.0 | §{section.sp-18-it-must-recompute} |
 | SP-19 Claims carry their basis | New in v2.14.0 | §{section.sp-19-claims-carry-their-basis} |
 | SP-20 Editions stand alone | New in v2.14.0 | §{section.sp-20-editions-stand-alone} |
+| SP-21 Trust structure, self-report advisory | New in v2.15.0 | §{section.sp-21-trust-structure-self-report-advisory} |
+| SP-22 Surface translation | New in v2.15.0 | §{section.sp-22-surface-translation} |
 
 ### 2.4 Lifecycle slots
 <a id="section-lifecycle-slots"></a>
@@ -674,9 +676,14 @@ Attachment warnings:  [optional; one line per warning; see §9.2 spec / §13]
 
 **Field semantics.**
 
-- `Vendor` and `Vendor config` reflect *executed* state, not *recommended*
-  state. This is the field orchestration reads for recommended-vs-executed
-  reconciliation (§{section.recommended-vs-executed-reconciliation}).
+- `Vendor` and `Vendor config` reflect the vendor's *self-reported* executed
+  state, not *recommended* state. These are an **advisory self-ID cross-check**
+  for
+  recommended-vs-executed reconciliation
+  (§{section.recommended-vs-executed-reconciliation}); the authoritative
+  handle is the operator-set filename (§{principle.SP-14}, §{principle.SP-21}).
+  A self-ID that disagrees with the filename is logged as a drift signal, not
+  an error.
 - `Schema version` — currently `output-v1`. Bumps when the Output block's
   structure changes; orchestration's Layer-1 convergence flags
   incompatibilities at ingestion.
@@ -1150,16 +1157,27 @@ dispatch-ready Envelope. Not at Setup time; at dispatch time. The mechanic
 operationalizes SP-10 (§{section.sp-10-verify-state-before-recommending}) at the moment a vendor recommendation
 matters.
 
-**Three-step routine.**
+**Four-step routine.**
 
-1. **Refresh.** Run a web-search-based currency check on the specific
+1. **Retrieval shape.** Classify the dominant retrieval shape of the
+   load-bearing evidence: *synthesis* (reason/triangulate over many sources)
+   vs *fetch* of specific known documents. Synthesis mode and fetch capability
+   are different axes — "Research mode" is a synthesis posture, not a fetch
+   capability, and must not stand in for one. When the load-bearing evidence is
+   specific known-URL documents, name the fetch capability using the
+   corpus-access `Driver` enum (`vendor-executed | cowork-mcp | manual`,
+   §{section.corpus-access-dispatch}) rather than folding the fetch under a
+   research pick, and prefer capture-then-attach (capture once, attach to the
+   paste) to remove the fetch dependency. A capability-caused "could not fetch"
+   is a capability null, not a substantive null.
+2. **Refresh.** Run a web-search-based currency check on the specific
    decision: is the recommended vendor still the right call for this prompt
    shape? Are there known issues this week? Has a newer vendor capability
    changed the calculus? Output: a 2–4 line refresh note with citations.
-2. **Structured outcomes.** Where refresh produces a confident specific
+3. **Structured outcomes.** Where refresh produces a confident specific
    recommendation, the configuration is written into the Envelope
    (`Vendor:`, `Vendor config:`, `Tools:`). No operator decision required.
-3. **Soft outcomes — recommendation bubble.** Where refresh produces a
+4. **Soft outcomes — recommendation bubble.** Where refresh produces a
    judgment call (vendor X usually but has had issues; vendor Y is a
    fallback), the soft outcome surfaces as a non-blocking note attached to
    the Envelope. Operator reads, agrees or overrides via reply.
@@ -1305,13 +1323,25 @@ Triangulation integrity discipline is named in SP-15
 **Posture guard.** Vendor Triangulation fires only on *epistemic-posture*
 `equivalence` dispatch. A *coverage fan* — `Fan: coverage (N)` on a
 corpus-access lookup (§{section.corpus-access-dispatch}, the
-external-reference-corpus lookup) — is investigation posture: the N vendors each
-*retrieve* the same material rather than *reason over* it, so multiplicity buys
-recall, not falsification across distributions. A coverage fan is handled by
-recall-merge with a retrieval-consistency note and is **never** routed here.
+external-reference-corpus lookup) — is investigation posture: the N loci each
+*retrieve* the same material rather than *reason over* it, so for **retrieved**
+facts (routes, records, policies read off the page) multiplicity buys recall,
+not falsification across distributions. A retrieval-only coverage fan is handled
+by recall-merge with a retrieval-consistency note and is **never** routed here.
 Because an investigation-posture Envelope structurally lacks `Dispatch shape`,
-this guard is mechanical, not a matter of operator discipline (SP-15,
-§{section.sp-15-triangulation-integrity}).
+this guard is mechanical, not a matter of operator discipline
+(§{principle.SP-15}, §{principle.SP-21}).
+
+**Scope — retrieved vs inferred.** The recall-not-falsification rule scopes to
+*retrieved* facts only. When the fanned loci do not merely read material back
+but **infer** over it — a tool asserting "this site is mobile-responsive," a
+browser reasoning a form-factor — their disagreements *are* a cross-check, not
+a retrieval-consistency note. Such an inferred claim carries the `inferred`
+side of the retrieved|inferred axis
+(§{section.prompt-body-convergence-provisions}) and is treated as
+triangulation-grade: convergence is load-bearing, and a contested inferred
+claim is verified first-hand before it enters the Master. Multiplicity over
+inferring loci buys falsification, not merely recall.
 
 **Lives outside the probe taxonomy.** Operates against returned findings,
 not draft strategy. Single-responsibility separation from Probe 2
@@ -1429,36 +1459,62 @@ on-demand.
 ### 4.7 Recommended-vs-executed reconciliation `[structural | stable]`
 <a id="section-recommended-vs-executed-reconciliation"></a>
 
-The Output signature carries `Vendor:` and `Vendor config:` reflecting
-executed state. Orchestration auto-reconciles against the Envelope's
-recommended state at Layer-1 ingestion.
+The **operator-set filename is the authoritative handle** for which dispatch
+a return belongs to and which vendor produced it (§{principle.SP-14} pattern
+`[project]_[promptID]_[vendor].md`). The Output signature's `Vendor:` /
+`Vendor config:` self-ID is an **advisory cross-check, never the authority** —
+substrate self-report is unreliable (vendors self-ID wrongly, e.g. Gemini
+reporting "GPT-4o"). This is §{principle.SP-21} applied at reconciliation:
+trust the structural anchor, treat self-report as advisory. Orchestration
+auto-reconciles against the Envelope's recommended state at Layer-1 ingestion.
 
 **Reconciliation states** (recorded in the Dispatch register):
 
-- *Match* — executed Vendor/config equals recommended. Status: `returned`.
-- *Substitution* — executed Vendor or config differs. Status:
-  `substituted`. Both recommended and executed values logged.
+- *Match* — filename-resolved vendor/config equals recommended. Status:
+  `returned`.
+- *Substitution* — filename-resolved vendor or config differs from
+  recommended. Status: `substituted`. Both recommended and executed
+  (filename-resolved) values logged.
 - *Missing* — no Output ever returned. Status: `failed` or `skipped` (per
   close-loop §{section.operator-declaration-close-loop}).
+
+*Self-ID drift* is an **orthogonal overlay**, not a fourth status: when the
+signature's self-reported `Vendor`/`Vendor config` disagrees with the
+operator-set filename, the **filename governs** and sets the status (Match or
+Substitution) while the disagreement is logged as a **drift signal** (the
+filename/self-ID mismatch *is* the vendor-drift detector) — never an error or a
+halt.
 
 **Reconciliation algorithm** (orchestration-side, at Layer-1 ingestion):
 
 ```
-1. Read Output signature fields: Executed Vendor, Executed Vendor config,
-   Schema version, Prompt digest.
+1. Resolve vendor/config from the operator-set FILENAME (authoritative;
+   §{principle.SP-14}). Read Output signature fields as advisory:
+   self-reported Vendor, self-reported Vendor config, Schema version,
+   Prompt digest.
 2. Look up Dispatch register entry for Prompt ID.
 3. Verify Schema version compatible.
 4. Verify Prompt digest equals the digest orchestration wrote into the
-   dispatched Envelope (copy-through verification).
+   dispatched Envelope (copy-through verification — the structural anchor
+   for copy integrity).
    - If mismatch: flag as "wrong prompt or wrong attachment" — operator
      escalation.
-5. Compare Executed Vendor/config to Recommended Vendor/config.
+5. Compare filename-resolved Vendor/config to Recommended Vendor/config.
    - If match: status = returned.
    - If differs: status = substituted; log both.
-6. Ingest findings into Master's findings section with provenance:
-   "P2.3 — executed on [Executed Vendor / config]; recommended was
-    [Recommended]; absorbed without re-dispatch."
-7. Vendor Triangulation (if equivalence mode) updates with this return.
+6. Cross-check the signature self-ID against the filename-resolved vendor.
+   - If they agree: no action.
+   - If they disagree: log a drift signal in the Dispatch register (annotate
+     the Executed cell, e.g. "filename-resolved X; self-ID reported Y —
+     drift"); the filename's value stands. Never halt or re-dispatch on
+     self-ID drift alone (a contested substantive claim is verified first-hand
+     per §{principle.SP-21}, not adjudicated by self-report).
+7. Ingest findings into Master's findings section with provenance keyed to the
+   filename-resolved vendor:
+   "P2.3 — executed on [filename-resolved Vendor / config]; recommended was
+    [Recommended]; self-ID reported [self-ID] (advisory); absorbed without
+    re-dispatch."
+8. Vendor Triangulation (if equivalence mode) updates with this return.
 ```
 
 ### 4.8 Master tracking — Dispatch register `[structural | stable]`
@@ -1544,7 +1600,9 @@ integrate with §{section.recommended-vs-executed-reconciliation} reconciliation
 
 **Operating sequence.**
 
-1. Output's `Vendor` field differs from Envelope's recommended `Vendor`.
+1. The filename-resolved executed vendor (operator-set filename,
+   §{principle.SP-14}) differs from the Envelope's recommended `Vendor`; the
+   Output `Vendor` field is advisory self-ID (§{principle.SP-21}).
 2. §{section.recommended-vs-executed-reconciliation} reconciliation detects substitution; logs in Dispatch register with
    Status `substituted`.
 3. Layer 1 convergence ingests the output as-is. Findings absorb into
@@ -1592,6 +1650,11 @@ side robust to partial returns.
 6. **Confidence calibration.** Each finding self-rates confidence on a
    3-point scale (low/medium/high). Calibration is *relative signal*, not
    ground truth — used for triangulation weighting in Vendor Triangulation.
+7. **Finding basis explicit.** Each finding marks whether its claim was
+   *retrieved* (read off a source) or *inferred* (reasoned to). This axis
+   decides convergence routing — recall-merge for retrieved, triangulate for
+   inferred (§{principle.SP-15}); see *Finding basis — retrieved vs inferred*
+   below.
 
 **Required output structure** (the prompt body specifies this):
 
@@ -1603,6 +1666,7 @@ side robust to partial returns.
 - Evidence: [...]
 - Provenance: [source, citation, date]
 - Evidence class: [document | trace | probe | empirical-test | expert-interview | cross-check]
+- Finding basis: [retrieved | inferred]
 - Verification status: [verified | partially verified | unverified | not found]
 - Confidence: [low | medium | high]
 - Null results: [surfaces checked where nothing material was found; optional]
@@ -1619,6 +1683,21 @@ strength. They are orthogonal axes: a high-confidence inference may be
 may be low-confidence because the source itself is ambiguous. Keeping
 the axes separate is what v1.x's `[UNVERIFIED]` tagging gave up when
 it was folded into confidence; v2.0.1 restores the separation explicitly.
+
+**Finding basis — retrieved vs inferred.** Each finding also classifies how
+its claim was *obtained*: **retrieved** (a fact read off a source — routes,
+slugs, policies, sub-processors, counts) or **inferred** (a conclusion
+*reasoned to* — form-factor, "iOS-only", "responsive", "real labels"). The
+unit is the claim, not the producer: one return routinely carries both a
+retrieved layer and an inferred layer. The axis decides convergence routing.
+Retrieved findings that agree across a coverage fan are **recall-merged**
+(agreement recorded as a retrieval-consistency note, per the corpus-access
+corollary of §{principle.SP-15}; §{section.corpus-access-dispatch}). Inferred
+findings are **triangulation-grade**: a fan of inferring producers can surface
+genuine falsifiable disagreement, and a contested inferred claim is verified
+first-hand before it enters the Master. Orthogonal to evidence class,
+verification status, and confidence — basis records *how* a claim was
+obtained, not how strongly or by what evidence class.
 
 **Null results and could-not-verify are first-class.** Surfaces where the
 vendor checked and found nothing, and surfaces where the vendor could not
@@ -1644,7 +1723,9 @@ Dispatched envelope text reaches executing vendors that may not share
 PRISM context. PRISM-native shorthand (M-codes, SP-codes, monitor names,
 claim IDs) carries strong competing priors in some vendors' training
 distributions and will be misinterpreted when shipped bare. The atomic
-prompt must be self-contained for the executing vendor.
+prompt must be self-contained for the executing vendor. This is the
+vendor-surface instance of §{principle.SP-22} (surface translation — no raw
+cross-surface leakage).
 
 **Rule.** Any PRISM-native shorthand appearing in dispatched envelope text
 must carry an inline operational definition at first use within that
@@ -1816,12 +1897,15 @@ vendor actually has, and the rationale names the fallback.
 **Coverage fan.** Fanning a lookup across N vendors looks like equivalence
 dispatch, but posture decides routing, not vendor count. In a coverage fan the N
 vendors each *retrieve* the same material — different web-search indexes surface
-different sources — so multiplicity buys **recall**, not judgment. Agreement
-across the fan is a **retrieval-consistency** signal ("this fact is robustly
-findable") recorded as a note, never promoted to convergence. The marker is
-`Fan: coverage (N)`, structurally distinct from `Dispatch shape: equivalence`, so
-Vendor Triangulation cannot fire on it (§{section.vendor-triangulation}, Vendor
-Triangulation). If the engagement then wants multi-vendor *judgment on* the
+different sources — so for *retrieved* facts multiplicity buys **recall**, not
+judgment. Agreement across the fan is a **retrieval-consistency** signal ("this
+fact is robustly findable") recorded as a note, never promoted to convergence.
+The marker is `Fan: coverage (N)`, structurally distinct from
+`Dispatch shape: equivalence`, so Vendor Triangulation cannot fire on a
+retrieval-only fan (§{section.vendor-triangulation}, Vendor Triangulation). (A
+fan whose loci *infer* over the material is the different case — its
+disagreements are triangulation-grade, the `inferred` side of the finding-basis
+axis, §{section.prompt-body-convergence-provisions}.) If the engagement then wants multi-vendor *judgment on* the
 retrieved material, that is a *separate* `equivalence` dispatch with the retrieved
 corpus as its attachment — epistemic posture, routed to Vendor Triangulation
 normally.
@@ -2460,6 +2544,14 @@ into Lens references or new prompt additions in the next iteration.
 
 Does the strategy answer what the stakeholder actually needs to decide?
 
+**Operator-positioning question (new in v2.15.0).** Who commissioned this and
+why? What is their relationship to the subject and to the decision? What angle
+or conflict does that create, and how should the brief be framed to be true to
+it? Answer positively (§{principle.SP-16}) — state what each stakeholder *is*
+and the conflict it creates, never a denial of what they are not. Every
+stakeholder *and the operator/commissioner* is captured with role, motivation,
+and positioning/angle.
+
 Outputs the Decision brief and Stakeholder register Setup artifacts
 (§{section.decision-brief}, §{section.stakeholder-register}).
 
@@ -2566,12 +2658,21 @@ Master (§{section.the-master} required sections).
 
 Populated by Probe 3 primarily; refined by Probe 5 (Falsifiers section).
 
+**Commissioner positioning is an explicit premise (new in v2.15.0).** The
+verified operator/commissioner positioning — role, motivation, and
+angle/conflict relative to the subject and the decision — is recorded as a
+Decision-brief premise, stated positively (§{principle.SP-16}). M6
+(§{monitor.M6}) then guards the right premise: a finding that contradicts the
+pinned positioning fires M6 correctly, but the frame is correct from P0, so M6
+is a backstop, not the primary catch.
+
 ```
 ## Decision brief
 
 Subject:           [name]
 Decision under test: [one sentence]
 Decision-maker:    [name or role]
+Commissioner positioning: [operator/commissioner role, motivation, angle/conflict — stated positively]
 Deadline:          [date or trigger]
 Cost of error:    
   - False positive: [cost]
@@ -2583,15 +2684,21 @@ Falsifiers:        [list — findings that would refute the thesis]
 #### 6.4.2 Stakeholder register
 <a id="section-stakeholder-register"></a>
 
-Populated by Probe 3 primarily.
+Populated by Probe 3 primarily. Every stakeholder is pinned, and the
+**operator/commissioner is a mandatory row — never omitted** (they hold a
+stake, a motivation, and an angle that shapes the brief). Motivation and
+Positioning/angle are mandatory for the decision-maker and the operator, and
+stated positively (§{principle.SP-16}) — what the stakeholder *is* and the
+conflict it creates, never a denial of what they are not.
 
 ```
 ## Stakeholder register
 
-| Role | Stake | Decision power | Communication channel |
-|---|---|---|---|
-| [name] | [decision/outcome stake] | [yes/advisory/none] | [channel] |
-| ... | ... | ... | ... |
+| Role | Stake | Motivation | Positioning/angle | Decision power | Communication channel |
+|---|---|---|---|---|---|
+| [operator/commissioner] | [decision/outcome stake] | [why they want this engagement / this outcome] | [advisor / investor / competitor / partner / regulator / arms-length / advocacy; + any conflict] | [yes/advisory/none] | [channel] |
+| [name] | [decision/outcome stake] | [motivation] | [positioning/angle; + any conflict] | [yes/advisory/none] | [channel] |
+| ... | ... | ... | ... | ... | ... |
 ```
 
 #### 6.4.3 Claim inventory
@@ -2633,8 +2740,8 @@ Populated by Probe 6 (Domain Reconnaissance) primarily.
 **At P0 → P1 boundary.** Strategy moves to "presumed stable, revisable at
 convergence."
 
-**Convergence-time strategy revisions** trigger when Layer-1 convergence
-produces:
+**Strategy revisions** trigger from two sources. *Convergence-time
+revisions* trigger when Layer-1 convergence produces:
 
 - A premise invalidation (§{monitor.M6} Premise Shift fires HIGH).
 - A newly-surfaced domain area (e.g., a regulatory regime not in the
@@ -2642,9 +2749,37 @@ produces:
 - A falsifier hit (one of the Decision brief's Falsifiers is observed).
 - An assumption conflict between two findings (§{monitor.M7}).
 
+*Operator-initiated revisions* trigger independently of convergence:
+
+- **Operator-initiated scope expansion** — the operator adds new prompts or a
+  new pass to the strategy (e.g., extending coverage to an additional subject
+  area or comparison set), with no premise break, conflict, or falsifier in
+  play. It reuses the same draft → ratify → version-bump spine below; the
+  revision mechanic does not require a convergence event to fire.
+
+**Follow-up vs M10 re-run.** A *Follow-up* and an §{monitor.M10} re-run
+(§{section.m10-rerun-fix-required}) are different operations and must not be
+conflated:
+
+- **M10 re-run** — the prior run was *defective or incomplete*; redo that same
+  dispatch with corrections. Logged in the Rerun Register
+  (§{section.m10-rerun-fix-required}).
+- **Follow-up** — the prior run was *sound*, but a new or expanded dimension is
+  now wanted. Do **not** augment-and-re-run the completed producer; route the
+  scope-addition to the next consuming pass (the natural carrier) or a new
+  dedicated pass, as an operator-initiated revision above. The strategy
+  progresses additively per results.
+
+Verify live engagement state before advising on either (§{principle.SP-10},
+verify-before-recommend, applied to engagement state — not only vendor
+currency).
+
 **Revision mechanic** (lighter than v1.x major-bump Adaptation).
 
-1. Convergence finding triggers Monitor (§{monitor.M6} / M7) HIGH.
+1. A revision trigger fires — a convergence-time trigger (above: a premise
+   invalidation or assumption conflict via §{monitor.M6} / M7 HIGH, a falsifier
+   hit, or a newly-surfaced domain area), or an operator-initiated scope
+   expansion.
 2. Orchestration drafts a revision: adds/modifies prompts, updates attach
    maps, updates Setup artifacts as needed.
 3. Operator ratifies (per Layer 3 §{section.three-layer-readiness}).
@@ -2654,6 +2789,22 @@ produces:
 
 **Attach map travels with each prompt.** When a prompt adapts, its attach
 map adapts with it (§{section.prism-execution-envelope}).
+
+**Setup-artifact re-audit (new in v2.15.0).** A Setup premise that is
+*mis-scoped at the root* — wrong actor, wrong decision-maker, wrong audience,
+wrong frame — and that no returned finding happens to contradict is invisible
+to §{monitor.M6} and to every other monitor: nothing re-questions the Setup
+artifacts against accumulating reality. Re-audit them proactively at the
+P0 → P1 boundary and again before the report is assembled: re-pose the Decision
+brief's and Stakeholder register's actor / decision-maker / commissioner
+positioning / audience / frame as a falsifier against the evidence gathered
+since Setup ("is the named decision-maker still right? whose decision is this
+actually? is the commissioner positioning still true?"). A mis-scope found here
+is corrected via the revision mechanic above, restated positively
+(§{principle.SP-16}) — correct the actor/frame, never plant a denial. This is
+the premise-side complement to the P5 falsifier
+(§{section.probe-5-falsifier-once}, which tests the *thesis*); M6 stays the
+finding-driven backstop.
 
 ---
 
@@ -2709,6 +2860,16 @@ Per LL.§Schema:
   one of `{schema-introduction-only, independent-review}`. Gates §{section.currency-maintenance-point-refresh}
   freshness logic so a schema-introduction date is not silently treated
   as a performed currency check (v0.10).
+- `recommended_sources:` — optional; a framework-curated list of external
+  reference sources the lens recommends consulting, each bound to the lens's
+  `material_question:`. Populated only on lenses with a high-signal source;
+  absent on the rest (like `rubric_anchor:`). Each source record carries
+  `source:`, `kind:` (`narrative | structured-record`), `access:`
+  (`open-web | operator-authenticated`), `framing:` (mandatory bias/handling
+  caveat), `recency:` (mandatory source-scoped era/recency posture), and
+  `answers:` (the material question(s) the source helps address). Consumed by
+  the lens-anchored corpus-access auto-trigger
+  (§{section.corpus-access-dispatch}).
 - `informed_by:` — provenance only; not a runtime rubric.
 - `failure_mode:` — used in operator-facing flag explanations.
 - `minimum_scope_binding:` — what counts as "covered" for Probe 1
@@ -3098,6 +3259,19 @@ inline expansion per §{section.atomic-prompt-self-containment}.
   the older stamp, so M2 does not fire — orchestration proceeds (optionally
   surface a 🟢 advisory note; no halt). This pins a case the conditions above
   left undefined; it adds no halt.
+- **Clobbered-pointer tie-break.** When the drift is a *clobbered* version
+  pointer (a replace-in-place state pointer silently rolled back from a stale
+  checkout, so the attached version reads *older* than a prior turn already
+  advanced past), resolution is **not** a literal "repo wins" rollback to the
+  attached value. Reconcile by **version-ordering** (the highest coherent
+  version any corroborating artifact attests is the live state) corroborated
+  **across files** (cross-check the pointer against the canonical state file's
+  own stamp, the changelog, and any sibling lane's record); adopt the
+  version-ordered, cross-file-corroborated value as live and treat the
+  rolled-back pointer as the clobber to repair. The linchpin "repo is
+  authoritative" posture still holds — but "the repo" is the corroborated
+  maximum across the state, not whichever stale checkout last touched the
+  pointer.
 
 **Why retained despite bump atomicity (§{section.filename-conventions-and-bump-atomicity}).** Bump atomicity makes drift
 unlikely *by construction* but not impossible. Residual failure modes:
@@ -3266,7 +3440,10 @@ Feed the priority-ranked candidate list at each orchestration turn-close.
   operator declaration of `failed` (§{section.operator-declaration-close-loop}); or by Probe 5 falsifier hit; or
   by Layer-2 synthesis revealing a Layer-1 gap.
 - **Detects.** A previously-completed prompt needs to be rerun (with
-  corrections) or a prompt's output needs explicit fix.
+  corrections) or a prompt's output needs explicit fix. *Not a Follow-up:*
+  when a *sound* run simply wants a new or expanded dimension, that is an
+  additive strategy revision (§{section.strategy-stability}, Follow-up), not
+  an M10 re-run — it is not entered in the Rerun Register.
 - **Output.** Rerun Register entry in Master:
   ```
   ## Rerun Register
@@ -3347,7 +3524,15 @@ mechanics evolve.
 - Applies to: past-conversation search, file listing, web search with
   date/site filters, project knowledge lookup, any retrieval with
   implicit scope.
-- Not a Monitor that fires discretely; a posture held at every retrieval.
+- **Extends to inferences, not only retrieved facts.** A probe or
+  investigation that *reasons to* a conclusion (an inferred finding per
+  §{section.prompt-body-convergence-provisions}) carries the same
+  bounded-search disclosure: a probe's null is a **bounded null, not a
+  negative** — "did not find X in the scope searched" ≠ "X is absent."
+  Absence of evidence within a named scope is not evidence of absence;
+  disclose the bound on the inference exactly as on the retrieval.
+- Not a Monitor that fires discretely; a posture held at every retrieval
+  and at every bounded inference.
 
 **Spec form** (phrasing template):
 
@@ -3386,6 +3571,21 @@ SP-13 verification:
 [If no or cannot-determine: halt; ask operator.]
 ```
 
+**Note — substrate self-ID is corroboration-only (v2.15.0).** A session's
+self-reported identity is unreliable as ground truth: vendors confabulate
+identity (a post-training release name is absent from training data, so the
+model pattern-completes to its most-discussed older sibling — e.g.
+Gemini → "Gemini 1.5 Pro") and have no privileged access to their own runtime
+config (they cannot reliably report mode / thinking on or off). The
+authoritative seat substrate is the operator UI / API `modelVersion`, recorded
+at dispatch. Treat the return self-ID (the Execution Output `Vendor:` /
+`Vendor config:` fields, §{section.prism-execution-output}) as **corroboration
+only**: never weight
+or discount a triangulation seat on its self-report. This squares with SP-13's
+best-effort-honest, hedge-don't-fabricate posture and adds: don't trust the
+hedge either. See §{principle.SP-21} (trust structure, self-report advisory),
+of which this is the substrate instance.
+
 #### 10.1.4 SP-10 — Verify state before recommending `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-10-verify-state-before-recommending"></a>
 
@@ -3408,6 +3608,27 @@ re-deriving it.
   the staleness risk.
 - Budget discipline: verification searches return substantial context;
   only trigger on fast-moving state, not on stable defaults.
+
+**Widened in v2.15.0 — operator-world state and external-send events.** The
+same verify-before-asserting discipline covers orchestration's assertions
+about the operator's *environment / session / self*, not only its
+recommendations. Assert only checked state about the operator's world; when a
+claim about login / app / version state or "what the operator is doing" is
+unverified, hedge and check (a targeted probe or a version check) before
+stating it — never narrate the operator's state as fact from inference.
+
+- *Environment / session state.* "You need to log in" when already logged in;
+  "you're current / sideloaded" when a newer version was published;
+  "you're mid-review" fabricated from the model's own prior suggestion — each
+  is an un-checked assertion about the operator's world. Hedge + check before
+  asserting.
+- *External-send / off-system events.* An external send or delivery is an
+  operator action no working session observes, so canonical state can show it
+  "pending" indefinitely. At closure / finalize, before recording such an
+  event in canonical state, verify it *with the operator*
+  (§{principle.SP-9} positive confirmation; never write an unverified event
+  into canonical state, §{principle.SP-1}), then record it once confirmed —
+  because no other session will.
 
 #### 10.1.5 SP-14 — Filename Discipline `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-14-filename-discipline"></a>
@@ -3479,11 +3700,15 @@ falsifier-grade findings. Four corollaries follow.
   corpus-access dispatch (§{section.corpus-access-dispatch}, the
   external-reference-corpus lookup) is investigation posture: it retrieves
   material rather than reasoning over it. A fan across N vendors
-  (`Fan: coverage (N)`) buys recall, not falsification across distributions, so it
-  is recorded as a retrieval-consistency note and never counted as a
-  triangulation seat. The guardrail is structural — an investigation-posture
+  (`Fan: coverage (N)`) over *retrieved* facts buys recall, not falsification
+  across distributions, so it is recorded as a retrieval-consistency note and
+  never counted as a triangulation seat. (When the fanned loci *infer* over the
+  material rather than read it back, their disagreements are
+  triangulation-grade — the `inferred` side of the finding-basis axis,
+  §{section.prompt-body-convergence-provisions}; see §{section.vendor-triangulation}.)
+  The guardrail is structural — an investigation-posture
   Envelope lacks `Dispatch shape`, so Vendor Triangulation
-  (§{section.vendor-triangulation}) cannot fire on it.
+  (§{section.vendor-triangulation}) cannot fire on a retrieval-only fan.
 
 Cross-ref: §{section.vendor-triangulation},
 §{section.claude-baseline-feasibility-with-named-limitation-escape-hatch},
@@ -3493,7 +3718,8 @@ Cross-ref: §{section.vendor-triangulation},
 #### 10.1.7 SP-16 — The Elephant Rule `[methodological | stable | 🚫]`
 <a id="section-sp-16-the-elephant-rule"></a>
 
-New in v2.13.0; broadened to the uninvited-frame family in v2.14.0.
+New in v2.13.0; broadened to the uninvited-frame family in v2.14.0;
+extended to the visual-polarity channel in v2.15.0.
 Framing is a targeting decision, not a style choice (Lakoff: don't
 think of an elephant). A sentence may invoke an adverse frame — by
 denying it, defending against it, or conceding it — only when that
@@ -3563,6 +3789,29 @@ evidence supports stability, replace with the present-tense fact plus
 its support ("— and they are not: the picture is stable, and the EU's
 2025 plan actively supports demand").
 
+**SP-16(d) — Visual polarity & render-integrity** (colour, badge, icon,
+glyph). Framing is also carried visually — the reader's eye reads the colour
+before the words. The same called-for / uncalled-for test runs on the visual
+channel:
+
+- *Visual polarity must match semantic polarity.* Colour, badge, and icon
+  carry an adverse / neutral / favourable polarity. An adverse visual
+  treatment (red, ⚠, "warning") on a favourable or neutral finding is an
+  uninvited adverse frame — the visual-channel sibling of a prose negation —
+  and is rewritten to neutral or matching polarity. The test is identical: is
+  the frame this colour/badge plants one the reader brings, or one the
+  artifact invents?
+- *Render-integrity is a framing concern, not only a cosmetic one.* A
+  CSS/templating regression that flips a glyph's intended polarity (a neutral
+  ●◐○ coverage ball rendered red; a status pill losing its class) is a framing
+  defect — the reader reads the broken polarity as meaning — so it belongs in
+  the framing audit, not only the presentation-quality pass.
+- *Requires a rendered artifact.* Unlike (a)–(c), this check reads a rendered
+  artifact (PDF / screenshot), not source text, so it runs at deliverable
+  validation — e.g. the Independent Validation Dispatch
+  (§{section.independent-validation-dispatch}) — rather than in the per-Output
+  Self-check.
+
 **Application surfaces.**
 
 - Every prose deliverable PRISM produces: Layer-2 synthesis, findings
@@ -3577,6 +3826,9 @@ its support ("— and they are not: the picture is stable, and the EU's
 - Audit-side: the Lens Library carries the same discipline as a
   document-review lens (LL-D-019 "Who said otherwise?", Pack 1) for
   reviewing existing documents.
+- Visual channel: SP-16(d) extends the audit to colour / badge / icon
+  polarity and render-integrity on rendered deliverables — caught at
+  deliverable validation, not in the prose Self-check pass.
 
 #### 10.1.8 SP-17 — Plain words first `[methodological | stable | ✅]`
 <a id="section-sp-17-plain-words-first"></a>
@@ -3668,6 +3920,68 @@ the execution fleet.
 Judgment-class: enforced by the Independent Validation Dispatch
 (§{section.independent-validation-dispatch}), with no Self-check step.
 
+#### 10.1.12 SP-21 — Trust structure, self-report advisory `[methodological | stable]`
+<a id="section-sp-21-trust-structure-self-report-advisory"></a>
+
+New in v2.15.0. Load-bearing mechanisms rest on **structure** (delimited
+blocks), **operator-controlled handles** (the filename), and **copy-through
+integrity** (the prompt digest) — never on a producer's self-description. A
+producer's self-report (a substrate's self-ID, a self-reported date, an
+agent's inferred assertion) is kept as an **advisory cross-check, never the
+authority**. This is the *anchor* face of the epistemic root: trust is earned
+by external check, not by self-assertion.
+
+- **SP-21(a) Reconciliation precedence (the mechanizable corollary).** At
+  §{section.recommended-vs-executed-reconciliation}: filename authoritative →
+  self-ID advisory cross-check → a filename/self-ID mismatch is a logged
+  **drift signal**, never an error or a halt. The disagreement itself *is* the
+  vendor-drift detector.
+- **SP-21(b) Extends to tool output.** Not only a vendor's self-ID but a
+  tool's output — the orchestrator's own probe inference and an agent's
+  exploration alike — can be confidently wrong. A contested claim is verified
+  first-hand before it enters the Master, never accepted on the tool's own
+  account of itself.
+
+**Position.** Complements §{principle.SP-13} (which *obtains* the self-report
+at session-open) and §{principle.SP-15} (triangulation integrity); SP-21 is
+the **reconciliation-side** principle that says treat the self-report as
+advisory. It generalizes the structural handle §{principle.SP-14} makes
+canonical — the operator-set filename — into a trust posture at convergence.
+It is the posture; the mechanics live in
+§{section.recommended-vs-executed-reconciliation}.
+
+#### 10.1.13 SP-22 — Surface translation `[methodological | stable | ✅]`
+<a id="section-sp-22-surface-translation"></a>
+
+New in v2.15.0. Nothing reaches a vendor, operator, or orchestration surface
+without being re-rendered for that reader. Every boundary between surfaces is
+a translation boundary: raw artifacts native to one surface — orchestration
+machinery, framework codes, enforcement framings — are translated to the
+target reader's frame, never passed through bare. This is a
+communication/rendering discipline, a sibling axis to the epistemic
+principles, not an epistemic check itself.
+
+**Parent of three surface instances.** SP-22 states once what three existing
+mechanics each enforce at one boundary:
+
+- **Vendor surface** — atomic-prompt self-containment
+  (§{section.atomic-prompt-self-containment}). PRISM-native shorthand
+  (M-codes, SP-codes, claim IDs) carries competing priors in a vendor's
+  training distribution and is inline-defined before it ships; the
+  orchestration envelope is never pasted to the vendor as the execution unit.
+- **Operator surface** — plain words first (§{principle.SP-17}). Framework
+  codes are re-rendered into plain language before they reach the operator;
+  ratification happens in the operator's frame, not in PRISM's.
+- **Card surface** — the dispatch-card rendering rule (PRISM-UI layer): a card
+  is rendered for reading, never handed over as copyable orchestration
+  metadata, and seat counts are presented as recommended, never as an enforced
+  cap.
+
+The instances differ by reader; the discipline is one. Future surfaces inherit
+it rather than re-deriving a per-surface rule. Judgment-class: no Self-check
+step — the vendor-surface instance is enforced structurally at dispatch; the
+operator- and card-surface instances are held as posture.
+
 ### 10.2 v1.x Standing Principles — carryforward catalog
 <a id="section-v1-x-standing-principles-carryforward-catalog"></a>
 
@@ -3695,6 +4009,8 @@ Per-SP disposition explicit:
 | SP-18 | It must recompute | New in v2.14.0 | See §{section.sp-18-it-must-recompute} |
 | SP-19 | Claims carry their basis | New in v2.14.0 | See §{section.sp-19-claims-carry-their-basis} |
 | SP-20 | Editions stand alone | New in v2.14.0 | See §{section.sp-20-editions-stand-alone} |
+| SP-21 | Trust structure, self-report advisory | New in v2.15.0 | See §{section.sp-21-trust-structure-self-report-advisory} |
+| SP-22 | Surface translation | New in v2.15.0 | See §{section.sp-22-surface-translation} |
 
 #### 10.2.1 SP-8 narrowed — Canonical Authority `[operator-scaffolding | stable | ✅]`
 <a id="section-sp-8-narrowed-canonical-authority"></a>
@@ -3804,6 +4120,14 @@ atomically at every orchestration turn-close:
    state update]`.
 4. Emit *What's next* with the new Master version embedded.
 5. Operator hint: `Download as [new filename]; attach next session.`
+
+**Accumulate, never overwrite (edit-scoped).** Every edit to a canonical
+engagement artifact — Master *and* deliverables — produces a *new version*
+under the bump rule above; it never overwrites a prior version in place.
+Review-iteration rounds in particular accumulate versions (each round is a
+sub-version bump, e.g. a report `_r6 → _r7`), so the version history is
+recoverable and SP-1 canonicity (§{principle.SP-1}) is preserved. An in-place
+overwrite of canonical state is a defect, not a convenience.
 
 This atomic routine + the M2 silent-safeguard makes drift very unlikely
 by construction without abandoning the safeguard.
@@ -4346,7 +4670,7 @@ mechanics live in the cross-referenced sections.
 | **Continuous-curation** | Per-turn-close curation observation (band ≥ 🟡) or directive (band ≥ 🟠) in *What's next*. §{section.continuous-curation-posture}. |
 | **Continuous-state mechanic** | Master + *What's next* written at every orchestration turn-close, regardless of band state. §{section.failsafe-recovery-continuous-state-mechanics}. |
 | **Convergence delta** | Vendor Triangulation output document for an `equivalence` dispatch. §{section.convergence-delta-document}. |
-| **Decision brief** | Setup artifact. Captures the decision under test, decision-maker, deadline, cost-of-error, falsifiers. §{section.decision-brief}. |
+| **Decision brief** | Setup artifact. Captures the decision under test, decision-maker, commissioner positioning, deadline, cost-of-error, falsifiers. §{section.decision-brief}. |
 | **Decision Framing Probe** | Setup-time probe (§{probe.P3}). Produces Decision brief + Stakeholder register. §{section.probe-3-decision-framing-once}. |
 | **Delta finalization** | When all expected vendor returns are in for an `equivalence` dispatch and Vendor Triangulation closes the convergence delta. §{section.vendor-triangulation}. |
 | **Dispatch rationale** | Envelope field carrying one positive-framing line per dispatch variant component. §{section.rationale-discipline-per-dispatch-variant}. |
@@ -4358,6 +4682,7 @@ mechanics live in the cross-referenced sections.
 | **Execution session** | Vendor session running a single dispatched prompt. Framework not attached; loaded artifacts limited to Envelope's `Attachments:` field. §{section.two-session-types}. |
 | **Falsifier** | A finding that, if observed, would refute the audit's thesis. Captured in the Decision brief. §{section.probe-5-falsifier-once}, §{section.decision-brief}. |
 | **`fires-covered` / `fires-uncovered` / `doesn't-fire` / `fires-maybe`** | Probe 1's tri-state-with-maybe disposition per Lens. §{section.probe-1-coverage-grading-iterates}. |
+| **Follow-up** | An additive strategy revision when a *sound* prior run wants a new or expanded dimension: route the scope-addition to the next consuming pass or a new pass — do not augment-and-re-run the completed producer. Distinct from an M10 re-run (which redoes a *defective* run). §{section.strategy-stability}. |
 | **Jurisdiction map** | Setup artifact. Per-jurisdiction listing of triggered regulatory regimes and their materiality. §{section.jurisdiction-map}. |
 | **Layer 1** | Per-prompt convergence — orchestration absorbs returned findings into the Master. Monitors M6/M7/M8/M12 fire here. |
 | **Layer 2** | Cold synthesis across all Layer-1 findings to produce the audit's external deliverable. M9 fires here. M11 surfaces readiness. |
@@ -4379,10 +4704,10 @@ mechanics live in the cross-referenced sections.
 | **Self-check** | The middle block of the triple contract — substrate verification per §{principle.SP-13}, plus the output-side gates: the §{principle.SP-16} uninvited-frame audit (step 5) and the §{principle.SP-18} recompute gate (step 6). §{section.prism-execution-self-check}. |
 | **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
 | **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
-| **Stakeholder register** | Setup artifact. Per-role listing of stake, decision power, communication channel. §{section.stakeholder-register}. |
-| **Standing Principle (SP)** | Persistent posture; not a discrete fire. Twelve SPs in v2 (one dissolved, three new, eight carryforward). §{section.standing-principles}. |
+| **Stakeholder register** | Setup artifact. Per-role listing of stake, motivation, positioning/angle, decision power, and communication channel; the operator/commissioner is a mandatory row. §{section.stakeholder-register}. |
+| **Standing Principle (SP)** | Persistent posture; not a discrete fire. See the full roster in §{section.standing-principles} and §{section.v1-x-standing-principles-carryforward-catalog}. |
 | **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §{section.strategy-stability}. |
-| **Substitution** | Output's Vendor field differs from Envelope's recommended Vendor. Absorbed at convergence; no automatic re-dispatch. §{section.substitution-absorption}. |
+| **Substitution** | The filename-resolved executed vendor/config (§{principle.SP-14}) differs from the Envelope's recommended vendor/config; the Output `Vendor` field is advisory self-ID (§{section.recommended-vs-executed-reconciliation}). Absorbed at convergence; no automatic re-dispatch. §{section.substitution-absorption}. |
 | **Three-layer readiness** | The P0→P1 boundary clears when Structural completeness, Library coverage saturation, and Operator ratification all clear. §{section.three-layer-readiness}. |
 | **Triple contract** | Envelope (inbound) + Self-check (substrate verify) + Output (outbound). The load-bearing interface between sessions. §{section.the-triple-contract}. |
 | **Update session** | Standalone, rare, operator-gated session that maintains Library currency. §{section.currency-maintenance-update-session}. |
@@ -4508,7 +4833,10 @@ Elephant Rule — uninvited-frame discipline), §{section.sp-17-plain-words-firs
 (§{principle.SP-17} Plain words first), §{section.sp-18-it-must-recompute}
 (§{principle.SP-18} It must recompute), §{section.sp-19-claims-carry-their-basis}
 (§{principle.SP-19} Claims carry their basis), §{section.sp-20-editions-stand-alone}
-(§{principle.SP-20} Editions stand alone), §{section.independent-validation-dispatch}
+(§{principle.SP-20} Editions stand alone), §{section.sp-21-trust-structure-self-report-advisory}
+(§{principle.SP-21} Trust structure, self-report advisory),
+§{section.sp-22-surface-translation} (§{principle.SP-22} Surface translation),
+§{section.independent-validation-dispatch}
 (Independent Validation Dispatch).
 
 ### C.3 `[methodological | review-if: substrate shifts]`
@@ -4564,11 +4892,11 @@ strength are noted parenthetically.
 | Axis 1 \ Axis 2 | stable | review-if | review-annually | Total |
 |---|---|---|---|---|
 | structural | 41 | 0 | 0 | 41 |
-| methodological | 10 | 3 (1 with `recommended`) | 0 | 13 |
+| methodological | 12 | 3 (1 with `recommended`) | 0 | 15 |
 | vendor-dependent | 0 | 3 | 0 | 3 |
 | operator-scaffolding | 6 | 0 | 0 | 6 |
 | empirical | 0 | 0 | 1 | 1 |
-| **Total** | **57** | **6** | **1** | **64** |
+| **Total** | **59** | **6** | **1** | **66** |
 
 ---
 
@@ -4922,6 +5250,7 @@ Saturation flag: not-yet (3 changes from P0.2)
 Subject:           [name]
 Decision under test: [one sentence]
 Decision-maker:    [name or role]
+Commissioner positioning: [operator/commissioner role, motivation, angle/conflict — stated positively]
 Deadline:          [date or trigger]
 Cost of error:    
   - False positive: [cost]
@@ -4935,9 +5264,11 @@ Falsifiers:        [list — findings that would refute the thesis]
 ```
 ## Stakeholder register
 
-| Role | Stake | Decision power | Communication channel |
-|---|---|---|---|
-| [name] | [decision/outcome stake] | [yes/advisory/none] | [channel] |
+| Role | Stake | Motivation | Positioning/angle | Decision power | Communication channel |
+|---|---|---|---|---|---|
+| [operator/commissioner] | [decision/outcome stake] | [why they want this engagement / this outcome] | [advisor / investor / competitor / partner / regulator / arms-length / advocacy; + any conflict] | [yes/advisory/none] | [channel] |
+| [name] | [decision/outcome stake] | [motivation] | [positioning/angle; + any conflict] | [yes/advisory/none] | [channel] |
+| ... | ... | ... | ... | ... | ... |
 ```
 
 #### Claim inventory
@@ -6269,9 +6600,9 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.14.1 (this file)
+- **Framework version.** v2.15.0 (this file)
 - **Embedded Lens Library version.** v0.15 (Appendix G)
-- **Release date.** 2026-06-20
+- **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
   Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
 
@@ -6285,12 +6616,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_14_1.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_15_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_15.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.14.1` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.15.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -6316,7 +6647,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.14.1 attached; v{published} available at {releases URL}.`
+   `Framework v2.15.0 attached; v{published} available at {releases URL}.`
    `Lens v0.15 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -6359,8 +6690,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.14.1). https://github.com/Ronkupper/PRISM
+> (v2.15.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.14.1 framework operating document.*
+*End of PRISM v2.15.0 framework operating document.*

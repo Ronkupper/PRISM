@@ -46,6 +46,13 @@ abstract: >-
   form on every vendor.
   v2.12 adds a companion `/prism-whats-next` command that resumes an engagement
   from the Master's What's-next artifact.
+  v2.13–v2.14 add the output-discipline family — the uninvited-frame rule
+  (the Elephant Rule), plain-words / recompute / claims-carry-their-basis /
+  editions-stand-alone principles, and an Independent Validation Dispatch.
+  v2.15 ("Foundations") adds two Standing Principles — trust-structure /
+  self-report-advisory and surface-translation — a retrieved-versus-inferred
+  finding-basis axis, filename-authoritative vendor reconciliation, Setup
+  stakeholder-positioning, and a Setup-artifact re-audit.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -58,8 +65,8 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.14.1"
-date-released: "2026-06-20"
+version: "2.15.0"
+date-released: "2026-06-28"
 keywords:
   - llm
   - prompt-engineering

@@ -1,4 +1,4 @@
-<!-- PRISM v2.14.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
+<!-- PRISM v2.15.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix B — Spec → v2.0 source mapping
@@ -115,7 +115,10 @@ Elephant Rule — uninvited-frame discipline), §{section.sp-17-plain-words-firs
 (§{principle.SP-17} Plain words first), §{section.sp-18-it-must-recompute}
 (§{principle.SP-18} It must recompute), §{section.sp-19-claims-carry-their-basis}
 (§{principle.SP-19} Claims carry their basis), §{section.sp-20-editions-stand-alone}
-(§{principle.SP-20} Editions stand alone), §{section.independent-validation-dispatch}
+(§{principle.SP-20} Editions stand alone), §{section.sp-21-trust-structure-self-report-advisory}
+(§{principle.SP-21} Trust structure, self-report advisory),
+§{section.sp-22-surface-translation} (§{principle.SP-22} Surface translation),
+§{section.independent-validation-dispatch}
 (Independent Validation Dispatch).
 
 ### C.3 `[methodological | review-if: substrate shifts]`
@@ -171,11 +174,11 @@ strength are noted parenthetically.
 | Axis 1 \ Axis 2 | stable | review-if | review-annually | Total |
 |---|---|---|---|---|
 | structural | 41 | 0 | 0 | 41 |
-| methodological | 10 | 3 (1 with `recommended`) | 0 | 13 |
+| methodological | 12 | 3 (1 with `recommended`) | 0 | 15 |
 | vendor-dependent | 0 | 3 | 0 | 3 |
 | operator-scaffolding | 6 | 0 | 0 | 6 |
 | empirical | 0 | 0 | 1 | 1 |
-| **Total** | **57** | **6** | **1** | **64** |
+| **Total** | **59** | **6** | **1** | **66** |
 
 ---
 
