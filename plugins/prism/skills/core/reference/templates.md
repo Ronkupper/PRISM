@@ -1,4 +1,4 @@
-<!-- PRISM v2.16.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
+<!-- PRISM v2.17.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix E — Templates compendium
@@ -12,6 +12,7 @@ All paste-ready blocks in one place.
 ```
 ━━━ PRISM EXECUTION ENVELOPE ━━━
 Prompt ID:          [identifier — purpose/title]
+Dispatch ID:        [unique per dispatch instance; orchestration-generated; copy verbatim]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
 Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
@@ -35,6 +36,20 @@ Operator hints:     [zero or more one-line cues]
 ━━━ PRISM EXECUTION SELF-CHECK ━━━
 Before doing the task:
 
+0. Transport-integrity check (completeness of INPUT).
+   Before step 1, scroll to the very end of this paste.
+   Confirm the last line is the terminal sentinel
+   "━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━"
+   and that its Dispatch ID matches the Dispatch ID in the
+   PRISM PROMPT INTEGRITY anchor at the top — and is a real
+   value, not the literal "<Dispatch ID>" placeholder. If
+   the sentinel is absent, the two Dispatch IDs differ, or
+   either is still the placeholder, the paste was truncated
+   or corrupted in transport — STOP. Emit a one-line
+   truncation report and do not start the task. Presence and
+   string-match only; never recompute the digest. (Restates
+   the top-of-paste anchor, the truncation-surviving copy,
+   which governs on any disagreement.)
 1. State what model/vendor you are and what session
    state you can introspect (mode, thinking setting,
    tools enabled).
@@ -79,6 +94,7 @@ Before doing the task:
 ```
 ━━━ PRISM EXECUTION OUTPUT ━━━
 Prompt ID:        [identifier — purpose/title]
+Dispatch ID:      [copied verbatim from Envelope]
 Project:          [project name]
 Master version:   [from Envelope]
 Vendor:           [vendor that actually executed]
@@ -312,6 +328,7 @@ Falsifiers:        [list — findings that would refute the thesis]
 ```
 ━━━ PRISM CORPUS-ACCESS ENVELOPE ━━━
 Prompt ID:        [identifier — purpose/title]
+Dispatch ID:      [unique per dispatch instance; copy verbatim]
 Project:          [project name]
 Master version:   [filename at dispatch]
 Prompt digest:    [orchestration-generated; copy verbatim]
@@ -338,6 +355,7 @@ Return handling:  [recall-merge; agreement = retrieval-consistency note]
 ```
 ━━━ PRISM VALIDATION DISPATCH ENVELOPE ━━━
 Prompt ID:        [identifier — purpose/title]
+Dispatch ID:      [unique per dispatch instance; copy verbatim]
 Project:          [project name]
 Master version:   [filename at dispatch]
 Prompt digest:    [orchestration-generated; copy verbatim]
@@ -363,6 +381,78 @@ Return form:      severity-tagged findings list, routed to the
 Expected output:  [filename to download as]
 Operator hints:   [zero or more one-line cues]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### E.14 Outbound dispatch card
+<a id="appendix-outbound-dispatch-card"></a>
+
+The dispatch lifecycle's Stage-2 operator card (§{section.dispatch-lifecycle}).
+**Rendered above the paste, never copy-able** (copying orchestration metadata
+into the vendor is a failure mode); every field every run, nulls stated as
+`NONE`; the card *recommends* seats and never enforces.
+
+```
+━━━ DISPATCH CARD — [Prompt ID] ━━━
+Prompt ID:        [...]                 Project:  [project]
+Dispatch ID:      [unique per dispatch instance]
+Posture:          epistemic | investigation
+Dispatch shape:   equivalence (N≥2 recommended) | split | limitation-named | single
+Seats (RECOMMENDED — not enforced; add distinct vendors freely, absorbed at convergence §4.10/SP-15):
+                  - [vendor · mode]
+                  - [vendor · mode]      (add more seats as you choose — more arms = stronger triangulation)
+Attachments:      [file, file | NONE]
+Send rule:        send the SAME paste to EVERY seat you choose, BEFORE bringing any return back
+Save returns as:  [outputs/<project>_<promptID>_<vendor>.md]
+Reconciliation:   filename (which seat) + Dispatch ID (which dispatch) + digest (sha256:… body copy-through)
+Reminders:        [… | NONE]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### E.15 Return-handling card
+<a id="appendix-return-handling-card"></a>
+
+The dispatch lifecycle's Stage-4/5 inbound card
+(§{section.asymmetric-parallel-return-handling}) — authored at dispatch-build,
+surfaced **proactively** when returns are due. Default = the session handles
+the bookkeeping.
+
+```
+━━━ RETURN HANDLING — [Prompt ID] ━━━
+Returns expected: N   (seats: [list])
+When they arrive: attach all N here — this session saves + reconciles + converges; you do not file them
+Save each as:     outputs/<project>_<promptID>_<vendor>.md   (filename = the seat; SP-14)
+Reconcile each:   filename (seat) + Dispatch ID (instance) + digest (copy-through)
+Converge:         clean-context sub-agent (seam-③); parent absorbs → Master
+If fewer than N clean returns — branch by type (do not conflate):
+  · seat failure    → capability null: converge on what returned, name the gap; re-dispatch RANKED, never auto
+  · digest/ID miss  → re-grab THAT return before converging (the wrong-prompt anchor catch)
+  · substitution    → absorb (operator ran a different vendor); no re-dispatch demanded
+  (returns that merely DISAGREE are the triangulation delta, not a failure)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### E.16 Transport-integrity bracket
+<a id="appendix-prism-prompt-integrity"></a>
+
+The transport bracket (§{section.transport-integrity-bracket}) — the anchor as
+the paste's first line, the terminal sentinel as its last; both excluded from
+the J.3 digest preimage. Full paste order in §{section.template-shape}.
+
+```
+━━━ PRISM PROMPT INTEGRITY ━━━
+Dispatch ID:    [orchestration-minted; a real value, never a placeholder]
+Prompt digest:  [display-only copy; the Dispatch ID is what Step 0 matches]
+Completeness:   This paste is complete ONLY if its LAST line is the terminal
+                sentinel "━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━"
+                carrying THIS Dispatch ID. Before any task work, confirm that
+                line is present and its Dispatch ID matches the one above (and
+                is not the literal "<Dispatch ID>"). If absent, mismatched, or
+                still a placeholder → STOP, report a truncated/corrupted paste,
+                do not begin. Presence + string-match only; never recompute the
+                digest.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+… Envelope · Self-check · body · Output-signature instruction …
+━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━
 ```
 
 ---

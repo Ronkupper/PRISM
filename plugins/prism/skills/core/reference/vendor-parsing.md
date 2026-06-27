@@ -1,4 +1,4 @@
-<!-- PRISM v2.16.0 Skill bundle (on-demand reference). Vendor parsing observations (Appendix H). Reference.
+<!-- PRISM v2.17.0 Skill bundle (on-demand reference). Vendor parsing observations (Appendix H). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix H — Vendor parsing observations
@@ -61,5 +61,61 @@ dispatched prompt body ensure semantic integrity even when fences are
 silently dropped in transit. The `not-tested` rows are placeholders;
 re-test at the next release sweep or when a session next dispatches
 fenced content via mobile paste on those vendors.
+
+### Per-vendor download / export recipes
+
+The return-handling friction is per-vendor; pre-warn the operator (an operator
+hint, not an inline essay). Observed recipes:
+
+| Vendor | Recipe |
+|---|---|
+| Gemini (Deep Research) | Export to Google Docs → download as `.md`. |
+| Claude / ChatGPT | The session creates the file; rename the download to the SP-14 name (rename optional — the return self-IDs via `Ran on`, reconciled on the filename). |
+| Grok | Writes the file to its sandbox (e.g. `/home/workdir/artifacts/`); after it saves, ask "give me a download link" to surface the `.md` — a two-step. |
+
+These are observations, not guarantees; re-test stale entries at the release
+sweep.
+
+### Passive detection of self-report — capability + template
+
+For the passive pre-fill pattern (§{section.corpus-access-dispatch}, *Passive
+pre-fill of self-report*): the load-bearing choice is **naming the right
+capability**. Passive recon is a **browse / retrieval** job — name the
+Chrome-MCP / authenticated-browse surface (§{section.cowork-surface-capabilities})
+plus public web records (DNS, certificate-transparency, IP-WHOIS, app-store),
+per the retrieval-shape step (§{section.vendor-selection-at-dispatch}). Do
+**not** route it to a synthesis / Deep-Research mode — that silently fails to
+fetch. Generalized paste-ready shape:
+
+```
+Using the Chrome MCP (authenticated browse) and online web tools, passively
+examine and detect as much as possible about [subject]'s stack, server
+environment, and [domain of interest], and pre-answer as many of the pending
+[questionnaire / self-report] items as passive observation allows. Tag each
+finding [OBS] (observed first-hand) / [INF] (inferred from observed signals) /
+[ask] (not passively knowable). STRICTLY passive: no scanning, no ID/parameter
+manipulation (IDOR), no rate-limit / auth-bypass / upload testing, no
+state-changing actions; read key *names*, never token *values*.
+```
+
+### Agentic-browser drivers + closed-document IVD seats
+
+**Agentic-browser drivers (Comet, Atlas).** Operator-run third-party agents are
+a distinct driver class from PRISM-driven Chrome-MCP
+(§{section.vendor-selection-at-dispatch}); investigation-posture single-source,
+never a triangulation seat. Reliability is uneven and confident prose is **not**
+verified output — every claim needs first-hand confirmation (field: agents
+variously asserted no-RSVP / "responsive" / "real labels", each wrong; a probe
+asserted "iOS-only", also wrong). Confirm agent-mode + login are actually
+engaged before relying on a run.
+
+**Closed-document IVD seats (§{section.independent-validation-dispatch}).** For a
+closed-document validation (the deliverable's own arithmetic and internal
+consistency, no web), prefer **strong closed-document reasoners** as seats; in
+field runs the real in-document catches came from those, while web-oriented /
+breadth-first seats produced mostly already-addressed or stylistic items on the
+closed-document task. Accept a valid catch from any seat (recall is the point),
+but weight a web-oriented seat's *miss* on a closed-document point lightly — its
+strength is live-web breadth, not closed-doc recompute.
 
 ---

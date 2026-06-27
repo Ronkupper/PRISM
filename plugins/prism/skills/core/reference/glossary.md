@@ -1,4 +1,4 @@
-<!-- PRISM v2.16.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
+<!-- PRISM v2.17.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix A — Glossary
@@ -22,11 +22,13 @@ mechanics live in the cross-referenced sections.
 | **Decision brief** | Setup artifact. Captures the decision under test, decision-maker, commissioner positioning, deadline, cost-of-error, falsifiers. §{section.decision-brief}. |
 | **Decision Framing Probe** | Setup-time probe (§{probe.P3}). Produces Decision brief + Stakeholder register. §{section.probe-3-decision-framing-once}. |
 | **Delta finalization** | When all expected vendor returns are in for an `equivalence` dispatch and Vendor Triangulation closes the convergence delta. §{section.vendor-triangulation}. |
+| **Dispatch ID** | Envelope/Output field: a unique per-dispatch-instance identifier, paired with the Prompt digest and copied through, that reconciles a return to the exact dispatch that produced it. Distinct from Prompt ID (which names the pass). §{section.recommended-vs-executed-reconciliation}. |
+| **Dispatch lifecycle** | The bounded five-stage dispatch round-trip — build → dispatch → execute → return/converge → reconcile — the dispatch-scoped sibling of the engagement lifecycle; subsumes the late-bound build, the operator/return cards, and the failure leg by reference. §{section.dispatch-lifecycle}. |
 | **Dispatch rationale** | Envelope field carrying one positive-framing line per dispatch variant component. §{section.rationale-discipline-per-dispatch-variant}. |
 | **Dispatch register** | Master section tracking recommended-vs-executed state per prompt. §{section.master-tracking-dispatch-register}. |
 | **Dispatch shape** | Envelope field carrying the dispatch structural shape: `equivalence`, `split`, or `limitation-named`. §{section.single-envelope-with-spectrum-shape}. |
 | **Domain Reconnaissance Probe** | Setup-time probe (§{probe.P6}). Surveys domain practice + authoritative-source detection + Jurisdiction map. §{section.probe-6-domain-reconnaissance-iterates-early}. |
-| **Envelope** | The first block of the triple contract — inbound vendor instructions including dispatch metadata, attachments, and operator hints. §{section.prism-execution-envelope}. |
+| **Envelope** | The first block of the triple contract — inbound vendor instructions including dispatch metadata, attachments, and operator hints (the PRISM PROMPT INTEGRITY transport anchor renders above it but is not a contract block, §{section.transport-integrity-bracket}). §{section.prism-execution-envelope}. |
 | **`equivalence` dispatch** | Same prompt body to N vendors; outputs comparable; triggers Vendor Triangulation at N≥2. §{section.single-envelope-with-spectrum-shape}. |
 | **Execution session** | Vendor session running a single dispatched prompt. Framework not attached; loaded artifacts limited to Envelope's `Attachments:` field. §{section.two-session-types}. |
 | **Falsifier** | A finding that, if observed, would refute the audit's thesis. Captured in the Decision brief. §{section.probe-5-falsifier-once}, §{section.decision-brief}. |
@@ -57,7 +59,7 @@ mechanics live in the cross-referenced sections.
 | **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §{section.m12-result-completeness-check}. |
 | **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §{section.three-layer-readiness}. |
 | **Role × context-tier** | The flexible matrix a session occupies — role (Setup / Desk / dispatch-builder / -consumer / execution / convergence / validation) × tier (orchestration vs execution). §{section.roles-context-tier}. |
-| **Self-check** | The middle block of the triple contract — substrate verification per §{principle.SP-13}, plus the output-side gates: the §{principle.SP-16} uninvited-frame audit (step 5) and the §{principle.SP-18} recompute gate (step 6). §{section.prism-execution-self-check}. |
+| **Self-check** | The middle block of the triple contract — the transport-integrity input-gate (step 0, §{section.transport-integrity-bracket}), substrate verification per §{principle.SP-13}, plus the output-side gates: the §{principle.SP-16} uninvited-frame audit (step 5) and the §{principle.SP-18} recompute gate (step 6). §{section.prism-execution-self-check}. |
 | **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
 | **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
 | **Setup onboarding** | `SETUP_ONBOARDING` — the Setup-as-scaffolder flow that generates the per-engagement SI from a template and emits project-create / install cards; the two-project model. §{section.setup-onboarding-and-mode-selection}. |
@@ -66,7 +68,8 @@ mechanics live in the cross-referenced sections.
 | **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §{section.strategy-stability}. |
 | **Substitution** | The filename-resolved executed vendor/config (§{principle.SP-14}) differs from the Envelope's recommended vendor/config; the Output `Vendor` field is advisory self-ID (§{section.recommended-vs-executed-reconciliation}). Absorbed at convergence; no automatic re-dispatch. §{section.substitution-absorption}. |
 | **Three-layer readiness** | The P0→P1 boundary clears when Structural completeness, Library coverage saturation, and Operator ratification all clear. §{section.three-layer-readiness}. |
-| **Triple contract** | Envelope (inbound) + Self-check (substrate verify) + Output (outbound). The load-bearing interface between sessions. §{section.the-triple-contract}. |
+| **Transport-integrity bracket** | A top-of-paste PRISM PROMPT INTEGRITY anchor + a terminal END PRISM DISPATCHED PASTE sentinel wrapping any dispatched paste; Self-check Step 0 validates completeness by presence + Dispatch-ID match, so a truncated mid-stream copy is caught before work. Transport framing, not a contract block; excluded from the digest preimage. §{section.transport-integrity-bracket}. |
+| **Triple contract** | Envelope (inbound) + Self-check (substrate verify) + Output (outbound). The load-bearing interface between sessions; the dispatched paste wraps it in a transport-integrity bracket (§{section.transport-integrity-bracket}), which is not a contract member. §{section.the-triple-contract}. |
 | **Update session** | Standalone, rare, operator-gated session that maintains Library currency. §{section.currency-maintenance-update-session}. |
 | **User Voice Probe** | Setup-time probe (§{probe.P7}). Imports real end-user signal. §{section.probe-7-user-voice-iterates-early}. |
 | **Vendor config** | Envelope/Output field carrying vendor-specific configuration flags. §{section.prism-execution-envelope}. |

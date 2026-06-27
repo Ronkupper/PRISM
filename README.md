@@ -37,7 +37,7 @@ Same framework on every surface — only install and invocation differ. **New he
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`.
-- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_16_0.md` for the version-pinned copy) to a fresh chat.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_17_0.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
 
@@ -102,7 +102,7 @@ PRISM is checked two ways:
 
 ## Current version
 
-**v2.16.0** — current file: [`PRISM.md`](./PRISM.md). v2.16.0 ("Operating-model backbone") is a MINOR over v2.15.0 — it adds the **lanes / roles** operating model (every engagement runs as parallel lanes worked by sessions in a role × context-tier matrix), the standing-lane constructs **PRISM Desk** (Planner/Steward) and **PRISM Meta** with the operator-facing **PRISM UI** and `<Lane>-<N>` session numbering (§3.7); an append-only cross-lane **OPEN_ITEMS inbox** with tier classification, drain, and commit-discipline; bundle-load integrity (a phase→bundle manifest + a per-session entry-check); **SETUP_ONBOARDING** (Setup generates the per-engagement SI from a template and emits project-create / install cards; the two-project model) and **SETUP_QUICKMODE** (a first-class light mode) (§6.6); M5 self-banding; and the `/prism-meta` lane-entry command. Reference detail lives in the new Appendix I / `reference/lanes-ui.md` bundle. Additive — no construct renumbering. The version-pinned snapshot at this tag is [`PRISM_v2_16_0.md`](./PRISM_v2_16_0.md) (byte-identical to PRISM.md at the v2.16.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.17.0** — current file: [`PRISM.md`](./PRISM.md). v2.17.0 ("Dispatch round-trip") is a MINOR over v2.16.0 — it names the whole dispatch round-trip as one bounded construct, the **dispatch lifecycle** (§4.15): five stages (build → dispatch → execute → return/converge → reconcile) that subsume the late-bound build, the operator and return cards, and the failure leg by reference. It refines the structural-completeness gate (§6.2) to require a pass **spec**, not a frozen Envelope (late binding); adds the **return-handling card** and a failure leg routed by type (seat-failure / digest-mismatch / substitution); a unique **Dispatch ID** paired with the copy-through digest so a return reconciles to the exact dispatch instance (§4.7); the fanned-IVD adjudicate-by-re-derivation refinement (§4.14); passive pre-fill of self-report (§4.13); and the agentic-browser driver class (§3.6). Reference detail lives in the new Appendix J / `reference/dispatch-conventions.md` bundle. Additive — no construct renumbering. The version-pinned snapshot at this tag is [`PRISM_v2_17_0.md`](./PRISM_v2_17_0.md) (byte-identical to PRISM.md at the v2.17.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 

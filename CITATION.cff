@@ -60,6 +60,14 @@ abstract: >-
   commit discipline; bundle-load integrity; Setup onboarding (a Setup-generated
   per-engagement system-instructions file plus a first-class quick mode); and
   M5 self-banding.
+  v2.17 ("Dispatch round-trip") names the dispatch round-trip as one bounded
+  construct — the five-stage dispatch lifecycle (build, dispatch, execute,
+  return/converge, reconcile) — with a late-bound build that requires a pass
+  spec rather than a frozen envelope, a proactive return-handling card and a
+  failure leg routed by type, a unique dispatch identifier paired with the
+  copy-through digest so a return reconciles to the exact dispatch instance, a
+  fanned Independent-Validation adjudicate-by-re-derivation refinement, and
+  passive pre-fill of self-report.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -72,7 +80,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.16.0"
+version: "2.17.0"
 date-released: "2026-06-28"
 keywords:
   - llm

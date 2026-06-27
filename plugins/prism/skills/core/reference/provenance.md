@@ -1,4 +1,4 @@
-<!-- PRISM v2.16.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
+<!-- PRISM v2.17.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix B — Spec → v2.0 source mapping
@@ -106,7 +106,7 @@ roles, and the PRISM UI), §{section.cross-lane-inbox} (cross-lane OPEN_ITEMS
 inbox), §{section.prism-desk-and-prism-meta} (PRISM Desk and PRISM Meta),
 §{section.prism-ui} (PRISM UI), §{section.bundle-load-integrity} (bundle-load
 integrity), §{section.setup-onboarding-and-mode-selection} (Setup onboarding
-and mode selection).
+and mode selection), §{section.dispatch-lifecycle} (dispatch lifecycle), §{section.transport-integrity-bracket} (transport-integrity bracket).
 
 ### C.2 `[methodological | stable]`
 <a id="appendix-methodological-stable"></a>
@@ -178,12 +178,12 @@ strength are noted parenthetically.
 
 | Axis 1 \ Axis 2 | stable | review-if | review-annually | Total |
 |---|---|---|---|---|
-| structural | 41 | 0 | 0 | 41 |
+| structural | 43 | 0 | 0 | 43 |
 | methodological | 12 | 3 (1 with `recommended`) | 0 | 15 |
 | vendor-dependent | 0 | 3 | 0 | 3 |
 | operator-scaffolding | 6 | 0 | 0 | 6 |
 | empirical | 0 | 0 | 1 | 1 |
-| **Total** | **59** | **6** | **1** | **66** |
+| **Total** | **61** | **6** | **1** | **68** |
 
 ---
 

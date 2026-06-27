@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.16.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.17.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.16.0
+version: 2.17.0
 released: 2026-06-28
-supersedes: 2.15.0
+supersedes: 2.16.0
 lens_library_embedded: "0.15"
 substrate_target:
   vendor: claude
@@ -20,11 +20,11 @@ normativity:
 lint_catalog_version: 4
 ---
 
-# PRISM v2.16.0 — Framework operating document
+# PRISM v2.17.0 — Framework operating document
 
-**Status:** v2.16.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.17.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.15.0 (MINOR — "Operating-model backbone": adds the lanes / roles operating model (§{section.lanes-roles-and-the-prism-ui}) — every engagement runs as parallel lanes worked by sessions in a role × context-tier matrix; the standing-lane constructs **PRISM Desk** (Planner/Steward) and **PRISM Meta**, with the operator-facing **PRISM UI** (a View + Controller over the repo) and `<Lane>-<N>` session numbering; an append-only cross-lane **OPEN_ITEMS inbox** with tier classification, drain, and commit-discipline; bundle-load integrity (a phase → bundle manifest + a per-session entry-check); **SETUP_ONBOARDING** (Setup generates the per-engagement SI from a template and emits project-create / install cards; the two-project model) and **SETUP_QUICKMODE** (a first-class light mode); M5 self-banding (§{section.m5-context-pressure-monitor}); and the `/prism-meta` lane-entry command. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.16.0 (MINOR — "Dispatch round-trip": names the whole dispatch round-trip as one bounded construct — the **dispatch lifecycle** (§{section.dispatch-lifecycle}), five stages (build → dispatch → execute → return/converge → reconcile) that subsume the late-bound build, the operator and return cards, and the failure leg by reference. Refines the structural-completeness gate (§{section.three-layer-readiness}) to require a pass **spec**, not a frozen Envelope (late binding); adds the **return-handling card** and the failure leg routed by type (seat-failure / digest-mismatch / substitution), a unique **Dispatch ID** paired with the copy-through digest so a return reconciles to the exact dispatch instance (§{section.recommended-vs-executed-reconciliation}), the fanned-IVD adjudicate-by-re-derivation refinement (§{section.independent-validation-dispatch}), the passive pre-fill of self-report (§{section.corpus-access-dispatch}), the agentic-browser driver class (§{section.vendor-selection-at-dispatch}), and a new **dispatch-conventions** reference bundle (§{appendix.dispatch-conventions}); and a **transport-integrity bracket** (§{section.transport-integrity-bracket}) — a top-of-paste integrity anchor paired with a terminal sentinel and a Self-check Step 0, so the execution session detects a truncated mid-stream copy before working (presence + Dispatch-ID match, never a hash recompute; the bracket is excluded from the digest preimage). Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.15 in Appendix G; a singleton PRISM.md attachment is
@@ -71,7 +71,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.16.0 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.17.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -86,7 +86,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.16.0 after running a session:
+Reading order for an operator returning to v2.17.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -94,11 +94,11 @@ Reading order for an operator returning to v2.16.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.16.0 covers `[structural | stable]`
+### 1.1 What v2.17.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.16.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.16.0 covers:
+PRISM v2.17.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.17.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -134,10 +134,10 @@ and research framework. v2.16.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.16.0 does not cover
+### 1.2 What v2.17.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.16.0 implements the spec; the spec implements
+- **Re-debating direction.** v2.17.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog ships embedded
@@ -145,14 +145,14 @@ and research framework. v2.16.0 covers:
   standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`)
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
-- **Empirical calibration.** Several thresholds in v2.16.0 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.17.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.16.0's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.17.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -160,7 +160,7 @@ and research framework. v2.16.0 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.16.0 honours the constraint inherited from the design document (DD.§8.3):
+v2.17.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -169,7 +169,7 @@ v2.16.0 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.16.0. Roadmap
+Mechanics that violate any leg do not earn their place in v2.17.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -180,14 +180,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.16.0 mechanics for the
+**Read this section first if you are encountering v2.17.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.16.0 has the following constructs, grouped by category.
+PRISM v2.17.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -530,7 +530,11 @@ body), Output (outbound). All three are visually distinctive, self-contained,
 and produced by orchestration's Vendor Selection step (§{section.vendor-selection-at-dispatch}) at dispatch
 time. The contract is the load-bearing interface between sessions; it
 survives mode changes (manual paste-chat today; automated dispatch later)
-unchanged.
+unchanged. The dispatched paste is additionally wrapped by a
+**transport-integrity bracket** (§{section.transport-integrity-bracket}) — a
+top-of-paste integrity anchor and a terminal sentinel — that frames the contract
+so the execution session can detect a truncated copy, but is **not** a fourth
+contract block.
 
 #### 3.2.1 PRISM Execution Envelope
 <a id="section-prism-execution-envelope"></a>
@@ -538,6 +542,7 @@ unchanged.
 ```
 ━━━ PRISM EXECUTION ENVELOPE ━━━
 Prompt ID:          [identifier — purpose/title]
+Dispatch ID:        [unique per dispatch instance; orchestration-generated; copy verbatim]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
 Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
@@ -557,6 +562,19 @@ Operator hints:     [zero or more one-line cues; see §3.2.4]
 **Field semantics.**
 
 - `Prompt ID` — short unique identifier + purpose/title, unrelated to phase.
+  Identifies the *pass*, not the dispatch instance — a re-dispatch of the same
+  pass (§{section.asymmetric-parallel-return-handling}, the failure leg) reuses
+  the Prompt ID.
+- `Dispatch ID` — a unique identifier minted per *dispatch instance*, distinct
+  from the Prompt ID and travelling *paired with* the `Prompt digest`. The
+  digest verifies the body was copied through faithfully; the Dispatch ID
+  identifies *which dispatch* a return belongs to. Two dispatches of the same
+  pass (same body ⇒ same digest) carry distinct Dispatch IDs, so a return
+  reconciles to the exact dispatch that produced it
+  (§{section.recommended-vs-executed-reconciliation}) — closing the
+  re-dispatch ambiguity a digest-only check cannot. Orchestration generates it
+  at dispatch; execution copies it verbatim into the Output signature; it is
+  never recomputed at return.
 - `Master version` — the filename of the Master that was current when this
   Envelope was produced. Used for reconciliation if state drifts.
 - `Posture` — `epistemic` or `investigation`. *Epistemic* Envelopes dispatch a
@@ -591,14 +609,29 @@ Operator hints:     [zero or more one-line cues; see §3.2.4]
 Operationalizes SP-13 (§{section.sp-13-substrate-declaration}) inside the execution session, and carries
 the SP-16 uninvited-frame audit (§{section.sp-16-the-elephant-rule}, the
 Elephant Rule) and the SP-18 recompute gate (§{section.sp-18-it-must-recompute})
-as its output-side steps. Sits between the Envelope and the task body;
-steps 1–4 fire before the task, steps 5–6 fire before the Output is
-emitted.
+as its output-side steps, and opens with the transport-integrity check
+(§{section.transport-integrity-bracket}) as a pre-task Step 0. Sits between the
+Envelope and the task body; step 0 and steps 1–4 fire before the task,
+steps 5–6 fire before the Output is emitted.
 
 ```
 ━━━ PRISM EXECUTION SELF-CHECK ━━━
 Before doing the task:
 
+0. Transport-integrity check (completeness of INPUT).
+   Before step 1, scroll to the very end of this paste.
+   Confirm the last line is the terminal sentinel
+   "━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━"
+   and that its Dispatch ID matches the Dispatch ID in the
+   PRISM PROMPT INTEGRITY anchor at the top — and is a real
+   value, not the literal "<Dispatch ID>" placeholder. If
+   the sentinel is absent, the two Dispatch IDs differ, or
+   either is still the placeholder, the paste was truncated
+   or corrupted in transport — STOP. Emit a one-line
+   truncation report and do not start the task. Presence and
+   string-match only; never recompute the digest. (Restates
+   the top-of-paste anchor, the truncation-surviving copy,
+   which governs on any disagreement.)
 1. State what model/vendor you are and what session
    state you can introspect (mode, thinking setting,
    tools enabled).
@@ -639,6 +672,13 @@ Before doing the task:
 
 **Behavior contract.**
 
+- Step 0 is the transport-integrity input-gate
+  (§{section.transport-integrity-bracket}): the completeness-of-INPUT halt the
+  dispatch conventions sanction (§{appendix.dispatch-conventions}, J.2 — INPUT
+  is the only place the vendor may halt). It restates the top-of-paste anchor,
+  which is the truncation-surviving copy and governs on disagreement; absent or
+  mismatched, it halts with a one-line truncation report as the deliverable,
+  mirroring the mismatch-halts-task contract of steps 1–4.
 - The vendor session must self-identify before touching task content.
   Self-identification is best-effort honest — vendors that cannot introspect
   a field hedge on it rather than fabricate.
@@ -664,7 +704,11 @@ Before doing the task:
 **Multi-vendor empirical footing.** Verified on Claude Opus-class and
 Sonnet-class models. Gemini, ChatGPT, Perplexity behavior under this
 block is **report-worthy finding** per DD.§3.5 — operators report
-divergences. See §{section.empirical-calibration-items}.
+divergences. See §{section.empirical-calibration-items}. Step 0's
+pre-task STOP is a stronger instruction-following demand than self-ID, so
+non-Claude adherence to the transport-integrity halt is itself a report-worthy
+calibration item — and a vendor that ignores Step 0 is no worse off than before
+the gate existed.
 
 #### 3.2.3 PRISM Execution Output
 <a id="section-prism-execution-output"></a>
@@ -675,6 +719,7 @@ this signature.
 ```
 ━━━ PRISM EXECUTION OUTPUT ━━━
 Prompt ID:        [identifier — purpose/title]
+Dispatch ID:      [copied verbatim from Envelope]
 Project:          [project name]
 Master version:   [from Envelope]
 Vendor:           [vendor that actually executed; see §4.10]
@@ -705,6 +750,15 @@ Attachment warnings:  [optional; one line per warning; see §9.2 spec / §13]
 - `Schema version` — currently `output-v1`. Bumps when the Output block's
   structure changes; orchestration's Layer-1 convergence flags
   incompatibilities at ingestion.
+- `Dispatch ID` — copied verbatim from the Envelope. It is the dispatch-
+  instance handle: reconciliation (§{section.recommended-vs-executed-reconciliation})
+  matches a return to its dispatch on the triple of operator-set **filename**
+  (which seat/vendor, §{principle.SP-14}), **Dispatch ID** (which dispatch
+  instance), and **Prompt digest** (body copy-through integrity). The Dispatch
+  ID is the identifier the digest deliberately is *not* — so a re-dispatch of
+  the same pass (§{section.asymmetric-parallel-return-handling}, the failure
+  leg), which produces an identical digest, still reconciles unambiguously to
+  the right instance.
 - `Prompt digest` — detects wrong-prompt / wrong-attachment delivery at
   dispatch boundaries. Mechanism: orchestration generates the digest at
   dispatch time and writes it into the Envelope; execution copies it
@@ -712,7 +766,18 @@ Attachment warnings:  [optional; one line per warning; see §9.2 spec / §13]
   compares the returned copy against the original. Verifies copy-through,
   not cryptographic computation by the execution model. Generating the
   digest at return time provides zero integrity check — there is nothing
-  to compare against.
+  to compare against. The digest **preimage is pinned** so the same value
+  reproduces on a re-stage: the byte scope is the content between the paste
+  fences, with the Envelope's (and Output's) `Reference:`/`Prompt digest:` line
+  set to the sentinel `sha256:PENDING`, the transport-integrity bracket
+  (§{section.transport-integrity-bracket}) — the `PRISM PROMPT INTEGRITY` anchor
+  block in full and the terminal `━━━ END PRISM DISPATCHED PASTE` sentinel —
+  **excluded** from the byte scope as transport framing, and no trailing-newline
+  normalization. (The bracket's own `Prompt digest:` line is display-only and is
+  not normalized, because the whole anchor block is excluded.) An unpinned
+  preimage stays consistent *within* a session but a later re-stage cannot
+  reproduce it; the pinned recipe is in §{appendix.dispatch-conventions}
+  (dispatch conventions).
 - `Operator next` — download filename + attachment instruction for the next
   orchestration turn.
 - `Attachment warnings` — populated only when warranted. See §{section.operator-hint-catalog} for
@@ -770,6 +835,89 @@ Hints are optional one-line cues keyed to the upcoming action.
   when the next action is not a dispatch (review, ratify, save-to-cloud).
 
 The full operator hint catalog is in §{section.operator-hint-catalog}.
+
+#### 3.2.5 Transport-integrity bracket `[structural | stable]`
+<a id="section-transport-integrity-bracket"></a>
+
+The triple contract (§{section.the-triple-contract}) is what a dispatch
+*means*; the **transport-integrity bracket** is what lets the execution session
+confirm the whole paste *arrived*. A dispatched paste can be copied while it is
+still streaming — the operator grabs the text before the tail has finished
+writing — and a bottom-placed integrity instruction is then silently absent
+exactly when it is needed. The bracket wraps the paste between two
+transport-framing lines, with the load-bearing check declared at the very
+**top** so it survives a truncated copy.
+
+**Open — the integrity anchor.** Orchestration renders, as the literal **first
+line** of the dispatched paste (inside the outer fence, so a copy-all captures
+it; below the never-copy-able dispatch card, §{appendix.outbound-dispatch-card}),
+a `PRISM PROMPT INTEGRITY` block declaring the `Dispatch ID` — and the `Prompt
+digest`, for the operator's reference — and the completeness rule:
+
+```
+━━━ PRISM PROMPT INTEGRITY ━━━
+Dispatch ID:    [orchestration-minted; a real value, never a placeholder]
+Prompt digest:  [display-only copy; the Dispatch ID is what Step 0 matches]
+Completeness:   This paste is complete ONLY if its LAST line is the terminal
+                sentinel "━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━"
+                carrying THIS Dispatch ID. Before any task work, scroll to the
+                end and confirm that line is present and its Dispatch ID matches
+                the one above (and is a real value, not the literal text
+                "<Dispatch ID>"). If it is absent, the Dispatch ID differs, or
+                either is still the placeholder, the paste was truncated or
+                corrupted in transport — STOP, emit a one-line truncation
+                report, and do not begin the task. Presence + string-match
+                only — never recompute the digest.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Close — the terminal sentinel.** Orchestration renders, as the literal
+**last line** of the dispatched paste (after the Output-signature instruction
+and a blank separator, so a vendor cannot fold it into the Output block it
+produces):
+
+```
+━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━
+```
+
+**The check — Self-check Step 0.** The execution session runs Step 0
+(§{section.prism-execution-self-check}) before any other work: confirm the
+terminal sentinel is present and its Dispatch ID matches the anchor's (and is
+not the placeholder). This is a **presence + string-match**, never a hash
+recompute — an execution model cannot reliably compute a digest
+(§{section.prism-execution-output}). It makes concrete the completeness-of-INPUT
+halt the dispatch conventions already sanction (the "only INPUT may halt"
+discipline, §{appendix.dispatch-conventions}, J.2), not a new halt class.
+**Scope.** Step 0 catches a *truncated tail* — the copied-before-finished case,
+detected by the missing terminal sentinel; it does **not** detect interior body
+corruption, which the return-side digest copy-through catches at reconciliation
+(§{section.recommended-vs-executed-reconciliation}).
+
+**It frames the contract; it is not part of it.** The bracket is transport
+framing around the three contract blocks (Envelope / Self-check / Output), not a
+fourth block — every "three blocks" / "first block" / "bookending" statement
+stays true. It names no vendor, arm-count, or shape, so it keeps the vendor
+PRISM-unaware and survives the single-arm strip
+(§{section.atomic-prompt-self-containment}). It wraps **any** dispatched paste
+carrying a Dispatch ID + digest — the epistemic Envelope and the
+investigation-posture corpus-access paste (§{section.corpus-access-dispatch})
+alike — but **not** envelope-less sub-agent fan-out, which carries no Dispatch
+ID to bracket.
+
+**Preimage and reconciliation are untouched.** The anchor block and the
+terminal sentinel are **excluded from the digest preimage**
+(§{appendix.dispatch-conventions}, J.3), so they introduce no new value and the
+digest stays reproducible; the anchor's digest is **display-only**, never
+compared execution-side and never a return handle — return reconciliation reads
+the Dispatch ID + digest from the **Output signature** only
+(§{section.recommended-vs-executed-reconciliation}).
+
+**Convention, not a Standing Principle.** Like the copy-through digest and the
+Dispatch-ID pairing, this is a contract mechanic with a single artifact and a
+binary surface (present/absent, match/not) — it earns a Self-check step, not an
+SP, and is **not** an extension of §{principle.SP-22} (a rendering discipline
+with no Self-check step). Adherence on non-Claude substrates is a report-worthy
+calibration item, as for the rest of the Self-check.
 
 ### 3.3 The Master `[structural | stable]`
 <a id="section-the-master"></a>
@@ -1196,7 +1344,14 @@ matters.
    §{section.corpus-access-dispatch}) rather than folding the fetch under a
    research pick, and prefer capture-then-attach (capture once, attach to the
    paste) to remove the fetch dependency. A capability-caused "could not fetch"
-   is a capability null, not a substantive null.
+   is a capability null, not a substantive null. An **operator-run agentic
+   browser** (Comet, Atlas, and the like) is a *distinct driver class* from the
+   enum's `cowork-mcp` value, where PRISM drives the Chrome MCP itself: the
+   third-party agent runs outside PRISM's control, is investigation-posture
+   single-source (§{principle.SP-15}) and never a triangulation seat, and
+   everything it returns needs first-hand verification (confident prose ≠
+   verified). Its per-driver reliability profile accrues to
+   §{appendix.vendor-parsing-observations} (vendor parsing observations).
 2. **Refresh.** Run a web-search-based currency check on the specific
    decision: is the recommended vendor still the right call for this prompt
    shape? Are there known issues this week? Has a newer vendor capability
@@ -1686,26 +1841,62 @@ final delta.
 <a id="section-asymmetric-parallel-return-handling"></a>
 
 Convergence proceeds with whatever returned. Failed dispatches are flagged
-with named gaps; operator decides whether to re-dispatch.
+with named gaps; operator decides whether to re-dispatch. This is Stage 4–5
+of the dispatch lifecycle (§{section.dispatch-lifecycle}): the inbound half of
+the round-trip, specified as deliberately as the outbound half.
 
-**Failure handling.**
+**The return-handling card.** The inbound mirror of the outbound dispatch
+card — authored *at dispatch-build* and surfaced **proactively** when the
+returns are due, never waiting for the operator to ask "what do I do with
+these?" Default posture is **attach-and-the-session-handles**: the operator
+attaches the N returns and the session does the bookkeeping — save each per
+filename discipline (§{principle.SP-14}, `[project]_[promptID]_[vendor].md`),
+reconcile each on filename + Dispatch ID + digest
+(§{section.recommended-vs-executed-reconciliation}), converge in a
+clean-context sub-agent (§{section.roles-context-tier}, the seam-③ default;
+the sub-agent never touches canonical state), then continue. File bookkeeping
+is the session's job, never the operator's. The card schema is in
+§{appendix.templates-compendium} (templates compendium); on a thin orchestration
+surface it degrades to operator-as-committer.
 
-- Operator declares a dispatch failed via the close-loop mechanic (§{section.operator-declaration-close-loop}):
-  `P2.3 Gemini failed — Deep Research timed out`.
-- Master's Dispatch register status: `failed: [reason]`.
-- Vendor Triangulation proceeds with available returns. Convergence delta
-  notes the dimension that's missing-due-to-failure:
+**Happy path.** All N clean returns arrive; Vendor Triangulation
+(§{section.vendor-triangulation}) fires at N≥2 and the convergence proceeds.
+
+**Failure leg — branch by type (do not conflate the branches).** When fewer
+than N clean returns arrive, the card routes by *failure type*:
+
+- **Seat failure** — a vendor errored, timed out, or returned an unusable
+  format. This is a **capability null, not a substantive negative**: converge
+  on the available returns and name the missing dimension as a coverage gap.
+  Operator declares it via the close-loop mechanic
+  (§{section.operator-declaration-close-loop}): `P2.3 Gemini failed — Deep
+  Research timed out`; Dispatch register status `failed: [reason]`; the
+  convergence delta notes the absent dimension:
   ```
   Vendor coverage gap: Gemini failed (timeout); Claude + Perplexity
   converged. Long-context many-source synthesis dimension is absent
   from this delta.
   ```
-- *What's next* surfaces re-dispatch as a candidate at next turn-close,
-  ranked by whether the gap materially affects the finding.
+  *What's next* (§{section.whats-next}) surfaces re-dispatch as a **ranked**
+  candidate at next turn-close — material only when the gap touches a falsifier
+  or decision-brief item. **No automatic retry** — re-dispatch is an operator
+  decision (§{principle.SP-9}; per DD.§3.6 design-authority-without-access-
+  gating, the framework does not assume the operator can retry the same vendor).
+- **Digest mismatch** — a return arrived but its copied-through digest (or
+  Dispatch ID) does not match what was dispatched. This is the **anchor catch**
+  for a wrong-prompt or mis-paste: re-grab *that one* return before converging,
+  rather than absorbing a return that answers a different dispatch
+  (§{section.recommended-vs-executed-reconciliation} step 4).
+- **Substitution** — the operator ran a different vendor than recommended. This
+  is **not a failure**: it is absorbed at convergence with no re-dispatch
+  demanded (§{section.substitution-absorption}); the delta notes the diversity
+  collapse.
 
-**No automatic retry.** Re-dispatch is an operator decision, surfaced as a
-candidate. Per DD.§3.6 — design-authority-without-access-gating — the
-framework does not assume the operator can retry on the same vendor.
+**Substantive divergence is not failure.** Returns that *disagree* are the
+normal Vendor Triangulation delta (§{section.vendor-triangulation}), not a
+failure branch. Conflating disagreement-across-distributions with a seat
+failure would itself be the error — the first is the load-bearing signal the
+triangulation exists to surface.
 
 ### 4.5 Claude-baseline feasibility with named-limitation escape hatch `[vendor-dependent | review-if: vendor landscape changes]`
 <a id="section-claude-baseline-feasibility-with-named-limitation-escape-hatch"></a>
@@ -1758,14 +1949,23 @@ on-demand.
 ### 4.7 Recommended-vs-executed reconciliation `[structural | stable]`
 <a id="section-recommended-vs-executed-reconciliation"></a>
 
-The **operator-set filename is the authoritative handle** for which dispatch
-a return belongs to and which vendor produced it (§{principle.SP-14} pattern
-`[project]_[promptID]_[vendor].md`). The Output signature's `Vendor:` /
+Reconciliation keys a return on a **structural triple**: the operator-set
+**filename** is the authoritative handle for *which vendor* produced it
+(§{principle.SP-14} pattern `[project]_[promptID]_[vendor].md`); the copied-
+through **Dispatch ID** identifies *which dispatch instance* it answers
+(§{section.prism-execution-envelope}, the Execution Envelope) — so a re-dispatch
+of the same pass reconciles unambiguously even though its body, and therefore
+its digest, is identical to the original; and the **Prompt digest** verifies
+the body was copied through faithfully. The Output signature's `Vendor:` /
 `Vendor config:` self-ID is an **advisory cross-check, never the authority** —
 substrate self-report is unreliable (vendors self-ID wrongly, e.g. Gemini
 reporting "GPT-4o"). This is §{principle.SP-21} applied at reconciliation:
-trust the structural anchor, treat self-report as advisory. Orchestration
+trust the structural anchors, treat self-report as advisory. Orchestration
 auto-reconciles against the Envelope's recommended state at Layer-1 ingestion.
+The execution-side transport-integrity anchor
+(§{section.transport-integrity-bracket}) validates the *inbound* paste only and
+is **never** the return-side authority — reconciliation reads the Dispatch ID
+and Prompt digest from the **Output signature**, as here.
 
 **Reconciliation states** (recorded in the Dispatch register):
 
@@ -1788,16 +1988,19 @@ halt.
 
 ```
 1. Resolve vendor/config from the operator-set FILENAME (authoritative;
-   §{principle.SP-14}). Read Output signature fields as advisory:
-   self-reported Vendor, self-reported Vendor config, Schema version,
-   Prompt digest.
-2. Look up Dispatch register entry for Prompt ID.
+   §{principle.SP-14}). Read the copied-through Dispatch ID and Prompt digest
+   as STRUCTURAL ANCHORS; read Output signature self-ID fields as advisory:
+   self-reported Vendor, self-reported Vendor config, Schema version.
+2. Look up the Dispatch register entry by Prompt ID + Dispatch ID — the
+   dispatch INSTANCE, not just the pass. A return whose Dispatch ID matches a
+   superseded instance (e.g. a re-dispatched seat) reconciles to THAT instance,
+   never silently to the latest dispatch of the same pass.
 3. Verify Schema version compatible.
 4. Verify Prompt digest equals the digest orchestration wrote into the
-   dispatched Envelope (copy-through verification — the structural anchor
-   for copy integrity).
+   Envelope dispatched under that Dispatch ID (copy-through verification — the
+   structural anchor for copy integrity).
    - If mismatch: flag as "wrong prompt or wrong attachment" — operator
-     escalation.
+     escalation; re-grab this return before converging.
 5. Compare filename-resolved Vendor/config to Recommended Vendor/config.
    - If match: status = returned.
    - If differs: status = substituted; log both.
@@ -2046,6 +2249,22 @@ failure mode is systematic. Vendors with PRISM context
 rule because they already know the codes. Vendors without PRISM context
 are protected.
 
+**Single-arm — strip the orchestration machinery.** A dispatched paste is a
+*single self-contained arm*: the executing vendor must not know it is one of N.
+Strip every orchestration-side field from the paste — `Vendor:` /
+`Vendor list:` / `Dispatch shape:` (`equivalence` / `split` / `limitation-
+named`) / dispatch rationale. The arm-count and the triangulation are
+orchestration-side bookkeeping; they live in the Envelope record's
+do-not-paste design block (§{section.single-envelope-with-spectrum-shape}),
+never in the execution unit. Pasting the orchestration envelope *as* the
+execution unit is a systematic failure mode — vendors stall or abort on the
+multi-vendor framing (the E35 catch). Stage 3 of the dispatch lifecycle
+(§{section.dispatch-lifecycle}) dispatches this stripped single-arm paste. The
+strip removes orchestration triangulation fields only; it does **not** remove
+the transport-integrity bracket (§{section.transport-integrity-bracket}), which
+names no vendor, arm-count, or shape and frames every dispatched paste including
+the single arm.
+
 **Scope.** The rule applies to M-codes
 (§{section.monitor-specifications}), SP-codes
 (§{section.standing-principles}), claim and anchor IDs introduced in the
@@ -2092,6 +2311,7 @@ retrieval step from masquerading as a judgment step.
 ```
 ━━━ PRISM CORPUS-ACCESS ENVELOPE ━━━
 Prompt ID:        [identifier — purpose/title]
+Dispatch ID:      [unique per dispatch instance; copy verbatim]
 Project:          [project name]
 Master version:   [filename at dispatch]
 Prompt digest:    [orchestration-generated; copy verbatim]
@@ -2191,7 +2411,11 @@ honors a `Playwright` request, and whether captured binaries return across the
 dispatch boundary, is vendor-empirical — the same class as the Self-check
 substrate-declaration items (§{section.prism-execution-self-check}, the Execution
 Self-check): the Envelope *requests* the tool, the Self-check *confirms* what the
-vendor actually has, and the rationale names the fallback.
+vendor actually has, and the rationale names the fallback. Because the
+corpus-access paste is itself a dispatched paste carrying a Dispatch ID and
+digest, it is wrapped by the same transport-integrity bracket
+(§{section.transport-integrity-bracket}); the executing locus runs Self-check
+Step 0 before the lookup.
 
 **Coverage fan.** Fanning a lookup across N vendors looks like equivalence
 dispatch, but posture decides routing, not vendor count. In a coverage fan the N
@@ -2334,6 +2558,33 @@ surfaces an operator-ratified candidate, rather than waiting to be told. The
 `cowork-mcp` path remains defined-but-reserved (Phase 3, gated on the Cowork
 substrate maturing), exactly as the `auto_drive` execution driver is reserved.
 
+**Passive pre-fill of self-report.** When a pass depends on a subject's
+*self-report* — a founder questionnaire, a management interview, a data-room
+claim set — and especially when it is gated on a person returning, pre-fill
+what is externally knowable *before* the self-report arrives. Run passive
+external detection (the Chrome-MCP / authenticated-browse surface,
+§{section.cowork-surface-capabilities}, plus public records — DNS,
+certificate-transparency, IP-WHOIS, app-store listings) and pre-answer the
+items observation can reach. This turns gate-blocked waiting into
+subject-independent, de-risking progress, and one detection pass feeds many.
+It is a **browse/retrieval** job: name the browse capability per the
+retrieval-shape step (§{section.vendor-selection-at-dispatch}); do **not**
+route it to a synthesis/Deep-Research mode, which silently fails to fetch. Tag
+every pre-filled item by provenance — `[OBS]` observed first-hand, `[INF]`
+inferred from observed signals, `[ask]` not passively knowable
+(§{section.prompt-body-convergence-provisions}, the finding-basis axis). The
+self-report is then **triangulated against this independent baseline** when it
+arrives (the external check pre-positioned over the claim — §{principle.SP-21};
+the detection is investigation-posture single-source, §{principle.SP-15}, never
+a triangulation seat). **Passive-only by default** on a trust-relationship
+subject: honor the questionnaire's own promise — no scanning, no
+ID/parameter manipulation (IDOR), no auth-bypass / rate-limit / upload /
+state-changing actions; read key *names*, never token *values*. Active tests
+require explicit operator authorization and are marked `[not tested — out of
+passive scope → ask or authorized test]`. The paste-ready detection template
+and per-vendor browse recipes are in §{appendix.vendor-parsing-observations}
+(vendor parsing observations).
+
 ### 4.14 Independent Validation Dispatch `[methodological | stable | ✅]`
 <a id="section-independent-validation-dispatch"></a>
 
@@ -2375,6 +2626,102 @@ session as the named limitation — single-vendor by design, so it fires
 no Vendor Triangulation and never counts as a triangulation seat
 (§{principle.SP-15}). Web search stays off unless the validation scope
 includes source-checking.
+
+**Fanned for recall — adjudicate by re-derivation.** A validation dispatch may
+be *fanned* across N seats to catch more. A fanned IVD is a **coverage fan, not
+a cross-vendor triangulation**: every seat reads the same finished deliverable
+as ground truth, so agreement buys *recall*, not falsification across
+distributions (§{principle.SP-15}, the coverage-fan corollary). Converge its
+returns by **dedup + agreement-RANK + adjudicate-each-catch-by-RE-DERIVATION**
+against the document (the recompute discipline of
+§{section.sp-18-it-must-recompute} as the ground truth) — never an agreement
+*vote* on correctness. Agreement sets *priority*, not truth: a lone-seat catch
+that survives re-derivation **stands**; a multi-seat catch that fails
+re-derivation is **declined**. This is the "verify contested first-hand"
+discipline applied to the validator's own findings — the same posture
+§{principle.SP-21} applies to vendor self-report and
+§{section.prompt-body-convergence-provisions} applies to a contested inferred
+claim. When the producers were themselves N (a fanned equivalence run), the
+independence rule sharpens: the validator must be **distinct from all N
+producers**, not merely from one. **Seat strength is not uniform.** For a
+*closed-document* deliverable (validate this artifact's arithmetic and internal
+consistency, no web), prefer **strong closed-document reasoners** as the IVD
+seats, and weight a web-oriented seat's *miss* on a closed-document point
+lightly — its strength is live-web breadth, not closed-doc recompute. Per-seat
+selection guidance for the closed-document case is in
+§{appendix.vendor-parsing-observations} (vendor parsing observations).
+
+### 4.15 Dispatch lifecycle `[structural | stable]`
+<a id="section-dispatch-lifecycle"></a>
+
+A dispatch is a **bounded round-trip**, not a one-way send. PRISM historically
+specified the *outbound* half well (the Envelope, operator hints, the
+dispatch-ready payload) and the *inbound* half — "the N returns are back; here
+is exactly what to do with them" — barely at all, so an operator had to *ask*.
+The **dispatch lifecycle** names the whole round-trip as one construct: five
+stages, the dispatch-scoped sibling of the engagement lifecycle (Setup →
+Desk/Meta run → Closure). It is a **frame**, not new machinery — it subsumes
+the existing rules **by reference** (no renumbering, which would orphan the
+cross-refs): the detailed rules stay where they live.
+
+1. **Build** (outbound, late-bound). The Desk *stages* intent — which pass, its
+   inputs, the decisive caveats, a bootstrap — and a **fresh Dispatch-builder
+   session renders** the Envelope + Self-check + body *just-in-time* from the
+   live Master, the current conventions, and a fresh Vendor Selection
+   (§{section.vendor-selection-at-dispatch}), wrapping the paste in the
+   transport-integrity bracket (§{section.transport-integrity-bracket}). It does **not** replay a prompt
+   frozen at Setup; it anchors to the pass **spec** so it cannot silently
+   re-scope (§{section.three-layer-readiness}, Layer-1 — the late-binding rule).
+2. **Dispatch** (the operator card). Above the paste sits a **rendered,
+   never-copy-able** dispatch card with a fixed schema (Prompt ID · Dispatch ID
+   · Posture · Dispatch shape · recommended Seats, N≥2 and never a cap ·
+   Attachments|NONE · Send rule · Save-returns-as · Reconciliation ·
+   Reminders); null fields are stated (`NONE`), never omitted. Schema in
+   §{appendix.templates-compendium} (templates compendium). The card *recommends*
+   seats; the operator's actual set governs. Every paste-ready block the Desk
+   emits carries such a guide card — including the next-session **opener**,
+   whose card must say *"open a NEW session and paste this there — not into this
+   Desk session."*
+3. **Execute** (run). The operator dispatches the **self-contained single-arm**
+   paste (§{section.atomic-prompt-self-containment}) to the N seats,
+   deliberately PRISM-unaware (§{section.two-session-types}) — pasting the
+   orchestration envelope as the execution unit is the systematic failure mode
+   the single-arm rule prevents. The paste's terminal sentinel lets a seat that
+   received a truncated mid-copy halt before working (Self-check Step 0,
+   §{section.transport-integrity-bracket}). Surface-degrading: Cowork can
+   auto-drive; manual paste is the default.
+4. **Return / converge** (inbound, happy path). A **return-handling card**,
+   authored at Build and surfaced **proactively**, mirrors the outbound card.
+   Default = attach-and-the-session-handles
+   (§{section.asymmetric-parallel-return-handling}): the Dispatch-consumer saves
+   and verifies the N returns, then converges in a **clean-context sub-agent**
+   (§{section.roles-context-tier}, the seam-③ default — a core-loaded session is
+   contaminated for a clean read; the sub-agent never touches canonical state),
+   and the parent absorbs and writes the Master.
+5. **Reconcile** (inbound, close). Each return reconciles on the structural
+   triple — filename + Dispatch ID + digest
+   (§{section.recommended-vs-executed-reconciliation}); the **failure leg**
+   branches by type — seat-failure, digest-mismatch, substitution — without
+   conflating any of them with substantive divergence
+   (§{section.asymmetric-parallel-return-handling}). A verdict-critical pass
+   then closes with an Independent Validation Dispatch
+   (§{section.independent-validation-dispatch}), distinct from every producer.
+
+**Cross-cutting.** The whole round-trip is **render-from-live-model**: every
+stage's artifact is recomputed from live state, never cached-and-replayed. The
+rendered UI view (§{section.prism-ui}), the live vendor pick
+(§{section.vendor-selection-at-dispatch}), and the dispatch paste are three
+faces of that one principle. The lifecycle's two object-lane roles are the
+**Dispatch-builder** (renders Build) and the **Dispatch-consumer** (owns the
+inbound card and absorbs the returns), tabulated with the other roles in
+§{section.roles-context-tier}; session-IDs tag each session in the round-trip.
+
+**Proportionality.** Late binding earns its keep proportional to *engagement
+length × convention-accretion rate*. Freezing the Envelope at Setup is fine for
+a short engagement or a pass dispatched right after Setup; the JIT rebuild pays
+off when conventions and findings have accreted enough that a Setup-time render
+would be stale at dispatch. The reference detail for the convention set the
+stages draw on is in §{appendix.dispatch-conventions} (dispatch conventions).
 
 ---
 
@@ -2717,7 +3064,12 @@ All three layers must clear before P0 → P1 boundary.
 
 #### Layer 1 — Structural completeness
 
-Every planned prompt has the following fields populated:
+Every planned prompt has a complete pass **spec** — **not** a frozen Envelope.
+The Envelope is *rendered just-in-time at dispatch* (the dispatch lifecycle's
+Build stage, §{section.dispatch-lifecycle}); requiring a populated Envelope here
+would force a Setup-time render to be replayed stale on a long engagement, the
+opposite of late binding. The spec is the durable, Setup-graded,
+convergence-revisable (§{section.strategy-stability}) contract; it carries:
 
 - Single objective (one-sentence statement).
 - Output format (structured findings per §{section.prompt-body-convergence-provisions}).
@@ -2725,10 +3077,17 @@ Every planned prompt has the following fields populated:
 - Attachment map (filenames per attachment).
 - Enrichment decision (single-vendor / equivalence / split /
   limitation-named).
-- Execution envelope (full Envelope per §{section.prism-execution-envelope}).
+- Success criteria + the applicable conventions and lenses — what "done" means
+  and what binds. This is the **anchor** the just-in-time Envelope render must
+  preserve (objective + lens-coverage + success-criteria), so a late-bound
+  rebuild refreshes the *rendering* without re-scoping the Setup grading.
 
-Verification: orchestration walks the strategy and confirms each prompt has
-all six fields. Any missing field halts P0 → P1.
+Verification: orchestration walks the strategy and confirms each prompt has a
+complete spec across these six fields. Any missing field halts P0 → P1. The
+Envelope itself is not required to clear this gate — it is built at dispatch
+from the live Master and current conventions (§{section.prism-execution-envelope}),
+anchored to this spec, with the decisive caveats carried forward explicitly so
+the fresh Dispatch-builder loses nothing the Desk knew.
 
 #### Layer 2 — Library coverage saturation
 
@@ -4141,6 +4500,17 @@ falsifier-grade findings. Four corollaries follow.
   Envelope lacks `Dispatch shape`, so Vendor Triangulation
   (§{section.vendor-triangulation}) cannot fire on a retrieval-only fan.
 
+**Verify contested first-hand (the load-bearing anchor).** One discipline runs
+through all four corollaries: a *contested* claim is settled by **first-hand
+re-derivation against the evidence**, never by self-report, an agreement vote,
+or a producer's say-so. A contested **inferred** finding is verified first-hand
+before it enters the Master (§{section.prompt-body-convergence-provisions}); a
+fanned validator's **catch** is adjudicated by re-derivation, not by how many
+seats raised it (§{section.independent-validation-dispatch}); a substrate
+**self-ID** that disagrees with the structural anchor is logged, not trusted
+(§{principle.SP-21}). Triangulation integrity is what *surfaces* the contest;
+first-hand verification is what *settles* it.
+
 Cross-ref: §{section.vendor-triangulation},
 §{section.claude-baseline-feasibility-with-named-limitation-escape-hatch},
 §{section.orchestration-driver-and-persistence-axes},
@@ -4577,6 +4947,11 @@ body. It's the unit operators paste into execution sessions.
 <a id="section-template-shape"></a>
 
 ```
+━━━ PRISM PROMPT INTEGRITY ━━━
+[anchor per §3.2.5 — Dispatch ID + display-only digest + completeness rule;
+ the literal first line of the paste, below the never-copy-able dispatch card]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 ━━━ PRISM EXECUTION ENVELOPE ━━━
 [Envelope per §3.2.1]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -4630,7 +5005,16 @@ When you finish, wrap your findings in the PRISM Execution Output
 signature block per §3.2.3:
 
 [Output block template here, with placeholders the vendor fills.]
+
+━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━
 ```
+
+The first and last lines are the **transport-integrity bracket**
+(§{section.transport-integrity-bracket}): the `PRISM PROMPT INTEGRITY` anchor
+opens the paste and the `END PRISM DISPATCHED PASTE` sentinel closes it. They
+frame the paste for safe transport — Self-check Step 0 confirms the sentinel is
+present before any work — but are **not** contract blocks and are excluded from
+the digest preimage.
 
 ### 12.2 Composition rules
 <a id="section-composition-rules"></a>
@@ -5106,11 +5490,13 @@ mechanics live in the cross-referenced sections.
 | **Decision brief** | Setup artifact. Captures the decision under test, decision-maker, commissioner positioning, deadline, cost-of-error, falsifiers. §{section.decision-brief}. |
 | **Decision Framing Probe** | Setup-time probe (§{probe.P3}). Produces Decision brief + Stakeholder register. §{section.probe-3-decision-framing-once}. |
 | **Delta finalization** | When all expected vendor returns are in for an `equivalence` dispatch and Vendor Triangulation closes the convergence delta. §{section.vendor-triangulation}. |
+| **Dispatch ID** | Envelope/Output field: a unique per-dispatch-instance identifier, paired with the Prompt digest and copied through, that reconciles a return to the exact dispatch that produced it. Distinct from Prompt ID (which names the pass). §{section.recommended-vs-executed-reconciliation}. |
+| **Dispatch lifecycle** | The bounded five-stage dispatch round-trip — build → dispatch → execute → return/converge → reconcile — the dispatch-scoped sibling of the engagement lifecycle; subsumes the late-bound build, the operator/return cards, and the failure leg by reference. §{section.dispatch-lifecycle}. |
 | **Dispatch rationale** | Envelope field carrying one positive-framing line per dispatch variant component. §{section.rationale-discipline-per-dispatch-variant}. |
 | **Dispatch register** | Master section tracking recommended-vs-executed state per prompt. §{section.master-tracking-dispatch-register}. |
 | **Dispatch shape** | Envelope field carrying the dispatch structural shape: `equivalence`, `split`, or `limitation-named`. §{section.single-envelope-with-spectrum-shape}. |
 | **Domain Reconnaissance Probe** | Setup-time probe (§{probe.P6}). Surveys domain practice + authoritative-source detection + Jurisdiction map. §{section.probe-6-domain-reconnaissance-iterates-early}. |
-| **Envelope** | The first block of the triple contract — inbound vendor instructions including dispatch metadata, attachments, and operator hints. §{section.prism-execution-envelope}. |
+| **Envelope** | The first block of the triple contract — inbound vendor instructions including dispatch metadata, attachments, and operator hints (the PRISM PROMPT INTEGRITY transport anchor renders above it but is not a contract block, §{section.transport-integrity-bracket}). §{section.prism-execution-envelope}. |
 | **`equivalence` dispatch** | Same prompt body to N vendors; outputs comparable; triggers Vendor Triangulation at N≥2. §{section.single-envelope-with-spectrum-shape}. |
 | **Execution session** | Vendor session running a single dispatched prompt. Framework not attached; loaded artifacts limited to Envelope's `Attachments:` field. §{section.two-session-types}. |
 | **Falsifier** | A finding that, if observed, would refute the audit's thesis. Captured in the Decision brief. §{section.probe-5-falsifier-once}, §{section.decision-brief}. |
@@ -5141,7 +5527,7 @@ mechanics live in the cross-referenced sections.
 | **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §{section.m12-result-completeness-check}. |
 | **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §{section.three-layer-readiness}. |
 | **Role × context-tier** | The flexible matrix a session occupies — role (Setup / Desk / dispatch-builder / -consumer / execution / convergence / validation) × tier (orchestration vs execution). §{section.roles-context-tier}. |
-| **Self-check** | The middle block of the triple contract — substrate verification per §{principle.SP-13}, plus the output-side gates: the §{principle.SP-16} uninvited-frame audit (step 5) and the §{principle.SP-18} recompute gate (step 6). §{section.prism-execution-self-check}. |
+| **Self-check** | The middle block of the triple contract — the transport-integrity input-gate (step 0, §{section.transport-integrity-bracket}), substrate verification per §{principle.SP-13}, plus the output-side gates: the §{principle.SP-16} uninvited-frame audit (step 5) and the §{principle.SP-18} recompute gate (step 6). §{section.prism-execution-self-check}. |
 | **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
 | **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
 | **Setup onboarding** | `SETUP_ONBOARDING` — the Setup-as-scaffolder flow that generates the per-engagement SI from a template and emits project-create / install cards; the two-project model. §{section.setup-onboarding-and-mode-selection}. |
@@ -5150,7 +5536,8 @@ mechanics live in the cross-referenced sections.
 | **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §{section.strategy-stability}. |
 | **Substitution** | The filename-resolved executed vendor/config (§{principle.SP-14}) differs from the Envelope's recommended vendor/config; the Output `Vendor` field is advisory self-ID (§{section.recommended-vs-executed-reconciliation}). Absorbed at convergence; no automatic re-dispatch. §{section.substitution-absorption}. |
 | **Three-layer readiness** | The P0→P1 boundary clears when Structural completeness, Library coverage saturation, and Operator ratification all clear. §{section.three-layer-readiness}. |
-| **Triple contract** | Envelope (inbound) + Self-check (substrate verify) + Output (outbound). The load-bearing interface between sessions. §{section.the-triple-contract}. |
+| **Transport-integrity bracket** | A top-of-paste PRISM PROMPT INTEGRITY anchor + a terminal END PRISM DISPATCHED PASTE sentinel wrapping any dispatched paste; Self-check Step 0 validates completeness by presence + Dispatch-ID match, so a truncated mid-stream copy is caught before work. Transport framing, not a contract block; excluded from the digest preimage. §{section.transport-integrity-bracket}. |
+| **Triple contract** | Envelope (inbound) + Self-check (substrate verify) + Output (outbound). The load-bearing interface between sessions; the dispatched paste wraps it in a transport-integrity bracket (§{section.transport-integrity-bracket}), which is not a contract member. §{section.the-triple-contract}. |
 | **Update session** | Standalone, rare, operator-gated session that maintains Library currency. §{section.currency-maintenance-update-session}. |
 | **User Voice Probe** | Setup-time probe (§{probe.P7}). Imports real end-user signal. §{section.probe-7-user-voice-iterates-early}. |
 | **Vendor config** | Envelope/Output field carrying vendor-specific configuration flags. §{section.prism-execution-envelope}. |
@@ -5265,7 +5652,7 @@ roles, and the PRISM UI), §{section.cross-lane-inbox} (cross-lane OPEN_ITEMS
 inbox), §{section.prism-desk-and-prism-meta} (PRISM Desk and PRISM Meta),
 §{section.prism-ui} (PRISM UI), §{section.bundle-load-integrity} (bundle-load
 integrity), §{section.setup-onboarding-and-mode-selection} (Setup onboarding
-and mode selection).
+and mode selection), §{section.dispatch-lifecycle} (dispatch lifecycle), §{section.transport-integrity-bracket} (transport-integrity bracket).
 
 ### C.2 `[methodological | stable]`
 <a id="appendix-methodological-stable"></a>
@@ -5337,12 +5724,12 @@ strength are noted parenthetically.
 
 | Axis 1 \ Axis 2 | stable | review-if | review-annually | Total |
 |---|---|---|---|---|
-| structural | 41 | 0 | 0 | 41 |
+| structural | 43 | 0 | 0 | 43 |
 | methodological | 12 | 3 (1 with `recommended`) | 0 | 15 |
 | vendor-dependent | 0 | 3 | 0 | 3 |
 | operator-scaffolding | 6 | 0 | 0 | 6 |
 | empirical | 0 | 0 | 1 | 1 |
-| **Total** | **59** | **6** | **1** | **66** |
+| **Total** | **61** | **6** | **1** | **68** |
 
 ---
 
@@ -5471,6 +5858,7 @@ All paste-ready blocks in one place.
 ```
 ━━━ PRISM EXECUTION ENVELOPE ━━━
 Prompt ID:          [identifier — purpose/title]
+Dispatch ID:        [unique per dispatch instance; orchestration-generated; copy verbatim]
 Project:            [project name]
 Master version:     [filename of Master at dispatch time]
 Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
@@ -5494,6 +5882,20 @@ Operator hints:     [zero or more one-line cues]
 ━━━ PRISM EXECUTION SELF-CHECK ━━━
 Before doing the task:
 
+0. Transport-integrity check (completeness of INPUT).
+   Before step 1, scroll to the very end of this paste.
+   Confirm the last line is the terminal sentinel
+   "━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━"
+   and that its Dispatch ID matches the Dispatch ID in the
+   PRISM PROMPT INTEGRITY anchor at the top — and is a real
+   value, not the literal "<Dispatch ID>" placeholder. If
+   the sentinel is absent, the two Dispatch IDs differ, or
+   either is still the placeholder, the paste was truncated
+   or corrupted in transport — STOP. Emit a one-line
+   truncation report and do not start the task. Presence and
+   string-match only; never recompute the digest. (Restates
+   the top-of-paste anchor, the truncation-surviving copy,
+   which governs on any disagreement.)
 1. State what model/vendor you are and what session
    state you can introspect (mode, thinking setting,
    tools enabled).
@@ -5538,6 +5940,7 @@ Before doing the task:
 ```
 ━━━ PRISM EXECUTION OUTPUT ━━━
 Prompt ID:        [identifier — purpose/title]
+Dispatch ID:      [copied verbatim from Envelope]
 Project:          [project name]
 Master version:   [from Envelope]
 Vendor:           [vendor that actually executed]
@@ -5771,6 +6174,7 @@ Falsifiers:        [list — findings that would refute the thesis]
 ```
 ━━━ PRISM CORPUS-ACCESS ENVELOPE ━━━
 Prompt ID:        [identifier — purpose/title]
+Dispatch ID:      [unique per dispatch instance; copy verbatim]
 Project:          [project name]
 Master version:   [filename at dispatch]
 Prompt digest:    [orchestration-generated; copy verbatim]
@@ -5797,6 +6201,7 @@ Return handling:  [recall-merge; agreement = retrieval-consistency note]
 ```
 ━━━ PRISM VALIDATION DISPATCH ENVELOPE ━━━
 Prompt ID:        [identifier — purpose/title]
+Dispatch ID:      [unique per dispatch instance; copy verbatim]
 Project:          [project name]
 Master version:   [filename at dispatch]
 Prompt digest:    [orchestration-generated; copy verbatim]
@@ -5822,6 +6227,78 @@ Return form:      severity-tagged findings list, routed to the
 Expected output:  [filename to download as]
 Operator hints:   [zero or more one-line cues]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### E.14 Outbound dispatch card
+<a id="appendix-outbound-dispatch-card"></a>
+
+The dispatch lifecycle's Stage-2 operator card (§{section.dispatch-lifecycle}).
+**Rendered above the paste, never copy-able** (copying orchestration metadata
+into the vendor is a failure mode); every field every run, nulls stated as
+`NONE`; the card *recommends* seats and never enforces.
+
+```
+━━━ DISPATCH CARD — [Prompt ID] ━━━
+Prompt ID:        [...]                 Project:  [project]
+Dispatch ID:      [unique per dispatch instance]
+Posture:          epistemic | investigation
+Dispatch shape:   equivalence (N≥2 recommended) | split | limitation-named | single
+Seats (RECOMMENDED — not enforced; add distinct vendors freely, absorbed at convergence §4.10/SP-15):
+                  - [vendor · mode]
+                  - [vendor · mode]      (add more seats as you choose — more arms = stronger triangulation)
+Attachments:      [file, file | NONE]
+Send rule:        send the SAME paste to EVERY seat you choose, BEFORE bringing any return back
+Save returns as:  [outputs/<project>_<promptID>_<vendor>.md]
+Reconciliation:   filename (which seat) + Dispatch ID (which dispatch) + digest (sha256:… body copy-through)
+Reminders:        [… | NONE]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### E.15 Return-handling card
+<a id="appendix-return-handling-card"></a>
+
+The dispatch lifecycle's Stage-4/5 inbound card
+(§{section.asymmetric-parallel-return-handling}) — authored at dispatch-build,
+surfaced **proactively** when returns are due. Default = the session handles
+the bookkeeping.
+
+```
+━━━ RETURN HANDLING — [Prompt ID] ━━━
+Returns expected: N   (seats: [list])
+When they arrive: attach all N here — this session saves + reconciles + converges; you do not file them
+Save each as:     outputs/<project>_<promptID>_<vendor>.md   (filename = the seat; SP-14)
+Reconcile each:   filename (seat) + Dispatch ID (instance) + digest (copy-through)
+Converge:         clean-context sub-agent (seam-③); parent absorbs → Master
+If fewer than N clean returns — branch by type (do not conflate):
+  · seat failure    → capability null: converge on what returned, name the gap; re-dispatch RANKED, never auto
+  · digest/ID miss  → re-grab THAT return before converging (the wrong-prompt anchor catch)
+  · substitution    → absorb (operator ran a different vendor); no re-dispatch demanded
+  (returns that merely DISAGREE are the triangulation delta, not a failure)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### E.16 Transport-integrity bracket
+<a id="appendix-prism-prompt-integrity"></a>
+
+The transport bracket (§{section.transport-integrity-bracket}) — the anchor as
+the paste's first line, the terminal sentinel as its last; both excluded from
+the J.3 digest preimage. Full paste order in §{section.template-shape}.
+
+```
+━━━ PRISM PROMPT INTEGRITY ━━━
+Dispatch ID:    [orchestration-minted; a real value, never a placeholder]
+Prompt digest:  [display-only copy; the Dispatch ID is what Step 0 matches]
+Completeness:   This paste is complete ONLY if its LAST line is the terminal
+                sentinel "━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━"
+                carrying THIS Dispatch ID. Before any task work, confirm that
+                line is present and its Dispatch ID matches the one above (and
+                is not the literal "<Dispatch ID>"). If absent, mismatched, or
+                still a placeholder → STOP, report a truncated/corrupted paste,
+                do not begin. Presence + string-match only; never recompute the
+                digest.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+… Envelope · Self-check · body · Output-signature instruction …
+━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━
 ```
 
 ---
@@ -7032,6 +7509,62 @@ silently dropped in transit. The `not-tested` rows are placeholders;
 re-test at the next release sweep or when a session next dispatches
 fenced content via mobile paste on those vendors.
 
+### Per-vendor download / export recipes
+
+The return-handling friction is per-vendor; pre-warn the operator (an operator
+hint, not an inline essay). Observed recipes:
+
+| Vendor | Recipe |
+|---|---|
+| Gemini (Deep Research) | Export to Google Docs → download as `.md`. |
+| Claude / ChatGPT | The session creates the file; rename the download to the SP-14 name (rename optional — the return self-IDs via `Ran on`, reconciled on the filename). |
+| Grok | Writes the file to its sandbox (e.g. `/home/workdir/artifacts/`); after it saves, ask "give me a download link" to surface the `.md` — a two-step. |
+
+These are observations, not guarantees; re-test stale entries at the release
+sweep.
+
+### Passive detection of self-report — capability + template
+
+For the passive pre-fill pattern (§{section.corpus-access-dispatch}, *Passive
+pre-fill of self-report*): the load-bearing choice is **naming the right
+capability**. Passive recon is a **browse / retrieval** job — name the
+Chrome-MCP / authenticated-browse surface (§{section.cowork-surface-capabilities})
+plus public web records (DNS, certificate-transparency, IP-WHOIS, app-store),
+per the retrieval-shape step (§{section.vendor-selection-at-dispatch}). Do
+**not** route it to a synthesis / Deep-Research mode — that silently fails to
+fetch. Generalized paste-ready shape:
+
+```
+Using the Chrome MCP (authenticated browse) and online web tools, passively
+examine and detect as much as possible about [subject]'s stack, server
+environment, and [domain of interest], and pre-answer as many of the pending
+[questionnaire / self-report] items as passive observation allows. Tag each
+finding [OBS] (observed first-hand) / [INF] (inferred from observed signals) /
+[ask] (not passively knowable). STRICTLY passive: no scanning, no ID/parameter
+manipulation (IDOR), no rate-limit / auth-bypass / upload testing, no
+state-changing actions; read key *names*, never token *values*.
+```
+
+### Agentic-browser drivers + closed-document IVD seats
+
+**Agentic-browser drivers (Comet, Atlas).** Operator-run third-party agents are
+a distinct driver class from PRISM-driven Chrome-MCP
+(§{section.vendor-selection-at-dispatch}); investigation-posture single-source,
+never a triangulation seat. Reliability is uneven and confident prose is **not**
+verified output — every claim needs first-hand confirmation (field: agents
+variously asserted no-RSVP / "responsive" / "real labels", each wrong; a probe
+asserted "iOS-only", also wrong). Confirm agent-mode + login are actually
+engaged before relying on a run.
+
+**Closed-document IVD seats (§{section.independent-validation-dispatch}).** For a
+closed-document validation (the deliverable's own arithmetic and internal
+consistency, no web), prefer **strong closed-document reasoners** as seats; in
+field runs the real in-document catches came from those, while web-oriented /
+breadth-first seats produced mostly already-addressed or stylistic items on the
+closed-document task. Accept a valid catch from any seat (recall is the point),
+but weight a web-oriented seat's *miss* on a closed-document point lightly — its
+strength is live-web breadth, not closed-doc recompute.
+
 ---
 
 ## Appendix I — Lanes, roles, PRISM UI, and Setup onboarding (reference)
@@ -7161,6 +7694,99 @@ The shape and the kept / dropped split are in
    grows into a real engagement, graduate per
    §{section.setup-onboarding-and-mode-selection}.
 
+## Appendix J — Dispatch conventions (reference)
+<a id="appendix-dispatch-conventions"></a>
+
+Reference-grade detail behind the dispatch lifecycle
+(§{section.dispatch-lifecycle}). The lifecycle's *rules* live in the core
+sections; this appendix is the battle-tested recipe set the stages draw on,
+plus the **promotion map** that records where each convention's rule landed —
+so a working, field-proven convention set does not orphan as the framework
+absorbs it. Entries are practice distilled from live dispatch rounds; consult
+it when building or converging a dispatch.
+
+### J.1 Promotion map — convention → framework home
+
+Each item is **REFERENCE** (already core — cite it), **PROMOTE** (battle-tested
+local practice lifted into the framework), or **PROMOTE-OR-DECIDE** (a
+divergence sanctioned as an option or kept documented). Where a convention's
+local practice and core diverged, the verdict follows the dispatch-lifecycle
+source.
+
+| Conv | Item | Disposition → framework home |
+|---|---|---|
+| A.1 | Single-arm self-contained paste (vendor unaware it is 1 of N) | PROMOTE → §{section.atomic-prompt-self-containment} — strip the orchestration machinery; arm-count is orchestration-side |
+| A.2 | Inline small + available; attach large / not-yet-produced | PROMOTE → §{section.atomic-prompt-self-containment} composition guidance |
+| A.3 | 3-way pre-flight: INPUT halts · SUBSTRATE declares · ANALYSIS proceeds | REFERENCE/PROMOTE → the Self-check (§{section.prism-execution-self-check}); the completeness limb of INPUT is operationalized as the **Step 0** transport-integrity check (§{section.transport-integrity-bracket}); "only INPUT may halt" preserved |
+| A.3a | Transport-integrity bracket — truncation guard (top anchor + terminal sentinel) | PROMOTE → §{section.transport-integrity-bracket} (Self-check Step 0; template §{appendix.prism-prompt-integrity}) |
+| A.4 | Lean delimited output signature beats prose | REFERENCE → the delimited Output signature (§{section.prism-execution-output}) is already the standard (empirical: ━━━ got 4/4 vendor adherence, prose 2/5) |
+| A.5 | Per-seat mode + live currency at dispatch | REFERENCE → §{section.vendor-selection-at-dispatch} |
+| A.6 | No bare PRISM shorthand in the paste | REFERENCE → §{section.atomic-prompt-self-containment} |
+| A.7 | Per-vendor download / export recipes | PROMOTE → §{appendix.vendor-parsing-observations} |
+| B.8 / B.8a | Converge in a dedicated clean session / clean-context sub-agent | REFERENCE → §{section.roles-context-tier} (seam-③); converger only, never a triangulation seat (§{principle.SP-15}) |
+| B.9 | Adversarial review = Independent Validation Dispatch | REFERENCE → §{section.independent-validation-dispatch}; sharpened to "distinct from all N producers" (§{principle.SP-15}) |
+| C.11 | Plain words to the operator | REFERENCE → §{principle.SP-17} |
+| C.12 | Repo / write discipline (rebase-on-tail, commit-only-own, identity-before-commit) | engagement SI + the cross-lane inbox (§{section.cross-lane-inbox}); the repo mechanics are maintainer-protocol, not framework body |
+| D.13–15 | Paste-as-own-file · fixed-schema operator card · in-paste guardrails | PROMOTE → the Stage-2 dispatch card (§{appendix.outbound-dispatch-card}) within the dispatch lifecycle (§{section.dispatch-lifecycle}) |
+| E | Canonical execution-paste model (bookended ━━━ blocks) | REFERENCE → the reference paste shape, an instantiation of the atomic template (§{section.template-shape}); J.2 below |
+| F.16–19 | Recon: probe-spine + one explore-agent; retrieved-vs-inferred; recon output discipline; agentic-browser driver class | PROMOTE → §{section.prompt-body-convergence-provisions} (finding basis) + §{section.vendor-selection-at-dispatch} (driver class) + §{appendix.vendor-parsing-observations} |
+| G.20–22 | Match dispatch mode to retrieval shape; capture-then-attach; capability-null ≠ substantive-null | PROMOTE → §{section.vendor-selection-at-dispatch} retrieval-shape step |
+| H.23–25 | Passive pre-fill of self-report; provenance tags; passive-only ethics | PROMOTE → §{section.corpus-access-dispatch} (passive pre-fill) + §{appendix.vendor-parsing-observations} (template) |
+
+### J.2 Canonical execution-paste model (reference shape)
+
+The reference shape for the execution unit a Stage-3 dispatch sends: **two lean
+delimited `━━━` blocks bookending the task body**, all inside one fenced block,
+themselves wrapped by the transport-integrity bracket
+(§{section.transport-integrity-bracket}) — the `PRISM PROMPT INTEGRITY` anchor
+above and the terminal sentinel below, transport framing rather than contract
+blocks — with the operator dispatch card (§{appendix.outbound-dispatch-card})
+rendered above the whole paste. It is an instantiation of the atomic template
+(§{section.template-shape}), not a replacement: it restores the delimited
+*inbound* structure (the Self-check, §{section.prism-execution-self-check}) that
+a prose pre-flight loses, and keeps the delimited *outbound* signature (the
+Output, §{section.prism-execution-output}).
+
+- **Inbound — Self-check (§{appendix.prism-execution-self-check}).** Carries the
+  3-way pre-flight: **INPUT** check is the *only* place the vendor may halt —
+  completeness is the terminal-sentinel presence + Dispatch-ID match (Self-check
+  Step 0, §{section.transport-integrity-bracket}); are named files present +
+  readable?; **SUBSTRATE**
+  declares mode + best-effort model and proceeds; **ANALYSIS** proceeds on
+  defaults, recording any under "could not verify," never asking the operator.
+- **Body.** Self-contained context (inline small + available priors, attach
+  large / not-yet-produced), task, method (recompute — do not trust —
+  arithmetic), output structure (the finding shape,
+  §{section.prompt-body-convergence-provisions}), success criteria.
+- **Outbound — Output signature (§{appendix.prism-execution-output}).** The
+  vendor wraps its findings in the `━━━ PRISM EXECUTION OUTPUT ━━━` block and
+  copies the `Dispatch ID` and `Prompt digest`/`Reference` lines verbatim.
+
+Use `━━━` heavy-line delimiters, never triple-backtick fences, for the paste's
+internal blocks — they are fence-safe, so the whole paste survives inside one
+outer fenced block when rendered to the operator.
+
+### J.3 Digest preimage — pin for re-stage reproducibility
+
+The copy-through digest (§{section.prism-execution-output}) is only reproducible
+on a **re-stage** if its preimage is pinned exactly: the byte scope is the
+content between the paste fences, with the Envelope's (and Output's) `Reference:`
+/ `Prompt digest:` line set to the sentinel `sha256:PENDING`, the
+transport-integrity bracket (§{section.transport-integrity-bracket}) — the
+`PRISM PROMPT INTEGRITY` anchor block in full and the terminal
+`━━━ END PRISM DISPATCHED PASTE` sentinel — **excluded** from the byte scope as
+transport framing, and **no trailing-newline normalization**. (The bracket is
+*excluded*, not normalized — its own `Prompt digest:` line is display-only and
+never enters the preimage; this differs from the `Reference:` line, which is
+*included-with-value-blanked*.)
+An unpinned preimage stays deterministic and consistent *within* a session, but
+a later session that wants to re-stage the same dispatch and preserve the
+original digest cannot reproduce it — the field catch behind this rule. The
+digest pairs with the **Dispatch ID**
+(§{section.recommended-vs-executed-reconciliation}): the digest verifies body
+integrity, the Dispatch ID identifies the dispatch instance; together with the
+operator-set filename they are the reconciliation triple.
+
 ## 18. Project, feedback, updates `[structural | stable]`
 <a id="section-project-feedback-updates"></a>
 
@@ -7173,7 +7799,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.16.0 (this file)
+- **Framework version.** v2.17.0 (this file)
 - **Embedded Lens Library version.** v0.15 (Appendix G)
 - **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -7189,12 +7815,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_16_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_17_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_15.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.16.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.17.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -7220,7 +7846,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.16.0 attached; v{published} available at {releases URL}.`
+   `Framework v2.17.0 attached; v{published} available at {releases URL}.`
    `Lens v0.15 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -7263,8 +7889,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.16.0). https://github.com/Ronkupper/PRISM
+> (v2.17.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.16.0 framework operating document.*
+*End of PRISM v2.17.0 framework operating document.*
