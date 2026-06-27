@@ -1,7 +1,7 @@
 {
   "name": "prism",
   "description": "PRISM — structured, multi-session, multi-vendor LLM-orchestrated audit & research framework. Lean always-loaded core + on-demand reference bundles.",
-  "version": "2.15.0",
+  "version": "2.16.0",
   "author": { "name": "Ron Kuper", "url": "https://github.com/Ronkupper" },
   "homepage": "https://github.com/Ronkupper/PRISM",
   "license": "CC-BY-4.0 AND MIT"

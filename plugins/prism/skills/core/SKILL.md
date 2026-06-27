@@ -57,6 +57,9 @@ resident until you open them.
 - **`reference/modes-and-surfaces.md`** — the Cowork capability surface and the
   `repo_backed` persistence mechanics. Fetch when a non-default orchestration surface
   or persistence value is in play.
+- **`reference/lanes-ui.md`** — the lanes / roles model, the PRISM Desk and PRISM
+  Meta standing lanes, the PRISM UI, and Setup onboarding. Fetch when lanes / Desk /
+  UI / onboarding work is in front of you.
 - **`reference/provenance.md`** — spec→v2 source mapping, the decision-tag index, and
   the v1.x→v2 surface drift. Fetch when tracing a decision's rationale or origin.
 - **`reference/glossary.md`** — the glossary. Fetch on an unfamiliar term.

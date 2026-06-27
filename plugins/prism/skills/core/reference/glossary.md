@@ -1,4 +1,4 @@
-<!-- PRISM v2.15.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
+<!-- PRISM v2.16.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix A — Glossary
@@ -33,6 +33,7 @@ mechanics live in the cross-referenced sections.
 | **`fires-covered` / `fires-uncovered` / `doesn't-fire` / `fires-maybe`** | Probe 1's tri-state-with-maybe disposition per Lens. §{section.probe-1-coverage-grading-iterates}. |
 | **Follow-up** | An additive strategy revision when a *sound* prior run wants a new or expanded dimension: route the scope-addition to the next consuming pass or a new pass — do not augment-and-re-run the completed producer. Distinct from an M10 re-run (which redoes a *defective* run). §{section.strategy-stability}. |
 | **Jurisdiction map** | Setup artifact. Per-jurisdiction listing of triggered regulatory regimes and their materiality. §{section.jurisdiction-map}. |
+| **Lane** | A unit of parallel work — {a resume pointer, an append-only log, an inbox, one concern}. Object lane (the engagement) and meta lane (methodology). §{section.lanes}. |
 | **Layer 1** | Per-prompt convergence — orchestration absorbs returned findings into the Master. Monitors M6/M7/M8/M12 fire here. |
 | **Layer 2** | Cold synthesis across all Layer-1 findings to produce the audit's external deliverable. M9 fires here. M11 surfaces readiness. |
 | **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (21). v0.15 release pinned at `prism-lens-v0.15`. §{section.library-integration}. |
@@ -42,17 +43,24 @@ mechanics live in the cross-referenced sections.
 | **Monitor** | Orchestration-side check that fires at a defined lifecycle slot. M1–M12 specified in §{section.monitor-specifications}. |
 | **Natural seam** | A transition point where migration is low-cost. Defined set: convergence round complete, phase boundary, deliverable shipped, setup iteration complete. §{section.continuous-curation-posture}. |
 | **Orchestration session** | Claude session with the framework attached. Master state, Monitor fires, Setup probes, convergence reasoning all live here. §{section.two-session-types}. |
+| **OPEN_ITEMS inbox** | A lane's append-only, tier-1 cross-lane inbox; any session appends, the lane owner drains at its turn. Closes the pointer-clobber class. §{section.cross-lane-inbox}. |
 | **Output** | The third block of the triple contract — outbound finding signature with executed-state metadata and operator-next instructions. §{section.prism-execution-output}. |
 | **Point refresh** | Per-project, in-Setup currency check on Library `rubric_anchor:` entries. §{section.currency-maintenance-point-refresh}. |
 | **Pre-mortem** | Setup-time probe (§{probe.P4}). Imagines execution complete; surfaces failure modes. §{section.probe-4-pre-mortem-iterates}. |
 | **PRISM** | Prompts · Research · Iteration · Synthesis · Master. The framework. |
+| **PRISM Desk** | The object lane's standing Planner/Steward lane — owns *What's next* and the drain, renders the PRISM UI; re-opened per round or periodically. §{section.prism-desk-and-prism-meta}. |
+| **PRISM Meta** | The standing methodology lane (reflection / synthesis / worksheet-building), opened periodically. §{section.prism-desk-and-prism-meta}. |
+| **PRISM UI** | The operator-facing View+Controller over the repo Model, rendered by the Desk; STATE / HEALTH / ACTION surfaces. §{section.prism-ui}. |
 | **Probe** | Setup-time grading construct against the draft Prompt Strategy. Seven probes specified: P1–P7. §{section.the-seven-probes}. |
 | **Prompt Strategy** | The plan of dispatched prompts produced by Setup. Lives in the Master. Iterates in P0; ratifies at P0→P1; revisable at convergence (§{section.strategy-stability}). |
+| **Quick mode** | `SETUP_QUICKMODE` — a first-class light Setup shape (one ephemeral session, clean-context sub-agent fan-out) keeping the cheap rigor; graduates to a full engagement without losing work. §{section.setup-onboarding-and-mode-selection}. |
 | **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §{section.m12-result-completeness-check}. |
 | **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §{section.three-layer-readiness}. |
+| **Role × context-tier** | The flexible matrix a session occupies — role (Setup / Desk / dispatch-builder / -consumer / execution / convergence / validation) × tier (orchestration vs execution). §{section.roles-context-tier}. |
 | **Self-check** | The middle block of the triple contract — substrate verification per §{principle.SP-13}, plus the output-side gates: the §{principle.SP-16} uninvited-frame audit (step 5) and the §{principle.SP-18} recompute gate (step 6). §{section.prism-execution-self-check}. |
 | **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
 | **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
+| **Setup onboarding** | `SETUP_ONBOARDING` — the Setup-as-scaffolder flow that generates the per-engagement SI from a template and emits project-create / install cards; the two-project model. §{section.setup-onboarding-and-mode-selection}. |
 | **Stakeholder register** | Setup artifact. Per-role listing of stake, motivation, positioning/angle, decision power, and communication channel; the operator/commissioner is a mandatory row. §{section.stakeholder-register}. |
 | **Standing Principle (SP)** | Persistent posture; not a discrete fire. See the full roster in §{section.standing-principles} and §{section.v1-x-standing-principles-carryforward-catalog}. |
 | **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §{section.strategy-stability}. |

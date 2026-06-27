@@ -1,4 +1,4 @@
-<!-- PRISM v2.15.0 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
+<!-- PRISM v2.16.0 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 8. Parked v2 design ideas
@@ -13,6 +13,11 @@ recommendations and graceful-degradation paths rather than hard machinery.
 
 Setup at P0.1 includes a recommendation to create a Claude Project as the
 home for project state.
+
+**Graduated under SETUP_ONBOARDING (v2.16.0).** This recommendation is now
+active rather than parked: an engagement runs as the two-project model
+(orchestration + execution) that Setup onboarding stands up — see
+§{section.setup-onboarding-and-mode-selection}.
 
 **Recommendation surfacing — when.**
 

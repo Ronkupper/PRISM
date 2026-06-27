@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.15.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.16.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.15.0
+version: 2.16.0
 released: 2026-06-28
-supersedes: 2.14.1
+supersedes: 2.15.0
 lens_library_embedded: "0.15"
 substrate_target:
   vendor: claude
@@ -20,11 +20,11 @@ normativity:
 lint_catalog_version: 4
 ---
 
-# PRISM v2.15.0 — Framework operating document
+# PRISM v2.16.0 — Framework operating document
 
-**Status:** v2.15.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.16.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.14.1 (MINOR — "Foundations": adds Standing Principles SP-21 *Trust structure, self-report advisory* and SP-22 *Surface translation*; a `retrieved | inferred` finding-basis axis with SP-12 extended to inferences; a filename-authoritative vendor-reconciliation rewrite (D4); SP-16's visual-polarity channel, SP-10 widened to operator-world state and external-send events, and an SP-13 substrate self-ID corroboration-only note; defect fixes D1–D3 and D5; the M10-rerun vs Follow-up distinction (R1); the M2 clobbered-pointer tie-break; Setup stakeholder-positioning; the Setup-artifact re-audit; and accumulate-never-overwrite for canonical state. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.15.0 (MINOR — "Operating-model backbone": adds the lanes / roles operating model (§{section.lanes-roles-and-the-prism-ui}) — every engagement runs as parallel lanes worked by sessions in a role × context-tier matrix; the standing-lane constructs **PRISM Desk** (Planner/Steward) and **PRISM Meta**, with the operator-facing **PRISM UI** (a View + Controller over the repo) and `<Lane>-<N>` session numbering; an append-only cross-lane **OPEN_ITEMS inbox** with tier classification, drain, and commit-discipline; bundle-load integrity (a phase → bundle manifest + a per-session entry-check); **SETUP_ONBOARDING** (Setup generates the per-engagement SI from a template and emits project-create / install cards; the two-project model) and **SETUP_QUICKMODE** (a first-class light mode); M5 self-banding (§{section.m5-context-pressure-monitor}); and the `/prism-meta` lane-entry command. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.15 in Appendix G; a singleton PRISM.md attachment is
@@ -71,7 +71,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.15.0 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.16.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -86,7 +86,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.15.0 after running a session:
+Reading order for an operator returning to v2.16.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -94,11 +94,11 @@ Reading order for an operator returning to v2.15.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.15.0 covers `[structural | stable]`
+### 1.1 What v2.16.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.15.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.15.0 covers:
+PRISM v2.16.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.16.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -134,10 +134,10 @@ and research framework. v2.15.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.15.0 does not cover
+### 1.2 What v2.16.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.15.0 implements the spec; the spec implements
+- **Re-debating direction.** v2.16.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog ships embedded
@@ -145,14 +145,14 @@ and research framework. v2.15.0 covers:
   standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`)
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
-- **Empirical calibration.** Several thresholds in v2.15.0 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.16.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.15.0's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.16.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -160,7 +160,7 @@ and research framework. v2.15.0 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.15.0 honours the constraint inherited from the design document (DD.§8.3):
+v2.16.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -169,7 +169,7 @@ v2.15.0 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.15.0. Roadmap
+Mechanics that violate any leg do not earn their place in v2.16.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -180,14 +180,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.15.0 mechanics for the
+**Read this section first if you are encountering v2.16.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.15.0 has the following constructs, grouped by category.
+PRISM v2.16.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -236,6 +236,11 @@ PRISM v2.15.0 has the following constructs, grouped by category.
   Update session (§{section.currency-maintenance-update-session}) · Continuous-curation (§{section.continuous-curation-posture}) · Strategy stability
   (§{section.strategy-stability}) · Three-layer readiness (§{section.three-layer-readiness}) · Two-layer convergence · Triple
   contract · Independent Validation Dispatch (§{section.independent-validation-dispatch})
+
+**Operating model** (§{section.lanes-roles-and-the-prism-ui})
+- Lane (object · meta) · Role × context-tier matrix · PRISM Desk
+  (Planner/Steward) · PRISM Meta · OPEN_ITEMS cross-lane inbox · PRISM UI
+  (View + Controller) · `<Lane>-<N>` session numbering
 
 **Bands** — 🟢 Comfortable · 🟡 Getting warm · 🟠 Curate now · 🔴 Migrate
 
@@ -408,6 +413,16 @@ v1.x M12 Conversation Pressure retired into M5
 | SP-21 Trust structure, self-report advisory | New in v2.15.0 | §{section.sp-21-trust-structure-self-report-advisory} |
 | SP-22 Surface translation | New in v2.15.0 | §{section.sp-22-surface-translation} |
 
+**Operating model** (the lanes/roles backbone, §{section.lanes-roles-and-the-prism-ui})
+
+| Construct | Lifecycle | Reads | Writes | Detail |
+|---|---|---|---|---|
+| Lane | Per engagement (object · meta) | Pointer, log, inbox | The lane's worker | §{section.lanes} |
+| PRISM Desk | Per round or periodic | Master, pointer, logs, inbox | *What's next*, UI render | §{section.prism-desk-and-prism-meta} |
+| PRISM Meta | Periodic | Worksheet, ML-log, meta inbox | Meta artifacts | §{section.prism-desk-and-prism-meta} |
+| OPEN_ITEMS inbox | Append per writer; drain per owner-turn | Any session | Any session (append) | §{section.cross-lane-inbox} |
+| PRISM UI | Per Desk render | The repo Model | (view only) | §{section.prism-ui} |
+
 ### 2.4 Lifecycle slots
 <a id="section-lifecycle-slots"></a>
 
@@ -417,12 +432,13 @@ Every construct fires in exactly one lifecycle slot.
 |---|---|
 | Setup-only | All probes (P1–P7) |
 | Per session-open | M1 (also fires per-turn), M2, SP-13 substrate verification |
-| Per orchestration turn | M3, M4, M5, M11, *What's next* write, Master append |
+| Per orchestration turn | M3, M4, M5, M11, *What's next* write, Master append, inbox drain (repo_backed lanes) |
 | Per dispatch | Envelope production, Self-check execution, Output return, Vendor Selection |
 | Per Layer-1 ingestion | M6, M7, M8, M12, Vendor Triangulation (if applicable), reconciliation |
 | Per Layer-2 synthesis | M9 (also Layer-1) |
 | Out-of-band | Update session, point refresh (in-Setup) |
 | 🔴 band | Migration handoff |
+| Per standing-lane session-open | Lane resume + inbox drain + M5 self-band (§{section.lanes-roles-and-the-prism-ui}) |
 | Persistent posture | All Standing Principles |
 
 ### 2.5 Band legend
@@ -451,6 +467,8 @@ If you need to find:
   reference for chosen alternative + rationale.
 - **A template to paste** → Appendix E template compendium.
 - **The full text of a Standing Principle** → §{section.standing-principles}, the Standing-Principles catalog.
+- **How to run parallel lanes, the Desk, or the cross-lane inbox** → §{section.lanes-roles-and-the-prism-ui}.
+- **The Setup onboarding flow or quick mode** → §{section.setup-onboarding-and-mode-selection}.
 
 ---
 ## 3. Architecture mechanics
@@ -828,6 +846,15 @@ in the engagement's repo work folder instead of living only in chat. Same
 artifact, same content, same per-turn-close lifecycle; repo-residence changes
 only where it is stored, making it the pickup point a session on any surface
 reads on resume. Nothing else about *What's next* changes.
+
+**Concurrency split (repo_backed lanes).** *What's next* is the lane's
+single-writer pointer (tier 2): only its owner rewrites it, once per turn,
+carrying the live pointer forward. Multi-writer content — standing FM-watches,
+open items, and cross-lane candidates — moves OUT to the append-only
+`OPEN_ITEMS` inbox (§{section.cross-lane-inbox}); the body keeps the `Master
+version:` pointer, band, current-state summary, recommended next action, the
+dispatch-ready payload, and this-turn hints. The resume protocol gains one
+step: read *What's next* → **drain `OPEN_ITEMS`** → Master.
 
 **Required content.**
 
@@ -1207,6 +1234,278 @@ search per dispatch) is small.
 Vendor Selection is the named application. Other applications inherit:
 point refresh (§{section.currency-maintenance-point-refresh}), Update sessions (§{section.currency-maintenance-update-session}), and any future recommendation
 surface.
+
+### 3.7 Lanes, roles, and the PRISM UI `[structural | stable]`
+<a id="section-lanes-roles-and-the-prism-ui"></a>
+
+An engagement is not one session in sequence; it is **parallel lanes of
+work**, each resumed and advanced by sessions occupying distinct **roles**,
+with a single operator-facing surface — the **PRISM UI** — rendered over the
+repo. This section is the operating model. Reference-grade detail (the full
+role matrix, the UI rendering and trajectory views, the Setup-onboarding SI
+template and install cards) lives in Appendix I
+(§{appendix.lanes-roles-prism-ui}), fetched on demand.
+
+**The net-helpful bar (the load-bearing constraint).** The lane/role
+machinery is the *session's* bookkeeping, never the *operator's*. A session
+decides which lane and role it occupies and whether to isolate or work
+inline; it drives the operator only through plain nudges (the *What's next*
+recommended action, the dispatch-ready payload, operator hints, the band).
+**Success criterion: if a construct makes the operator track which lane or
+role they are in, it has failed.** This is SP-22 (§{principle.SP-22}) applied
+to the operating model.
+
+#### 3.7.1 Lanes — the unit of parallel work
+<a id="section-lanes"></a>
+
+A **lane** = {a resume pointer, an append-only log, an inbox, one concern}.
+A session is a worker that resumes a lane, appends to its log, drains its
+inbox, and updates its pointer.
+
+- **Object lane** — the engagement itself: *What's next*
+  (§{section.whats-next}, the pointer) + the Master (§{section.the-master}) +
+  the findings / E-log + `OPEN_ITEMS.md` (§{section.cross-lane-inbox}).
+- **Meta lane** — methodology work on PRISM itself: the meta resume-pointer
+  (the latest meta handoff) + the worksheet + the ML-log +
+  `OPEN_ITEMS_meta.md`.
+
+`persistence: repo_backed` (§{section.repo-backed-mechanics}) is the enabler —
+it makes any lane resumable from any surface; without it, lane work degrades
+to file-carrying. The general resume protocol is: **identify your lane →
+resume from its pointer → drain its inbox → honor lane boundaries.**
+Cross-lane work travels by inbox append, never by editing another lane's
+pointer (§{section.cross-lane-inbox}).
+
+#### 3.7.2 Roles × context-tier — a flexible matrix
+<a id="section-roles-context-tier"></a>
+
+A lane is worked by sessions in distinct **roles**, and **role and
+context-tier are independent axes**. Context-tier = PRISM-loaded
+*orchestration* vs clean *execution*. The object-lane roles — Setup,
+Planner/Steward (the PRISM Desk), Dispatch-builder, Dispatch-consumer,
+Execution-run, Convergence-run, Validation-run — and their tier anchoring are
+tabulated in Appendix I (§{appendix.lanes-roles-prism-ui}). The proof the axes
+are independent: a convergence run is an orchestration-*class* role run in a
+clean execution-*style* context.
+
+**Flexibility is the point.** Lanes × roles is a matrix a session occupies
+*flexibly* — a session decides what it needs and may cross roles in one
+sitting (a dispatch session can also converge and write the Master).
+Separation is a **tool the session chooses**, not a mandatory partition.
+
+**Three isolate options** (when a session chooses to separate): inline · a
+separate session · a **clean-context sub-agent** (reads returns from
+`outputs/` by path — no re-attach, no handoff). The sub-agent's bound: clean
+context but **same distribution** (§{principle.SP-15}) — a fine converger or
+clean reader, **never a triangulation seat**, and weaker than a
+distinct-vendor Independent Validation Dispatch
+(§{section.independent-validation-dispatch}).
+
+**The sub-agent is the DEFAULT, not merely an option, for a clean-context
+role.** A framework-loaded orchestration session (full PRISM core in context)
+is **contaminated** for any clean-context-class role — a convergence run
+especially, also a fresh independent read or clean drafting. The session must
+**self-trigger** the sub-agent on that recognition ("core in context → a
+clean-context role goes to a sub-agent"), not wait for an operator prompt.
+Hand the sub-agent return-paths + method only — never your own conclusions —
+so its read stays independent. The convergence leg specifically: the
+dispatch-consumer saves and verifies the N returns, then launches a
+clean-context sub-agent to converge; the sub-agent writes its convergence to
+`outputs/` and the **parent** absorbs it and writes the Master (the sub-agent
+never touches canonical state). Convergence ≠ validation: the IVD remains a
+separate, distinct-vendor adversarial step on the deliverable.
+
+#### 3.7.3 The cross-lane inbox — `OPEN_ITEMS` `[structural | stable]`
+<a id="section-cross-lane-inbox"></a>
+
+Multi-writer content does not belong in a single-writer replace-in-place
+file. Classify every `repo_backed` artifact by **concurrency shape**:
+
+| Tier | Shape | Examples | Discipline |
+|---|---|---|---|
+| 1 | Append-only (many disjoint writers) | E-log, ML-log, **`OPEN_ITEMS.md`** | per-writer namespaced IDs (no shared counter); one canonical line format; rebase on the live tail |
+| 2 | Single-writer pointer (replace-in-place) | *What's next* body | the lane owner rewrites once per turn; every write carries the live pointer forward |
+| 3 | Single-lineage canonical state | the Master (one file; do not decompose) | bump-from-live + reset-on-reject; append-mostly |
+
+**The inbox.** Each lane gets an append-only inbox at a fixed repo path
+beside its pointer (object lane `OPEN_ITEMS.md`; meta lane
+`OPEN_ITEMS_meta.md`). One canonical item-line format so a tail scan is never
+format-blind:
+
+```
+- [<writer-ns-id>] · <YYYY-MM-DD> · <kind> · <text> · disposition: open
+```
+
+- `<writer-ns-id>` is **namespaced per writer** (`E-87`, `ML-46`,
+  `Desk-15-03`) — never a global counter.
+- `<kind>` ∈ `open-item` | `fm-watch` | `cross-lane` | `bundle-miss`
+  (§{section.bundle-load-integrity}).
+- **Dispositions are append-only too** — a transition is a new appended line,
+  never an in-place edit; the original block stays as the audit trail. `open`
+  → `drained(<lane/session>, <note>)` | `declined(<reason>)`. A drained or
+  declined item is retained (optionally archived at close); draining ≠
+  deleting.
+
+**Append discipline (tier-1).** Any session — dispatch, Desk, meta, or
+sub-agent — *appends*, rebasing on the live tail first. An append is
+structurally unable to clobber a pointer because it never touches the pointer
+file.
+
+**Drain protocol (the single-writer act).** At its turn the lane **owner**
+(the Planner/Steward — the PRISM Desk for the object lane) reads the pointer
+*and* the inbox; for each non-terminal item it **folds** the item into the
+Strategy / next-action / register, then **appends a `drained` line**. Draining
+is part of resume *and* of every turn-close
+(§{section.failsafe-recovery-continuous-state-mechanics}).
+
+**Cross-lane handoffs.** When lane A produces something lane B must action (an
+object session spots a candidate-ML for the meta lane), A appends a
+`cross-lane` item to B's inbox; B drains on resume. Promotion becomes
+pull-on-resume, not push-on-operator-memory — which kills the orphan risk. The
+close-time both-logs merge is the backstop.
+
+**Commit discipline (the companion rule; closes the stale-snapshot clobber).**
+Promoted to `repo_backed` mechanics: (a) **rebase on the live tail** before
+every push; (b) **commit only the files you mutated** — explicit paths, never
+a full-folder snapshot; a session that did not change a log / state / Master
+does not stage it; (c) **commit-then-confirm** — read the file back or verify
+the SHA on `origin` before reporting it written. Append-only files are
+merge-safe under this rule: disjoint appends never conflict once each writer
+rebases. *(Repo-integrity commit-discipline for the maintainer environments
+themselves also lives in the engagement SI and the multi-committer protocol,
+which the framework references rather than re-specifies.)*
+
+**M2 tie-break.** Once the inbox + commit-discipline are in force, the
+pointer-clobber that the M2 clobbered-pointer tie-break
+(§{section.m2-version-drift}) repairs stops occurring; the tie-break remains
+the safety net for legacy cases.
+
+#### 3.7.4 PRISM Desk and PRISM Meta — the standing lanes `[structural | stable]`
+<a id="section-prism-desk-and-prism-meta"></a>
+
+Two **standing lanes** are first-class framework constructs, re-opened by the
+operator over the life of an engagement:
+
+- **PRISM Desk** — the object lane's **Planner/Steward** ("your what's-next
+  desk"). It owns the *What's next* pointer and the drain, and renders the
+  PRISM UI (§{section.prism-ui}). Re-opened per round **or periodically**; a
+  Desk opened after a gap **catches up by re-syncing from the canonical repo**
+  — render-from-verified-model (verify repo state, *then* render; the repo
+  accumulates, so the Desk rebuilds from artifacts, not memory).
+- **PRISM Meta** — the methodology lane (reflection / synthesis /
+  worksheet-building), opened periodically.
+
+**Desk role discipline.**
+
+- **Dispatches, never executes inline** — the Desk plans and stages;
+  vendor / execution work goes to an execution run or a sub-agent.
+- **State-correction is in remit, not only advancement** — the Desk may
+  correct a stale or clobbered pointer (reconcile to the corroborated maximum,
+  §{section.m2-version-drift}), not just move state forward.
+- **Propagate to all dependents; never make the operator the
+  coherence-checker** — when state changes, the Desk updates every dependent
+  artifact and the staged next-opener, rather than leaving the operator to
+  notice the incoherence.
+- **Catch-one → propose-a-sweep.** When any orchestration session catches one
+  instance of a recurring defect (an opaque code, an unverified claim, a stale
+  pointer), it proposes a *systematic* sweep / reusable prompt / codification
+  rather than fixing only the one — internalizing vigilance the framework would
+  otherwise externalize onto the operator.
+
+**The stop-set (auto vs ask).** The Desk and standing sessions **pause only at
+real gates** — ratify strategy (P0→P1), any scope change, ratify close, and
+anything sent outward to the client (an external deliverable; a push to a
+shared `main` is a coordination / outward act) — and otherwise **auto-handle
+routine work** (save / verify / converge returns, stage the next pass, file
+bookkeeping, drain the inbox) and report. This is the net-helpful bar made
+concrete: do the routine, surface the consequential.
+
+**`<Lane>-<N>` session numbering.** Number standing-lane sessions
+`<Lane>-<N>` (e.g. `Meta-4`, `Desk-12`). **N is assigned by the opening
+handoff / pointer** (hand-forward, not self-grabbed — the same
+single-writer-pointer discipline as *What's next*, so no shared-counter race),
+stamped on every log entry and handoff, and backed by the immutable
+commit-range (the friendly label is a rendering; the commit-range is the
+race-proof anchor). Ephemeral roles are not numbered — they carry identity as
+SP-14 filenames (§{principle.SP-14}) on their outputs.
+
+**`/prism-meta` (lane-entry command).** The meta-lane sibling of
+`/prism-start` and `/prism-whats-next`: it pulls canonical repo state, reads
+the meta resume-pointer, drains `OPEN_ITEMS_meta.md`, adopts the session
+number `N` from the pointer, and announces it ("Meta-4, resuming from
+ML-45"). "Command vs carry-over file" is a false choice — the command *reads*
+the carry-over pointer; under `repo_backed` no push-handoff is needed, and it
+degrades to ask / paste off-repo.
+
+#### 3.7.5 The PRISM UI — the operator-facing view `[structural | stable]`
+<a id="section-prism-ui"></a>
+
+Rendered consistently round-to-round, the Desk **is** the operator's single
+pane of glass — a **View + Controller** over the repo **Model** (Master /
+pointer / logs / worksheet). The lanes / roles / concurrency are the internal
+model; the PRISM UI is the view that hides them and shows only rendered state
++ next action.
+
+**Three surfaces.**
+
+- **STATE view** — the trajectory / arc-to-close map (where the engagement is
+  and what remains, with the critical path and the bottleneck).
+- **HEALTH view** — the re-sync: HEAD == mirror, pointer present, no ghost
+  session, the band, **pending cross-lane inbox items**, and the bundle-load
+  audit (§{section.bundle-load-integrity}).
+- **ACTION surface** — the staged paste + nudges (the dispatch-ready payload,
+  the next opener).
+
+**Make-it-a-real-UI discipline.** (1) **Consistent rendered component
+schemas** — a stable visual language round-to-round, so the operator scans at
+low load; swapping the metaphor each render imposes a re-learning tax. (2)
+**Render-from-verified-model** — the re-sync integrity check runs *before*
+rendering, so the view cannot drift or hallucinate state. (3) **Generated /
+conversational** — the operator can ask for any view ("trajectory") and get it
+on demand. The STATE view's two modes (a dependency / critical-path map and a
+progress timeline, shown side by side with a colored status encoding and a
+code → real-name legend) and the worked renders are in Appendix I
+(§{appendix.lanes-roles-prism-ui}).
+
+#### 3.7.6 Bundle-load integrity `[structural | stable]`
+<a id="section-bundle-load-integrity"></a>
+
+The core is lean and fetches reference bundles on demand
+(§{section.resource-fetch-convention}); a session must reliably load the right
+bundle for the role it occupies. Order-keeping is **not centralized in the
+Desk** — it is distributed across every session, defense-in-depth:
+
+- **Front line (every session, real-time).** The core carries a **phase →
+  bundle manifest** and each session runs a **visible self-check** on entry
+  against it ("role = Setup → load `reference/setup.md` ✓"), the same
+  verify-don't-assert posture as the SP-13 substrate check. Operating without a
+  required bundle is **fail-loud**, not a silent gap: the core stub for a
+  gutted area says "you cannot run this from core alone — fetch the bundle."
+- **Opportunistic (any session).** A session that notices a *prior* pass ran
+  phase-work without its bundle **flags it** — appends a `bundle-miss` item to
+  the inbox (§{section.cross-lane-inbox}) — and fixes it if the correction is
+  simple and safe.
+- **Backstop (the Desk, periodic).** The Desk's HEALTH-view re-sync
+  (§{section.prism-ui}) gains a **bundle-load audit**: read the manifest
+  against the Master's record of what ran since the last re-sync, flag any pass
+  that did phase-work without its bundle, and propagate the correction
+  (surface-translated — the operator sees "re-check pass X," not the
+  machinery).
+
+**Phase → bundle manifest (kept in core).**
+
+| Role / occasion | Required bundle |
+|---|---|
+| Setup session · probe iteration | `lens/PRISM_lens_library.md` (Probe 1 grading); `reference/templates.md` (Setup artifacts) |
+| Producing a Setup / dispatch artifact | `reference/templates.md` |
+| Non-default surface · `repo_backed` | `reference/modes-and-surfaces.md` |
+| Lanes / Desk / UI / onboarding work | `reference/lanes-ui.md` |
+| Vendor parsing on returns | `reference/vendor-parsing.md` |
+| Tracing a decision's rationale | `reference/provenance.md` |
+
+The manifest is the structural contract the core-slimming refactor populates as
+it moves phase-scoped sections (Setup, currency, continuity, corpus-access)
+into their own bundles; this integrity layer is its safety net.
 
 ---
 
@@ -2194,6 +2493,17 @@ Fires at every orchestration turn-close.
   Monitors. When M5 ≥ 🟠, M5's curation-now directive ranks at priority
   tier 1 in *What's next* (above other Monitor fires).
 
+**Self-band (per standing session / lane).** M5 fires not only on the
+engagement band carried in *What's next* but on **each standing session's own
+context** — every standing lane (the PRISM Desk, PRISM Meta;
+§{section.prism-desk-and-prism-meta}) emits its own band read against its
+numbered identity ("Meta-4 hit 🟠 at a seam → hand to Meta-5"). A standing
+session **proactively calls its own handoff at a seam** when its self-band
+warrants — the bookend to the SP-13 substrate check (SP-13 opens a session;
+the self-band closes it). This is a Monitor extension, not a new Standing
+Principle: the "heed your amber" posture is already SP-4 (monitors produce
+visible output) plus M5's emission.
+
 ### 5.3 Continuous-curation posture `[methodological | stable]`
 <a id="section-continuous-curation-posture"></a>
 
@@ -2334,6 +2644,15 @@ essentially nothing because state is always recoverable.
   - Always reflects the current state, not a future or planned state.
   - Operator reads *What's next* as the sole source of "what to do next" —
     not by scrolling chat, not by reading the Master in detail.
+
+- **Inbox drain at every orchestration turn-close (repo_backed lanes).**
+  The lane owner reads its `OPEN_ITEMS` inbox alongside *What's next*, folds
+  each non-terminal item into the Strategy / next-action / register, and
+  appends a `drained` disposition line (§{section.cross-lane-inbox}). The drain
+  is a turn-close peer of the Master and *What's next* writes, and part of
+  resume. An un-drained inbox at turn-close is a turn-close self-check surfaced
+  on the resume line and via SP-4 emission — not a separate Monitor (it does
+  not warrant a numbered slot).
 
 **Consequence — asymmetric bet.**
 
@@ -2806,6 +3125,103 @@ the premise-side complement to the P5 falsifier
 (§{section.probe-5-falsifier-once}, which tests the *thesis*); M6 stays the
 finding-driven backstop.
 
+### 6.6 Setup onboarding and mode selection `[structural | stable]`
+<a id="section-setup-onboarding-and-mode-selection"></a>
+
+Setup is the workspace **scaffolder**: the operator should run the system
+without learning lanes and roles (§{section.lanes-roles-and-the-prism-ui}).
+Two completions of that scaffolding role land here — the onboarding flow
+(which generates the engagement's SI and stands up its project(s)) and the
+mode offer (full engagement vs quick brief). Reference-grade detail — the SI
+template, the project-create / install cards, and the quick-mode procedure —
+is in Appendix I (§{appendix.lanes-roles-prism-ui}); this section is the rule.
+
+**Mode offer (first thing Setup does).** Setup offers **full engagement vs
+quick brief** at the very top. The mode is **operator-selected**, not
+auto-detected — auto-detection risks mis-classifying a real engagement as a
+brief.
+
+#### Full-engagement onboarding (Setup-as-scaffolder)
+
+For a full engagement, Setup runs once at engagement creation: **gather →
+generate → ratify → commit → emit cards.**
+
+1. **Gather** the per-subject config — mostly already collected by the probes
+   that build the Decision brief and Stakeholder register
+   (§{section.setup-artifacts}): subject +
+   decision tracks; repo + work folder (the `repo_backed` locus); the surface
+   registry; credential location + redaction regime; any engagement-specific
+   standing directives.
+2. **Generate the SI draft** by instantiating the framework **SI template** —
+   framework-native sections collapse to one-line references (persistence,
+   resume, commit-discipline, the cross-lane inbox, lanes / roles per the
+   framework); per-subject sections are filled from the gathered config.
+   Engagement-specific standing directives are **embedded verbatim** (memory
+   does not cross projects; the SI is the only cross-project carrier).
+3. **Operator ratification — a hard gate (SP-9, §{principle.SP-9}).** Setup
+   presents the draft SI to ratify or edit before install: **auto-draft, not
+   auto-install** — generated so the operator never hand-writes boilerplate,
+   ratified so a bespoke SI is still possible. Silence is not ratification.
+4. **Commit the SI to the repo** as the canonical copy from day one (the
+   resume-time reconcile then catches later drift).
+5. **Emit the project-create + install card(s)** — one per surface, in the
+   "open a session, paste this" family, naming WHERE / WHAT / RESULT in plain
+   language. The SI installs as a **full wholesale paste, never a splice**
+   (manual splice-edits are risky; re-issue on change is always a full
+   replacement). The PAT is **guidance-only** — placed by the operator, never
+   handled by the session.
+
+**Two-project model (on Cowork).** A full engagement runs as **two
+projects**: an **orchestration project** (the SI installed, core-load
+enforced; it hosts the standing PRISM Desk and PRISM Meta lanes) and an
+**execution project** (**SI-less, memory off, organization-only**) so the
+ephemeral, PRISM-unaware vendor-execution runs have a home and their returns
+land somewhere. Memory-off and a working folder kept separate from the
+orchestration mirror are **recommended, not merely allowed** — they preserve
+the execution run's clean-context independence (the
+§{section.independent-validation-dispatch} premise: a shared SI or memory would
+let run N inherit run N-1's framing). This graduates the
+Claude-Project-at-Setup recommendation
+(§{section.claude-project-as-setup-recommendation}) to active. The SI's
+repo-canonical sync and opener machinery are framework-native from here, not
+engagement-local interim.
+
+#### Quick mode (`SETUP_QUICKMODE`)
+
+A first-class **proportionality** option — the light end of the lean-Master
+principle — for a task that wants *some* rigor but not the full apparatus (a
+meeting brief, a quick analysis). Without it, the activation cost is paid in
+full or the rigor is skipped entirely.
+
+**Shape:** one Cowork session, `ephemeral` persistence, with **clean-context
+sub-agent fan-out** for the work (one sub-agent per research / extraction /
+drafting strand, returning only grounding facts;
+§{section.lanes-roles-and-the-prism-ui}).
+
+**Dropped (the heavy machinery):** `repo_backed` persistence; Master
+accumulation and bump atomicity; multi-vendor equivalence dispatch and Vendor
+Triangulation; multi-session handoff; the full seven-probe Setup and
+three-layer readiness.
+
+**Kept (the cheap, load-bearing rigor):** a **mini decision-brief** (two
+lines — the audience and the decision it serves); a **lite Probe-1** (name the
+handful of lenses that actually bear, plus any deliberately out of scope; no
+coverage-saturation loop); and the **output-discipline gates on the
+deliverable** — SP-16 (§{principle.SP-16}), SP-17 (§{principle.SP-17}), SP-18
+(§{principle.SP-18}) — which are exactly the part that protects a brief from
+being confidently wrong or mis-framed. The deliverable is self-contained
+(SP-20, §{principle.SP-20}).
+
+**Sub-agents need no envelope.** The triple contract exists for cross-vendor /
+cross-session boundaries that quick mode does not cross; fan-out delegation is
+free-form internal.
+
+**Graduation (the load-bearing line).** When a quick brief turns out to be a
+real engagement, it is promoted **without losing work**: the quick-mode output
+**seeds a `repo_backed` Master** — the mini decision-brief becomes the Decision
+brief, the lite lens pick seeds the Prompt Strategy, and the deliverable
+becomes the first finding — and full Setup continues from there.
+
 ---
 
 ## 7. Library integration
@@ -3077,6 +3493,11 @@ recommendations and graceful-degradation paths rather than hard machinery.
 Setup at P0.1 includes a recommendation to create a Claude Project as the
 home for project state.
 
+**Graduated under SETUP_ONBOARDING (v2.16.0).** This recommendation is now
+active rather than parked: an engagement runs as the two-project model
+(orchestration + execution) that Setup onboarding stands up — see
+§{section.setup-onboarding-and-mode-selection}.
+
 **Recommendation surfacing — when.**
 
 - At P0.1, before the first probe iteration runs.
@@ -3273,6 +3694,12 @@ inline expansion per §{section.atomic-prompt-self-containment}.
   maximum across the state, not whichever stale checkout last touched the
   pointer.
 
+- **Inbox removes the clobber source.** Under `repo_backed` lanes, multi-writer
+  watches live in the append-only `OPEN_ITEMS` inbox
+  (§{section.cross-lane-inbox}), not in the replace-in-place pointer, so the
+  pointer-clobber this tie-break repairs stops occurring by construction. The
+  tie-break is the safety net for legacy / pre-inbox cases.
+
 **Why retained despite bump atomicity (§{section.filename-conventions-and-bump-atomicity}).** Bump atomicity makes drift
 unlikely *by construction* but not impossible. Residual failure modes:
 
@@ -3298,7 +3725,7 @@ unlikely *by construction* but not impossible. Residual failure modes:
 #### 9.1.4 M5 — Context Pressure `[structural | stable]`
 <a id="section-m5-context-pressure"></a>
 
-Spec per §{section.m5-context-pressure-monitor}.
+Spec per §{section.m5-context-pressure-monitor} — including the per-standing-session **self-band** (each standing lane's session monitors its own context, not only the engagement band) and the self-stewardship seam-handoff (§{section.prism-desk-and-prism-meta}).
 
 #### 9.1.5 M9 — Convergence Type Drift `[methodological | stable]`
 <a id="section-m9-convergence-type-drift"></a>
@@ -3646,6 +4073,10 @@ Discipline (this new SP-14).
   bundle returns, §{section.corpus-access-dispatch}) extend the Output pattern to
   `[project]_[promptID]_[source]_[seq].{png,pdf,xlsx}`, so the archive is a
   provenance-bearing set rather than a bag of `screenshot1.png`.
+- The cross-lane inbox (`OPEN_ITEMS.md`, §{section.cross-lane-inbox}) takes a
+  fixed repo path per lane (object lane `OPEN_ITEMS.md`; meta lane
+  `OPEN_ITEMS_meta.md`); a drained or declined item is retained, optionally
+  archived to a `## Closed` section at engagement close.
 - The em-dash (` — `) separator stays cross-platform safe (pipe is illegal
   on Windows, shell-active on Unix).
 - M1 (Missing Inputs) parses attached filenames against expected patterns;
@@ -4084,6 +4515,8 @@ plus the atomic-bump routine that produces version increments.
 | Lens Library file | `PRISM_lens_library_[version].md` | `PRISM_lens_library_v0_9.md` |
 | Update session output | `PRISM_lens_library_[new-version].md` + delta document | `PRISM_lens_library_v0_9_1.md` |
 | Subject brief | `[project]_brief.md` | `acme_audit_brief.md` |
+| Cross-lane inbox | `OPEN_ITEMS.md` (object) · `OPEN_ITEMS_meta.md` (meta) | `OPEN_ITEMS.md` |
+| Lane bootstrap / handoff | `[project]_[lane]_bootstrap.md` · `[project]_[lane]_handoff_[YYYY-MM-DD].md` | `alumnite_desk_bootstrap.md` |
 | Prompt Strategy (when separate) | `[project]_prompt_strategy_[phase-versioning].md` | `acme_audit_prompt_strategy_p1.0.md` |
 
 **Separator.** Underscores within tokens (`prism2.0`, `master_p2.3`); the
@@ -4684,6 +5117,7 @@ mechanics live in the cross-referenced sections.
 | **`fires-covered` / `fires-uncovered` / `doesn't-fire` / `fires-maybe`** | Probe 1's tri-state-with-maybe disposition per Lens. §{section.probe-1-coverage-grading-iterates}. |
 | **Follow-up** | An additive strategy revision when a *sound* prior run wants a new or expanded dimension: route the scope-addition to the next consuming pass or a new pass — do not augment-and-re-run the completed producer. Distinct from an M10 re-run (which redoes a *defective* run). §{section.strategy-stability}. |
 | **Jurisdiction map** | Setup artifact. Per-jurisdiction listing of triggered regulatory regimes and their materiality. §{section.jurisdiction-map}. |
+| **Lane** | A unit of parallel work — {a resume pointer, an append-only log, an inbox, one concern}. Object lane (the engagement) and meta lane (methodology). §{section.lanes}. |
 | **Layer 1** | Per-prompt convergence — orchestration absorbs returned findings into the Master. Monitors M6/M7/M8/M12 fire here. |
 | **Layer 2** | Cold synthesis across all Layer-1 findings to produce the audit's external deliverable. M9 fires here. M11 surfaces readiness. |
 | **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (21). v0.15 release pinned at `prism-lens-v0.15`. §{section.library-integration}. |
@@ -4693,17 +5127,24 @@ mechanics live in the cross-referenced sections.
 | **Monitor** | Orchestration-side check that fires at a defined lifecycle slot. M1–M12 specified in §{section.monitor-specifications}. |
 | **Natural seam** | A transition point where migration is low-cost. Defined set: convergence round complete, phase boundary, deliverable shipped, setup iteration complete. §{section.continuous-curation-posture}. |
 | **Orchestration session** | Claude session with the framework attached. Master state, Monitor fires, Setup probes, convergence reasoning all live here. §{section.two-session-types}. |
+| **OPEN_ITEMS inbox** | A lane's append-only, tier-1 cross-lane inbox; any session appends, the lane owner drains at its turn. Closes the pointer-clobber class. §{section.cross-lane-inbox}. |
 | **Output** | The third block of the triple contract — outbound finding signature with executed-state metadata and operator-next instructions. §{section.prism-execution-output}. |
 | **Point refresh** | Per-project, in-Setup currency check on Library `rubric_anchor:` entries. §{section.currency-maintenance-point-refresh}. |
 | **Pre-mortem** | Setup-time probe (§{probe.P4}). Imagines execution complete; surfaces failure modes. §{section.probe-4-pre-mortem-iterates}. |
 | **PRISM** | Prompts · Research · Iteration · Synthesis · Master. The framework. |
+| **PRISM Desk** | The object lane's standing Planner/Steward lane — owns *What's next* and the drain, renders the PRISM UI; re-opened per round or periodically. §{section.prism-desk-and-prism-meta}. |
+| **PRISM Meta** | The standing methodology lane (reflection / synthesis / worksheet-building), opened periodically. §{section.prism-desk-and-prism-meta}. |
+| **PRISM UI** | The operator-facing View+Controller over the repo Model, rendered by the Desk; STATE / HEALTH / ACTION surfaces. §{section.prism-ui}. |
 | **Probe** | Setup-time grading construct against the draft Prompt Strategy. Seven probes specified: P1–P7. §{section.the-seven-probes}. |
 | **Prompt Strategy** | The plan of dispatched prompts produced by Setup. Lives in the Master. Iterates in P0; ratifies at P0→P1; revisable at convergence (§{section.strategy-stability}). |
+| **Quick mode** | `SETUP_QUICKMODE` — a first-class light Setup shape (one ephemeral session, clean-context sub-agent fan-out) keeping the cheap rigor; graduates to a full engagement without losing work. §{section.setup-onboarding-and-mode-selection}. |
 | **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §{section.m12-result-completeness-check}. |
 | **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §{section.three-layer-readiness}. |
+| **Role × context-tier** | The flexible matrix a session occupies — role (Setup / Desk / dispatch-builder / -consumer / execution / convergence / validation) × tier (orchestration vs execution). §{section.roles-context-tier}. |
 | **Self-check** | The middle block of the triple contract — substrate verification per §{principle.SP-13}, plus the output-side gates: the §{principle.SP-16} uninvited-frame audit (step 5) and the §{principle.SP-18} recompute gate (step 6). §{section.prism-execution-self-check}. |
 | **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
 | **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
+| **Setup onboarding** | `SETUP_ONBOARDING` — the Setup-as-scaffolder flow that generates the per-engagement SI from a template and emits project-create / install cards; the two-project model. §{section.setup-onboarding-and-mode-selection}. |
 | **Stakeholder register** | Setup artifact. Per-role listing of stake, motivation, positioning/angle, decision power, and communication channel; the operator/commissioner is a mandatory row. §{section.stakeholder-register}. |
 | **Standing Principle (SP)** | Persistent posture; not a discrete fire. See the full roster in §{section.standing-principles} and §{section.v1-x-standing-principles-carryforward-catalog}. |
 | **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §{section.strategy-stability}. |
@@ -4819,7 +5260,12 @@ Sequence Violation), §{section.m10-rerun-fix-required} (§{monitor.M10} Rerun/F
 2 Readiness), §{section.filename-conventions-and-bump-atomicity} (filename conventions and bump atomicity), §{section.template-shape}
 (atomic prompt template), §{section.project-feedback-updates} (project, feedback, updates), §{section.project-identity}
 (project identity), §{section.resource-fetch-convention} (resource fetch convention), §{section.feedback-and-contribution} (feedback
-and contribution), §{section.citation} (citation).
+and contribution), §{section.citation} (citation), §{section.lanes-roles-and-the-prism-ui} (lanes,
+roles, and the PRISM UI), §{section.cross-lane-inbox} (cross-lane OPEN_ITEMS
+inbox), §{section.prism-desk-and-prism-meta} (PRISM Desk and PRISM Meta),
+§{section.prism-ui} (PRISM UI), §{section.bundle-load-integrity} (bundle-load
+integrity), §{section.setup-onboarding-and-mode-selection} (Setup onboarding
+and mode selection).
 
 ### C.2 `[methodological | stable]`
 <a id="appendix-methodological-stable"></a>
@@ -6588,6 +7034,133 @@ fenced content via mobile paste on those vendors.
 
 ---
 
+## Appendix I — Lanes, roles, PRISM UI, and Setup onboarding (reference)
+<a id="appendix-lanes-roles-prism-ui"></a>
+
+Reference-grade detail for the operating model
+(§{section.lanes-roles-and-the-prism-ui}) and Setup onboarding
+(§{section.setup-onboarding-and-mode-selection}). The rules are in those
+sections; this appendix is the matrix, the UI rendering, the trajectory-view
+reference, and the onboarding artifacts. In the Skill archive it is the
+`reference/lanes-ui.md` bundle, fetched when lanes / Desk / UI / onboarding
+work is in front of you.
+
+### I.1 The role × context-tier matrix
+
+Context-tier = PRISM-loaded *orchestration* vs clean *execution*. Role and
+tier are independent axes — a convergence run is an orchestration-*class* role
+run in a clean execution-*style* context.
+
+| Role | Context-tier | Anchored to |
+|---|---|---|
+| Setup | orchestration | the seven probes (§{section.setup-mechanics}) |
+| Planner/Steward (the PRISM Desk) | orchestration | the *What's next* pointer + the drain (§{section.cross-lane-inbox}) |
+| Dispatch-builder | orchestration | Vendor Selection (§{section.vendor-selection-at-dispatch}) + the Envelope (§{section.prism-execution-envelope}) |
+| Dispatch-consumer | orchestration | Layer-1 absorption + reconciliation + the Master write |
+| Execution-run | execution | the self-contained dispatched prompt (§{section.two-session-types}); PRISM-unaware by design |
+| Convergence-run | execution-*style*, orchestration-*class* | clean-session Vendor Triangulation (§{section.vendor-triangulation}) |
+| Validation-run | execution | the Independent Validation Dispatch (§{section.independent-validation-dispatch}) — adversarial, deliverable-only, distinct-vendor |
+
+The meta lane has its own roles (reflection / synthesis / worksheet-building).
+
+### I.2 Isolation — inline, session, or sub-agent
+
+A session that chooses to separate has three options: **inline** (when the
+work is light), **a separate session** (for a durable handoff), or a
+**clean-context sub-agent** (the default when the holding session is
+contaminated — see §{section.roles-context-tier}). Sub-agent bounds: clean
+context but same distribution (§{principle.SP-15}) — a converger or clean
+reader, never a triangulation seat. Hand it return-paths + method only; it
+reads returns from `outputs/` by path and writes back to `outputs/`; the
+parent absorbs and writes canonical state.
+
+### I.3 The PRISM UI — rendering detail
+
+The three surfaces (STATE / HEALTH / ACTION) and the make-it-a-real-UI
+discipline are in §{section.prism-ui}. Rendering specifics:
+
+- **Consistency.** The visual language is stable round-to-round; mode is
+  operator-selectable but the component schemas do not silently change between
+  renders.
+- **Colored status encoding** (operator-liked): complete · you-are-here ·
+  pending · critical-path · decisive.
+- **Code → real-name legend.** The view carries a legend translating pass
+  codes (e.g. `A11`, `R1`, `T1`) to their real objectives, rendered from the
+  live Master's Prompt Strategy and Dispatch register — not re-transcribed.
+
+### I.4 The trajectory STATE view — two modes (operator-reviewed reference)
+
+The STATE view has **two modes answering different questions**, shown **side
+by side, each in its own form — not fused** into one diagram:
+
+- **Dependency / critical-path map** (an "engagement map"): rounded-rectangle
+  nodes top→bottom with explicit fork / join arrows; a dedicated critical-path
+  + bottleneck callout; a status / role legend. Optimized to show
+  **structure** — what gates what, what runs in parallel, where the bottleneck
+  is. The decision-relevant view when the engagement is blocked on one external
+  event.
+- **Progress timeline**: a single vertical spine with one status dot per node
+  (● complete · ◉ you are here · ○ pending), a nested sub-box for parallel
+  legs, a dashed "not on this trajectory" aside. Optimized to show **sequence +
+  status** — where am I, what's done. Cleaner at a glance; lower-information at
+  a blocked / branching phase.
+
+Operator inputs that shaped this: liked both renders and wants both (side by
+side, not converged); liked the colored encoding; wants the code → name legend
+on the view; wants the visual language stable round-to-round. The Builder owns
+the final rendering; this records the reviewed inputs.
+
+### I.5 Setup onboarding — the SI template and install cards
+
+**The framework SI template** is a generic skeleton with native-construct
+references + typed config slots, shipping with the SI version machinery baked
+in (`SI version` + changelog). Filling it yields a complete lean SI with zero
+boilerplate re-authoring.
+
+- **Native-construct sections (one-line references):** persistence
+  (`repo_backed`, §{section.repo-backed-mechanics}); resume protocol;
+  commit-discipline + the cross-lane inbox (§{section.cross-lane-inbox}); lanes
+  / roles / the Desk (§{section.lanes-roles-and-the-prism-ui}).
+- **Per-subject slots (Setup fills):** subject + decision tracks; repo + work
+  folder; surface registry (the two-project model on Cowork — orchestration +
+  execution); credential location (PAT path) + redaction regime;
+  engagement-specific standing directives, **embedded verbatim**.
+
+**The project-create + install card** (one per surface; the operator-guide
+schema, plain-language WHERE / WHAT / RESULT):
+
+- **Create the project(s)** — two on Cowork (orchestration: SI installed,
+  core-load enforced, hosts Desk + Meta; execution: SI-less, memory-off,
+  organization-only, working folder separate from the orchestration mirror).
+  Automatable vs guidance-only is surface-dependent — default guidance-only,
+  automate where a surface allows.
+- **Install the SI** — the full SI as a single wholesale-paste block ("Project
+  instructions, not a chat; paste the WHOLE thing"); never a splice.
+- **Drop the PAT** — guidance to place the credential in the per-surface
+  location; guidance-only, never handled by the session.
+- **Seed the repo** — the work-folder layout + first commit (or confirm the
+  repo exists).
+- **Re-issue on change** — any later SI change ships as a full replacement for
+  wholesale paste on every surface; the resume-time version reconcile is the
+  drift detector.
+
+### I.6 Quick mode — the mini-Setup procedure
+
+The shape and the kept / dropped split are in
+§{section.setup-onboarding-and-mode-selection}. Concretely:
+
+1. **Frame (≤ 2 lines):** audience + the decision this serves. If this cannot
+   be stated, the task is under-specified — surface it, don't proceed on a
+   guess (SP-9, §{principle.SP-9}).
+2. **Lite lens pick:** name the handful of lenses that bear; note any
+   deliberately out of scope (one line each). No coverage-saturation loop.
+3. **Fan out** clean-context sub-agents per strand; assemble grounding facts.
+4. **Apply the output gates** (SP-16 / SP-17 / SP-18) to the assembled
+   deliverable.
+5. **Deliver** one self-contained artifact (SP-20); no repo write-back. If it
+   grows into a real engagement, graduate per
+   §{section.setup-onboarding-and-mode-selection}.
+
 ## 18. Project, feedback, updates `[structural | stable]`
 <a id="section-project-feedback-updates"></a>
 
@@ -6600,7 +7173,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.15.0 (this file)
+- **Framework version.** v2.16.0 (this file)
 - **Embedded Lens Library version.** v0.15 (Appendix G)
 - **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -6616,12 +7189,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_15_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_16_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_15.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.15.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.16.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -6647,7 +7220,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.15.0 attached; v{published} available at {releases URL}.`
+   `Framework v2.16.0 attached; v{published} available at {releases URL}.`
    `Lens v0.15 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -6690,8 +7263,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.15.0). https://github.com/Ronkupper/PRISM
+> (v2.16.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.15.0 framework operating document.*
+*End of PRISM v2.16.0 framework operating document.*

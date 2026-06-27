@@ -1,4 +1,4 @@
-<!-- PRISM v2.15.0 Skill bundle (on-demand reference). Vendor parsing observations (Appendix H). Reference.
+<!-- PRISM v2.16.0 Skill bundle (on-demand reference). Vendor parsing observations (Appendix H). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix H — Vendor parsing observations

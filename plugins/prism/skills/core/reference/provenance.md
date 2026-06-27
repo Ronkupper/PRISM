@@ -1,4 +1,4 @@
-<!-- PRISM v2.15.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
+<!-- PRISM v2.16.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix B — Spec → v2.0 source mapping
@@ -101,7 +101,12 @@ Sequence Violation), §{section.m10-rerun-fix-required} (§{monitor.M10} Rerun/F
 2 Readiness), §{section.filename-conventions-and-bump-atomicity} (filename conventions and bump atomicity), §{section.template-shape}
 (atomic prompt template), §{section.project-feedback-updates} (project, feedback, updates), §{section.project-identity}
 (project identity), §{section.resource-fetch-convention} (resource fetch convention), §{section.feedback-and-contribution} (feedback
-and contribution), §{section.citation} (citation).
+and contribution), §{section.citation} (citation), §{section.lanes-roles-and-the-prism-ui} (lanes,
+roles, and the PRISM UI), §{section.cross-lane-inbox} (cross-lane OPEN_ITEMS
+inbox), §{section.prism-desk-and-prism-meta} (PRISM Desk and PRISM Meta),
+§{section.prism-ui} (PRISM UI), §{section.bundle-load-integrity} (bundle-load
+integrity), §{section.setup-onboarding-and-mode-selection} (Setup onboarding
+and mode selection).
 
 ### C.2 `[methodological | stable]`
 <a id="appendix-methodological-stable"></a>

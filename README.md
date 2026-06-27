@@ -37,7 +37,7 @@ Same framework on every surface — only install and invocation differ. **New he
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`.
-- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_15_0.md` for the version-pinned copy) to a fresh chat.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_16_0.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
 
@@ -102,7 +102,7 @@ PRISM is checked two ways:
 
 ## Current version
 
-**v2.15.0** — current file: [`PRISM.md`](./PRISM.md). v2.15.0 ("Foundations") is a MINOR over v2.14.1 — it adds Standing Principles SP-21 (trust structure, self-report advisory) and SP-22 (surface translation); a `retrieved | inferred` finding-basis axis (§4.11) with SP-12 extended to inferences; filename-authoritative vendor reconciliation (§4.7); SP-16's visual-polarity channel, a widened SP-10, and an SP-13 substrate self-ID note; defect fixes (D1–D3, D5); the M10-rerun vs Follow-up distinction; the M2 clobbered-pointer tie-break; Setup stakeholder-positioning; a Setup-artifact re-audit; and accumulate-never-overwrite (§11.2). Additive — no construct renumbering. The version-pinned snapshot at this tag is [`PRISM_v2_15_0.md`](./PRISM_v2_15_0.md) (byte-identical to PRISM.md at the v2.15.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.16.0** — current file: [`PRISM.md`](./PRISM.md). v2.16.0 ("Operating-model backbone") is a MINOR over v2.15.0 — it adds the **lanes / roles** operating model (every engagement runs as parallel lanes worked by sessions in a role × context-tier matrix), the standing-lane constructs **PRISM Desk** (Planner/Steward) and **PRISM Meta** with the operator-facing **PRISM UI** and `<Lane>-<N>` session numbering (§3.7); an append-only cross-lane **OPEN_ITEMS inbox** with tier classification, drain, and commit-discipline; bundle-load integrity (a phase→bundle manifest + a per-session entry-check); **SETUP_ONBOARDING** (Setup generates the per-engagement SI from a template and emits project-create / install cards; the two-project model) and **SETUP_QUICKMODE** (a first-class light mode) (§6.6); M5 self-banding; and the `/prism-meta` lane-entry command. Reference detail lives in the new Appendix I / `reference/lanes-ui.md` bundle. Additive — no construct renumbering. The version-pinned snapshot at this tag is [`PRISM_v2_16_0.md`](./PRISM_v2_16_0.md) (byte-identical to PRISM.md at the v2.16.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 
@@ -133,7 +133,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_15_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_16_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
 - `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`. It ships two slash commands under `plugins/prism/commands/` — `/prism-start <subject>` (begin an engagement) and `/prism-whats-next` (resume from the Master's *What's next*) — and the Skill also triggers on plain-language PRISM requests.

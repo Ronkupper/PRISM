@@ -53,6 +53,13 @@ abstract: >-
   self-report-advisory and surface-translation — a retrieved-versus-inferred
   finding-basis axis, filename-authoritative vendor reconciliation, Setup
   stakeholder-positioning, and a Setup-artifact re-audit.
+  v2.16 ("Operating-model backbone") adds the lanes / roles operating model —
+  every engagement runs as parallel lanes worked by sessions in a role ×
+  context-tier matrix — with the PRISM Desk and PRISM Meta standing lanes and
+  an operator-facing PRISM UI; an append-only cross-lane open-items inbox with
+  commit discipline; bundle-load integrity; Setup onboarding (a Setup-generated
+  per-engagement system-instructions file plus a first-class quick mode); and
+  M5 self-banding.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -65,7 +72,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.15.0"
+version: "2.16.0"
 date-released: "2026-06-28"
 keywords:
   - llm
