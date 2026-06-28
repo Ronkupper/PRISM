@@ -31,11 +31,11 @@ So "PRISM runs on Claude" (orchestration) and "PRISM uses several vendors" (exec
 
 ## How an engagement runs
 
-Beyond the two distribution forms, PRISM runs an engagement as a small repeating loop behind a single operator-facing surface — you act on plain-language cards and never track the framework's internals.
+Beyond the two distribution forms, PRISM runs an engagement as a small repeating loop behind a single operator-facing surface — you act on plain-language cards while the framework runs the orchestration for you, kept legible and named, never a black box.
 
 <p align="center"><img src="assets/prism_operator_flow.svg" alt="PRISM operator flow: Setup, repeating execution rounds, and Closure — each operator step an open / decide / act / hand-back card" width="50%"></p>
 
-**One lifecycle, three phases.** **Setup** scaffolds the workspace and grades scope against the Lens Library; a sequence of **execution rounds** does the work; a symmetric **Closure** gate checks everything off and hands over clean deliverables — a plain-language report, and, when the decision turns on numbers, an interactive workbook the audience can drive. Every step you touch is a rendered card — *open → decide → act → hand back* — while lanes, roles, and concurrency stay hidden machinery.
+**One lifecycle, three phases.** **Setup** scaffolds the workspace and grades scope against the Lens Library; a sequence of **execution rounds** does the work; a symmetric **Closure** gate checks everything off and hands over clean deliverables — a plain-language report, and, when the decision turns on numbers, an interactive workbook the audience can drive. Every step you touch is a rendered card — *open → decide → act → hand back* — while the lanes, roles, and concurrency underneath run for you, named and in view (the [command table](#quick-start) maps each command to its session) rather than hidden.
 
 **The PRISM Desk.** A standing "what's-next" desk is your single pane of glass: when you return it re-syncs state from the repo, shows where you are and the one next action, and stages each dispatch as a paste-ready prompt. Because it rebuilds from the canonical repo rather than memory, you can step away for several rounds and it catches up.
 
