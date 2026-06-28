@@ -8,7 +8,7 @@
 
 The framework comes in two forms built from the same source: a single Markdown file (`PRISM.md`) you attach to any LLM chat, and a **Claude Skill plugin** that installs a lean core and fetches reference material on demand. The single file carries its own machine-readable frontmatter, lint contract, embedded [Lens Library](#the-lens-library) (Appendix G), and vendor-parsing escape-hatch (Appendix H) so it self-documents across sessions and vendors; the Skill is a verified, deterministic projection of that same content. See [Which form should I use?](#which-form-should-i-use).
 
-> **New through v2.20.1 — a named operating model, with a matching command set.** Recent releases add the layer that runs an engagement end to end: a **PRISM Desk** (one operator-facing surface that stages every step), a symmetric **Setup → rounds → Closure** lifecycle, a five-stage **dispatch round-trip**, engagement deliverables (a plain-language report plus an optional interactive workbook), and a core-slimming refactor that keeps the always-loaded core lean by fetching phase-scoped material on demand. On the Skill, that lifecycle now has a matching slash-command set — `/prism-start`, `/prism-whats-next`, `/prism-converge`, `/prism-status`, `/prism-close`. See [How an engagement runs](#how-an-engagement-runs). (Installation is unchanged — see [Quick start](#quick-start).)
+> **New through v2.20.1 — a named operating model, with a matching command set.** Recent releases add the layer that runs an engagement end to end: a **PRISM Desk** (one operator-facing surface that stages every step), a symmetric **Setup → rounds → Closure** lifecycle, a five-stage **dispatch round-trip**, engagement deliverables (a plain-language report plus an optional interactive workbook), and a core-slimming refactor that keeps the always-loaded core lean by fetching phase-scoped material on demand. On the Skill, that lifecycle now has a matching slash-command set. See [How an engagement runs](#how-an-engagement-runs). (Installation is unchanged — see [Quick start](#quick-start).)
 
 ## What PRISM is for
 
@@ -65,7 +65,18 @@ Same framework on every surface — only install and invocation differ. **New he
 Run a PRISM audit on [your subject].
 ```
 
-Or, on the Skill, a slash-command set tracks the engagement lifecycle: `/prism-start <subject>` to begin, `/prism-whats-next` (the PRISM Desk) to resume and get the one next action, `/prism-converge` to fold dispatch returns back into the Master, `/prism-status` for the trajectory view, and `/prism-close` to finish (Claude / Claude Code; untested in Cowork). The natural-language form works everywhere and is the portable path on non-Claude vendors.
+Or, on the Skill, a slash-command set tracks the engagement lifecycle. All six are operator commands you run in the PRISM **orchestration** session (the chat where PRISM is loaded — not the vendor chats where dispatched prompts are pasted). The **lane** says where a command acts: *object* = running an engagement; *meta* = developing the methodology.
+
+| Command | When | Lane | What it does |
+| --- | --- | --- | --- |
+| `/prism-start` | At Setup | Object | Begin an engagement — run the Setup probes P1–P7 |
+| `/prism-whats-next` | Resume / any session | Object | The Desk — re-sync from repo, show the next action, stage the next dispatch |
+| `/prism-converge` | After a dispatch returns | Object | Integrity-check the returns and fold them into the Master |
+| `/prism-status` | Any time | Object | Show the trajectory (Desk state view): dependency map + progress timeline |
+| `/prism-close` | At the end | Object | Run the closure gate and produce the deliverables (report / workbook) |
+| `/prism-meta` | Methodology work | Meta | Resume the methodology (contributor) lane |
+
+The slash commands are Claude / Claude Code (untested in Cowork); the natural-language form (`Run a PRISM audit on …`) works everywhere and is the portable path on non-Claude vendors.
 
 Then tell it your subject, work the Setup probes (P1–P7), iterate against the Lens Library to three-layer readiness, and dispatch the atomic prompts per the *What's next* artifact.
 
