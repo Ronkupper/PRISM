@@ -68,7 +68,7 @@ Skills from plugins work in chat too.
 
 ### Option B — attach the single file
 
-1. Download `PRISM.md` (stable) or `PRISM_v2_14_0.md` (version-pinned) from the repo.
+1. Download `PRISM.md` (stable) or `PRISM_v2_20_1.md` (version-pinned) from the repo.
    Raw URL: `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md`
 2. *Recommended:* create a **Project** (sidebar → **Projects** → **Create Project** → name it), then add `PRISM.md` to project knowledge so every chat in it has the framework loaded. Or attach `PRISM.md` directly to a single chat.
 
@@ -149,4 +149,5 @@ Worked example: §15 of `PRISM.md`.
 
 - **`/prism-start` scope.** Confirmed on Claude and Claude Code; untested in Cowork. The natural-language form (`Run a PRISM audit on…`) works everywhere and is the portable path on non-Claude vendors.
 - **Installing via the app vs. the CLI.** In Cowork and Chat you install through the **Customize → Plugins** UI — typing `/plugin …` in the chat box won't work there (that syntax is Claude Code only).
-- **Updating the Skill.** Cowork / Chat: Customize → Plugins → refresh the marketplace. Code: `/plugin marketplace update`, then `/plugin install prism@prism`.
+- **Updating the Skill.** Cowork / Chat: Customize → Plugins → refresh the marketplace, then **Update** PRISM. Code: `/plugin marketplace update prism` to refresh the catalog, then `/plugin update prism@prism` (run `/reload-plugins` to apply without restarting).
+- **If an update won't appear.** After a new release, if the desktop refresh seems stuck, the **Update** button stays greyed, or Code reports "already at the latest version" — the local marketplace copy is stale (a known Claude Code client issue, not a PRISM problem). Retry the refresh first; if it still won't take, remove and re-add the marketplace. Code: `/plugin marketplace remove prism`, then `/plugin marketplace add Ronkupper/PRISM`, then `/plugin install prism@prism`. Cowork / Chat: remove the PRISM marketplace in Customize → Plugins, then re-add it from `Ronkupper/PRISM` and Install. (Removing a marketplace uninstalls its plugins; re-adding restores them.)

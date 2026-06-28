@@ -56,7 +56,7 @@ Same framework on every surface — only install and invocation differ. **New he
 **Install** (paid plan required — Pro, Max, Team, or Enterprise):
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
-- **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`.
+- **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`.
 - **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_20_1.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
@@ -109,7 +109,7 @@ Both forms carry the identical framework — the Skill is a verified, determinis
 
 ```
 /plugin marketplace add Ronkupper/PRISM
-/plugin install prism@core
+/plugin install prism@prism
 ```
 
 **Use the single file (`PRISM.md`) when:**
@@ -139,7 +139,7 @@ PRISM is checked two ways:
 
 ### Why versioned filenames?
 
-PRISM is distributed primarily as a **file attachment**, not via `git clone`. The versioned filename lets the file self-document its version wherever it travels — attached to a Claude chat, installed as a Claude Skill, saved to a phone, shared between collaborators. You always know what version you're working with just by looking at the filename, without having to open the file or consult external metadata. [`PRISM.md`](./PRISM.md) is a byte-identical copy for anyone who wants a stable filename or a stable raw URL.
+PRISM ships on two end-user channels, neither of which is a `git clone`: the **Claude Skill plugin** via the GitHub marketplace (`Ronkupper/PRISM`), recommended on Claude — see [Quick start](#quick-start) — and a **single-file attachment** (`PRISM.md`) for any other vendor or a one-file workflow. The versioned filename matters for the single-file channel: it lets the file self-document its version wherever it travels — attached to a Claude chat, saved to a phone, shared between collaborators — so you always know what version you're working with from the filename alone, without opening the file or consulting external metadata. [`PRISM.md`](./PRISM.md) is a byte-identical copy for anyone who wants a stable filename or a stable raw URL. The Skill carries its version in `plugins/prism/.claude-plugin/plugin.json` instead.
 
 ## Roadmap
 
