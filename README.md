@@ -37,7 +37,7 @@ Same framework on every surface — only install and invocation differ. **New he
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`.
-- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_17_0.md` for the version-pinned copy) to a fresh chat.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_18_0.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
 
@@ -102,7 +102,7 @@ PRISM is checked two ways:
 
 ## Current version
 
-**v2.17.0** — current file: [`PRISM.md`](./PRISM.md). v2.17.0 ("Dispatch round-trip") is a MINOR over v2.16.0 — it names the whole dispatch round-trip as one bounded construct, the **dispatch lifecycle** (§4.15): five stages (build → dispatch → execute → return/converge → reconcile) that subsume the late-bound build, the operator and return cards, and the failure leg by reference. It refines the structural-completeness gate (§6.2) to require a pass **spec**, not a frozen Envelope (late binding); adds the **return-handling card** and a failure leg routed by type (seat-failure / digest-mismatch / substitution); a unique **Dispatch ID** paired with the copy-through digest so a return reconciles to the exact dispatch instance (§4.7); the fanned-IVD adjudicate-by-re-derivation refinement (§4.14); passive pre-fill of self-report (§4.13); and the agentic-browser driver class (§3.6). Reference detail lives in the new Appendix J / `reference/dispatch-conventions.md` bundle. Additive — no construct renumbering. The version-pinned snapshot at this tag is [`PRISM_v2_17_0.md`](./PRISM_v2_17_0.md) (byte-identical to PRISM.md at the v2.17.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
+**v2.18.0** — current file: [`PRISM.md`](./PRISM.md). v2.18.0 ("Lifecycle & deliverables") is a MINOR over v2.17.0 — it adds the symmetric **engagement closure** gate (§6.7): a three-layer close sweep that bookends Setup's three-layer readiness (§6.2), home of the orphan-sweep, the **reconcile-at-close** codification sweep, and the deliverable polish. It names the **comprehensive final report** as the engagement's deliverable of record plus the optional **interactive workbook**, with the report architecture, the craft conventions, the workbook cockpit pattern, and the presentation house-style in a new `reference/report-architecture.md` bundle (Appendix K); extends bump atomicity to client-facing deliverables with the shipped-equals-validated invariant (§11.2); adds an SP-18 standalone-figure tokenization guard for deliverable transforms (§10.1.9); lands the external-share family — one-repo-per-engagement, the de-coded share archive, share modes, and the image-redaction procedure — in a new `reference/external-share.md` bundle (Appendix L) with a read-the-repo-not-the-mirror tie on SP-8 (§10.2.1); and adds a multi-lane session-legibility operator guide (MO-6). Additive — no construct renumbering. The version-pinned snapshot at this tag is [`PRISM_v2_18_0.md`](./PRISM_v2_18_0.md) (byte-identical to PRISM.md at the v2.18.0 tag); previous versions are available via git tags per [`RELEASING.md`](./RELEASING.md).
 
 **Previous version:** v1.10.4 ([`PRISM_v1_10_4.md`](./PRISM_v1_10_4.md)) — terminal on the v1.x line. Projects under v1.10.4 remain on v1.10.4; v2 supersedes for new work.
 

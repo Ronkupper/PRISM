@@ -1,4 +1,4 @@
-<!-- PRISM v2.17.0 Skill bundle (on-demand reference). Vendor parsing observations (Appendix H). Reference.
+<!-- PRISM v2.18.0 Skill bundle (on-demand reference). Vendor parsing observations (Appendix H). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix H — Vendor parsing observations
@@ -117,5 +117,35 @@ breadth-first seats produced mostly already-addressed or stylistic items on the
 closed-document task. Accept a valid catch from any seat (recall is the point),
 but weight a web-oriented seat's *miss* on a closed-document point lightly — its
 strength is live-web breadth, not closed-doc recompute.
+
+### HTML → PDF transform hazards for deliverable builds
+
+The engagement report's primary form is single-file HTML rendered to PDF (the
+presentation house-style, §{appendix.report-architecture}). Field-observed render
+hazards on a WeasyPrint-class HTML→PDF engine — pre-warn for them when building or
+validating a PDF deliverable:
+
+- **Flex translucent-background double-paint.** A flex container with a
+  translucent background can paint its background twice (parent + item), darkening
+  the intended tint. Put the background on a single layer, or use an opaque value.
+- **Flex `space-between` title mis-size.** A `justify-content: space-between` title
+  row can mis-size or clip its items in the PDF engine where it renders fine in the
+  browser. Verify titles in the rendered PDF, not only the browser preview.
+- **`@page` vs `html`/`body` background mismatch.** The `@page` background and the
+  document background are separate; setting one and not the other leaves a margin
+  band in the off colour. Set both, or neither.
+- **Real page hierarchy on flat HTML.** A flat HTML document has no native pages —
+  use explicit `@page` rules + `page-break-inside: avoid` / `break-before` to force
+  a real cover / section / page structure, and embed fonts so the PDF is portable.
+- **Orphaned media on slide / section delete.** Deleting a slide or section from a
+  built deck or document can leave its media embedded; rebuild from the kept
+  content rather than deleting in place, and content-hash-verify the removed media
+  is gone (the §{appendix.external-share} image-redaction procedure depends on
+  this).
+
+Pair these with the §{principle.SP-18} deliverable-transform guard
+(§{section.sp-18-it-must-recompute}): tokenize standalone figures only (exclude
+acronym / code digits; strip tags first) so a clarity edit during the transform
+does not trip a false figure-drift halt.
 
 ---

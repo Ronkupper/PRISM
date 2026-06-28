@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.17.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.18.0. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.17.0
+version: 2.18.0
 released: 2026-06-28
-supersedes: 2.16.0
+supersedes: 2.17.0
 lens_library_embedded: "0.15"
 substrate_target:
   vendor: claude
@@ -20,11 +20,11 @@ normativity:
 lint_catalog_version: 4
 ---
 
-# PRISM v2.17.0 — Framework operating document
+# PRISM v2.18.0 — Framework operating document
 
-**Status:** v2.17.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.18.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.16.0 (MINOR — "Dispatch round-trip": names the whole dispatch round-trip as one bounded construct — the **dispatch lifecycle** (§{section.dispatch-lifecycle}), five stages (build → dispatch → execute → return/converge → reconcile) that subsume the late-bound build, the operator and return cards, and the failure leg by reference. Refines the structural-completeness gate (§{section.three-layer-readiness}) to require a pass **spec**, not a frozen Envelope (late binding); adds the **return-handling card** and the failure leg routed by type (seat-failure / digest-mismatch / substitution), a unique **Dispatch ID** paired with the copy-through digest so a return reconciles to the exact dispatch instance (§{section.recommended-vs-executed-reconciliation}), the fanned-IVD adjudicate-by-re-derivation refinement (§{section.independent-validation-dispatch}), the passive pre-fill of self-report (§{section.corpus-access-dispatch}), the agentic-browser driver class (§{section.vendor-selection-at-dispatch}), and a new **dispatch-conventions** reference bundle (§{appendix.dispatch-conventions}); and a **transport-integrity bracket** (§{section.transport-integrity-bracket}) — a top-of-paste integrity anchor paired with a terminal sentinel and a Self-check Step 0, so the execution session detects a truncated mid-stream copy before working (presence + Dispatch-ID match, never a hash recompute; the bracket is excluded from the digest preimage). Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.17.0 (MINOR — "Lifecycle & deliverables": adds the symmetric **engagement closure** gate (§{section.engagement-closure}) — a three-layer close sweep bookending Setup's three-layer readiness (§{section.three-layer-readiness}), home of the orphan-sweep, the **reconcile-at-close** codification sweep, and the deliverable polish. Names the **comprehensive final report** as the engagement's deliverable of record plus the optional **interactive workbook** (§{section.decision-brief}), with the report architecture, the craft conventions, the workbook cockpit pattern, and the presentation house-style routed to a new **report-architecture** reference bundle (§{appendix.report-architecture}); extends bump atomicity to client-facing deliverables with the shipped-equals-validated invariant (§{section.bump-atomicity-routine}, §{section.independent-validation-dispatch}); adds the §{principle.SP-18} standalone-figure tokenization guard for deliverable transforms; lands the external-share family — one-repo-per-engagement, the de-coded share archive, operator-selectable share modes, and the image-redaction procedure — in a new **external-share** reference bundle (§{appendix.external-share}) with the read-the-repo-not-the-mirror tie on §{principle.SP-8}; and adds a multi-lane session-legibility operator guide. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
 PRISM v2 Skill that loads it) and the project's Master. This file embeds
 Lens Library v0.15 in Appendix G; a singleton PRISM.md attachment is
@@ -71,7 +71,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.17.0 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.18.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -86,7 +86,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.17.0 after running a session:
+Reading order for an operator returning to v2.18.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -94,11 +94,11 @@ Reading order for an operator returning to v2.17.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.17.0 covers `[structural | stable]`
+### 1.1 What v2.18.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.17.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.17.0 covers:
+PRISM v2.18.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.18.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -134,10 +134,10 @@ and research framework. v2.17.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.17.0 does not cover
+### 1.2 What v2.18.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.17.0 implements the spec; the spec implements
+- **Re-debating direction.** v2.18.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog ships embedded
@@ -145,14 +145,14 @@ and research framework. v2.17.0 covers:
   standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`)
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
-- **Empirical calibration.** Several thresholds in v2.17.0 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.18.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.17.0's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.18.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -160,7 +160,7 @@ and research framework. v2.17.0 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.17.0 honours the constraint inherited from the design document (DD.§8.3):
+v2.18.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -169,7 +169,7 @@ v2.17.0 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.17.0. Roadmap
+Mechanics that violate any leg do not earn their place in v2.18.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -180,14 +180,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.17.0 mechanics for the
+**Read this section first if you are encountering v2.18.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.17.0 has the following constructs, grouped by category.
+PRISM v2.18.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -235,7 +235,12 @@ PRISM v2.17.0 has the following constructs, grouped by category.
   (§{section.standalone-monitors-m1-m2-m4-m5-m9} spec / §{section.filename-conventions-and-bump-atomicity}) · Telemetric framework (§{section.telemetric-framework-signal-weighting-and-compounding}) · Point refresh (§{section.currency-maintenance-point-refresh}) ·
   Update session (§{section.currency-maintenance-update-session}) · Continuous-curation (§{section.continuous-curation-posture}) · Strategy stability
   (§{section.strategy-stability}) · Three-layer readiness (§{section.three-layer-readiness}) · Two-layer convergence · Triple
-  contract · Independent Validation Dispatch (§{section.independent-validation-dispatch})
+  contract · Independent Validation Dispatch (§{section.independent-validation-dispatch}) · Engagement closure
+  (§{section.engagement-closure})
+
+**Deliverables** (§{appendix.report-architecture}, §{appendix.external-share})
+- Comprehensive final report · interactive engagement workbook · external share
+  archive
 
 **Operating model** (§{section.lanes-roles-and-the-prism-ui})
 - Lane (object · meta) · Role × context-tier matrix · PRISM Desk
@@ -439,6 +444,7 @@ Every construct fires in exactly one lifecycle slot.
 | Out-of-band | Update session, point refresh (in-Setup) |
 | 🔴 band | Migration handoff |
 | Per standing-lane session-open | Lane resume + inbox drain + M5 self-band (§{section.lanes-roles-and-the-prism-ui}) |
+| Engagement close | Closure gate — three-layer close sweep (§{section.engagement-closure}) |
 | Persistent posture | All Standing Principles |
 
 ### 2.5 Band legend
@@ -469,6 +475,9 @@ If you need to find:
 - **The full text of a Standing Principle** → §{section.standing-principles}, the Standing-Principles catalog.
 - **How to run parallel lanes, the Desk, or the cross-lane inbox** → §{section.lanes-roles-and-the-prism-ui}.
 - **The Setup onboarding flow or quick mode** → §{section.setup-onboarding-and-mode-selection}.
+- **How to close an engagement** → §{section.engagement-closure}.
+- **The report architecture, the workbook, or the presentation house-style** → §{appendix.report-architecture}.
+- **How to share the engagement externally** → §{appendix.external-share}.
 
 ---
 ## 3. Architecture mechanics
@@ -2597,6 +2606,13 @@ consistency, consistency against the attached materials, readability,
 and overall quality — and returns a severity-tagged findings list,
 routed back to the producing thread for disposition.
 
+**Validation target — shipped equals validated.** The artifact validated is the
+**complete** deliverable (the comprehensive report's body + appendices,
+§{appendix.report-architecture}), not a summary. What ships must equal what was
+validated: a correction made *after* validation re-stamps the revision and
+re-validates-if-material before send (the deliverable bump-atomicity invariant,
+§{section.bump-atomicity-routine}).
+
 **The independence rule is the point of the construct.** The validation
 prompt stays minimal, and the author's rationale, structure notes, and
 known-weak-spots list stay out of the validator's context: a validator
@@ -2660,7 +2676,7 @@ dispatch-ready payload) and the *inbound* half — "the N returns are back; here
 is exactly what to do with them" — barely at all, so an operator had to *ask*.
 The **dispatch lifecycle** names the whole round-trip as one construct: five
 stages, the dispatch-scoped sibling of the engagement lifecycle (Setup →
-Desk/Meta run → Closure). It is a **frame**, not new machinery — it subsumes
+Desk/Meta run → Closure, §{section.engagement-closure}). It is a **frame**, not new machinery — it subsumes
 the existing rules **by reference** (no renumbering, which would orphan the
 cross-refs): the detailed rules stay where they live.
 
@@ -3359,6 +3375,17 @@ Stakes / blast radius: [one paragraph]
 Falsifiers:        [list — findings that would refute the thesis]
 ```
 
+**Quantitative core → an interactive workbook (new in v2.18.0).** When the
+decision under test has a quantitative, operator-tunable core (unit economics, a
+threshold / corner case, a returns or break-even model), the finding may be
+delivered **also** as a live operator-drivable **workbook** — editable assumption
+cells driving the brief's decision gate in real time, color-coded — so the
+decision-maker explores the verdict against their own numbers. The report
+*states* the finding; the workbook lets them *drive* it. Trigger (one per
+engagement, on the central quantitative gate) and the cockpit pattern
+(editable-cells-only + live gate + opens-at-the-report's-case + §{principle.SP-18}
+tie-back) are in §{appendix.report-architecture}.
+
 #### 6.4.2 Stakeholder register
 <a id="section-stakeholder-register"></a>
 
@@ -3580,6 +3607,74 @@ real engagement, it is promoted **without losing work**: the quick-mode output
 **seeds a `repo_backed` Master** — the mini decision-brief becomes the Decision
 brief, the lite lens pick seeds the Prompt Strategy, and the deliverable
 becomes the first finding — and full Setup continues from there.
+
+### 6.7 Engagement closure `[structural | stable]`
+<a id="section-engagement-closure"></a>
+
+Setup is the gate **in** — three-layer readiness (§{section.three-layer-readiness}).
+Closure is the symmetric gate **out**: the same three-layer shape, opposite in
+direction, and **lighter in machinery** — a verification *sweep*, not a probe
+battery. An engagement does not just stop when a verdict ships; it **closes
+through a gate** that leaves no loose end on any lane and hands forward to the
+next engagement. This is the engagement-lifecycle bookend — Setup opens, the
+PRISM Desk runs (§{section.lanes-roles-and-the-prism-ui}), closure closes — the
+same arc the dispatch lifecycle mirrors at dispatch scope
+(§{section.dispatch-lifecycle}).
+
+#### Layer 1 — Object completeness
+
+The engagement's own work is finished and shippable:
+
+- Every dispatch-register pass (§{section.master-tracking-dispatch-register}) is
+  **closed, or deferred with rationale**; the Rerun Register
+  (§{section.m10-rerun-fix-required}) is clear; no monitor is left firing at HIGH.
+- Every Decision-brief **falsifier** (Probe 5, §{section.probe-5-falsifier-once})
+  is explicitly checked off — observed or not-observed, never silently dropped.
+- The verdict(s) ship as the **comprehensive final report** — the deliverable of
+  record, reflecting all the work, verdict-first and executive-scannable
+  (§{appendix.report-architecture}) — plus the interactive workbook when the
+  decision has a quantitative core, and any developer / action artifacts the
+  engagement produced. Editions are self-contained (§{principle.SP-20}) and plain
+  (§{principle.SP-17}).
+- The deliverable is **polished only after it validates** — the presentation
+  house-style (§{appendix.report-architecture}) runs on a deliverable the
+  Independent Validation Dispatch (§{section.independent-validation-dispatch}) has
+  already passed (§{principle.SP-18}); never beautify an unvalidated artifact.
+- **Shipped == validated** — the revision that ships equals the revision the IVD
+  validated; a post-validation correction re-stamps and re-validates-if-material
+  before send (§{section.bump-atomicity-routine}).
+
+#### Layer 2 — Lane / meta completeness
+
+No loose end on any lane, and every learning codified:
+
+- Every lane's cross-lane inbox is **drained** (§{section.cross-lane-inbox}) — the
+  orphan sweep is now a *gate*, not only a backstop: every candidate promoted,
+  none left buried in a log.
+- The methodology worksheet is finalized; both logs are merged.
+- **Reconcile-at-close.** Diff the finished deliverable against its reference
+  architecture (§{appendix.report-architecture}) in **one** pass and codify every
+  craft element that landed via production / operator polish but is not yet
+  codified — the reference is reconciled against the deliverable of record, which
+  closes the applied-but-not-codified pattern structurally (a learning lands in an
+  artifact without being codified so it recurs). Its in-flight sibling is
+  **catch-one → propose-a-sweep**.
+
+#### Layer 3 — Operator close ratification
+
+Explicit operator **close** ratification — silence is not closure
+(§{principle.SP-9}). The engagement is left **externally share-ready**
+(§{appendix.external-share}): one repo per engagement, an audience-facing README,
+the de-coded share archive, and a passed redaction review — produced as a
+derived, operator-gated artifact (present it; do not auto-commit unless directed).
+In the PRISM UI (§{section.prism-ui}) closure is the **all-clear** state —
+remaining work ∅ across every lane — at which the Desk hands forward to the next
+engagement.
+
+The closure checklist, the report architecture + craft conventions, the workbook
+cockpit pattern, and the reconcile-at-close sweep are in
+§{appendix.report-architecture}; the share-archive recipe, the share modes, and
+the image-redaction procedure are in §{appendix.external-share}.
 
 ---
 
@@ -4672,6 +4767,14 @@ One test shape — re-derive, compare, zero silent drift — across three
 target classes. Mechanical and machine-assistable; enforced at step 6
 of the Execution Self-check (§{section.prism-execution-self-check}).
 
+**Deliverable-transform tooling (new in v2.18.0).** When the recompute gate runs
+over a deliverable *transform* (an HTML / Markdown → shipped-artifact build),
+tokenize **standalone figures only**: exclude digits embedded in acronyms or codes
+(`B2B2C`, `A8`, `GPT-5.5`) and strip tags first (so an `href` / anchor edit is not
+read as figure drift) — otherwise a legitimate clarity edit trips a *false*
+figure-drift halt. HTML→PDF render hazards for deliverable builds are catalogued in
+§{appendix.vendor-parsing-observations}.
+
 #### 10.1.10 SP-19 — Claims carry their basis `[methodological | stable | 🚫]`
 <a id="section-sp-19-claims-carry-their-basis"></a>
 
@@ -4825,6 +4928,14 @@ After the v2 split, SP-8 carries one concern:
   session so M2 (Version Drift) can reconcile.
 - Filename discipline (the look-alike disambiguation pattern) extracted to
   SP-14 (§{section.sp-14-filename-discipline}).
+- **Read canonical, not a mirror (new in v2.18.0).** A convenience
+  working-folder mirror lags the canonical repo *by construction* (a file
+  committed to the repo is not auto-copied to a flat mirror). A consumer — a
+  Builder, an Independent Validation seat, a fresh session — that reads the mirror
+  instead of the canonical repo can see stale / incomplete state and infer a false
+  defect. Read from a fresh repository clone, never the convenience mirror, with a
+  completeness sanity-check on entry. The multi-surface engagement recipe is in
+  §{appendix.external-share}.
 
 #### 10.2.2 Carryforward SPs — application surfaces
 <a id="section-carryforward-sps-application-surfaces"></a>
@@ -4931,6 +5042,20 @@ Review-iteration rounds in particular accumulate versions (each round is a
 sub-version bump, e.g. a report `_r6 → _r7`), so the version history is
 recoverable and SP-1 canonicity (§{principle.SP-1}) is preserved. An in-place
 overwrite of canonical state is a defect, not a convenience.
+
+**Deliverable revisions: shipped == validated (new in v2.18.0).** Bump atomicity
+governs the client-facing **deliverable**, not only the Master. Every content
+change to a versioned deliverable — *including cosmetic and text corrections* —
+bumps its revision (`_r7 → _r8`); a revision label that stays put while content
+changes is a stale, lying label — the same look-alike failure §{principle.SP-14}
+guards against, now on the artifact the client receives. The **shipped revision
+must equal the validated revision**: a correction made *after* the Independent
+Validation Dispatch (§{section.independent-validation-dispatch}) validated a
+revision means validated ≠ shipped, so it requires a re-stamp + a decision —
+re-validate if material, note if cosmetic — and never ships a
+post-validation-corrected file under the validated label. Keep exactly one current
+file per revision (remove superseded / un-versioned leftovers). The report-craft
+home for this discipline is §{appendix.report-architecture}.
 
 This atomic routine + the M2 silent-safeguard makes drift very unlikely
 by construction without abandoning the safeguard.
@@ -5467,6 +5592,37 @@ navigable home rather than the flat Downloads-folder pile. On desktop
 substrates this pattern is often redundant; on mobile it is
 load-bearing, and the cost of the extra tap is negligible.
 
+#### MO-6 — Multi-lane session legibility: rename and archive
+
+**Situation.** A multi-lane engagement runs many sessions across the standing
+lanes (PRISM Desk, PRISM Meta) and ephemeral roles. On a surface that
+**auto-names** a session by summarizing its first message, the lane / phase
+moniker (e.g. `Meta-7`, `Desk-3`) is **dropped** — two similarly-summarized
+sessions become indistinguishable in the recents list, risking work in the wrong
+session: the clobber class repo-backed lanes already fight.
+
+**Pattern.** Two manual workflows keep the list legible:
+
+- **Rename each session** `"<plain name> | <Lane>-<N>"` (e.g.
+  `"Alumnite engagement retrospective | Meta-7"`) so the lane + number survive the
+  auto-name.
+- **Suffix superseded** Desk / Meta sessions `"_Archived"` to separate live from
+  retired.
+
+Name-disambiguation relies on this **explicit manual-rename step**, not on the
+surface deriving the name from the front of the opener line — a summarizing
+surface rewrites rather than taking a literal prefix, so front-loading the moniker
+is best-effort, not load-bearing. Where a surface exposes no rename tool, the
+rename is necessarily a manual operator step (or a surface feature request). The
+next-session opener can carry the rename as a named first step so it is not
+rediscovered each time.
+
+**Why it works.** The lane + number is the disambiguator the surface discards;
+restoring it by hand is cheap and removes the cross-lane-confusion risk. A
+related discipline: a **chronic, un-actionable flag** — one only fixable
+off-surface — is surfaced **once and tracked**, not re-emitted at every
+turn-close (flag-fatigue dulls attention to the flags that matter).
+
 ---
 
 ## Appendix A — Glossary
@@ -5496,6 +5652,9 @@ mechanics live in the cross-referenced sections.
 | **Dispatch register** | Master section tracking recommended-vs-executed state per prompt. §{section.master-tracking-dispatch-register}. |
 | **Dispatch shape** | Envelope field carrying the dispatch structural shape: `equivalence`, `split`, or `limitation-named`. §{section.single-envelope-with-spectrum-shape}. |
 | **Domain Reconnaissance Probe** | Setup-time probe (§{probe.P6}). Surveys domain practice + authoritative-source detection + Jurisdiction map. §{section.probe-6-domain-reconnaissance-iterates-early}. |
+| **Engagement closure** | The symmetric gate *out* of an engagement — a three-layer close sweep (object / lane-meta / operator) mirroring three-layer readiness; home of the orphan-sweep, reconcile-at-close, and deliverable polish. §{section.engagement-closure}. |
+| **Engagement report** | The comprehensive final report — the engagement's deliverable of record, reflecting all the work, verdict-first and executive-scannable; a tight body + curated appendices. §{appendix.report-architecture}. |
+| **Engagement workbook** | An interactive, operator-drivable cockpit companion to the report, delivered when the decision has a quantitative core: editable cells drive the decision gate live. §{appendix.report-architecture}. |
 | **Envelope** | The first block of the triple contract — inbound vendor instructions including dispatch metadata, attachments, and operator hints (the PRISM PROMPT INTEGRITY transport anchor renders above it but is not a contract block, §{section.transport-integrity-bracket}). §{section.prism-execution-envelope}. |
 | **`equivalence` dispatch** | Same prompt body to N vendors; outputs comparable; triggers Vendor Triangulation at N≥2. §{section.single-envelope-with-spectrum-shape}. |
 | **Execution session** | Vendor session running a single dispatched prompt. Framework not attached; loaded artifacts limited to Envelope's `Attachments:` field. §{section.two-session-types}. |
@@ -5524,6 +5683,7 @@ mechanics live in the cross-referenced sections.
 | **Probe** | Setup-time grading construct against the draft Prompt Strategy. Seven probes specified: P1–P7. §{section.the-seven-probes}. |
 | **Prompt Strategy** | The plan of dispatched prompts produced by Setup. Lives in the Master. Iterates in P0; ratifies at P0→P1; revisable at convergence (§{section.strategy-stability}). |
 | **Quick mode** | `SETUP_QUICKMODE` — a first-class light Setup shape (one ephemeral session, clean-context sub-agent fan-out) keeping the cheap rigor; graduates to a full engagement without losing work. §{section.setup-onboarding-and-mode-selection}. |
+| **Reconcile-at-close** | A closure-gate codification sweep: at engagement close, diff the finished deliverable against its reference architecture in one pass and codify every craft element not yet codified (closes the applied≠codified pattern). §{section.engagement-closure}. |
 | **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §{section.m12-result-completeness-check}. |
 | **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §{section.three-layer-readiness}. |
 | **Role × context-tier** | The flexible matrix a session occupies — role (Setup / Desk / dispatch-builder / -consumer / execution / convergence / validation) × tier (orchestration vs execution). §{section.roles-context-tier}. |
@@ -5531,8 +5691,10 @@ mechanics live in the cross-referenced sections.
 | **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
 | **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
 | **Setup onboarding** | `SETUP_ONBOARDING` — the Setup-as-scaffolder flow that generates the per-engagement SI from a template and emits project-create / install cards; the two-project model. §{section.setup-onboarding-and-mode-selection}. |
+| **Share archive** | The default external-share artifact — a self-contained, de-coded, `Index.html`-navigated archive of the engagement's work-product, redacted for share (the canonical repo untouched). §{appendix.external-share}. |
 | **Stakeholder register** | Setup artifact. Per-role listing of stake, motivation, positioning/angle, decision power, and communication channel; the operator/commissioner is a mandatory row. §{section.stakeholder-register}. |
 | **Standing Principle (SP)** | Persistent posture; not a discrete fire. See the full roster in §{section.standing-principles} and §{section.v1-x-standing-principles-carryforward-catalog}. |
+| **Status-glyph legend** | The report's published ● / ◐ / ○ visual vocabulary for capability / coverage / severity, with Confidence and Verification as separate axes; introduced on first use and decoded in the glossary. §{appendix.report-architecture}. |
 | **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §{section.strategy-stability}. |
 | **Substitution** | The filename-resolved executed vendor/config (§{principle.SP-14}) differs from the Envelope's recommended vendor/config; the Output `Vendor` field is advisory self-ID (§{section.recommended-vs-executed-reconciliation}). Absorbed at convergence; no automatic re-dispatch. §{section.substitution-absorption}. |
 | **Three-layer readiness** | The P0→P1 boundary clears when Structural completeness, Library coverage saturation, and Operator ratification all clear. §{section.three-layer-readiness}. |
@@ -5652,7 +5814,7 @@ roles, and the PRISM UI), §{section.cross-lane-inbox} (cross-lane OPEN_ITEMS
 inbox), §{section.prism-desk-and-prism-meta} (PRISM Desk and PRISM Meta),
 §{section.prism-ui} (PRISM UI), §{section.bundle-load-integrity} (bundle-load
 integrity), §{section.setup-onboarding-and-mode-selection} (Setup onboarding
-and mode selection), §{section.dispatch-lifecycle} (dispatch lifecycle), §{section.transport-integrity-bracket} (transport-integrity bracket).
+and mode selection), §{section.dispatch-lifecycle} (dispatch lifecycle), §{section.transport-integrity-bracket} (transport-integrity bracket), §{section.engagement-closure} (engagement closure).
 
 ### C.2 `[methodological | stable]`
 <a id="appendix-methodological-stable"></a>
@@ -5724,12 +5886,12 @@ strength are noted parenthetically.
 
 | Axis 1 \ Axis 2 | stable | review-if | review-annually | Total |
 |---|---|---|---|---|
-| structural | 43 | 0 | 0 | 43 |
+| structural | 44 | 0 | 0 | 44 |
 | methodological | 12 | 3 (1 with `recommended`) | 0 | 15 |
 | vendor-dependent | 0 | 3 | 0 | 3 |
 | operator-scaffolding | 6 | 0 | 0 | 6 |
 | empirical | 0 | 0 | 1 | 1 |
-| **Total** | **61** | **6** | **1** | **68** |
+| **Total** | **62** | **6** | **1** | **69** |
 
 ---
 
@@ -5828,6 +5990,9 @@ items documented with the change.
 | GATE-0 / GATE-1 / GATE-2 | Gates | Folded into Monitors + What's next + M11 |
 | Adaptations | Adaptations | Lighter — strategy-stability with revisable-at-convergence + Master version bump |
 | Discrepancy Check | Discrepancy Check (prompt-template mechanic) | Absorbed into M7 Claim Conflict + Layer-1 reconciliation |
+| Engagement closure (gate out) | (no v1.x close gate) | 🆕 — symmetric bookend to three-layer readiness |
+| Comprehensive final report + interactive workbook | (informal final write-up) | 🆕 — codified deliverable architecture (verdict-first; cockpit) |
+| External share archive | (no v1.x external-share) | 🆕 — de-coded archive + redaction regime |
 
 ### D.6 Nomenclature changes
 <a id="appendix-nomenclature-changes"></a>
@@ -7565,6 +7730,36 @@ closed-document task. Accept a valid catch from any seat (recall is the point),
 but weight a web-oriented seat's *miss* on a closed-document point lightly — its
 strength is live-web breadth, not closed-doc recompute.
 
+### HTML → PDF transform hazards for deliverable builds
+
+The engagement report's primary form is single-file HTML rendered to PDF (the
+presentation house-style, §{appendix.report-architecture}). Field-observed render
+hazards on a WeasyPrint-class HTML→PDF engine — pre-warn for them when building or
+validating a PDF deliverable:
+
+- **Flex translucent-background double-paint.** A flex container with a
+  translucent background can paint its background twice (parent + item), darkening
+  the intended tint. Put the background on a single layer, or use an opaque value.
+- **Flex `space-between` title mis-size.** A `justify-content: space-between` title
+  row can mis-size or clip its items in the PDF engine where it renders fine in the
+  browser. Verify titles in the rendered PDF, not only the browser preview.
+- **`@page` vs `html`/`body` background mismatch.** The `@page` background and the
+  document background are separate; setting one and not the other leaves a margin
+  band in the off colour. Set both, or neither.
+- **Real page hierarchy on flat HTML.** A flat HTML document has no native pages —
+  use explicit `@page` rules + `page-break-inside: avoid` / `break-before` to force
+  a real cover / section / page structure, and embed fonts so the PDF is portable.
+- **Orphaned media on slide / section delete.** Deleting a slide or section from a
+  built deck or document can leave its media embedded; rebuild from the kept
+  content rather than deleting in place, and content-hash-verify the removed media
+  is gone (the §{appendix.external-share} image-redaction procedure depends on
+  this).
+
+Pair these with the §{principle.SP-18} deliverable-transform guard
+(§{section.sp-18-it-must-recompute}): tokenize standalone figures only (exclude
+acronym / code digits; strip tags first) so a clarity edit during the transform
+does not trip a false figure-drift halt.
+
 ---
 
 ## Appendix I — Lanes, roles, PRISM UI, and Setup onboarding (reference)
@@ -7787,6 +7982,322 @@ digest pairs with the **Dispatch ID**
 integrity, the Dispatch ID identifies the dispatch instance; together with the
 operator-set filename they are the reconciliation triple.
 
+## Appendix K — Report architecture (reference)
+<a id="appendix-report-architecture"></a>
+
+Reference-grade detail behind the engagement deliverable — the comprehensive
+final report, the interactive workbook, and the presentation house-style. The
+*rules* (the report is the deliverable of record; the close-time disciplines)
+live in the closure gate (§{section.engagement-closure}) and the Decision brief
+(§{section.decision-brief}); this appendix is the report skeleton, the craft
+conventions, the workbook cockpit pattern, and the reconcile-at-close checklist.
+In the Skill archive it is the `reference/report-architecture.md` bundle, fetched
+when building or closing an engagement deliverable.
+
+### K.1 The comprehensive final report — the deliverable of record
+
+Every engagement concludes with **one comprehensive final report** reflecting
+**all** the work — every dispatch-register pass / evidence area — in plain
+English, optimized for **executive scanning**: a tight readable body + curated
+appendices, never a thin verdict-only or summary-only close. A summary-only
+close strands the engagement's real value (the per-pass findings, data, tables)
+in internal artifacts the audience never sees and under-represents the work; the
+report is the engagement's deliverable of record and must carry the whole
+engagement. Conventions:
+
+- **One report per engagement, all work reflected.** Every dispatch-register
+  pass / evidence area appears; nothing material is left only in the Master or
+  `outputs/`.
+- **Plain English, executive-scannable (§{principle.SP-17}).** Verdict +
+  decision up front; clear headings; summary-first; skimmable. Built for the
+  decision-maker / client audience, assumed non-PRISM — jargon stripped, with a
+  glossary; each edition self-contained (§{principle.SP-20}).
+- **Tight body + comprehensive curated appendices.** A readable main body plus
+  one appendix per pass / evidence area — **comprehensive in coverage, curated
+  in form** (plain language; actual findings / data / tables, not one-line
+  glosses). The body cross-references each appendix; a heavy artifact lives in
+  full in its appendix with a compact version + cross-ref in the body.
+- **Build discipline (heavy pass).** Fan out clean-context sub-agents, one per
+  appendix (§{section.roles-context-tier}) — each returns a curated,
+  citation-bearing section; the parent owns the spine + cross-links. Build →
+  render → validate are clean migration seams (manage the context band).
+- **PRISM attribution — a linkable credit.** The report cover / method line
+  names PRISM as the method and **links it to the framework repo** (a "Created
+  with PRISM" credit that both attributes the work and gives the reader a path
+  to the framework) — on **every** report, not only the share-archive Index /
+  README.
+- **Methodology & disclosures (plain-language "how we worked").** A body section
+  that translates the framework's rigor into audience-facing trust: multi-vendor
+  reconciliation (verdict-critical passes run on several independent systems,
+  agreement *and* divergence recorded — §{principle.SP-15}); independent
+  validation (a separate reviewer whose only context is the deliverable, with a
+  from-scratch recompute — §{section.independent-validation-dispatch});
+  findings vs scenarios kept strictly separate (a verified finding vs a fenced
+  modelled scenario — §{principle.SP-18} + §{section.prompt-body-convergence-provisions});
+  evidence and confidence as separate axes
+  (§{section.prompt-body-convergence-provisions}); and interim-by-honesty (gaps
+  marked open, not filled with assumption, with exactly what closes each —
+  §{principle.SP-12}).
+- **Validation target.** The artifact the Independent Validation Dispatch
+  (§{section.independent-validation-dispatch}) validates is the **complete**
+  report (body + appendices), not a summary; the complete report is also what the
+  close shares.
+- **Version discipline (bump atomicity for deliverables).** Every content change
+  to the versioned report — *including cosmetic and text corrections* — bumps its
+  revision (§{section.bump-atomicity-routine}); the **shipped revision must equal
+  the validated revision**; keep exactly one current file per revision. Front-load
+  the disambiguating version token in the filename so a file-picker "…" truncation
+  cannot hide it (the session-name front-loading principle generalized to
+  filenames).
+
+### K.2 Canonical body architecture (verdict-first)
+
+The recommended default skeleton — adapt section names per engagement:
+
+1. **Title + cover / meta block** — a plain-language title (a sentence, not a
+   code), "Prepared for", date, and the method / attribution line (the PRISM
+   credit, K.1).
+2. **Table of contents.**
+3. **"How to read this report"** — a short reader-onboarding.
+4. **Executive summary — verdict FIRST:** the decision(s) under test, the verdict
+   on each, and the single most-important fork in one line.
+5. **Highlights band** — an at-a-glance strip of the landscape + key findings.
+6. **One body section per decision track / major question** — each running
+   *decision under test → verdict → risk register leg-by-leg → supporting
+   picture*; heavy artifacts appear compact with a cross-ref to their full
+   appendix.
+7. **Open items — and how the reader's answers move the verdict**
+   (interim-by-honesty made actionable).
+8. **Update path** — what closes each open leg / how the report reaches final.
+9. **Methodology & disclosures** (K.1) — with a **conflict-of-interest**
+   sub-section and a **scope & limitations** sub-section.
+10. **Appendices** — the methodology / registers appendix **first** (below), then
+    one appendix per pass / evidence area.
+
+**The methodology / registers appendix ("how this was built").** Exposes the
+PRISM scaffolding in plain language as a dedicated lead appendix: the **four Setup
+artifacts** (§{section.setup-artifacts}) — decision brief, stakeholder register,
+claim inventory, jurisdiction map — plus the **Decision-brief falsifier
+registers**, a fuller **Methodology**, a **conflict-of-interest disclosure** (the honesty controls,
+stated **positively** — §{principle.SP-16}), an **evidence & source index**
+(every research pass → its provenance), and a **glossary**. Turns the audit's own
+rigor into audience-facing trust instead of leaving it in the Master.
+
+### K.3 Craft conventions
+
+Each recurred throughout the finished engagement report; codified so a future
+report carries them by construction, not by re-derivation:
+
+- **Per-section "in one breath" takeaway.** Every verdict, finding, and dense
+  appendix opens with a one-sentence plain takeaway — section-level
+  executive-scannability, distinct from the document-level summary-first rule.
+- **"How to read this …" orientation on every complex artifact.** The report,
+  each dense appendix, and each notation system open with a brief orientation; a
+  reader is never dropped into a dense table or a glyph system without a legend.
+- **A published status-glyph legend (the "Harvey balls").** A consistent visual
+  vocabulary — ● full / yes · ◐ partial · ○ none — for capability / coverage /
+  severity, **always** introduced with its legend on first use and decoded again
+  in the glossary. Two qualifiers ride alongside and stay **separate axes**
+  (§{section.prompt-body-convergence-provisions}): **Confidence** (LOW / MEDIUM /
+  HIGH) and **Verification status** (verified / could-not-verify). Evidence-vs-
+  confidence separation is not merely stated; it is rendered.
+- **Findings vs. scenarios fenced VISUALLY.** Every modelled / simulated figure
+  carries a visual scenario tag, so a modelled number cannot be misread as a
+  finding at a glance — the visual-channel complement to the §{principle.SP-18} /
+  §{section.prompt-body-convergence-provisions} discipline, and the positive
+  production-side home for the visual-polarity channel §{principle.SP-16} names.
+- **Visible recompute as a reader-facing trust signal.** The report shows its
+  arithmetic and structural checks ("the boundary count: 11 = 6+2+1+2,
+  recomputed") — turning the §{principle.SP-18} internal gate into a credibility
+  move: a recomputed total is stated *with* its recomputation, not merely
+  asserted.
+- **A self-decoding glossary.** Defines not only domain jargon but the report's
+  own notation — the risk legs, the trust-boundary terms, the audit passes by
+  name, the label glyphs — so the deliverable is self-contained for a non-PRISM
+  reader (§{principle.SP-20}).
+- **Compact-in-body / full-in-appendix for every heavy artifact**, with an inline
+  cross-reference tag (the body carries the read-off; the appendix carries the
+  full table).
+
+### K.4 The interactive engagement workbook (the cockpit)
+
+When the decision turns on a **quantitative, operator-tunable core** — unit
+economics, a threshold / corner case, a returns or break-even model, a
+sensitivity surface — deliver the finding **also** as a live, operator-drivable
+workbook: the report *states* the finding; the workbook lets the decision-maker
+*explore* it against their own numbers. The trigger is narrow — at most one
+workbook per engagement, on the central quantitative gate; skip it for a
+qualitative decision (a workbook there is ceremony). The earned pattern:
+
+- **Dashboard / cockpit (the one sheet the audience drives):** a small set of
+  clearly-marked **editable input cells** (the operator-tunable assumptions only)
+  + the engagement's **live decision gate** — the Decision brief's actual gate
+  (§{section.decision-brief}), evaluating its conditions in real time, color-coded
+  (green in / amber edge / red out) — + live results. It **opens at the report's
+  actual case**, so it reconciles with the report on open (same gate state, same
+  headline figures).
+- **Supporting sheets — the finding unpacked, made live:** break-even by the
+  decision's key driver; a sensitivity heat-map across the two assumptions that
+  matter most (with the report's case cell outlined); and any cost / driver
+  model. Each is the report's analysis made tunable.
+- **Read Me** (plain-language, with guided "try this" nudges so the audience
+  drives it without instruction — §{principle.SP-17}) + **Notes & Sources** (full
+  provenance: every figure tied back to the report / Master).
+- **Correctness contract (§{principle.SP-18}).** Every cell ties back to the
+  report and re-verifies after recalc; the workbook reconciles exactly with the
+  report on open; zero formula errors.
+- **Posture.** A derived share artifact — operator-gated (present it; record its
+  existence in the Master / *What's next*; do not auto-commit), the same posture
+  as the report / archive. It joins the send-bundle (the share-modes' send shapes,
+§{appendix.external-share}); it is **not** a substitute
+  for the report.
+
+### K.5 Presentation house-style (the deliverable's visual form)
+
+Presentation is a quality axis run at close — a **closure convention, not a
+Standing Principle**. The deliverable's visual form carries the same care as its
+text:
+
+- **HTML primary** (single-file, inline CSS — reads better, portable) → **PDF
+  done well**: embed fonts; explicit `@page` rules + `page-break-inside: avoid` /
+  `break-before` for a real page hierarchy on flat HTML; a cover page; a TOC for
+  long documents; running headers / footers + page numbers.
+- **Design language inspired by the engagement subject's own design system**,
+  captured during reconnaissance and used at close (cross-pass inheritance).
+- **Two caveats.** (1) **Order** — polish only a **validated** deliverable
+  (§{principle.SP-18} / the Independent Validation Dispatch first); never beautify
+  an unvalidated artifact. (2) **Inspired, not impersonating** — keep PRISM's own
+  identity clear so the deliverable reads as an independent audit, not the
+  subject's own self-assessment (form must not imply a false source).
+- **Render hazards.** HTML→PDF transform hazards, and the §{principle.SP-18}
+  standalone-figure tokenization guard for deliverable transforms, are in
+  §{appendix.vendor-parsing-observations}.
+
+### K.6 Reconcile-at-close (the codification sweep)
+
+The discipline's *rule* is a closure-gate step (§{section.engagement-closure},
+Layer 2); this is its checklist. At every engagement close, diff the finished
+deliverable's structure and conventions against this appendix in **one** pass,
+and codify every craft element that landed via production / operator polish but
+is not yet here — the reference is reconciled against the deliverable of record,
+not the reverse. This converts one-at-a-time manual catches (the
+applied-but-not-codified pattern — a learning lands in an artifact, often via an
+operator correction, without being codified so it recurs) into a standing
+mechanism; its in-flight sibling is **catch-one → propose-a-sweep**, the standing
+orchestration posture of offering a systematic pass when the operator flags one
+instance. The sweep:
+
+- [ ] Report follows the K.2 verdict-first architecture (cover → TOC →
+  how-to-read → exec summary verdict-first → highlights → per-track sections →
+  open items → update path → methodology & disclosures incl. COI + scope /
+  limitations → appendices led by the methodology / registers appendix).
+- [ ] Every verdict / finding / dense appendix opens with an "in one breath"
+  takeaway; every complex artifact + notation system opens with a "how to read".
+- [ ] Status-glyph legend published on first use + in the glossary; Confidence +
+  Verification shown as separate axes.
+- [ ] Modelled / simulated figures fenced visually; recomputed totals shown with
+  their recomputation.
+- [ ] Glossary decodes the report's own shorthand, not only domain jargon.
+- [ ] Methodology / registers appendix exposes the Setup artifacts + methodology
+  + COI + evidence / source index + glossary.
+- [ ] PRISM linkable credit + the plain-language methodology & disclosures
+  section are present.
+- [ ] Shipped revision == validated revision (§{section.bump-atomicity-routine});
+  exactly one current file per revision.
+- [ ] Any craft element present in the deliverable but absent here is codified
+  before the close completes.
+
+## Appendix L — External share (reference)
+<a id="appendix-external-share"></a>
+
+Reference-grade detail behind the external-share close (§{section.engagement-closure})
+and the canonical-source rule that §{principle.SP-8} carries. The *principle* —
+the engagement is externally share-ready by close, and every consumer reads
+canonical state — lives in those sections; this appendix is the share-archive
+recipe, the operator-selectable share modes, the image-redaction procedure, and
+the canonical-source handoff block. In the Skill archive it is the
+`reference/external-share.md` bundle, fetched when preparing an external handoff.
+
+### L.1 One repo per engagement, externally share-ready by close
+
+Each engagement lives in (or splits out to) its **own** repository, externally
+share-ready by close: an audience-facing README for non-PRISM readers (with the
+"Created with PRISM" credit linking the framework repo), descriptive de-coded
+artifact filenames as a presentation layer over §{principle.SP-14}, and a passed
+privacy / PII-redaction review. Rationale: repository access is per-repo, not
+per-folder — a multi-engagement umbrella cannot be shared with one engagement's
+client without exposing the others *and* the entire commit history. An engagement
+running inside an umbrella splits out at close (subtree split / history filter)
+to its own repo, under the heavier external-share redaction regime (including any
+carried history).
+
+### L.2 The share archive (the default share artifact)
+
+Rather than sharing a repository link, produce a self-contained **archive** of
+the engagement — an easier and safer one-folder handoff (no account needed) that
+curates exactly what is exposed:
+
+- **A logical curated tree** — the findings Master · the independent-validation
+  panel (§{section.independent-validation-dispatch}) · research passes (each with
+  its convergence + per-pass validation) · source exhibits · methodology /
+  dispatch envelopes · diligence instruments.
+- **De-coded descriptive filenames** as a presentation layer over
+  §{principle.SP-14}, with a name-map (friendly → canonical); the repo's
+  canonical names stay unchanged.
+- **A root `Index.html`** that frames the depth ("N independent AI validators
+  reviewed the assessment — here is the complete evidence base"), links every
+  artifact, and carries a read-me-first + a redaction note.
+- **Expansive — to show the rigor.** Include the full work-product (all passes,
+  the validation panel, envelopes, exhibits, the findings Master), precisely to
+  evidence the depth of the work.
+
+### L.3 Share modes (operator-selectable)
+
+Three choices the operator sets per share; the image-redaction procedure (L.4) is
+the standing **invariant** across all of them:
+
+- **Persistence** — *present-only* (a derived artifact; record its existence, do
+  not auto-commit) **or** *repo-committed* (the archive folder + the `.zip`
+  committed to the engagement repo).
+- **Report inclusion** — the final report (HTML + PDF) *in* the archive **or**
+  shipped *separately*.
+- **Send shape** — a *two-file* package (report + archive) **or** a fuller
+  package (e.g. report PDF + developer action items + the interactive workbook +
+  the archive ZIP).
+
+### L.4 The image-redaction procedure (the invariant)
+
+Redaction is **share-copy-only** — the repo's canonical artifacts are never
+altered. A text grep cannot see PII inside an image, so screenshot / exhibit
+material needs a **visual** pass:
+
+1. Visually inspect every screenshot for member / third-party PII.
+2. For a slide deck, **rebuild it from only the PII-safe screens** — do **not**
+   merely delete slides, which leaves orphaned media embedded.
+3. **Content-hash-verify** each removed image is absent from the rebuilt file.
+4. Add a redaction-notice cover.
+5. Then text-scrub names / affiliations / contacts and verify the scrub
+   (`grep → 0`).
+
+Credentials (a PAT, a `.secrets/` store) are excluded **absolutely**; framework
+instrumentation (learnings / meta-learnings / state / the inbox) is a per-share
+include / exclude choice, default exclude.
+
+### L.5 Canonical source — read the repo, not the mirror
+
+The canonical store is the engagement **repository**; a convenience
+working-folder mirror **lags by construction** (a file committed to the repo is
+not auto-copied to a flat mirror). A consumer — a Builder, an Independent
+Validation seat, a fresh session — that reads the mirror instead of the canonical
+repo can see stale / incomplete state and infer a false defect (e.g. "specs
+undelivered" when the repo held them all along). So every consumer reads from a
+**fresh repository clone**, never the convenience mirror, and runs a completeness
+sanity-check on entry (a known artifact / file count, a manifest — "if you see
+fewer than expected, you are on the stale mirror; re-clone"). This is the
+read-side complement to write-side mirror staleness, and the application of
+§{principle.SP-8} (canonical authority, §{section.sp-8-narrowed-canonical-authority})
+to a multi-surface engagement.
+
 ## 18. Project, feedback, updates `[structural | stable]`
 <a id="section-project-feedback-updates"></a>
 
@@ -7799,7 +8310,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.17.0 (this file)
+- **Framework version.** v2.18.0 (this file)
 - **Embedded Lens Library version.** v0.15 (Appendix G)
 - **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -7815,12 +8326,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_17_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_18_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_15.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.17.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.18.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -7846,7 +8357,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.17.0 attached; v{published} available at {releases URL}.`
+   `Framework v2.18.0 attached; v{published} available at {releases URL}.`
    `Lens v0.15 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -7889,8 +8400,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.17.0). https://github.com/Ronkupper/PRISM
+> (v2.18.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.17.0 framework operating document.*
+*End of PRISM v2.18.0 framework operating document.*

@@ -1,8 +1,8 @@
 ---
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.17.0
+version: 2.18.0
 released: 2026-06-28
-supersedes: 2.16.0
+supersedes: 2.17.0
 lens_library_bundled: "0.15"
 substrate_target:
   vendor: claude
@@ -16,15 +16,15 @@ normativity:
 lint_catalog_version: 4
 ---
 
-<!-- PRISM v2.17.0 Skill core (lean, always-loaded). Generated from the assembled
+<!-- PRISM v2.18.0 Skill core (lean, always-loaded). Generated from the assembled
      PRISM.md by scripts/decompose/project_skill_archive.py — edit PRISM.md, not this.
      Reference-grade material is in reference/*.md and lens/, fetched on demand. -->
 
-# PRISM v2.17.0 — Framework operating document
+# PRISM v2.18.0 — Framework operating document
 
-**Status:** v2.17.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.18.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.16.0 (MINOR — "Dispatch round-trip": names the whole dispatch round-trip as one bounded construct — the **dispatch lifecycle** (§{section.dispatch-lifecycle}), five stages (build → dispatch → execute → return/converge → reconcile) that subsume the late-bound build, the operator and return cards, and the failure leg by reference. Refines the structural-completeness gate (§{section.three-layer-readiness}) to require a pass **spec**, not a frozen Envelope (late binding); adds the **return-handling card** and the failure leg routed by type (seat-failure / digest-mismatch / substitution), a unique **Dispatch ID** paired with the copy-through digest so a return reconciles to the exact dispatch instance (§{section.recommended-vs-executed-reconciliation}), the fanned-IVD adjudicate-by-re-derivation refinement (§{section.independent-validation-dispatch}), the passive pre-fill of self-report (§{section.corpus-access-dispatch}), the agentic-browser driver class (§{section.vendor-selection-at-dispatch}), and a new **dispatch-conventions** reference bundle (§{appendix.dispatch-conventions}); and a **transport-integrity bracket** (§{section.transport-integrity-bracket}) — a top-of-paste integrity anchor paired with a terminal sentinel and a Self-check Step 0, so the execution session detects a truncated mid-stream copy before working (presence + Dispatch-ID match, never a hash recompute; the bracket is excluded from the digest preimage). Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.17.0 (MINOR — "Lifecycle & deliverables": adds the symmetric **engagement closure** gate (§{section.engagement-closure}) — a three-layer close sweep bookending Setup's three-layer readiness (§{section.three-layer-readiness}), home of the orphan-sweep, the **reconcile-at-close** codification sweep, and the deliverable polish. Names the **comprehensive final report** as the engagement's deliverable of record plus the optional **interactive workbook** (§{section.decision-brief}), with the report architecture, the craft conventions, the workbook cockpit pattern, and the presentation house-style routed to a new **report-architecture** reference bundle (§{appendix.report-architecture}); extends bump atomicity to client-facing deliverables with the shipped-equals-validated invariant (§{section.bump-atomicity-routine}, §{section.independent-validation-dispatch}); adds the §{principle.SP-18} standalone-figure tokenization guard for deliverable transforms; lands the external-share family — one-repo-per-engagement, the de-coded share archive, operator-selectable share modes, and the image-redaction procedure — in a new **external-share** reference bundle (§{appendix.external-share}) with the read-the-repo-not-the-mirror tie on §{principle.SP-8}; and adds a multi-lane session-legibility operator guide. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** the PRISM Skill
 (its core loads automatically) and the project's Master. The Skill bundles
 Lens Library v0.15 at `lens/PRISM_lens_library.md`, fetched on demand. Pin a
@@ -70,7 +70,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.17.0 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.18.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -85,7 +85,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.17.0 after running a session:
+Reading order for an operator returning to v2.18.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -93,11 +93,11 @@ Reading order for an operator returning to v2.17.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.17.0 covers `[structural | stable]`
+### 1.1 What v2.18.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.17.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.17.0 covers:
+PRISM v2.18.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.18.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -133,24 +133,24 @@ and research framework. v2.17.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.17.0 does not cover
+### 1.2 What v2.18.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.17.0 implements the spec; the spec implements
+- **Re-debating direction.** v2.18.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog is bundled at
   `lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`, v0.15 at this release),
   fetched on demand. The bundled file remains authoritative for the Library's
   own evolution and for projects that explicitly pin to a newer Library version.
-- **Empirical calibration.** Several thresholds in v2.17.0 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.18.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.17.0's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.18.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -158,7 +158,7 @@ and research framework. v2.17.0 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.17.0 honours the constraint inherited from the design document (DD.§8.3):
+v2.18.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -167,7 +167,7 @@ v2.17.0 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.17.0. Roadmap
+Mechanics that violate any leg do not earn their place in v2.18.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -178,14 +178,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.17.0 mechanics for the
+**Read this section first if you are encountering v2.18.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.17.0 has the following constructs, grouped by category.
+PRISM v2.18.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -233,7 +233,12 @@ PRISM v2.17.0 has the following constructs, grouped by category.
   (§{section.standalone-monitors-m1-m2-m4-m5-m9} spec / §{section.filename-conventions-and-bump-atomicity}) · Telemetric framework (§{section.telemetric-framework-signal-weighting-and-compounding}) · Point refresh (§{section.currency-maintenance-point-refresh}) ·
   Update session (§{section.currency-maintenance-update-session}) · Continuous-curation (§{section.continuous-curation-posture}) · Strategy stability
   (§{section.strategy-stability}) · Three-layer readiness (§{section.three-layer-readiness}) · Two-layer convergence · Triple
-  contract · Independent Validation Dispatch (§{section.independent-validation-dispatch})
+  contract · Independent Validation Dispatch (§{section.independent-validation-dispatch}) · Engagement closure
+  (§{section.engagement-closure})
+
+**Deliverables** (§{appendix.report-architecture}, §{appendix.external-share})
+- Comprehensive final report · interactive engagement workbook · external share
+  archive
 
 **Operating model** (§{section.lanes-roles-and-the-prism-ui})
 - Lane (object · meta) · Role × context-tier matrix · PRISM Desk
@@ -437,6 +442,7 @@ Every construct fires in exactly one lifecycle slot.
 | Out-of-band | Update session, point refresh (in-Setup) |
 | 🔴 band | Migration handoff |
 | Per standing-lane session-open | Lane resume + inbox drain + M5 self-band (§{section.lanes-roles-and-the-prism-ui}) |
+| Engagement close | Closure gate — three-layer close sweep (§{section.engagement-closure}) |
 | Persistent posture | All Standing Principles |
 
 ### 2.5 Band legend
@@ -467,6 +473,9 @@ If you need to find:
 - **The full text of a Standing Principle** → §{section.standing-principles}, the Standing-Principles catalog.
 - **How to run parallel lanes, the Desk, or the cross-lane inbox** → §{section.lanes-roles-and-the-prism-ui}.
 - **The Setup onboarding flow or quick mode** → §{section.setup-onboarding-and-mode-selection}.
+- **How to close an engagement** → §{section.engagement-closure}.
+- **The report architecture, the workbook, or the presentation house-style** → §{appendix.report-architecture}.
+- **How to share the engagement externally** → §{appendix.external-share}.
 
 ---
 ## 3. Architecture mechanics
@@ -2432,6 +2441,13 @@ consistency, consistency against the attached materials, readability,
 and overall quality — and returns a severity-tagged findings list,
 routed back to the producing thread for disposition.
 
+**Validation target — shipped equals validated.** The artifact validated is the
+**complete** deliverable (the comprehensive report's body + appendices,
+§{appendix.report-architecture}), not a summary. What ships must equal what was
+validated: a correction made *after* validation re-stamps the revision and
+re-validates-if-material before send (the deliverable bump-atomicity invariant,
+§{section.bump-atomicity-routine}).
+
 **The independence rule is the point of the construct.** The validation
 prompt stays minimal, and the author's rationale, structure notes, and
 known-weak-spots list stay out of the validator's context: a validator
@@ -2495,7 +2511,7 @@ dispatch-ready payload) and the *inbound* half — "the N returns are back; here
 is exactly what to do with them" — barely at all, so an operator had to *ask*.
 The **dispatch lifecycle** names the whole round-trip as one construct: five
 stages, the dispatch-scoped sibling of the engagement lifecycle (Setup →
-Desk/Meta run → Closure). It is a **frame**, not new machinery — it subsumes
+Desk/Meta run → Closure, §{section.engagement-closure}). It is a **frame**, not new machinery — it subsumes
 the existing rules **by reference** (no renumbering, which would orphan the
 cross-refs): the detailed rules stay where they live.
 
@@ -3194,6 +3210,17 @@ Stakes / blast radius: [one paragraph]
 Falsifiers:        [list — findings that would refute the thesis]
 ```
 
+**Quantitative core → an interactive workbook (new in v2.18.0).** When the
+decision under test has a quantitative, operator-tunable core (unit economics, a
+threshold / corner case, a returns or break-even model), the finding may be
+delivered **also** as a live operator-drivable **workbook** — editable assumption
+cells driving the brief's decision gate in real time, color-coded — so the
+decision-maker explores the verdict against their own numbers. The report
+*states* the finding; the workbook lets them *drive* it. Trigger (one per
+engagement, on the central quantitative gate) and the cockpit pattern
+(editable-cells-only + live gate + opens-at-the-report's-case + §{principle.SP-18}
+tie-back) are in §{appendix.report-architecture}.
+
 #### 6.4.2 Stakeholder register
 <a id="section-stakeholder-register"></a>
 
@@ -3415,6 +3442,74 @@ real engagement, it is promoted **without losing work**: the quick-mode output
 **seeds a `repo_backed` Master** — the mini decision-brief becomes the Decision
 brief, the lite lens pick seeds the Prompt Strategy, and the deliverable
 becomes the first finding — and full Setup continues from there.
+
+### 6.7 Engagement closure `[structural | stable]`
+<a id="section-engagement-closure"></a>
+
+Setup is the gate **in** — three-layer readiness (§{section.three-layer-readiness}).
+Closure is the symmetric gate **out**: the same three-layer shape, opposite in
+direction, and **lighter in machinery** — a verification *sweep*, not a probe
+battery. An engagement does not just stop when a verdict ships; it **closes
+through a gate** that leaves no loose end on any lane and hands forward to the
+next engagement. This is the engagement-lifecycle bookend — Setup opens, the
+PRISM Desk runs (§{section.lanes-roles-and-the-prism-ui}), closure closes — the
+same arc the dispatch lifecycle mirrors at dispatch scope
+(§{section.dispatch-lifecycle}).
+
+#### Layer 1 — Object completeness
+
+The engagement's own work is finished and shippable:
+
+- Every dispatch-register pass (§{section.master-tracking-dispatch-register}) is
+  **closed, or deferred with rationale**; the Rerun Register
+  (§{section.m10-rerun-fix-required}) is clear; no monitor is left firing at HIGH.
+- Every Decision-brief **falsifier** (Probe 5, §{section.probe-5-falsifier-once})
+  is explicitly checked off — observed or not-observed, never silently dropped.
+- The verdict(s) ship as the **comprehensive final report** — the deliverable of
+  record, reflecting all the work, verdict-first and executive-scannable
+  (§{appendix.report-architecture}) — plus the interactive workbook when the
+  decision has a quantitative core, and any developer / action artifacts the
+  engagement produced. Editions are self-contained (§{principle.SP-20}) and plain
+  (§{principle.SP-17}).
+- The deliverable is **polished only after it validates** — the presentation
+  house-style (§{appendix.report-architecture}) runs on a deliverable the
+  Independent Validation Dispatch (§{section.independent-validation-dispatch}) has
+  already passed (§{principle.SP-18}); never beautify an unvalidated artifact.
+- **Shipped == validated** — the revision that ships equals the revision the IVD
+  validated; a post-validation correction re-stamps and re-validates-if-material
+  before send (§{section.bump-atomicity-routine}).
+
+#### Layer 2 — Lane / meta completeness
+
+No loose end on any lane, and every learning codified:
+
+- Every lane's cross-lane inbox is **drained** (§{section.cross-lane-inbox}) — the
+  orphan sweep is now a *gate*, not only a backstop: every candidate promoted,
+  none left buried in a log.
+- The methodology worksheet is finalized; both logs are merged.
+- **Reconcile-at-close.** Diff the finished deliverable against its reference
+  architecture (§{appendix.report-architecture}) in **one** pass and codify every
+  craft element that landed via production / operator polish but is not yet
+  codified — the reference is reconciled against the deliverable of record, which
+  closes the applied-but-not-codified pattern structurally (a learning lands in an
+  artifact without being codified so it recurs). Its in-flight sibling is
+  **catch-one → propose-a-sweep**.
+
+#### Layer 3 — Operator close ratification
+
+Explicit operator **close** ratification — silence is not closure
+(§{principle.SP-9}). The engagement is left **externally share-ready**
+(§{appendix.external-share}): one repo per engagement, an audience-facing README,
+the de-coded share archive, and a passed redaction review — produced as a
+derived, operator-gated artifact (present it; do not auto-commit unless directed).
+In the PRISM UI (§{section.prism-ui}) closure is the **all-clear** state —
+remaining work ∅ across every lane — at which the Desk hands forward to the next
+engagement.
+
+The closure checklist, the report architecture + craft conventions, the workbook
+cockpit pattern, and the reconcile-at-close sweep are in
+§{appendix.report-architecture}; the share-archive recipe, the share modes, and
+the image-redaction procedure are in §{appendix.external-share}.
 
 ---
 
@@ -4356,6 +4451,14 @@ One test shape — re-derive, compare, zero silent drift — across three
 target classes. Mechanical and machine-assistable; enforced at step 6
 of the Execution Self-check (§{section.prism-execution-self-check}).
 
+**Deliverable-transform tooling (new in v2.18.0).** When the recompute gate runs
+over a deliverable *transform* (an HTML / Markdown → shipped-artifact build),
+tokenize **standalone figures only**: exclude digits embedded in acronyms or codes
+(`B2B2C`, `A8`, `GPT-5.5`) and strip tags first (so an `href` / anchor edit is not
+read as figure drift) — otherwise a legitimate clarity edit trips a *false*
+figure-drift halt. HTML→PDF render hazards for deliverable builds are catalogued in
+§{appendix.vendor-parsing-observations}.
+
 #### 10.1.10 SP-19 — Claims carry their basis `[methodological | stable | 🚫]`
 <a id="section-sp-19-claims-carry-their-basis"></a>
 
@@ -4509,6 +4612,14 @@ After the v2 split, SP-8 carries one concern:
   session so M2 (Version Drift) can reconcile.
 - Filename discipline (the look-alike disambiguation pattern) extracted to
   SP-14 (§{section.sp-14-filename-discipline}).
+- **Read canonical, not a mirror (new in v2.18.0).** A convenience
+  working-folder mirror lags the canonical repo *by construction* (a file
+  committed to the repo is not auto-copied to a flat mirror). A consumer — a
+  Builder, an Independent Validation seat, a fresh session — that reads the mirror
+  instead of the canonical repo can see stale / incomplete state and infer a false
+  defect. Read from a fresh repository clone, never the convenience mirror, with a
+  completeness sanity-check on entry. The multi-surface engagement recipe is in
+  §{appendix.external-share}.
 
 #### 10.2.2 Carryforward SPs — application surfaces
 <a id="section-carryforward-sps-application-surfaces"></a>
@@ -4615,6 +4726,20 @@ Review-iteration rounds in particular accumulate versions (each round is a
 sub-version bump, e.g. a report `_r6 → _r7`), so the version history is
 recoverable and SP-1 canonicity (§{principle.SP-1}) is preserved. An in-place
 overwrite of canonical state is a defect, not a convenience.
+
+**Deliverable revisions: shipped == validated (new in v2.18.0).** Bump atomicity
+governs the client-facing **deliverable**, not only the Master. Every content
+change to a versioned deliverable — *including cosmetic and text corrections* —
+bumps its revision (`_r7 → _r8`); a revision label that stays put while content
+changes is a stale, lying label — the same look-alike failure §{principle.SP-14}
+guards against, now on the artifact the client receives. The **shipped revision
+must equal the validated revision**: a correction made *after* the Independent
+Validation Dispatch (§{section.independent-validation-dispatch}) validated a
+revision means validated ≠ shipped, so it requires a re-stamp + a decision —
+re-validate if material, note if cosmetic — and never ships a
+post-validation-corrected file under the validated label. Keep exactly one current
+file per revision (remove superseded / un-versioned leftovers). The report-craft
+home for this discipline is §{appendix.report-architecture}.
 
 This atomic routine + the M2 silent-safeguard makes drift very unlikely
 by construction without abandoning the safeguard.
@@ -4870,7 +4995,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.17.0 (this file)
+- **Framework version.** v2.18.0 (this file)
 - **Bundled Lens Library version.** v0.15 (`lens/PRISM_lens_library.md`)
 - **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -4886,12 +5011,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_17_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_18_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_15.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.17.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.18.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -4917,7 +5042,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.17.0 attached; v{published} available at {releases URL}.`
+   `Framework v2.18.0 attached; v{published} available at {releases URL}.`
    `Lens v0.15 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -4960,8 +5085,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.17.0). https://github.com/Ronkupper/PRISM
+> (v2.18.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.17.0 framework operating document.*
+*End of PRISM v2.18.0 framework operating document.*

@@ -1,4 +1,4 @@
-<!-- PRISM v2.17.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
+<!-- PRISM v2.18.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix A — Glossary
@@ -28,6 +28,9 @@ mechanics live in the cross-referenced sections.
 | **Dispatch register** | Master section tracking recommended-vs-executed state per prompt. §{section.master-tracking-dispatch-register}. |
 | **Dispatch shape** | Envelope field carrying the dispatch structural shape: `equivalence`, `split`, or `limitation-named`. §{section.single-envelope-with-spectrum-shape}. |
 | **Domain Reconnaissance Probe** | Setup-time probe (§{probe.P6}). Surveys domain practice + authoritative-source detection + Jurisdiction map. §{section.probe-6-domain-reconnaissance-iterates-early}. |
+| **Engagement closure** | The symmetric gate *out* of an engagement — a three-layer close sweep (object / lane-meta / operator) mirroring three-layer readiness; home of the orphan-sweep, reconcile-at-close, and deliverable polish. §{section.engagement-closure}. |
+| **Engagement report** | The comprehensive final report — the engagement's deliverable of record, reflecting all the work, verdict-first and executive-scannable; a tight body + curated appendices. §{appendix.report-architecture}. |
+| **Engagement workbook** | An interactive, operator-drivable cockpit companion to the report, delivered when the decision has a quantitative core: editable cells drive the decision gate live. §{appendix.report-architecture}. |
 | **Envelope** | The first block of the triple contract — inbound vendor instructions including dispatch metadata, attachments, and operator hints (the PRISM PROMPT INTEGRITY transport anchor renders above it but is not a contract block, §{section.transport-integrity-bracket}). §{section.prism-execution-envelope}. |
 | **`equivalence` dispatch** | Same prompt body to N vendors; outputs comparable; triggers Vendor Triangulation at N≥2. §{section.single-envelope-with-spectrum-shape}. |
 | **Execution session** | Vendor session running a single dispatched prompt. Framework not attached; loaded artifacts limited to Envelope's `Attachments:` field. §{section.two-session-types}. |
@@ -56,6 +59,7 @@ mechanics live in the cross-referenced sections.
 | **Probe** | Setup-time grading construct against the draft Prompt Strategy. Seven probes specified: P1–P7. §{section.the-seven-probes}. |
 | **Prompt Strategy** | The plan of dispatched prompts produced by Setup. Lives in the Master. Iterates in P0; ratifies at P0→P1; revisable at convergence (§{section.strategy-stability}). |
 | **Quick mode** | `SETUP_QUICKMODE` — a first-class light Setup shape (one ephemeral session, clean-context sub-agent fan-out) keeping the cheap rigor; graduates to a full engagement without losing work. §{section.setup-onboarding-and-mode-selection}. |
+| **Reconcile-at-close** | A closure-gate codification sweep: at engagement close, diff the finished deliverable against its reference architecture in one pass and codify every craft element not yet codified (closes the applied≠codified pattern). §{section.engagement-closure}. |
 | **Result Completeness Check** | M12. Convergence-time monitor detecting within-domain coverage gaps in returned findings. §{section.m12-result-completeness-check}. |
 | **Saturation** | Two consecutive iterations produce no material change to coverage or strategy. §{section.three-layer-readiness}. |
 | **Role × context-tier** | The flexible matrix a session occupies — role (Setup / Desk / dispatch-builder / -consumer / execution / convergence / validation) × tier (orchestration vs execution). §{section.roles-context-tier}. |
@@ -63,8 +67,10 @@ mechanics live in the cross-referenced sections.
 | **Setup artifacts** | Four instance-specific artifacts populated during Setup: Decision brief, Stakeholder register, Claim inventory, Jurisdiction map. §{section.setup-artifacts}. |
 | **`split` dispatch** | Prompt split into vendor-specific sub-prompts; synthesis happens orchestration-side. §{section.single-envelope-with-spectrum-shape}. |
 | **Setup onboarding** | `SETUP_ONBOARDING` — the Setup-as-scaffolder flow that generates the per-engagement SI from a template and emits project-create / install cards; the two-project model. §{section.setup-onboarding-and-mode-selection}. |
+| **Share archive** | The default external-share artifact — a self-contained, de-coded, `Index.html`-navigated archive of the engagement's work-product, redacted for share (the canonical repo untouched). §{appendix.external-share}. |
 | **Stakeholder register** | Setup artifact. Per-role listing of stake, motivation, positioning/angle, decision power, and communication channel; the operator/commissioner is a mandatory row. §{section.stakeholder-register}. |
 | **Standing Principle (SP)** | Persistent posture; not a discrete fire. See the full roster in §{section.standing-principles} and §{section.v1-x-standing-principles-carryforward-catalog}. |
+| **Status-glyph legend** | The report's published ● / ◐ / ○ visual vocabulary for capability / coverage / severity, with Confidence and Verification as separate axes; introduced on first use and decoded in the glossary. §{appendix.report-architecture}. |
 | **Strategy stability** | At P0→P1 ratification, strategy is "presumed stable, revisable at convergence." §{section.strategy-stability}. |
 | **Substitution** | The filename-resolved executed vendor/config (§{principle.SP-14}) differs from the Envelope's recommended vendor/config; the Output `Vendor` field is advisory self-ID (§{section.recommended-vs-executed-reconciliation}). Absorbed at convergence; no automatic re-dispatch. §{section.substitution-absorption}. |
 | **Three-layer readiness** | The P0→P1 boundary clears when Structural completeness, Library coverage saturation, and Operator ratification all clear. §{section.three-layer-readiness}. |

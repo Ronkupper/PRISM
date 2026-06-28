@@ -68,6 +68,14 @@ abstract: >-
   copy-through digest so a return reconciles to the exact dispatch instance, a
   fanned Independent-Validation adjudicate-by-re-derivation refinement, and
   passive pre-fill of self-report.
+  v2.18 ("Lifecycle & deliverables") adds a symmetric engagement-closure gate — a
+  three-layer close sweep bookending three-layer readiness, with an orphan-sweep,
+  a reconcile-at-close codification sweep, and deliverable polish — and codifies
+  the engagement deliverable: a comprehensive verdict-first final report, an
+  optional interactive workbook, a presentation house-style, deliverable
+  bump-atomicity (shipped equals validated), and an external-share family (one
+  repo per engagement, a de-coded share archive, and an image-redaction
+  procedure).
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -80,7 +88,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.17.0"
+version: "2.18.0"
 date-released: "2026-06-28"
 keywords:
   - llm

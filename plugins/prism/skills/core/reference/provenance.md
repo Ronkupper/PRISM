@@ -1,4 +1,4 @@
-<!-- PRISM v2.17.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
+<!-- PRISM v2.18.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix B — Spec → v2.0 source mapping
@@ -106,7 +106,7 @@ roles, and the PRISM UI), §{section.cross-lane-inbox} (cross-lane OPEN_ITEMS
 inbox), §{section.prism-desk-and-prism-meta} (PRISM Desk and PRISM Meta),
 §{section.prism-ui} (PRISM UI), §{section.bundle-load-integrity} (bundle-load
 integrity), §{section.setup-onboarding-and-mode-selection} (Setup onboarding
-and mode selection), §{section.dispatch-lifecycle} (dispatch lifecycle), §{section.transport-integrity-bracket} (transport-integrity bracket).
+and mode selection), §{section.dispatch-lifecycle} (dispatch lifecycle), §{section.transport-integrity-bracket} (transport-integrity bracket), §{section.engagement-closure} (engagement closure).
 
 ### C.2 `[methodological | stable]`
 <a id="appendix-methodological-stable"></a>
@@ -178,12 +178,12 @@ strength are noted parenthetically.
 
 | Axis 1 \ Axis 2 | stable | review-if | review-annually | Total |
 |---|---|---|---|---|
-| structural | 43 | 0 | 0 | 43 |
+| structural | 44 | 0 | 0 | 44 |
 | methodological | 12 | 3 (1 with `recommended`) | 0 | 15 |
 | vendor-dependent | 0 | 3 | 0 | 3 |
 | operator-scaffolding | 6 | 0 | 0 | 6 |
 | empirical | 0 | 0 | 1 | 1 |
-| **Total** | **61** | **6** | **1** | **68** |
+| **Total** | **62** | **6** | **1** | **69** |
 
 ---
 
@@ -282,6 +282,9 @@ items documented with the change.
 | GATE-0 / GATE-1 / GATE-2 | Gates | Folded into Monitors + What's next + M11 |
 | Adaptations | Adaptations | Lighter — strategy-stability with revisable-at-convergence + Master version bump |
 | Discrepancy Check | Discrepancy Check (prompt-template mechanic) | Absorbed into M7 Claim Conflict + Layer-1 reconciliation |
+| Engagement closure (gate out) | (no v1.x close gate) | 🆕 — symmetric bookend to three-layer readiness |
+| Comprehensive final report + interactive workbook | (informal final write-up) | 🆕 — codified deliverable architecture (verdict-first; cockpit) |
+| External share archive | (no v1.x external-share) | 🆕 — de-coded archive + redaction regime |
 
 ### D.6 Nomenclature changes
 <a id="appendix-nomenclature-changes"></a>

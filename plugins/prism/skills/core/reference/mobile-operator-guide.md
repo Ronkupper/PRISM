@@ -1,4 +1,4 @@
-<!-- PRISM v2.17.0 Skill bundle (on-demand reference). Mobile operator survival guide (section 17). Operator-facing reference.
+<!-- PRISM v2.18.0 Skill bundle (on-demand reference). Mobile operator survival guide (section 17). Operator-facing reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 17. Mobile operator survival guide
@@ -160,5 +160,36 @@ storage does not, and structured project folders give the operator a
 navigable home rather than the flat Downloads-folder pile. On desktop
 substrates this pattern is often redundant; on mobile it is
 load-bearing, and the cost of the extra tap is negligible.
+
+#### MO-6 — Multi-lane session legibility: rename and archive
+
+**Situation.** A multi-lane engagement runs many sessions across the standing
+lanes (PRISM Desk, PRISM Meta) and ephemeral roles. On a surface that
+**auto-names** a session by summarizing its first message, the lane / phase
+moniker (e.g. `Meta-7`, `Desk-3`) is **dropped** — two similarly-summarized
+sessions become indistinguishable in the recents list, risking work in the wrong
+session: the clobber class repo-backed lanes already fight.
+
+**Pattern.** Two manual workflows keep the list legible:
+
+- **Rename each session** `"<plain name> | <Lane>-<N>"` (e.g.
+  `"Alumnite engagement retrospective | Meta-7"`) so the lane + number survive the
+  auto-name.
+- **Suffix superseded** Desk / Meta sessions `"_Archived"` to separate live from
+  retired.
+
+Name-disambiguation relies on this **explicit manual-rename step**, not on the
+surface deriving the name from the front of the opener line — a summarizing
+surface rewrites rather than taking a literal prefix, so front-loading the moniker
+is best-effort, not load-bearing. Where a surface exposes no rename tool, the
+rename is necessarily a manual operator step (or a surface feature request). The
+next-session opener can carry the rename as a named first step so it is not
+rediscovered each time.
+
+**Why it works.** The lane + number is the disambiguator the surface discards;
+restoring it by hand is cheap and removes the cross-lane-confusion risk. A
+related discipline: a **chronic, un-actionable flag** — one only fixable
+off-surface — is surfaced **once and tracked**, not re-emitted at every
+turn-close (flag-fatigue dulls attention to the flags that matter).
 
 ---

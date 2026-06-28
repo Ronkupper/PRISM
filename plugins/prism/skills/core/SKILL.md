@@ -60,6 +60,17 @@ resident until you open them.
 - **`reference/lanes-ui.md`** — the lanes / roles model, the PRISM Desk and PRISM
   Meta standing lanes, the PRISM UI, and Setup onboarding. Fetch when lanes / Desk /
   UI / onboarding work is in front of you.
+- **`reference/dispatch-conventions.md`** — the promoted dispatch convention set
+  (§A–H), the promotion map, the canonical execution-paste model, and the
+  digest-preimage pin. Fetch when building or converging a dispatch.
+- **`reference/report-architecture.md`** — the comprehensive final report skeleton
+  + craft conventions, the interactive workbook cockpit pattern, the presentation
+  house-style, and the reconcile-at-close checklist. Fetch when building or closing
+  an engagement deliverable.
+- **`reference/external-share.md`** — one-repo-per-engagement, the de-coded share
+  archive, share modes, the image-redaction procedure, and the
+  read-the-repo-not-the-mirror canonical-source block. Fetch when preparing an
+  external handoff.
 - **`reference/provenance.md`** — spec→v2 source mapping, the decision-tag index, and
   the v1.x→v2 surface drift. Fetch when tracing a decision's rationale or origin.
 - **`reference/glossary.md`** — the glossary. Fetch on an unfamiliar term.
