@@ -1,4 +1,4 @@
-<!-- PRISM v2.18.0 Skill bundle (on-demand reference). Lanes, roles, the PRISM UI, and Setup onboarding (Appendix I). Fetch when lanes / Desk / UI / onboarding work is in front of you.
+<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Lanes, roles, the PRISM UI, and Setup onboarding (Appendix I). Fetch when lanes / Desk / UI / onboarding work is in front of you.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix I — Lanes, roles, PRISM UI, and Setup onboarding (reference)

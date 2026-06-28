@@ -1,4 +1,4 @@
-<!-- PRISM v2.18.0 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
+<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 8. Parked v2 design ideas
@@ -7,74 +7,6 @@
 These two ideas were parked for v2 from the design-doc-level discussion
 (DD.§13.3): they earn their place but the framework treats them as
 recommendations and graceful-degradation paths rather than hard machinery.
-
-### 8.1 Claude Project as Setup recommendation `[vendor-dependent | review-if: orchestration vendor changes]`
-<a id="section-claude-project-as-setup-recommendation"></a>
-
-Setup at P0.1 includes a recommendation to create a Claude Project as the
-home for project state.
-
-**Graduated under SETUP_ONBOARDING (v2.16.0).** This recommendation is now
-active rather than parked: an engagement runs as the two-project model
-(orchestration + execution) that Setup onboarding stands up — see
-§{section.setup-onboarding-and-mode-selection}.
-
-**Recommendation surfacing — when.**
-
-- At P0.1, before the first probe iteration runs.
-- *What's next* surfaces it as the first operator action:
-  ```
-  Setup recommendation: Create a Claude Project named "[subject] audit"
-  (or per your naming convention). Reasons:
-    - Project knowledge auto-attaches Master, Lens Library, and brief
-      documents to every session you open inside the Project.
-    - Past-conversation search becomes bounded to the Project, which
-      pairs cleanly with SP-12 bounded-search disclosure.
-    - Reduces re-attach friction across multi-session work.
-  Proceed without a Project? [yes/no]
-  ```
-
-**Project contents at Setup completion** (recommended):
-
-- `[project]_prism2.0_master_p0.1.md` (Master, current version)
-- `PRISM_lens_library.md` (v0.15 or pinned tag)
-- `[project]_brief.md` (subject brief)
-- `[project]_prompt_strategy_p0.1.md` (current Prompt Strategy, optional —
-  Master can carry this)
-- Any subject-supplied reference documents
-
-**Master in the Project** — operator workflow:
-
-- Each orchestration session updates the Master.
-- At session close, operator downloads the updated Master to the device.
-- Operator uploads the new version to project knowledge (replacing or
-  adding).
-- Old version retained in project knowledge as audit trail (or archived to
-  cloud drive per §{section.mobile-operator-survival-guide} MO-5).
-
-This is a manual sync step under v2.0's plain-chat substrate. Auto-sync is
-a roadmap adjacency.
-
-**Fallback (operator declines or cannot create a Project).**
-
-- Setup proceeds. P0.1 continues without Project.
-- Every subsequent *What's next* emits an Operator hint: `Re-attach Master
-  and Lens Library at session open.`
-- The Project recommendation does not re-surface unless operator asks;
-  framework respects the decline.
-
-**SP-12 bounded-search disclosure interaction.** When a Project is in
-place, Claude's `conversation_search` is bounded to the Project. SP-12
-disclosure language adjusts:
-
-> *"Searched within the [project name] Project. [Result]. The session may
-> live outside this Project; confirm before I conclude."*
-
-When no Project is in place, search covers non-project conversations.
-SP-12 disclosure language:
-
-> *"Searched outside any Project's scope. [Result]. The session may live
-> inside a Project I cannot see from here; confirm before I conclude."*
 
 ### 8.2 Session history as validation/recovery `[vendor-dependent | review-if: orchestration vendor changes]`
 <a id="section-session-history-as-validation-recovery"></a>

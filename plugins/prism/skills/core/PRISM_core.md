@@ -1,8 +1,8 @@
 ---
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.18.0
+version: 2.19.0
 released: 2026-06-28
-supersedes: 2.17.0
+supersedes: 2.18.0
 lens_library_bundled: "0.15"
 substrate_target:
   vendor: claude
@@ -16,13 +16,13 @@ normativity:
 lint_catalog_version: 4
 ---
 
-<!-- PRISM v2.18.0 Skill core (lean, always-loaded). Generated from the assembled
+<!-- PRISM v2.19.0 Skill core (lean, always-loaded). Generated from the assembled
      PRISM.md by scripts/decompose/project_skill_archive.py — edit PRISM.md, not this.
      Reference-grade material is in reference/*.md and lens/, fetched on demand. -->
 
-# PRISM v2.18.0 — Framework operating document
+# PRISM v2.19.0 — Framework operating document
 
-**Status:** v2.18.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.19.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
 **Supersedes:** PRISM v2.17.0 (MINOR — "Lifecycle & deliverables": adds the symmetric **engagement closure** gate (§{section.engagement-closure}) — a three-layer close sweep bookending Setup's three-layer readiness (§{section.three-layer-readiness}), home of the orphan-sweep, the **reconcile-at-close** codification sweep, and the deliverable polish. Names the **comprehensive final report** as the engagement's deliverable of record plus the optional **interactive workbook** (§{section.decision-brief}), with the report architecture, the craft conventions, the workbook cockpit pattern, and the presentation house-style routed to a new **report-architecture** reference bundle (§{appendix.report-architecture}); extends bump atomicity to client-facing deliverables with the shipped-equals-validated invariant (§{section.bump-atomicity-routine}, §{section.independent-validation-dispatch}); adds the §{principle.SP-18} standalone-figure tokenization guard for deliverable transforms; lands the external-share family — one-repo-per-engagement, the de-coded share archive, operator-selectable share modes, and the image-redaction procedure — in a new **external-share** reference bundle (§{appendix.external-share}) with the read-the-repo-not-the-mirror tie on §{principle.SP-8}; and adds a multi-lane session-legibility operator guide. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** the PRISM Skill
@@ -70,7 +70,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.18.0 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.19.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -85,7 +85,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.18.0 after running a session:
+Reading order for an operator returning to v2.19.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -93,11 +93,11 @@ Reading order for an operator returning to v2.18.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.18.0 covers `[structural | stable]`
+### 1.1 What v2.19.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.18.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.18.0 covers:
+PRISM v2.19.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.19.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -133,24 +133,24 @@ and research framework. v2.18.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.18.0 does not cover
+### 1.2 What v2.19.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.18.0 implements the spec; the spec implements
+- **Re-debating direction.** v2.19.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog is bundled at
   `lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`, v0.15 at this release),
   fetched on demand. The bundled file remains authoritative for the Library's
   own evolution and for projects that explicitly pin to a newer Library version.
-- **Empirical calibration.** Several thresholds in v2.18.0 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.19.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.18.0's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.19.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -158,7 +158,7 @@ and research framework. v2.18.0 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.18.0 honours the constraint inherited from the design document (DD.§8.3):
+v2.19.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -167,7 +167,7 @@ v2.18.0 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.18.0. Roadmap
+Mechanics that violate any leg do not earn their place in v2.19.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -178,14 +178,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.18.0 mechanics for the
+**Read this section first if you are encountering v2.19.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.18.0 has the following constructs, grouped by category.
+PRISM v2.19.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -1495,8 +1495,11 @@ Desk** — it is distributed across every session, defense-in-depth:
 
 | Role / occasion | Required bundle |
 |---|---|
-| Setup session · probe iteration | `lens/PRISM_lens_library.md` (Probe 1 grading); `reference/templates.md` (Setup artifacts) |
+| Setup session · probe iteration · P0→P1 | `reference/setup.md` (Setup mechanics — probes, three-layer readiness, Setup-artifact procedures); `lens/PRISM_lens_library.md` (Probe 1 grading); `reference/templates.md` (Setup artifacts) |
 | Producing a Setup / dispatch artifact | `reference/templates.md` |
+| Update session · currency check at session open | `reference/currency.md` (point-refresh, the Update session, the session-open currency check) |
+| Resume / missing handoff · M5 band 🟠 / 🔴 | `reference/continuity.md` (migration handoff, failsafe recovery, defensive migration) — the in-core recovery floor stays resident |
+| A pass classified corpus-access | `reference/corpus-access.md` (the corpus-access dispatch) |
 | Non-default surface · `repo_backed` | `reference/modes-and-surfaces.md` |
 | Lanes / Desk / UI / onboarding work | `reference/lanes-ui.md` |
 | Vendor parsing on returns | `reference/vendor-parsing.md` |
@@ -2133,301 +2136,17 @@ definitions, in lieu of inline expansion at first use. The glossary-block
 pattern is operator discretion; the inline-at-first-use rule is the
 framework default.
 
-### 4.13 Corpus-access dispatch `[structural | review-if: corpus-access Phase 3 lands]`
-<a id="section-corpus-access-dispatch"></a>
+### 4.13 Corpus-access dispatch (on-demand bundle) `[structural | review-if: corpus-access Phase 3 lands]`
 
-During a live engagement, a material question is sometimes best answered by an
-*external reference corpus* — a startup-idea database, a pitch-deck library, a
-funding-record service — rather than by a vendor reasoning from its own training.
-Corpus-access dispatch is the **investigation-posture** Envelope that performs a
-targeted lookup against such a source, scoped to the engagement's actual
-question, and brings the result back caveat-attached. The corpus stays external
-and is queried on demand; nothing is mined into the framework or a lens.
-
-It is *investigation*, not execution: no prompt body is distributed across vendors
-and there is no triangulation question, so the Envelope carries
-`Posture: investigation` (§{section.prism-execution-envelope}, the Execution
-Envelope) and none of the triangulation fields. That absence is what keeps a
-retrieval step from masquerading as a judgment step.
-
-**The Envelope.**
-
-```
-━━━ PRISM CORPUS-ACCESS ENVELOPE ━━━
-Prompt ID:        [identifier — purpose/title]
-Dispatch ID:      [unique per dispatch instance; copy verbatim]
-Project:          [project name]
-Master version:   [filename at dispatch]
-Prompt digest:    [orchestration-generated; copy verbatim]
-Posture:          investigation        ← no Dispatch shape exists
-Source:           [named corpus]
-Corpus kind:      narrative | structured-record
-Source access:    open-web | operator-authenticated   ← routes the path
-Driver:           vendor-executed | cowork-mcp | manual
-Fan:              none | coverage (N)   ← coverage only; never equivalence
-Tools:            web search ON [, Playwright]         ← vendor-executed path
-Question:         [engagement question, scoped, self-contained]
-Extract:          [exactly what to pull; fields / form]
-Return form:      [finding structure]
-Archive:          requested | none      ← screenshots / downloads / exports
-Source framing:   [mandatory bias caveat — e.g. survivor bias]
-Temporal frame:   [mandatory recency / coverage-window constraint]
-Return handling:  [recall-merge; agreement = retrieval-consistency note]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-**Corpus-access fields.**
-
-- `Source` — the named corpus (e.g. a startup-idea database, a funding-record
-  service).
-- `Corpus kind` — `narrative` (read/search corpora returning prose findings or
-  artifact patterns) or `structured-record` (queryable databases returning
-  records — funding rounds, comparable transactions). The kind conditions
-  `Extract`, `Return form`, and `Temporal frame`; it is not a fork into two
-  capabilities.
-- `Source access` — `open-web` or `operator-authenticated`. Routes the lookup
-  path (below).
-- `Driver` — `vendor-executed | cowork-mcp | manual`. The locus that performs the
-  retrieval (below).
-- `Fan` — `none` or `coverage (N)`. A coverage fan retrieves the same material
-  across N vendors for recall; it is **never** equivalence dispatch and never
-  triangulates (see *Coverage fan*).
-- `Tools` — on the vendor-executed path, the vendor tools the lookup requests
-  (`web search ON`, optionally `Playwright`); rides the reserved `Tools:` slot
-  (§{section.prism-execution-envelope}, the Execution Envelope).
-- `Question` — the engagement question, scoped and **self-contained**
-  (§{section.atomic-prompt-self-containment}, atomic-prompt self-containment): no
-  bare PRISM shorthand, since the executing locus may not share PRISM context.
-- `Extract` — exactly what to pull: fields/records for the structured-record
-  kind, the prose finding or pattern for the narrative kind.
-- `Return form` — the structure the finding comes back in (tabular for records,
-  prose for narrative).
-- `Archive` — `requested` or `none`. `requested` triggers the mandatory Exhibits
-  manifest on return (§{section.prism-execution-output}, the Execution Output).
-- `Source framing` *(mandatory)* — the bias caveat the source carries (e.g.
-  survivor bias in a startup-idea corpus). Mandatory because a finding stripped of
-  it is a silent-omission failure.
-- `Temporal frame` *(mandatory)* — the recency / coverage-window constraint.
-  Narrative corpora *age* (era-conditional vs durable: "is this stale?");
-  structured-record databases are continuously updated ("what historical depth —
-  does it cover my era?"). Same field, different question per kind.
-- `Return handling` — how the return routes: recall-merge for a coverage fan,
-  with agreement recorded as a retrieval-consistency note — never the Vendor
-  Triangulation delta (§{section.vendor-triangulation}, Vendor Triangulation).
-
-**Lookup-path `Driver` — a capability-local enum, distinct from the Axis-2
-execution driver.** The corpus-access `Driver` answers a different question than
-the Axis-2 execution-driver enum
-(§{section.orchestration-driver-and-persistence-axes}, the orchestration / driver
-/ persistence axes). Axis-2 (`manual | auto_drive`) governs *who moves the
-Envelope into the execution vendor's chat* — the paste-driver. Corpus-access
-`Driver` governs *what locus performs the retrieval against the source*. The two
-compose orthogonally rather than collapsing: a `vendor-executed` lookup still
-reaches the vendor via the paste-driver (Axis-2 `manual` today, `auto_drive`
-later), so it is not a third Axis-2 value. The enum is therefore capability-local,
-not an Axis-2 extension:
-
-- `manual` — the operator runs the lookup in their own authenticated browser and
-  pastes the result back. The universal fallback; coincides with Axis-2 `manual`
-  (the operator does the legwork). Not surface-gated.
-- `vendor-executed` — the lookup is dispatched to an execution vendor that
-  performs it with its own **web search**, escalating to **Playwright**
-  (vendor-side browser automation in its code-execution sandbox) when retrieval
-  needs live page interaction. Rides the `Tools:` slot; orthogonal to the
-  paste-driver. **Open-web only.** Not surface-gated.
-- `cowork-mcp` — PRISM drives the Chrome MCP under the `cowork` surface
-  (§{section.cowork-surface-capabilities}, the Cowork capability surface) to
-  operate the source directly, including the operator's own authenticated session
-  for paywalled sources. App-under-test-shaped, **not** `auto_drive`'s per-vendor
-  machinery. `cowork`-gated; reserved for Phase 3.
-
-**Path routing (by `Source access`).**
-
-| Source access | Default path | Fallbacks | Barred |
-|---|---|---|---|
-| open-web | vendor-executed | cowork-mcp, manual | — |
-| operator-authenticated | cowork-mcp | manual | vendor-executed |
-
-The credential boundary is hard: a vendor-executed lookup is **open-web only**,
-because authenticating a paywall would mean handing the operator's seat
-credentials to an execution vendor, which is never done. Whether a given vendor
-honors a `Playwright` request, and whether captured binaries return across the
-dispatch boundary, is vendor-empirical — the same class as the Self-check
-substrate-declaration items (§{section.prism-execution-self-check}, the Execution
-Self-check): the Envelope *requests* the tool, the Self-check *confirms* what the
-vendor actually has, and the rationale names the fallback. Because the
-corpus-access paste is itself a dispatched paste carrying a Dispatch ID and
-digest, it is wrapped by the same transport-integrity bracket
-(§{section.transport-integrity-bracket}); the executing locus runs Self-check
-Step 0 before the lookup.
-
-**Coverage fan.** Fanning a lookup across N vendors looks like equivalence
-dispatch, but posture decides routing, not vendor count. In a coverage fan the N
-vendors each *retrieve* the same material — different web-search indexes surface
-different sources — so for *retrieved* facts multiplicity buys **recall**, not
-judgment. Agreement across the fan is a **retrieval-consistency** signal ("this
-fact is robustly findable") recorded as a note, never promoted to convergence.
-The marker is `Fan: coverage (N)`, structurally distinct from
-`Dispatch shape: equivalence`, so Vendor Triangulation cannot fire on a
-retrieval-only fan (§{section.vendor-triangulation}, Vendor Triangulation). (A
-fan whose loci *infer* over the material is the different case — its
-disagreements are triangulation-grade, the `inferred` side of the finding-basis
-axis, §{section.prompt-body-convergence-provisions}.) If the engagement then wants multi-vendor *judgment on* the
-retrieved material, that is a *separate* `equivalence` dispatch with the retrieved
-corpus as its attachment — epistemic posture, routed to Vendor Triangulation
-normally.
-
-**Self-containment is bidirectional here**
-(§{section.atomic-prompt-self-containment}, atomic-prompt self-containment): the
-`Question` goes out self-contained, and the `Return` must come back
-caveat-attached — a bare fact stripped of its framing and recency caveat is itself
-the silent-omission failure.
-
-**Storage.** A corpus-access return is durable engagement state. Corpus-access
-emits the bundle; the persistence axis (§{section.repo-backed-mechanics},
-repo-backed mechanics) decides where it lives. Its archive value is fullest under
-`repo_backed`, where exhibits survive across sessions and surfaces to reach the
-eventual report; under `ephemeral` it degrades to the local or Cowork folder. Not
-a hard dependency — a reason to recommend `repo_backed` whenever corpus-access is
-in play.
-
-**Lens-anchored auto-trigger.** Phase 1 waits to be told ("look this up in
-[source]"); the lens-anchored auto-trigger lets orchestration recognize, on its
-own, that a material question warrants a corpus lookup, and *propose* one. The
-trigger is anchored to a lens: a lens carrying a `recommended_sources:` entry —
-the Lens Library field that binds framework-curated external sources to the lens's
-material question (§{section.library-integration}, the Library-integration surface
-that bundles the Lens Library) — is, by virtue of that field,
-trigger-capable.
-
-*Recognition is the only automatic step.* Orchestration recognizes, on its own,
-the conjunction of three conditions: **(i)** the lens is *in play* — it has fired
-and its disposition is live; **(ii)** the engagement is actively working that
-lens's `material_question:` (a prompt is being shaped against it, or a finding is
-being sought for it); and **(iii)** a recommended source's `answers:` binding
-matches that question. Nothing beyond this recognition becomes automatic.
-
-*Dispatch stays advisory and operator-ratified.* Recognition produces a
-**candidate dispatch, not a dispatch.** Orchestration shapes the
-investigation-posture Envelope — every corpus-access field auto-populated from the
-matched source record (below) — and surfaces it as a ready-to-ratify proposal,
-e.g.: *"The LL-D-008 lens ('Compared to what?', the competitive-substitution lens)
-is in play and your substitution question matches its recommended corpus,
-ideas.rip. Here is a shaped corpus-access dispatch. Ratify to run, edit, or
-skip."* The shaped Envelope is investigation posture, so it routes to a
-recall-merge and never the Vendor Triangulation delta
-(§{section.vendor-triangulation}, the convergence machinery — a coverage fan
-retrieves, it does not triangulate). The operator ratifies, edits, or declines.
-**Silence does nothing.**
-
-*Squaring with SP-9.* The autonomy is in the recognition, never the dispatch.
-SP-9 (§{principle.SP-9}, the "silence is never consent" Standing Principle)
-forbids treating an absent objection as license to act; an auto-*dispatching*
-trigger would spend operator resources — vendor calls, time, possibly
-authenticated-session access — on inferred consent, violating it directly. An
-advisory trigger requires the same explicit ratification SP-9 demands everywhere
-else, reusing the framework's existing propose-then-ratify spine: the Layer-3
-operator-ratification posture at the P0→P1 boundary
-(§{section.three-layer-readiness}, the three-layer-readiness gate, whose Layer 3
-parses for an explicit "ratify / approved / go" and treats silence as
-non-ratification). No new consent model is introduced. Phase 1 is
-operator-initiated ("look this up"); the auto-trigger is
-orchestration-initiated-but-operator-ratified ("you'll want to look this up —
-shall I?"). It moves the *initiative* to orchestration while leaving *authority*
-with the operator.
-
-**Auto-populate — closing the Phase 1 hand-written loop.** When the trigger fires,
-the Envelope's corpus-access fields populate from the matched source record rather
-than being hand-written each dispatch:
-
-| Source record field | Envelope field | Effect |
-|---|---|---|
-| `source` | `Source` | identity |
-| `kind` | `Corpus kind` | conditions Extract / Return form / Temporal frame |
-| `access` | `Source access` | routes the `Driver` via the path-routing table above |
-| `framing` | `Source framing` *(mandatory)* | bias caveat travels by default |
-| `recency` | `Temporal frame` *(mandatory)* | recency / era posture travels by default |
-
-This closes a loop Phase 1 left open. Phase 1 made `Source framing` and `Temporal
-frame` mandatory on the Envelope but hand-written each time; the auto-trigger makes
-them populate from recorded metadata, so the caveat is structurally impossible to
-silently omit — the operator may still edit, but the default is caveat-attached.
-It is the outbound half of the bidirectional self-containment point above
-(§{section.atomic-prompt-self-containment}, atomic-prompt self-containment): the
-`Question` already goes out self-contained, and now the *outbound caveat* travels
-automatically too, so the bare-fact silent-omission failure is prevented at the
-source rather than relying on hand-entry. This is also why the source record's
-`framing:` and `recency:` are mandatory in the lens schema — a blank there would
-become a blank in a *mandatory* Envelope field.
-
-**Where a surfaced candidate lives, and the noise guard.** A surfaced-but-
-unratified candidate is *What's next* material (§{section.whats-next}, the
-*What's next* artifact — the open-loop surface that lists open options and asks the
-operator, on the SP-9 "silence is never consent" lineage), **not** a
-Dispatch-register entry (§{section.master-tracking-dispatch-register}, the
-Dispatch register, which records actually-dispatched prompts). This keeps the
-register clean and reuses the existing open-loop machinery rather than inventing a
-parallel log. The candidate surfaces under *What's next*'s advisory, non-blocking
-candidates, in this shape:
-
-```
-Corpus-access candidate (advisory):
-  Lens:              [LL-code + name] — in play
-  Material question: [the question being worked]
-  Source:            [matched corpus]  (answers: [the matched binding])
-  Shaped Envelope:   [investigation-posture Envelope, auto-populated]
-  Disposition:       awaiting ratification | declined (turn [n])
-```
-
-A material-question-level trigger can fire often, and over-surfacing is its own
-failure — the operator tunes out, which is silent omission in reverse. The noise
-guard: **surface a candidate once per `{lens, source, material-question}` per
-engagement; record a decline; re-surface only on a material change to the
-question.** The re-surface predicate reuses the saturation test the framework
-already applies to Library coverage at the P0→P1 boundary
-(§{section.three-layer-readiness}, the three-layer-readiness gate — its Layer 2
-reaches saturation when two consecutive iterations produce no material change to
-coverage or strategy): a *material change* here is a shift in the question's
-framing, scope, or the finding sought, enough that a prior decline no longer
-settles it; a re-worded restatement of the same question does not re-surface. No
-new bound is introduced.
-
-**Phase status.** Phase 1 (the v2.6.0 release) made the `manual` and
-`vendor-executed` paths operational under manual invocation ("look this up in
-[source]" → orchestration shapes a self-contained investigation-posture Envelope →
-the operator or an execution vendor runs it → the result returns caveat-attached,
-with an Exhibits bundle where capturable). Phase 2 (this release) adds the
-lens-anchored auto-trigger above: orchestration recognizes the need itself and
-surfaces an operator-ratified candidate, rather than waiting to be told. The
-`cowork-mcp` path remains defined-but-reserved (Phase 3, gated on the Cowork
-substrate maturing), exactly as the `auto_drive` execution driver is reserved.
-
-**Passive pre-fill of self-report.** When a pass depends on a subject's
-*self-report* — a founder questionnaire, a management interview, a data-room
-claim set — and especially when it is gated on a person returning, pre-fill
-what is externally knowable *before* the self-report arrives. Run passive
-external detection (the Chrome-MCP / authenticated-browse surface,
-§{section.cowork-surface-capabilities}, plus public records — DNS,
-certificate-transparency, IP-WHOIS, app-store listings) and pre-answer the
-items observation can reach. This turns gate-blocked waiting into
-subject-independent, de-risking progress, and one detection pass feeds many.
-It is a **browse/retrieval** job: name the browse capability per the
-retrieval-shape step (§{section.vendor-selection-at-dispatch}); do **not**
-route it to a synthesis/Deep-Research mode, which silently fails to fetch. Tag
-every pre-filled item by provenance — `[OBS]` observed first-hand, `[INF]`
-inferred from observed signals, `[ask]` not passively knowable
-(§{section.prompt-body-convergence-provisions}, the finding-basis axis). The
-self-report is then **triangulated against this independent baseline** when it
-arrives (the external check pre-positioned over the claim — §{principle.SP-21};
-the detection is investigation-posture single-source, §{principle.SP-15}, never
-a triangulation seat). **Passive-only by default** on a trust-relationship
-subject: honor the questionnaire's own promise — no scanning, no
-ID/parameter manipulation (IDOR), no auth-bypass / rate-limit / upload /
-state-changing actions; read key *names*, never token *values*. Active tests
-require explicit operator authorization and are marked `[not tested — out of
-passive scope → ask or authorized test]`. The paste-ready detection template
-and per-vendor browse recipes are in §{appendix.vendor-parsing-observations}
-(vendor parsing observations).
+> **Phase bundle — fetch when a pass needs corpus access.** The corpus-access
+> dispatch (the `Posture: investigation` Envelope for a targeted lookup
+> against an external reference corpus, brought back caveat-attached) is in
+> **`reference/corpus-access.md`**, fetched on demand. **Trigger:** the
+> dispatch-builder classifies a pass as corpus-access (the Vendor-Selection /
+> D5 retrieval-shape step makes this explicit). You **cannot build a
+> corpus-access Envelope from the core alone** — load
+> `reference/corpus-access.md`. SP-4: `pass = corpus-access →
+> reference/corpus-access.md loaded ✓`.
 
 ### 4.14 Independent Validation Dispatch `[methodological | stable | ✅]`
 <a id="section-independent-validation-dispatch"></a>
@@ -2744,704 +2463,35 @@ curation observation in *What's next*.
 - Tangential probe outputs → archived in Master, not re-summarized.
 - Speculative What-if exploration → deferred to a fresh session.
 
-### 5.4 Migration handoff `[structural | stable]`
-<a id="section-migration-handoff"></a>
-
-Defined handoff artifact. Produced by orchestration at 🔴 (mandatory) and
-offered at 🟠 (operator-elective).
-
-**Handoff format.**
-
-```
-━━━ PRISM SESSION HANDOFF ━━━
-Project:                [name]
-Master version:         [filename of attached Master]
-Lens Library version:   [v0.15 | filename pinned]
-Producing session:      [orchestration session URL or descriptor, if known]
-Reason for migration:   [band-state, named driver(s)]
-Migration timestamp:    [YYYY-MM-DD]
-
-Current state summary:
-  Active prompt(s):     [...]
-  Open dispatches:      [from Dispatch register]
-  Pending Adaptations:  [...]
-  Active probes:        [Setup probes still iterating]
-
-Open monitors:          [unresolved fires by Monitor ID]
-
-What's next (current):
-  [the current What's next artifact, pasted in full]
-
-Operator state:         [optional operator note —
-                         "I'm at lunch; resume with P2.5 tomorrow"]
-
-Next session opens with:
-  Attach: Master, Lens Library, this handoff.
-  Read: this handoff first, then proceed per "What's next."
-━━━ END SESSION HANDOFF ━━━
-```
-
-**Production discipline.**
-
-- Produced at 🔴 automatically as the closing act of the orchestration
-  session.
-- Offered at 🟠 in *What's next* as a candidate next action: "Migrate now
-  to fresh session — produce handoff?"
-- Available at 🟢 / 🟡 on operator request.
-- The handoff *plus* the current Master *plus* the Lens Library are the
-  three artifacts the new session opens with attached. Together: complete
-  context restoration.
-
-**Handoff vs. Master.** The Master is canonical project state; the handoff
-is migration context. The handoff is short (≤ 1 page) and points into the
-Master for detail. New session reads the handoff first to orient, then
-works with the Master as canonical reference.
-
-### 5.5 Failsafe recovery — continuous-state mechanics `[structural | stable]`
-<a id="section-failsafe-recovery-continuous-state-mechanics"></a>
-
-"Always written" defined mechanically: Master and *What's next* are written
-at every orchestration turn-close, regardless of band state, regardless of
-whether the operator asks for them. Misreads of context band cost
-essentially nothing because state is always recoverable.
-
-**Mechanics.**
-
-- **Master update at every orchestration turn-close.**
-  - Always emitted at turn-close, regardless of whether material state
-    changed. Continuous-state safety property (operator never picks the
-    wrong Master because the latest is always the most recent emission)
-    is preserved.
-  - **No-state-change marker (v2.0.1).** When no material Master state
-    changed during the turn (no Dispatch register change, no findings
-    ingestion, no probe disposition change, no monitor state change, no
-    strategy change, no new Changelog entry), the emitted filename
-    carries the `_no_change` suffix immediately before the extension —
-    e.g., `acme_audit_prism2.0_master_p2.3_no_change.md`. The operator
-    can defer cloud-save and attachment-swap on these emissions; the
-    prior Master remains current. This addresses mobile churn cost
-    without giving up the always-emit safety property.
-  - Append-mostly when content does change: Changelog gains a line;
-    relevant register sections gain entries; Dispatch register status
-    updates per §{section.master-tracking-dispatch-register}; findings sections absorb any newly-converged
-    Layer-1 outputs.
-  - Filename version bump only at phase boundaries or convergence-round
-    increments (per §{section.filename-conventions-and-bump-atomicity} bump atomicity). The `_no_change` suffix is
-    orthogonal to the version field — a no-change emission keeps the
-    same version number as the prior content-bearing emission.
-  - Operator must *download* the updated Master at session close when
-    the emission is content-bearing (no `_no_change` suffix) to make it
-    the authoritative canonical copy. (Manual step under v2.0.1
-    plain-chat substrate.)
-  - Cloud-drive save is the Operator hint emitted at every
-    content-bearing turn-close: `Save Master to cloud drive (§{section.mobile-operator-survival-guide} MO-5).`
-
-- ***What's next* rewrite at every orchestration turn-close.**
-  - Replaces in place; no history kept (Changelog carries the historical
-    pointer).
-  - Always reflects the current state, not a future or planned state.
-  - Operator reads *What's next* as the sole source of "what to do next" —
-    not by scrolling chat, not by reading the Master in detail.
-
-- **Inbox drain at every orchestration turn-close (repo_backed lanes).**
-  The lane owner reads its `OPEN_ITEMS` inbox alongside *What's next*, folds
-  each non-terminal item into the Strategy / next-action / register, and
-  appends a `drained` disposition line (§{section.cross-lane-inbox}). The drain
-  is a turn-close peer of the Master and *What's next* writes, and part of
-  resume. An un-drained inbox at turn-close is a turn-close self-check surfaced
-  on the resume line and via SP-4 emission — not a separate Monitor (it does
-  not warrant a numbered slot).
-
-**Consequence — asymmetric bet.**
-
-- If the framework misreads band: operator migrates → fresh session
-  attaches Master + handoff + Lens Library → work continues, no loss.
-- If the framework reads correctly: the recovery infrastructure wasn't
-  needed but wasn't costly either (writing the Master + *What's next* is
-  part of the orchestration turn anyway).
-- If the operator declines to migrate at 🔴: operator-discretion override
-  (the framework cannot force migration); the framework continues but
-  flags continuing-at-🔴 in *What's next* and increments a turn-counter
-  that escalates the migration recommendation.
-
-### 5.6 Defensive migration at natural seams `[structural | stable]`
-<a id="section-defensive-migration-at-natural-seams"></a>
-
-Migration posture keyed to band × seam.
-
-| Band | Migration posture | Seam discipline |
-|---|---|---|
-| 🟢 | Available | At any natural seam; no urgency. Operator-elective. |
-| 🟡 | Recommended | At the next natural seam; if no seam approaching, finish current sub-task to create one. |
-| 🟠 | Strongly recommended | At the immediate next opportunity; framework actively closes current curation to reach a seam. |
-| 🔴 | Correct action now | Framework produces handoff (§{section.migration-handoff}); operator opens fresh session and attaches handoff + Master + Lens Library. |
-
-**Operator override.** Operator can decline migration at any band.
-Framework respects but flags continuing-at-band in *What's next*. At 🔴,
-the per-turn flag escalates to a migration-overdue counter.
-
----
-
-## 6. Setup mechanics
-<a id="section-setup-mechanics"></a>
-
-Setup is iterative refinement against the Lens Library. Not waterfall. The
-P0→P1 boundary clears when three independent layers all read ready
-simultaneously.
-
-### 6.1 From waterfall to library-graded iterative refinement `[structural | stable]`
-<a id="section-from-waterfall-to-library-graded-iterative-refinement"></a>
-
-**Setup iteration loop.**
-
-1. Operator provides initial subject brief.
-2. Orchestration produces draft Prompt Strategy P0.1.
-3. Probes 6, 7 iterate early in P0.1 (Domain Reconnaissance + User Voice);
-   Probes 1, 2, 4 iterate per turn; Probes 3 and 5 run once.
-4. Probe 1 (Coverage grading) outputs tri-state dispositions per Lens
-   (§{section.probe-1-coverage-grading-iterates}).
-5. Operator reviews probe outputs.
-6. Orchestration produces P0.2 incorporating closures.
-7. Repeat until §{section.three-layer-readiness} readiness clears.
-
-**Iteration numbering** — P0.1, P0.2, …. No artificial cap. Floor: minimum
-2 iterations. Soft ceiling: at 4 iterations without saturation, flag
-*something structural may be wrong — operator intervention recommended*.
-
-### 6.2 Three-layer readiness `[structural | stable]`
-<a id="section-three-layer-readiness"></a>
-
-All three layers must clear before P0 → P1 boundary.
-
-#### Layer 1 — Structural completeness
-
-Every planned prompt has a complete pass **spec** — **not** a frozen Envelope.
-The Envelope is *rendered just-in-time at dispatch* (the dispatch lifecycle's
-Build stage, §{section.dispatch-lifecycle}); requiring a populated Envelope here
-would force a Setup-time render to be replayed stale on a long engagement, the
-opposite of late binding. The spec is the durable, Setup-graded,
-convergence-revisable (§{section.strategy-stability}) contract; it carries:
-
-- Single objective (one-sentence statement).
-- Output format (structured findings per §{section.prompt-body-convergence-provisions}).
-- Dependency list (which prior prompts' outputs are inputs; can be empty).
-- Attachment map (filenames per attachment).
-- Enrichment decision (single-vendor / equivalence / split /
-  limitation-named).
-- Success criteria + the applicable conventions and lenses — what "done" means
-  and what binds. This is the **anchor** the just-in-time Envelope render must
-  preserve (objective + lens-coverage + success-criteria), so a late-bound
-  rebuild refreshes the *rendering* without re-scoping the Setup grading.
-
-Verification: orchestration walks the strategy and confirms each prompt has a
-complete spec across these six fields. Any missing field halts P0 → P1. The
-Envelope itself is not required to clear this gate — it is built at dispatch
-from the live Master and current conventions (§{section.prism-execution-envelope}),
-anchored to this spec, with the decisive caveats carried forward explicitly so
-the fresh Dispatch-builder loses nothing the Desk knew.
-
-#### Layer 2 — Library coverage saturation
-
-Every applicable Lens from the Lens Library v0.15 is either:
-
-- Covered by at least one planned prompt (Probe 1 disposition:
-  *fires-covered*), OR
-- Explicitly marked out of scope with rationale (Probe 1 disposition:
-  *doesn't-fire* with rationale captured, OR *fires-maybe* closed via
-  *opt-out* per §{section.probe-1-coverage-grading-iterates}).
-
-**Saturation signal.** Two consecutive iterations produce no material
-change to coverage or strategy.
-
-**Material change criteria.**
-
-- New Lens added to coverage map (P0.x → P0.x+1).
-- Existing Lens disposition changes from *fires-uncovered* to
-  *fires-covered* (or *opt-out*).
-- New planned prompt added or merged.
-- Prompt's Vendor or Vendor config changed.
-
-If two consecutive iterations show none of the above, saturation reached.
-
-#### Layer 3 — Operator ratification
-
-Operator confirms the strategy matches intent. Free-form confirmation;
-orchestration parses for explicit ratification ("ratify", "approved", "go",
-"looks good — proceed"). SP-9 lineage: silence is not ratification.
-
-**Ratification triggers P0 → P1.** Master filename bumps to P1 (e.g.,
-`acme_audit_prism2.0_master_p1.0.md`). Setup probes close. Strategy moves
-to "presumed stable, revisable at convergence" per §{section.strategy-stability}.
-
-### 6.3 The seven probes
-<a id="section-the-seven-probes"></a>
-
-Probes operate against the draft Prompt Strategy at Setup. Vendor
-Triangulation (§{section.vendor-triangulation}) — convergence-time cross-vendor reconciliation —
-lives outside the probe taxonomy because it operates against returned
-findings, not draft strategy. Result Completeness Check (§{monitor.M12}, §{section.m12-result-completeness-check}) is
-a convergence-time monitor. Single-responsibility discipline: probes are
-Setup-time grading constructs only.
-
-#### 6.3.1 Probe 1 — Coverage grading (iterates) `[structural | stable | ✅]`
-<a id="section-probe-1-coverage-grading-iterates"></a>
-
-Grade the draft strategy against the Lens Library v0.15. Universal lenses
-(5) always evaluated. Domain lenses (18) evaluated where their `trigger:`
-predicate is met by the subject.
-
-**Per-lens disposition** (tri-state with maybe sub-state):
-
-- **`fires-covered`** — lens applies, draft already covers it, and the
-  Scope-Integrity Test passes (see below). Silent pass; recorded for
-  audit trail.
-- **`fires-uncovered`** — lens applies, draft does not cover it. Surfaces
-  as a flag; closed by adding coverage in next iteration.
-- **`doesn't-fire`** — trigger predicate not met; rationale captured (one
-  line).
-- **`fires-maybe`** — applicability or coverage ambiguous.
-  - **`fires-maybe — dig-in`** — judging LLM does targeted research on the
-    lens-subject intersection. Produces an expanded lens framing or a
-    scoped specialist pass to add to the strategy. Closes by becoming
-    *fires-covered* in next iteration.
-  - **`fires-maybe — opt-out`** — documented exclusion with rationale.
-    Closes by becoming a recorded out-of-scope decision.
-
-**Scope-Integrity Test — the `fires-covered` gate.** A lens cannot be
-marked `fires-covered` on assertion alone. Before the disposition is
-recorded, restate the lens's own `minimum_scope_binding:` as a yes/no
-falsifier — *every clause satisfied with evidence, or any clause unmet?* —
-and answer it in context. A clause-by-clause pass is required; any unmet or
-undocumented clause forces `fires-uncovered` (or a documented
-`fires-maybe — opt-out`) instead. A lens carrying a `scope_integrity_probe:`
-field uses that sharpened falsifier in place of the generic restatement.
-This inline self-check is the always-on floor of the Scope-Integrity Test;
-its rigor ladder and home are specified in §{section.scope-integrity-test-sit}.
-
-**Disposition output format** (per turn-close in P0):
-
-```
-━━━ PROBE 1 — COVERAGE GRADING ━━━
-Iteration: P0.x
-Universal lenses (5):
-  LL-U-001 Who gets hurt?           — fires-covered (P2.1)
-  LL-U-002 What's the thesis?       — fires-covered (decision brief)
-  LL-U-003 What would refute?       — fires-uncovered (FLAG)
-  LL-U-004 Who acts on this?        — fires-covered (decision brief)
-  LL-U-005 What laws touch this?    — fires-maybe → dig-in
-Domain lenses (triggered):
-  LL-D-002 Can anyone use?          — fires-covered (P3.4 a11y pass)
-  LL-D-005 Can attackers get in?    — fires-uncovered (FLAG)
-  LL-D-011 Is data handled lawfully? — fires-maybe → opt-out
-                                       (rationale: subject is read-only
-                                       informational service; no PII)
-  ...
-Domain lenses (not triggered):
-  LL-D-016 Is the ledger safe?      — doesn't-fire (no custody/payments)
-  ...
-Saturation flag: not-yet (3 changes from P0.2)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-**Operator-fatigue mitigation.** Judging LLM resolves clear cases silently
-(covered or doesn't-fire with obvious rationale). Escalates to operator
-only on genuine ambiguity (*fires-maybe* requiring dig-in vs. opt-out
-decision). Empirical calibration deferred — see §{section.empirical-calibration-items}.
-
-#### 6.3.2 Probe 2 — Adversarial Scope (iterates) `[structural | stable | ✅]`
-<a id="section-probe-2-adversarial-scope-iterates"></a>
-
-Hunt for silent omissions and under-scoped treatments in the draft Prompt
-Strategy. Library-driven (uses Library entries as starting prompts but
-goes beyond catalog); informed by domain context.
-
-**Lifecycle.** Setup-only. Iterates per P0.x turn-close. Does not fire at
-Layer-1 convergence — cross-vendor finding triangulation is a separate
-mechanism (Vendor Triangulation, §{section.vendor-triangulation}) with its own trigger and output
-shape.
-
-**Multi-vendor recommendation.** Independent adversarial passes across
-vendors; divergence between passes is signal about scope blind spots. Not
-the same as cross-vendor finding reconciliation.
-
-**Output.** List of silent-omission candidates the strategy did not
-address. Operator reviews; orchestration converts surviving candidates
-into Lens references or new prompt additions in the next iteration.
-
-#### 6.3.3 Probe 3 — Decision Framing (once) `[structural | stable | ✅]`
-<a id="section-probe-3-decision-framing-once"></a>
-
-Does the strategy answer what the stakeholder actually needs to decide?
-
-**Operator-positioning question (new in v2.15.0).** Who commissioned this and
-why? What is their relationship to the subject and to the decision? What angle
-or conflict does that create, and how should the brief be framed to be true to
-it? Answer positively (§{principle.SP-16}) — state what each stakeholder *is*
-and the conflict it creates, never a denial of what they are not. Every
-stakeholder *and the operator/commissioner* is captured with role, motivation,
-and positioning/angle.
-
-Outputs the Decision brief and Stakeholder register Setup artifacts
-(§{section.decision-brief}, §{section.stakeholder-register}).
-
-#### 6.3.4 Probe 4 — Pre-mortem (iterates) `[structural | stable | ✅]`
-<a id="section-probe-4-pre-mortem-iterates"></a>
-
-Imagine execution completes. How would the finding fail to answer the
-original question?
-
-**Output.** A list of pre-mortem failure modes; each surviving mode either
-becomes a new probe in the strategy or is dismissed with rationale.
-
-#### 6.3.5 Probe 5 — Falsifier (once) `[structural | stable | ✅]`
-<a id="section-probe-5-falsifier-once"></a>
-
-What findings would invalidate the thesis?
-
-**Output.** Decision brief gains a Falsifiers section listing findings
-that, if observed, would refute the thesis. These become explicit
-success/failure criteria for Layer 2 synthesis.
-
-#### 6.3.6 Probe 6 — Domain Reconnaissance (iterates early) `[structural | stable | ✅]`
-<a id="section-probe-6-domain-reconnaissance-iterates-early"></a>
-
-What do practitioners, researchers, and serious analysts of this domain
-actually investigate? What lenses does the domain's own literature treat
-as default?
-
-**Imports domain-external signal that the Library cannot carry.**
-
-Asks whether an authoritative canonical source exists for the domain:
-
-- Regulated registry?
-- Standards body with testable criteria?
-- Curated research corpus?
-- Benchmark dataset?
-
-If yes: strategy brings it in as primary evidence; Probe 6 outputs a
-citation.
-
-**Multi-vendor recommended.** Different vendors have different exposure to
-domain-specific literature.
-
-Outputs the Jurisdiction map Setup artifact (§{section.jurisdiction-map}).
-
-#### 6.3.7 Probe 7 — User Voice (iterates early) `[structural | stable | ✅]`
-<a id="section-probe-7-user-voice-iterates-early"></a>
-
-Imports real end-user / customer / affected-user perspectives into Setup.
-Mines actual user signal from forums, reviews, support tickets, public
-commentary, social platforms — whatever surfaces are available for the
-subject's user base.
-
-**Why a probe.** Strategies built only on the project brief plus Library
-lenses risk being shaped by what the framework *expects* users to care
-about rather than what they actually do. User Voice surfaces friction
-points, pain patterns, and lived-experience signal the brief misses.
-
-**Lifecycle.** Setup-only. Iterates early in P0 alongside Probe 6 (Domain
-Reconnaissance) — both import external signal before the strategy hardens.
-
-**Multi-vendor recommended.** Different vendors have different exposure to
-user-generated content (Perplexity is strong on live web; Claude on
-synthesis from quoted text; Gemini on long-context corpus).
-
-**Output.** A list of user-surfaced concerns, friction points, and
-reality-checks that feed the strategy. Surviving items either become new
-prompts, become flagged-for-coverage Library lenses, or refine the
-Decision brief's stakeholder section.
-
-**v1.x lineage.** v1.x had User Voice as a Phase 2 enrichment role
-("mine real user perspectives — reality check"). v2 promotes it to Setup
-probe so user signal informs strategy *before* execution rather than
-enriching findings *after*.
-
-#### 6.3.8 Probe ordering — recommended sequence
-<a id="section-probe-ordering-recommended-sequence"></a>
-
-P0.1: Probe 6 (Domain Reconnaissance — establishes domain context); Probe
-7 (User Voice — imports user signal); Probe 1 (initial coverage); Probe 3
-(Decision Framing).
-P0.2: Probe 4 (pre-mortem); Probe 1 (re-grade); Probe 2 (adversarial
-scope).
-P0.3: Probe 1 (re-grade for saturation); Probe 5 (falsifier).
-P0.4+: Probes 1, 2, 4, 6, 7 iterate as needed until saturation.
-
-Order is a default; operator may re-sequence per project shape.
-
-**Probe taxonomy notes.** P5 Consolidation (rev. 1 of the spec) dissolved —
-structural overlap-spotting is judgment work the LLM does inside Probe 1
-and Probe 2 grading rather than a checkbox-shaped standalone probe.
-Aligns with v2's principle-heavy / specification-light philosophy. Vendor
-Triangulation extracted from rev. 1's Probe 2 and lives in §{section.vendor-triangulation}, not in
-the probe taxonomy.
-
-### 6.4 Setup artifacts
-<a id="section-setup-artifacts"></a>
-
-Four instance-specific artifacts populated during Setup. Live in the
-Master (§{section.the-master} required sections).
-
-#### 6.4.1 Decision brief
-<a id="section-decision-brief"></a>
-
-Populated by Probe 3 primarily; refined by Probe 5 (Falsifiers section).
-
-**Commissioner positioning is an explicit premise (new in v2.15.0).** The
-verified operator/commissioner positioning — role, motivation, and
-angle/conflict relative to the subject and the decision — is recorded as a
-Decision-brief premise, stated positively (§{principle.SP-16}). M6
-(§{monitor.M6}) then guards the right premise: a finding that contradicts the
-pinned positioning fires M6 correctly, but the frame is correct from P0, so M6
-is a backstop, not the primary catch.
-
-```
-## Decision brief
-
-Subject:           [name]
-Decision under test: [one sentence]
-Decision-maker:    [name or role]
-Commissioner positioning: [operator/commissioner role, motivation, angle/conflict — stated positively]
-Deadline:          [date or trigger]
-Cost of error:    
-  - False positive: [cost]
-  - False negative: [cost]
-Stakes / blast radius: [one paragraph]
-Falsifiers:        [list — findings that would refute the thesis]
-```
-
-**Quantitative core → an interactive workbook (new in v2.18.0).** When the
-decision under test has a quantitative, operator-tunable core (unit economics, a
-threshold / corner case, a returns or break-even model), the finding may be
-delivered **also** as a live operator-drivable **workbook** — editable assumption
-cells driving the brief's decision gate in real time, color-coded — so the
-decision-maker explores the verdict against their own numbers. The report
-*states* the finding; the workbook lets them *drive* it. Trigger (one per
-engagement, on the central quantitative gate) and the cockpit pattern
-(editable-cells-only + live gate + opens-at-the-report's-case + §{principle.SP-18}
-tie-back) are in §{appendix.report-architecture}.
-
-#### 6.4.2 Stakeholder register
-<a id="section-stakeholder-register"></a>
-
-Populated by Probe 3 primarily. Every stakeholder is pinned, and the
-**operator/commissioner is a mandatory row — never omitted** (they hold a
-stake, a motivation, and an angle that shapes the brief). Motivation and
-Positioning/angle are mandatory for the decision-maker and the operator, and
-stated positively (§{principle.SP-16}) — what the stakeholder *is* and the
-conflict it creates, never a denial of what they are not.
-
-```
-## Stakeholder register
-
-| Role | Stake | Motivation | Positioning/angle | Decision power | Communication channel |
-|---|---|---|---|---|---|
-| [operator/commissioner] | [decision/outcome stake] | [why they want this engagement / this outcome] | [advisor / investor / competitor / partner / regulator / arms-length / advocacy; + any conflict] | [yes/advisory/none] | [channel] |
-| [name] | [decision/outcome stake] | [motivation] | [positioning/angle; + any conflict] | [yes/advisory/none] | [channel] |
-| ... | ... | ... | ... | ... | ... |
-```
-
-#### 6.4.3 Claim inventory
-<a id="section-claim-inventory"></a>
-
-Populated by Setup orchestration as it parses subject brief; refined by
-Probe 6 (Domain Reconnaissance).
-
-```
-## Claim inventory
-
-| Claim type | Specific claim | Source | Audit pass(es) |
-|---|---|---|---|
-| Efficacy | [...] | [where claim is made] | P2.x |
-| Compliance | [...] | [...] | P3.x |
-| Positioning | [...] | [...] | P4.x |
-| ... | ... | ... | ... |
-```
-
-#### 6.4.4 Jurisdiction map
-<a id="section-jurisdiction-map"></a>
-
-Populated by Probe 6 (Domain Reconnaissance) primarily.
-
-```
-## Jurisdiction map
-
-| Jurisdiction | Triggered regimes | Material to scope? | Pass(es) |
-|---|---|---|---|
-| US (federal) | FTC, ADA | yes | P3.1 |
-| EU | GDPR, EU AI Act | yes | P3.2 |
-| US-CA | CCPA/CPRA | yes | P3.1 |
-| ... | ... | ... | ... |
-```
-
-### 6.5 Strategy stability `[structural | stable]`
-<a id="section-strategy-stability"></a>
-
-**At P0 → P1 boundary.** Strategy moves to "presumed stable, revisable at
-convergence."
-
-**Strategy revisions** trigger from two sources. *Convergence-time
-revisions* trigger when Layer-1 convergence produces:
-
-- A premise invalidation (§{monitor.M6} Premise Shift fires HIGH).
-- A newly-surfaced domain area (e.g., a regulatory regime not in the
-  Jurisdiction map).
-- A falsifier hit (one of the Decision brief's Falsifiers is observed).
-- An assumption conflict between two findings (§{monitor.M7}).
-
-*Operator-initiated revisions* trigger independently of convergence:
-
-- **Operator-initiated scope expansion** — the operator adds new prompts or a
-  new pass to the strategy (e.g., extending coverage to an additional subject
-  area or comparison set), with no premise break, conflict, or falsifier in
-  play. It reuses the same draft → ratify → version-bump spine below; the
-  revision mechanic does not require a convergence event to fire.
-
-**Follow-up vs M10 re-run.** A *Follow-up* and an §{monitor.M10} re-run
-(§{section.m10-rerun-fix-required}) are different operations and must not be
-conflated:
-
-- **M10 re-run** — the prior run was *defective or incomplete*; redo that same
-  dispatch with corrections. Logged in the Rerun Register
-  (§{section.m10-rerun-fix-required}).
-- **Follow-up** — the prior run was *sound*, but a new or expanded dimension is
-  now wanted. Do **not** augment-and-re-run the completed producer; route the
-  scope-addition to the next consuming pass (the natural carrier) or a new
-  dedicated pass, as an operator-initiated revision above. The strategy
-  progresses additively per results.
-
-Verify live engagement state before advising on either (§{principle.SP-10},
-verify-before-recommend, applied to engagement state — not only vendor
-currency).
-
-**Revision mechanic** (lighter than v1.x major-bump Adaptation).
-
-1. A revision trigger fires — a convergence-time trigger (above: a premise
-   invalidation or assumption conflict via §{monitor.M6} / M7 HIGH, a falsifier
-   hit, or a newly-surfaced domain area), or an operator-initiated scope
-   expansion.
-2. Orchestration drafts a revision: adds/modifies prompts, updates attach
-   maps, updates Setup artifacts as needed.
-3. Operator ratifies (per Layer 3 §{section.three-layer-readiness}).
-4. Master version increments (sub-version bump within phase, e.g., P2.2
-   → P2.3).
-5. Strategy continues with revised state.
-
-**Attach map travels with each prompt.** When a prompt adapts, its attach
-map adapts with it (§{section.prism-execution-envelope}).
-
-**Setup-artifact re-audit (new in v2.15.0).** A Setup premise that is
-*mis-scoped at the root* — wrong actor, wrong decision-maker, wrong audience,
-wrong frame — and that no returned finding happens to contradict is invisible
-to §{monitor.M6} and to every other monitor: nothing re-questions the Setup
-artifacts against accumulating reality. Re-audit them proactively at the
-P0 → P1 boundary and again before the report is assembled: re-pose the Decision
-brief's and Stakeholder register's actor / decision-maker / commissioner
-positioning / audience / frame as a falsifier against the evidence gathered
-since Setup ("is the named decision-maker still right? whose decision is this
-actually? is the commissioner positioning still true?"). A mis-scope found here
-is corrected via the revision mechanic above, restated positively
-(§{principle.SP-16}) — correct the actor/frame, never plant a denial. This is
-the premise-side complement to the P5 falsifier
-(§{section.probe-5-falsifier-once}, which tests the *thesis*); M6 stays the
-finding-driven backstop.
-
-### 6.6 Setup onboarding and mode selection `[structural | stable]`
-<a id="section-setup-onboarding-and-mode-selection"></a>
-
-Setup is the workspace **scaffolder**: the operator should run the system
-without learning lanes and roles (§{section.lanes-roles-and-the-prism-ui}).
-Two completions of that scaffolding role land here — the onboarding flow
-(which generates the engagement's SI and stands up its project(s)) and the
-mode offer (full engagement vs quick brief). Reference-grade detail — the SI
-template, the project-create / install cards, and the quick-mode procedure —
-is in Appendix I (§{appendix.lanes-roles-prism-ui}); this section is the rule.
-
-**Mode offer (first thing Setup does).** Setup offers **full engagement vs
-quick brief** at the very top. The mode is **operator-selected**, not
-auto-detected — auto-detection risks mis-classifying a real engagement as a
-brief.
-
-#### Full-engagement onboarding (Setup-as-scaffolder)
-
-For a full engagement, Setup runs once at engagement creation: **gather →
-generate → ratify → commit → emit cards.**
-
-1. **Gather** the per-subject config — mostly already collected by the probes
-   that build the Decision brief and Stakeholder register
-   (§{section.setup-artifacts}): subject +
-   decision tracks; repo + work folder (the `repo_backed` locus); the surface
-   registry; credential location + redaction regime; any engagement-specific
-   standing directives.
-2. **Generate the SI draft** by instantiating the framework **SI template** —
-   framework-native sections collapse to one-line references (persistence,
-   resume, commit-discipline, the cross-lane inbox, lanes / roles per the
-   framework); per-subject sections are filled from the gathered config.
-   Engagement-specific standing directives are **embedded verbatim** (memory
-   does not cross projects; the SI is the only cross-project carrier).
-3. **Operator ratification — a hard gate (SP-9, §{principle.SP-9}).** Setup
-   presents the draft SI to ratify or edit before install: **auto-draft, not
-   auto-install** — generated so the operator never hand-writes boilerplate,
-   ratified so a bespoke SI is still possible. Silence is not ratification.
-4. **Commit the SI to the repo** as the canonical copy from day one (the
-   resume-time reconcile then catches later drift).
-5. **Emit the project-create + install card(s)** — one per surface, in the
-   "open a session, paste this" family, naming WHERE / WHAT / RESULT in plain
-   language. The SI installs as a **full wholesale paste, never a splice**
-   (manual splice-edits are risky; re-issue on change is always a full
-   replacement). The PAT is **guidance-only** — placed by the operator, never
-   handled by the session.
-
-**Two-project model (on Cowork).** A full engagement runs as **two
-projects**: an **orchestration project** (the SI installed, core-load
-enforced; it hosts the standing PRISM Desk and PRISM Meta lanes) and an
-**execution project** (**SI-less, memory off, organization-only**) so the
-ephemeral, PRISM-unaware vendor-execution runs have a home and their returns
-land somewhere. Memory-off and a working folder kept separate from the
-orchestration mirror are **recommended, not merely allowed** — they preserve
-the execution run's clean-context independence (the
-§{section.independent-validation-dispatch} premise: a shared SI or memory would
-let run N inherit run N-1's framing). This graduates the
-Claude-Project-at-Setup recommendation
-(§{section.claude-project-as-setup-recommendation}) to active. The SI's
-repo-canonical sync and opener machinery are framework-native from here, not
-engagement-local interim.
-
-#### Quick mode (`SETUP_QUICKMODE`)
-
-A first-class **proportionality** option — the light end of the lean-Master
-principle — for a task that wants *some* rigor but not the full apparatus (a
-meeting brief, a quick analysis). Without it, the activation cost is paid in
-full or the rigor is skipped entirely.
-
-**Shape:** one Cowork session, `ephemeral` persistence, with **clean-context
-sub-agent fan-out** for the work (one sub-agent per research / extraction /
-drafting strand, returning only grounding facts;
-§{section.lanes-roles-and-the-prism-ui}).
-
-**Dropped (the heavy machinery):** `repo_backed` persistence; Master
-accumulation and bump atomicity; multi-vendor equivalence dispatch and Vendor
-Triangulation; multi-session handoff; the full seven-probe Setup and
-three-layer readiness.
-
-**Kept (the cheap, load-bearing rigor):** a **mini decision-brief** (two
-lines — the audience and the decision it serves); a **lite Probe-1** (name the
-handful of lenses that actually bear, plus any deliberately out of scope; no
-coverage-saturation loop); and the **output-discipline gates on the
-deliverable** — SP-16 (§{principle.SP-16}), SP-17 (§{principle.SP-17}), SP-18
-(§{principle.SP-18}) — which are exactly the part that protects a brief from
-being confidently wrong or mis-framed. The deliverable is self-contained
-(SP-20, §{principle.SP-20}).
-
-**Sub-agents need no envelope.** The triple contract exists for cross-vendor /
-cross-session boundaries that quick mode does not cross; fan-out delegation is
-free-form internal.
-
-**Graduation (the load-bearing line).** When a quick brief turns out to be a
-real engagement, it is promoted **without losing work**: the quick-mode output
-**seeds a `repo_backed` Master** — the mini decision-brief becomes the Decision
-brief, the lite lens pick seeds the Prompt Strategy, and the deliverable
-becomes the first finding — and full Setup continues from there.
+### 5.4 Migration handoff · 5.5 Failsafe recovery · 5.6 Defensive migration `[continuity → on-demand, with in-core recovery floor]`
+
+> **In-core recovery floor (a session in trouble is never stranded).** The
+> continuous-state guarantee stays resident: **the Master and *What's next*
+> are written at every orchestration turn-close**, so the latest canonical
+> state is always the most recent emission in the repo. If a session resumes
+> without a handoff, do not regenerate from memory (SP-1) — **recover from
+> the repo**: read the latest Master + *What's next*, run M2 (Version Drift)
+> against the operator-declared version, and proceed from *What's next*.
+>
+> **Phase bundle — fetch for the full procedure.** The detailed migration-
+> handoff format, the failsafe-recovery mechanics, and defensive migration at
+> natural seams are in **`reference/continuity.md`**, fetched on demand.
+> **Trigger:** a session resumes with a missing / abnormal handoff, or **M5
+> band 🟠 / 🔴**. SP-4: `resume or M5 🟠🔴 → reference/continuity.md loaded ✓`.
+
+## 6. Setup mechanics (on-demand bundle) `[setup phase]`
+
+> **Phase bundle — fetch before Setup work.** The Setup-phase mechanics —
+> the waterfall→iterative refinement model, **three-layer readiness**, the
+> **seven probes (P1–P7)**, the Setup-artifact procedures (Decision brief /
+> Stakeholder register / Claim inventory / Jurisdiction map), strategy-
+> stability triggers, and onboarding / mode selection — live in
+> **`reference/setup.md`**, fetched on demand. **Trigger:** no Master yet, or
+> the operator initiates an engagement (the P0 boundary). You **cannot run
+> the probes or clear the P0→P1 boundary from the core alone** — load
+> `reference/setup.md` first. **SP-4 self-check:** `phase = Setup →
+> reference/setup.md loaded ✓`. (The Engagement-closure gate stays in core;
+> only the Setup-phase mechanics move.)
 
 ### 6.7 Engagement closure `[structural | stable]`
 <a id="section-engagement-closure"></a>
@@ -3524,17 +2574,10 @@ file is also authoritative for the artifact's own evolution: Update
 sessions (§{section.currency-maintenance-update-session}) produce new versions of it. Operators on a newer
 Library version pin to it explicitly (§{section.library-reference-at-setup}).
 
-### 7.1 Library reference at Setup `[structural | stable]`
-<a id="section-library-reference-at-setup"></a>
+### 7.1 Library reference at Setup (on-demand) `[setup phase]`
 
-**Required Library source.** By default, orchestration fetches the bundled
-Lens Library v0.15 (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.15`)
-on demand. A newer standalone Library version is used only when the
-operator explicitly pins the project to it, overriding the bundled copy
-for that session. Recommended: if a newer Library is used, live in the
-Claude Project alongside the Master (see §{section.claude-project-as-setup-recommendation}).
-
-**Probe 1 grades against Library entries.** Mechanics in §{section.probe-1-coverage-grading-iterates}.
+> Detail in **`reference/setup.md`** (fetched at Setup / scope revision).
+> SP-4: `setup.md loaded ✓`.
 
 ### 7.2 Lens schema — what orchestration consumes
 <a id="section-lens-schema-what-orchestration-consumes"></a>
@@ -3580,190 +2623,17 @@ Per LL.§Schema:
   in place of the generic `minimum_scope_binding:` restatement when grading
   that lens to `fires-covered`.
 
-### 7.3 Scope-Integrity Test (SIT) `[structural | stable]`
-<a id="section-scope-integrity-test-sit"></a>
+### 7.3 Scope-Integrity Test (SIT) · 7.4 Specialist-pass promotion `[setup phase → on-demand]`
 
-A lens's `minimum_scope_binding:` *states* what coverage requires; it does not
-*enforce* it. Probe 1 (§{section.probe-1-coverage-grading-iterates}) can mark a
-lens `fires-covered` on the strength of an enumeration that looks complete but
-quietly scoped the question too narrowly. The **Scope-Integrity Test (SIT)** is
-the enforcement layer: a coverage-time falsifier gate that the binding was
-actually satisfied, not waved through. PRISM is an orchestration layer, not
-running code, so SIT is a prompt-level adversarial question that gates coverage —
-not a test runner.
+> The SIT and specialist-pass-promotion mechanics are in
+> **`reference/setup.md`**, fetched when a scope-impact check or a specialist
+> pass is in play. SP-4: `setup.md loaded ✓`.
 
-**The failure it prevents.** The cleanest case is the category-vs-audience
-substitution trap that §{lens.LL-D-008} "Compared to what?" already names in its
-`failure_mode:`. A competitor scan scoped by *product category* — rather than by
-*audience and job* — can converge on a confident "this is unique" finding while a
-same-audience substitute in a different form factor (a hardware device, a manual
-workflow, a do-nothing default) goes unnamed. Enumeration depth does not catch
-this; more passes inside the wrong scope only harden the wrong boundary. The miss
-is structural, so the check is structural — applied at the moment coverage is
-claimed.
+### 7.5 Currency maintenance — point refresh · 7.6 Update session `[maintenance phase → on-demand]`
 
-**Mechanism — a rigor ladder.** SIT runs at one of three rigor levels; the
-operator escalates by stakes.
-
-1. **Inline self-check (the floor — always on).** Before Probe 1 records
-   `fires-covered`, the orchestrator restates the lens's `minimum_scope_binding:`
-   as a yes/no falsifier and answers it in context: *has every clause been
-   satisfied with evidence, or is any clause unmet?* Coverage is invalid without a
-   structured falsifier-response. This is a **floor, not triangulation**: the same
-   agent that did the enumeration is certifying its own work — the
-   single-distribution trap SP-15 (Triangulation integrity,
-   §{section.sp-15-triangulation-integrity}) warns about. Naming that limit
-   honestly is part of the mechanism.
-2. **Fresh-context probe (independent, single-vendor).** Dispatch the falsifier to
-   a context that did *not* perform the enumeration. A fresh context catches what
-   self-certification cannot, but it shares the orchestrator's training
-   distribution, so it is the *minimum* independent rigor, not full triangulation.
-3. **Cross-vendor probe (independent, cross-distribution).** Dispatch the falsifier
-   to a different vendor. Distinct priors and failure modes make this **full SP-15
-   triangulation** (§{section.sp-15-triangulation-integrity}) — the strongest
-   level.
-
-Levels 2 and 3 are operator-invokable today in a single chat: dispatch the probe
-as its own prompt to a fresh context or a second vendor. A future `auto_drive`
-execution driver (§{section.orchestration-driver-and-persistence-axes}) would only
-*automate* that dispatch; it is not a prerequisite, and the SIT path carries no
-`auto_drive` dependency.
-
-**Home — lens-anchored, at coverage time.** SIT lives where coverage is marked:
-the Probe 1 disposition gate (§{section.probe-1-coverage-grading-iterates}). It is
-**not** a Monitor (those scan continuously) and **not** a Standing Principle (those
-are posture). SIT is mechanical and condition-triggered — it fires exactly when a
-lens is about to be marked covered — so it is anchored to the lens and the grading
-step, not to the always-on machinery.
-
-**Scope — a generic gate for all 23 lenses, plus optional sharpened probes.**
-
-- **Generic gate (day one, every lens).** The falsifier is the lens's own
-  `minimum_scope_binding:`, restated as the yes/no challenge above. Free,
-  full-scope, runs immediately.
-- **Sharpened per-lens probe (`scope_integrity_probe:`).** A lens may carry a
-  `scope_integrity_probe:` field (§{section.lens-schema-what-orchestration-consumes})
-  — a falsifier sharpened to that lens's known failure. When present it
-  **overrides** the generic restatement for that lens. Additive: lenses without it
-  use the generic gate.
-- **First probe ships on §{lens.LL-D-008} "Compared to what?".** The one lens with
-  a ground-truth worked miss carries the first hand-authored probe; its
-  `scope_integrity_probe:` requires naming a cross-form-factor audience-job
-  substitute the comparator set omits, or documenting its absence with rationale.
-  The other 22 ride the generic gate. Sharpened probes accrete over time: a lens
-  earns one when a live engagement surfaces a miss the generic gate let through.
-
-### 7.4 Specialist-pass promotion
-<a id="section-specialist-pass-promotion"></a>
-
-The Library *is* the specialist enumeration. Each lens's `specialist_type:`
-field names the practitioner role whose framing the lens channels.
-Orchestration's Probe 1 grading promotes relevant entries as specialist
-passes within the Prompt Strategy (e.g., "P3.4 — accessibility pass per
-LL-D-002 "Can anyone use?", specialist framing: WCAG-qualified accessibility auditor").
-
-### 7.5 Currency maintenance — point refresh `[methodological | stable]`
-<a id="section-currency-maintenance-point-refresh"></a>
-
-Two-tier mechanism: point refresh (per-project, in Setup) + Update session
-(standalone, rare, operator-gated, §{section.currency-maintenance-update-session}).
-
-**Point refresh.**
-
-- **Trigger.** Probe 1 evaluation extends to citation currency. For each
-  lens with `rubric_anchor:` set:
-  - If `verification_basis:` is `schema-introduction-only`: the
-    `last_verified:` date does not establish currency; disposition is
-    `unverified-anchor` regardless of date age. Orchestration runs a
-    web-search currency check and refreshes the citation in the Prompt
-    Strategy (the canonical Library file is *not* modified). This gates
-    every other clause below.
-  - Else if `last_verified:` is within 6 months: disposition includes
-    `fresh`. No flag.
-  - Else if `last_verified:` is 6–12 months old: disposition includes
-    `stale-refresh`. Orchestration runs a web-search currency check and
-    refreshes the citation in the Prompt Strategy (the canonical Library
-    file is *not* modified).
-  - Else if `last_verified:` is > 12 months old: disposition includes
-    `stale-accumulating`. Same inline refresh, but advisory signal
-    accumulates toward an Update session (per §{section.currency-maintenance-update-session}).
-- **Output.** Probe 1 output includes per-anchored-entry currency
-  disposition.
-- **Inline refresh format.** The refreshed citation appears in the Prompt
-  Strategy with provenance:
-  ```
-  P3.4 — accessibility pass
-  Specialist framing: WCAG-qualified accessibility auditor (§{lens.LL-D-002} "Can anyone use?")
-  Anchor: WCAG 2.2 (October 2023) — verified current as of [date]
-          via web search; PRISM Lens Library v0.15 last_verified
-          2026-04-24 still current.
-  ```
-  If the web-search currency check finds a newer version (e.g., WCAG 3.0
-  published):
-  ```
-  Anchor: WCAG 2.2 (October 2023). Note: WCAG 3.0 published [date];
-          considered for use; chose WCAG 2.2 because [rationale —
-          subject's commitment, regulatory pin, etc.] OR
-          updating to 3.0 because [rationale].
-  ```
-- **No silent modification of Library.** Library file is read-only at
-  point-refresh time.
-
-### 7.6 Currency maintenance — Update session `[methodological | stable]`
-<a id="section-currency-maintenance-update-session"></a>
-
-Standalone session, rarely run, operator-gated. PRISM-file-in /
-PRISM-file-out contract.
-
-**When.**
-
-- Triggered by point-refresh advisory signal accumulation (count of
-  `stale-accumulating` over time + count of `informed_by:` framework
-  changes seen across sessions).
-- Operator decision; framework recommends in *What's next* when signal
-  exceeds threshold (rev. 1 draft threshold: 3 stale-pattern accumulations
-  across 6+ months).
-- Operator can also run on demand at any time.
-
-**Mechanic.**
-
-1. Operator opens fresh orchestration session.
-2. Attaches: PRISM v2 framework, current Lens Library, possibly other
-   reference frameworks pertinent to anchor checks.
-3. Operator declares: `Run Update session against Lens Library [version].`
-4. Orchestration's Update routine:
-   - Walks each entry with `rubric_anchor:`. Web-searches current state of
-     the external spec. Records currency.
-   - Walks each entry's `informed_by:` list. Web-searches major framework
-     updates since `last_verified:`. Records changes.
-   - Produces a delta document: per-entry currency status, recommended
-     `last_verified:` date updates, recommended citation text updates.
-   - Does *not* modify entry IDs, schema, tier composition, or
-     `informed_by:` provenance lineage. Architectural changes are flagged,
-     not made inline.
-5. Operator reviews delta document.
-6. Orchestration applies approved deltas to a new Library file (e.g.,
-   `PRISM_lens_library_v0_9_1.md`).
-7. Operator reviews, ratifies, and ships the new Library.
-
-**Resilient to partial source-access failure.** When a web-search currency
-check fails (gated source, paywall, expired URL), Update routine records
-`currency-check-failed` for that anchor and proceeds. Operator decides
-whether to escalate.
-
-**Library versioning rides PRISM's own.** Library version increments are
-minor patches (v0.9 → v0.9.1) unless schema changes (in which case
-major-bump and architectural review).
-
-**Library changelog lives inside Library file.** Update session appends to
-it.
-
-**Not architectural drift.** Schema/tier/composition changes are
-out-of-scope for Update sessions and produce flag-don't-fix outputs.
-Architectural changes go through a fresh Library design cycle, not an
-Update session.
-
----
+> Point-refresh and Update-session mechanics are in
+> **`reference/currency.md`**, fetched for a currency refresh or an Update
+> session. SP-4: `currency.md loaded ✓`.
 
 ## 9. Monitor specifications
 <a id="section-monitor-specifications"></a>
@@ -4934,54 +3804,13 @@ surfaces re-dispatch with corrected attachment list as a candidate.
 
 ---
 
-## 14. Missing-handoff recovery
-<a id="section-missing-handoff-recovery"></a>
+## 14. Missing-handoff recovery (on-demand bundle) `[continuity]`
 
-What happens when the operator opens a fresh orchestration session
-without a handoff (operator skipped the migration step at 🔴; handoff
-was lost; mid-project session was opened cold)?
-
-### 14.1 Recovery flow `[methodological | stable]`
-<a id="section-recovery-flow"></a>
-
-1. **Session-open verification fires.** SP-13 substrate check passes;
-   M1 detects no handoff attached.
-2. **Orchestration searches for the canonical Master.** Per §{principle.SP-1}
-   protocol:
-   - Past-conversation search for the project name and likely Master
-     filenames (`conversation_search`, bounded by current Project per
-     §{section.claude-project-as-setup-recommendation}; SP-12 disclosure on bound).
-   - If a past session is identified that produced a Master version,
-     surface the session URL and the Master filename to operator.
-3. **Operator attaches the located Master.** Orchestration runs M2
-   (Version Drift) verification against operator's expected version
-   (operator-declared on resume).
-4. **Orchestration reconstructs `What's next` from the Master.** The
-   Master's Open dispatches list, Active probes list, Open monitors list,
-   and Rerun Register together carry sufficient state to reproduce a
-   *What's next*. Decision brief / Stakeholder register / Claim inventory
-   / Jurisdiction map carry the Setup artifacts.
-5. **No silent regeneration.** Per §{principle.SP-1}: orchestration does not
-   reconstruct what's missing from memory. Surface what was located,
-   surface what couldn't be located, ask operator how to proceed.
-6. **If Master itself cannot be located.** Escalate per §{principle.SP-1}: name the
-   consequences of regenerating from memory (authenticity loss, schema
-   drift, silent contamination); ask operator whether to proceed with
-   reconstruction (and document the reconstruction explicitly in the
-   Master's Changelog), or whether to re-Setup.
-
-### 14.2 Why this matters
-<a id="section-why-this-matters"></a>
-
-The continuous-state mechanic (§{section.failsafe-recovery-continuous-state-mechanics}) is the front-line defense — every
-turn-close writes the Master and *What's next*. The recovery flow is the
-backstop when the front-line defense is bypassed (handoff lost, session
-opened from outside the Project, cross-device churn). SP-1's discipline
-makes the recovery flow safe rather than seductive: it's harder than
-recreating from memory, and it should be — recreation is the failure
-mode the discipline exists to prevent.
-
----
+> The cold-open recovery flow (no handoff attached → locate the canonical
+> Master, M2-verify, resume) is in **`reference/continuity.md`** — see the
+> in-core recovery floor above (the continuity recovery stub). **Trigger:** a fresh
+> session opened without a handoff. SP-4:
+> `missing handoff → reference/continuity.md loaded ✓`.
 
 ## 18. Project, feedback, updates `[structural | stable]`
 <a id="section-project-feedback-updates"></a>
@@ -4995,7 +3824,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.18.0 (this file)
+- **Framework version.** v2.19.0 (this file)
 - **Bundled Lens Library version.** v0.15 (`lens/PRISM_lens_library.md`)
 - **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -5011,12 +3840,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_18_0.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_19_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_15.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.18.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.19.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -5024,38 +3853,13 @@ release track. Reading them does not require parsing the framework or
 the Lens body. New resources added to the project follow the same path
 pattern (a stable file on `main`, a `VERSION` stamp where versioned).
 
-### 18.3 Currency check at session open `[methodological | stable]`
-<a id="section-currency-check-at-session-open"></a>
+### 18.3 Currency check at session open (on-demand bundle) `[maintenance phase]`
 
-At orchestration session open, when the substrate supports web access,
-orchestration **may** check the framework and Lens version stamps against
-the attached versions and surface any newer-version finding as a soft
-flag in *What's next* under the *Operator next* surface. The check is
-opportunistic, not mandatory: substrates without web access skip it; a
-failed check is not an error.
-
-**Mechanics.**
-
-1. Read the framework core's version (its header) and the bundled
-   Lens Library version (`lens/PRISM_lens_library.md` header).
-2. If web access is available, GET the two `VERSION` endpoints from the
-   repository's `main` branch. The endpoints return one line each.
-3. Compare. If the published version is greater than the attached
-   version on either track, surface a soft flag:
-   `Framework v2.18.0 attached; v{published} available at {releases URL}.`
-   `Lens v0.15 attached; v{published} available at {releases URL}.`
-4. The flag is informational. The operator decides whether to upgrade
-   between sessions. PRISM does not silently swap attached files at
-   runtime.
-
-**Why this is in the framework.** The repository is the framework's
-source of truth for currency. Putting the URLs and the check protocol
-in the framework body means the file carries its own discoverability
-instead of relying on the operator to remember the project URL. It also
-addresses the `informed_by` chain: a Lens anchor (e.g., WCAG 2.2) can
-move; the Lens Library evolves; the framework evolves; and operators
-working from a saved attachment have an explicit, in-file path back to
-the latest.
+> **Phase bundle.** The session-open currency-check mechanics (version-stamp
+> comparison against the published repo, soft-flag surfacing in *What's
+> next*) are in **`reference/currency.md`**, fetched on demand. **Trigger:**
+> the currency-check fires at session open (substrate with web access), or the
+> operator runs an Update. SP-4: `currency.md loaded ✓`.
 
 ### 18.4 Feedback and contribution
 <a id="section-feedback-and-contribution"></a>
@@ -5085,8 +3889,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.18.0). https://github.com/Ronkupper/PRISM
+> (v2.19.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.18.0 framework operating document.*
+*End of PRISM v2.19.0 framework operating document.*

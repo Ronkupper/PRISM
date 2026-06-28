@@ -29,10 +29,12 @@ core first, fetch a bundle only when the work in front of you needs it.
 
 1. **Read `PRISM_core.md` in full** before acting — it is the operating core
    (operating model and architecture, the Execution Envelope / Self-check / Output
-   triple contract, the prompt-package engine, context-pressure framework, Setup
-   mechanics, Library-integration mechanics, Monitors M1–M12, Standing Principles,
-   filename conventions, the atomic-prompt template, the operator-hint catalog, and
-   missing-handoff recovery).
+   triple contract, the prompt-package engine, the context-pressure framework
+   including the M5 bands and the in-core recovery floor, the §7.2 lens schema,
+   Monitors M1–M12, Standing Principles, filename conventions, the atomic-prompt
+   template, the operator-hint catalog, the engagement-closure gate, and the
+   phase → bundle manifest). Phase-scoped mechanics (Setup, currency, continuity,
+   corpus-access) are on-demand bundles — see step 5.
 2. **Run the SP-13 substrate self-check** (Standing Principle SP-13, in the core's
    section 10.1.3): declare your model identity and confirm you are **Claude, Opus-class /
    flagship tier** (a capability floor — version-agnostic, latest by default). Halt
@@ -43,6 +45,19 @@ core first, fetch a bundle only when the work in front of you needs it.
    HIGH severity on a missing required artifact or a version mismatch.
 4. **Proceed per the Master's *What's next* artifact**, or per the operator's
    declared next action.
+5. **Load the phase bundle for the role you occupy.** The core is lean; phase-,
+   seam-, and condition-scoped mechanics are fetched on demand per the core's
+   **phase → bundle manifest** (section 3.7.6). Run the visible self-check and
+   fetch:
+   - **Setup / P0** (no Master yet, or the operator initiates an engagement) →
+     `reference/setup.md` (probes, three-layer readiness, Setup-artifact procedures).
+   - **Update session / the session-open currency check** → `reference/currency.md`.
+   - **Resume with a missing or abnormal handoff, or M5 band 🟠/🔴** →
+     `reference/continuity.md` (the in-core recovery floor stays resident; the full
+     migration / recovery procedure is in the bundle).
+   - **A pass classified corpus-access** → `reference/corpus-access.md`.
+   Each gutted area carries a fail-loud in-core stub — operating without the
+   required bundle is detectable, not a silent gap.
 
 ## On-demand bundles — fetch only when the task needs them
 
@@ -54,6 +69,20 @@ resident until you open them.
 - **`reference/templates.md`** — paste-ready Setup and dispatch blocks (Envelope,
   Self-check, Output, Decision brief, Stakeholder register, Claim inventory,
   Jurisdiction map, Dispatch register). Fetch when producing one of these artifacts.
+- **`reference/setup.md`** — the Setup-phase mechanics: three-layer readiness, the
+  seven probes (P1–P7), Setup-artifact procedures, strategy stability, onboarding,
+  Library-reference-at-Setup, the Scope-Integrity Test, specialist-pass promotion,
+  and the Claude-Project-as-Setup recommendation. Fetch at a Setup session / the P0
+  boundary.
+- **`reference/currency.md`** — point-refresh, the Update session, and the
+  session-open currency check. Fetch for an Update session or when the
+  currency-check-at-open fires.
+- **`reference/continuity.md`** — the migration handoff format, failsafe recovery,
+  defensive migration at natural seams, and cold-open missing-handoff recovery.
+  Fetch at a resume / context-seam, or when M5 reads 🟠/🔴.
+- **`reference/corpus-access.md`** — the corpus-access dispatch (the
+  investigation-posture Envelope for a targeted external-corpus lookup). Fetch when
+  the dispatch-builder classifies a pass as corpus-access.
 - **`reference/modes-and-surfaces.md`** — the Cowork capability surface and the
   `repo_backed` persistence mechanics. Fetch when a non-default orchestration surface
   or persistence value is in play.

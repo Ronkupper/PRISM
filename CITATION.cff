@@ -76,6 +76,12 @@ abstract: >-
   bump-atomicity (shipped equals validated), and an external-share family (one
   repo per engagement, a de-coded share archive, and an image-redaction
   procedure).
+  v2.19 ("Core-slimming refactor") slims the always-loaded core by projecting
+  its phase-, seam-, and condition-scoped mechanics — Setup, currency
+  maintenance, session continuity and recovery, and corpus-access — into four
+  on-demand reference bundles keyed to the role that needs them, each reachable
+  through an in-core trigger stub and the phase → bundle manifest; the canonical
+  single-file form is unchanged.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -88,7 +94,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.18.0"
+version: "2.19.0"
 date-released: "2026-06-28"
 keywords:
   - llm

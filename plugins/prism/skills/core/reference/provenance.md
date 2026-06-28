@@ -1,4 +1,4 @@
-<!-- PRISM v2.18.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
+<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Spec→v2 source mapping, decision tag index, v1.x→v2 surface drift (Appendices B–D). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix B — Spec → v2.0 source mapping
@@ -174,16 +174,18 @@ and polarity glyphs (✅ / ⚠️ / 🚫) are introduced in v2.1.0 per the
 frontmatter `normativity` block; only non-default strength values appear as
 tokens in tags. The summary below indexes by the original two-axis pair
 (durability × review-trigger); rows whose listed entries include non-default
-strength are noted parenthetically.
+strength are noted parenthetically. Each cell is a literal count of the
+entries listed under the corresponding C-section above, and the totals are
+their sums — keep them in lockstep when decisions are added or removed.
 
 | Axis 1 \ Axis 2 | stable | review-if | review-annually | Total |
 |---|---|---|---|---|
-| structural | 44 | 0 | 0 | 44 |
-| methodological | 12 | 3 (1 with `recommended`) | 0 | 15 |
+| structural | 50 | 0 | 0 | 50 |
+| methodological | 18 | 3 (1 with `recommended`) | 0 | 21 |
 | vendor-dependent | 0 | 3 | 0 | 3 |
 | operator-scaffolding | 6 | 0 | 0 | 6 |
 | empirical | 0 | 0 | 1 | 1 |
-| **Total** | **62** | **6** | **1** | **69** |
+| **Total** | **74** | **6** | **1** | **81** |
 
 ---
 

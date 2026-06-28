@@ -1,4 +1,4 @@
-<!-- PRISM v2.18.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
+<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix A — Glossary
