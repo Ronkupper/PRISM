@@ -38,7 +38,7 @@ abstract: >-
   enforces that a lens's minimum scope binding was actually satisfied, not
   waved through, on a rigor ladder from inline self-check to cross-vendor
   probe, with an optional per-lens sharpened-probe field; the embedded Lens
-  Library advances to v0.15.
+  Library advances to v0.16.
   v2.11 adds an explicit Skill slash-command invocation path on Claude —
   `/prism-start <subject>` activates PRISM and begins Setup for the supplied
   subject — a Claude-Skill packaging affordance carried by a plugin slash-command,
@@ -82,6 +82,11 @@ abstract: >-
   on-demand reference bundles keyed to the role that needs them, each reachable
   through an in-core trigger stub and the phase → bundle manifest; the canonical
   single-file form is unchanged.
+  v2.20 re-embeds the Lens Library at v0.16 — adding the reader-respect lens
+  "Does this respect the reader?", which flags filler that wastes the reader's
+  time and completes the document-review family, and curating external
+  recommended-sources on the comparison and unit-economics lenses — and names
+  that lens in the Independent Validation Dispatch default kit.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -94,7 +99,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.19.0"
+version: "2.20.0"
 date-released: "2026-06-28"
 keywords:
   - llm

@@ -1,9 +1,9 @@
 ---
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.19.0
+version: 2.20.0
 released: 2026-06-28
-supersedes: 2.18.0
-lens_library_bundled: "0.15"
+supersedes: 2.19.0
+lens_library_bundled: "0.16"
 substrate_target:
   vendor: claude
   tier: opus-class       # flagship/frontier tier — a capability floor, not a lightweight model
@@ -16,18 +16,18 @@ normativity:
 lint_catalog_version: 4
 ---
 
-<!-- PRISM v2.19.0 Skill core (lean, always-loaded). Generated from the assembled
+<!-- PRISM v2.20.0 Skill core (lean, always-loaded). Generated from the assembled
      PRISM.md by scripts/decompose/project_skill_archive.py — edit PRISM.md, not this.
      Reference-grade material is in reference/*.md and lens/, fetched on demand. -->
 
-# PRISM v2.19.0 — Framework operating document
+# PRISM v2.20.0 — Framework operating document
 
-**Status:** v2.19.0 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.20.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.17.0 (MINOR — "Lifecycle & deliverables": adds the symmetric **engagement closure** gate (§{section.engagement-closure}) — a three-layer close sweep bookending Setup's three-layer readiness (§{section.three-layer-readiness}), home of the orphan-sweep, the **reconcile-at-close** codification sweep, and the deliverable polish. Names the **comprehensive final report** as the engagement's deliverable of record plus the optional **interactive workbook** (§{section.decision-brief}), with the report architecture, the craft conventions, the workbook cockpit pattern, and the presentation house-style routed to a new **report-architecture** reference bundle (§{appendix.report-architecture}); extends bump atomicity to client-facing deliverables with the shipped-equals-validated invariant (§{section.bump-atomicity-routine}, §{section.independent-validation-dispatch}); adds the §{principle.SP-18} standalone-figure tokenization guard for deliverable transforms; lands the external-share family — one-repo-per-engagement, the de-coded share archive, operator-selectable share modes, and the image-redaction procedure — in a new **external-share** reference bundle (§{appendix.external-share}) with the read-the-repo-not-the-mirror tie on §{principle.SP-8}; and adds a multi-lane session-legibility operator guide. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.19.0 (MINOR — re-embeds **Lens Library v0.16** as Appendix G: adds the reader-respect lens LL-D-022 "Does this respect the reader?" (Pack 1), completing the document-review family (LL-D-019, LL-D-020, LL-D-021), plus a `recommended_sources:` curation on LL-D-008 "Compared to what?" and LL-D-009 "Does it pay back?" (Failory; Start-Up Nation Central — Finder). Names LL-D-022 in the Independent Validation Dispatch default lens kit (§{section.independent-validation-dispatch}). Embedded Lens Library bumps v0.15 → v0.16 (additive: one new domain lens + source curation, 26 → 27 entries, no schema change); lint catalog stays v4. Additive; no construct renumbering.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** the PRISM Skill
 (its core loads automatically) and the project's Master. The Skill bundles
-Lens Library v0.15 at `lens/PRISM_lens_library.md`, fetched on demand. Pin a
+Lens Library v0.16 at `lens/PRISM_lens_library.md`, fetched on demand. Pin a
 newer standalone Library version only when the project explicitly requires
 one (see §{section.library-reference-at-setup}).
 **Substrate:** Claude, Opus-class (flagship tier) — a capability floor,
@@ -70,7 +70,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.19.0 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.20.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -85,7 +85,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.19.0 after running a session:
+Reading order for an operator returning to v2.20.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -93,11 +93,11 @@ Reading order for an operator returning to v2.19.0 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.19.0 covers `[structural | stable]`
+### 1.1 What v2.20.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.19.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.19.0 covers:
+PRISM v2.20.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.20.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -107,12 +107,12 @@ and research framework. v2.19.0 covers:
   orchestration turn-close, regardless of band state (§{section.the-master}, §{section.whats-next}, §{section.failsafe-recovery-continuous-state-mechanics}).
 - **Vendor Selection at dispatch** with live web-search currency check
   (§{section.vendor-selection-at-dispatch}).
-- **Setup as iterative refinement** against the Lens Library v0.15, with
+- **Setup as iterative refinement** against the Lens Library v0.16, with
   three-layer readiness clearing the P0→P1 boundary (§{section.setup-mechanics}).
 - **Seven Setup probes** (§{probe.P1} Coverage grading, P2 Adversarial Scope, P3
   Decision Framing, P4 Pre-mortem, P5 Falsifier, P6 Domain Reconnaissance,
   P7 User Voice) — Setup-time grading constructs only (§{section.the-seven-probes}).
-- **Library integration** — the Lens Library v0.15 as canonical reference
+- **Library integration** — the Lens Library v0.16 as canonical reference
   catalog (bundled at `lens/PRISM_lens_library.md`, fetched on demand);
   point-refresh in Setup; Update sessions for
   currency maintenance (§{section.library-integration}).
@@ -133,24 +133,24 @@ and research framework. v2.19.0 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.19.0 does not cover
+### 1.2 What v2.20.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.19.0 implements the spec; the spec implements
+- **Re-debating direction.** v2.20.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog is bundled at
-  `lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`, v0.15 at this release),
+  `lens/PRISM_lens_library.md` (tag `prism-lens-v0.16`, v0.16 at this release),
   fetched on demand. The bundled file remains authoritative for the Library's
   own evolution and for projects that explicitly pin to a newer Library version.
-- **Empirical calibration.** Several thresholds in v2.19.0 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.20.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.19.0's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.20.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -158,7 +158,7 @@ and research framework. v2.19.0 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.19.0 honours the constraint inherited from the design document (DD.§8.3):
+v2.20.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -167,7 +167,7 @@ v2.19.0 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.19.0. Roadmap
+Mechanics that violate any leg do not earn their place in v2.20.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -178,14 +178,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.19.0 mechanics for the
+**Read this section first if you are encountering v2.20.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.19.0 has the following constructs, grouped by category.
+PRISM v2.20.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -494,7 +494,7 @@ as the live currency check at dispatch time.
 
 - *Loaded artifacts at session open*: this framework file (or the PRISM v2
   Skill that loads it); the Master; the Lens Library
-  (`PRISM_lens_library.md` v0.15); the Prompt Strategy (when separate from
+  (`PRISM_lens_library.md` v0.16); the Prompt Strategy (when separate from
   the Master); subject-brief documents.
 - *Session-open verification*: SP-13 substrate self-check (§{section.sp-13-substrate-declaration}) — Claude
   declares model identity and confirms it matches the declared orchestration
@@ -2184,7 +2184,8 @@ grade the draft Prompt Strategy before execution; this construct grades
 the output after it.
 
 **Default lens kit.** LL-D-019 "Who said otherwise?", LL-D-020 "Help or
-ammunition?", and LL-D-021 "Does a stranger follow?" from the Lens
+ammunition?", LL-D-021 "Does a stranger follow?", and LL-D-022 "Does this
+respect the reader?" — the reader-respect family — from the Lens
 Library (§{section.library-integration}), plus an SP-18-style recompute
 sweep (§{section.sp-18-it-must-recompute}) over the deliverable's
 arithmetic, counts, and sourced claims.
@@ -2566,8 +2567,8 @@ the image-redaction procedure are in §{appendix.external-share}.
 ## 7. Library integration
 <a id="section-library-integration"></a>
 
-The Lens Library v0.15 is canonical and bundled at
-`lens/PRISM_lens_library.md` (tag `prism-lens-v0.15`). In this Skill
+The Lens Library v0.16 is canonical and bundled at
+`lens/PRISM_lens_library.md` (tag `prism-lens-v0.16`). In this Skill
 archive the Library is a bundled file fetched on demand — the default
 Library source for orchestration — not embedded in the core. The bundled
 file is also authoritative for the artifact's own evolution: Update
@@ -3824,8 +3825,8 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.19.0 (this file)
-- **Bundled Lens Library version.** v0.15 (`lens/PRISM_lens_library.md`)
+- **Framework version.** v2.20.0 (this file)
+- **Bundled Lens Library version.** v0.16 (`lens/PRISM_lens_library.md`)
 - **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
   Code of Conduct under CC BY-SA 4.0. Full license texts in the repository.
@@ -3840,12 +3841,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_19_0.md` |
-| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_15.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_20_0.md` |
+| Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_16.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.19.0` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.20.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -3889,8 +3890,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.19.0). https://github.com/Ronkupper/PRISM
+> (v2.20.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.19.0 framework operating document.*
+*End of PRISM v2.20.0 framework operating document.*

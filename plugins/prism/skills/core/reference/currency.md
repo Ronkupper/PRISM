@@ -1,4 +1,4 @@
-<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Currency reference (sections 7.5-7.6 + 18.3) — point-refresh, the Update session, and the session-open currency check. Fetch for an Update session or when the currency-check-at-open fires.
+<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Currency reference (sections 7.5-7.6 + 18.3) — point-refresh, the Update session, and the session-open currency check. Fetch for an Update session or when the currency-check-at-open fires.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ### 7.5 Currency maintenance — point refresh `[methodological | stable]`
@@ -34,7 +34,7 @@ Two-tier mechanism: point refresh (per-project, in Setup) + Update session
   P3.4 — accessibility pass
   Specialist framing: WCAG-qualified accessibility auditor (§{lens.LL-D-002} "Can anyone use?")
   Anchor: WCAG 2.2 (October 2023) — verified current as of [date]
-          via web search; PRISM Lens Library v0.15 last_verified
+          via web search; PRISM Lens Library v0.16 last_verified
           2026-04-24 still current.
   ```
   If the web-search currency check finds a newer version (e.g., WCAG 3.0
@@ -122,8 +122,8 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.19.0 attached; v{published} available at {releases URL}.`
-   `Lens v0.15 attached; v{published} available at {releases URL}.`
+   `Framework v2.20.0 attached; v{published} available at {releases URL}.`
+   `Lens v0.16 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
    runtime.

@@ -1,4 +1,4 @@
-<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Continuity reference (sections 5.4-5.6 + 14) — migration handoff format, failsafe-recovery mechanics, defensive migration at natural seams, and cold-open missing-handoff recovery. Fetch at a resume / context-seam, or when M5 reads 🟠/🔴.
+<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Continuity reference (sections 5.4-5.6 + 14) — migration handoff format, failsafe-recovery mechanics, defensive migration at natural seams, and cold-open missing-handoff recovery. Fetch at a resume / context-seam, or when M5 reads 🟠/🔴.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ### 5.4 Migration handoff `[structural | stable]`
@@ -13,7 +13,7 @@ offered at 🟠 (operator-elective).
 ━━━ PRISM SESSION HANDOFF ━━━
 Project:                [name]
 Master version:         [filename of attached Master]
-Lens Library version:   [v0.15 | filename pinned]
+Lens Library version:   [v0.16 | filename pinned]
 Producing session:      [orchestration session URL or descriptor, if known]
 Reason for migration:   [band-state, named driver(s)]
 Migration timestamp:    [YYYY-MM-DD]

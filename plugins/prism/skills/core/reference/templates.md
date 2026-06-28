@@ -1,4 +1,4 @@
-<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
+<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix E — Templates compendium
@@ -192,7 +192,7 @@ Operator action:     [recommended next step — accept, dig, or escalate]
 ━━━ PRISM SESSION HANDOFF ━━━
 Project:                [name]
 Master version:         [filename of attached Master]
-Lens Library version:   [v0.15 | filename pinned]
+Lens Library version:   [v0.16 | filename pinned]
 Producing session:      [orchestration session URL or descriptor, if known]
 Reason for migration:   [band-state, named driver(s)]
 Migration timestamp:    [YYYY-MM-DD]
@@ -374,8 +374,8 @@ Excluded context: author rationale, structure notes, known-weak-spots
 Validation axes:  logic | defensibility | internal consistency |
                   consistency against attached materials |
                   readability | quality
-Lens kit:         LL-D-019, LL-D-020, LL-D-021 + SP-18-style
-                  recompute sweep
+Lens kit:         LL-D-019, LL-D-020, LL-D-021, LL-D-022 +
+                  SP-18-style recompute sweep
 Return form:      severity-tagged findings list, routed to the
                   producing thread
 Expected output:  [filename to download as]

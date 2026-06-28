@@ -1,4 +1,4 @@
-<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Worked example flow + empirical calibration items (sections 15-16). Reference.
+<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Worked example flow + empirical calibration items (sections 15-16). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 15. Worked example flow
@@ -24,7 +24,7 @@ Atlas career coaching SaaS. Brief attached: atlas_brief.md."
     APA ethics for coaching adjacent to therapy. Outputs Jurisdiction
     map (§6.4.4): US (federal) FTC + state UPL rules; EU AI Act for
     any algorithmic matching.
-  Probe 1 grades against Lens Library v0.15. Initial coverage map:
+  Probe 1 grades against Lens Library v0.16. Initial coverage map:
     LL-U-001..005 — three covered, two uncovered. Domain triggers:
     Pack 1 (using product), Pack 4 (proving results), Pack 5 (laws).
     Pack 2 partial, Pack 6 doesn't-fire.

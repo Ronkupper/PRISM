@@ -1,4 +1,4 @@
-<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Setup mechanics (sections 6.1-6.6, 7.1, 7.3-7.4, 8.1) — three-layer readiness, the seven probes (P1–P7), Setup-artifact procedures, strategy stability, onboarding; Library-reference-at-Setup; the Scope-Integrity Test and specialist-pass promotion; the Claude-Project-as-Setup recommendation. Fetch at a Setup session.
+<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Setup mechanics (sections 6.1-6.6, 7.1, 7.3-7.4, 8.1) — three-layer readiness, the seven probes (P1–P7), Setup-artifact procedures, strategy stability, onboarding; Library-reference-at-Setup; the Scope-Integrity Test and specialist-pass promotion; the Claude-Project-as-Setup recommendation. Fetch at a Setup session.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 6. Setup mechanics
@@ -61,7 +61,7 @@ the fresh Dispatch-builder loses nothing the Desk knew.
 
 #### Layer 2 — Library coverage saturation
 
-Every applicable Lens from the Lens Library v0.15 is either:
+Every applicable Lens from the Lens Library v0.16 is either:
 
 - Covered by at least one planned prompt (Probe 1 disposition:
   *fires-covered*), OR
@@ -105,7 +105,7 @@ Setup-time grading constructs only.
 #### 6.3.1 Probe 1 — Coverage grading (iterates) `[structural | stable | ✅]`
 <a id="section-probe-1-coverage-grading-iterates"></a>
 
-Grade the draft strategy against the Lens Library v0.15. Universal lenses
+Grade the draft strategy against the Lens Library v0.16. Universal lenses
 (5) always evaluated. Domain lenses (18) evaluated where their `trigger:`
 predicate is met by the subject.
 
@@ -566,7 +566,7 @@ becomes the first finding — and full Setup continues from there.
 <a id="section-library-reference-at-setup"></a>
 
 **Required Library source.** By default, orchestration fetches the bundled
-Lens Library v0.15 (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.15`)
+Lens Library v0.16 (`lens/PRISM_lens_library.md`, tag `prism-lens-v0.16`)
 on demand. A newer standalone Library version is used only when the
 operator explicitly pins the project to it, overriding the bundled copy
 for that session. Recommended: if a newer Library is used, live in the
@@ -630,7 +630,7 @@ are posture). SIT is mechanical and condition-triggered — it fires exactly whe
 lens is about to be marked covered — so it is anchored to the lens and the grading
 step, not to the always-on machinery.
 
-**Scope — a generic gate for all 23 lenses, plus optional sharpened probes.**
+**Scope — a generic gate for all 27 lenses, plus optional sharpened probes.**
 
 - **Generic gate (day one, every lens).** The falsifier is the lens's own
   `minimum_scope_binding:`, restated as the yes/no challenge above. Free,
@@ -685,7 +685,7 @@ active rather than parked: an engagement runs as the two-project model
 **Project contents at Setup completion** (recommended):
 
 - `[project]_prism2.0_master_p0.1.md` (Master, current version)
-- `PRISM_lens_library.md` (v0.15 or pinned tag)
+- `PRISM_lens_library.md` (v0.16 or pinned tag)
 - `[project]_brief.md` (subject brief)
 - `[project]_prompt_strategy_p0.1.md` (current Prompt Strategy, optional —
   Master can carry this)

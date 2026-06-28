@@ -1,4 +1,4 @@
-<!-- PRISM v2.19.0 Skill bundle (on-demand reference). External share reference — one-repo-per-engagement, the de-coded share archive, operator-selectable share modes, the image-redaction procedure, and the canonical-source (read-the-repo-not-the-mirror) block (Appendix L). Fetch when preparing an external handoff.
+<!-- PRISM v2.20.0 Skill bundle (on-demand reference). External share reference — one-repo-per-engagement, the de-coded share archive, operator-selectable share modes, the image-redaction procedure, and the canonical-source (read-the-repo-not-the-mirror) block (Appendix L). Fetch when preparing an external handoff.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix L — External share (reference)

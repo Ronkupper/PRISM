@@ -64,7 +64,7 @@ core first, fetch a bundle only when the work in front of you needs it.
 Read these with the file tool at the moment a task calls for them; they are not
 resident until you open them.
 
-- **`lens/PRISM_lens_library.md`** — the Lens Library v0.15 (canonical catalog).
+- **`lens/PRISM_lens_library.md`** — the Lens Library v0.16 (canonical catalog).
   Fetch at Setup and whenever Probe 1 grades the strategy against lenses.
 - **`reference/templates.md`** — paste-ready Setup and dispatch blocks (Envelope,
   Self-check, Output, Decision brief, Stakeholder register, Claim inventory,

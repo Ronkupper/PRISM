@@ -1,4 +1,4 @@
-<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Dispatch conventions reference — the promoted §A–H convention set, the promotion map, the canonical execution-paste model, and the digest-preimage pin (Appendix J). Fetch when building or converging a dispatch.
+<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Dispatch conventions reference — the promoted §A–H convention set, the promotion map, the canonical execution-paste model, and the digest-preimage pin (Appendix J). Fetch when building or converging a dispatch.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix J — Dispatch conventions (reference)

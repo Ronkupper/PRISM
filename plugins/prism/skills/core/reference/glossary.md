@@ -1,4 +1,4 @@
-<!-- PRISM v2.19.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
+<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Glossary (Appendix A). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix A — Glossary
@@ -41,7 +41,7 @@ mechanics live in the cross-referenced sections.
 | **Lane** | A unit of parallel work — {a resume pointer, an append-only log, an inbox, one concern}. Object lane (the engagement) and meta lane (methodology). §{section.lanes}. |
 | **Layer 1** | Per-prompt convergence — orchestration absorbs returned findings into the Master. Monitors M6/M7/M8/M12 fire here. |
 | **Layer 2** | Cold synthesis across all Layer-1 findings to produce the audit's external deliverable. M9 fires here. M11 surfaces readiness. |
-| **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (21). v0.15 release pinned at `prism-lens-v0.15`. §{section.library-integration}. |
+| **Lens Library** | The reference catalog of audit-scope lenses. Universal (5) + Domain (22). v0.16 release pinned at `prism-lens-v0.16`. §{section.library-integration}. |
 | **`limitation-named` dispatch** | Single-vendor dispatch with explicit `Not chosen:` rationale. §{section.single-envelope-with-spectrum-shape}. |
 | **Master** | The single canonical project state file. Updated at every orchestration turn-close. §{section.the-master}. |
 | **Migration handoff** | Defined artifact produced at 🔴 (mandatory) or 🟠 (optional) for fresh-session continuity. §{section.migration-handoff}. |
