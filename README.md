@@ -53,22 +53,22 @@ For the full comparison, see [Which form should I use?](#which-form-should-i-use
 
 ## The Lens Library
 
-PRISM's defense against the audit that's internally rigorous but silently incomplete is the **Lens Library** — a reference catalog of **23 audit-scope lenses**, each one a `(material question × evidence class × specialist type)` triple that names a specific class of omission an audit can plausibly miss. A lens doesn't prescribe how to run a pass; it forces scope to *answer one question* — *Who gets hurt? What would refute it? Can anyone use it? Which rules apply where? Are kids protected?* — and names the kind of evidence and the kind of specialist an honest answer would take.
+PRISM's defense against the audit that's internally rigorous but silently incomplete is the **Lens Library** — a reference catalog of **27 audit-scope lenses**, each one a `(material question × evidence class × specialist type)` triple that names a specific class of omission an audit can plausibly miss. A lens doesn't prescribe how to run a pass; it forces scope to *answer one question* — *Who gets hurt? What would refute it? Can anyone use it? Which rules apply where? Are kids protected?* — and names the kind of evidence and the kind of specialist an honest answer would take.
 
 **How it grades scope.** At Setup, before any prompt ships, the draft Prompt Strategy is run against the whole catalog as a coverage map:
 
 - **Universal lenses** (`LL-U-*`, five of them) fire on every engagement, always-on.
-- **Domain lenses** (`LL-D-*`, eighteen) fire only when their `trigger:` predicate matches the subject — a payment function trips the ledger-integrity lens, a clinical claim trips the clinical-validity lens, and so on.
+- **Domain lenses** (`LL-D-*`, twenty-two) fire only when their `trigger:` predicate matches the subject — a payment function trips the ledger-integrity lens, a clinical claim trips the clinical-validity lens, and so on.
 
 Each fired lens is graded *fires-covered* (a planned pass already addresses it), *fires-uncovered* (it applies but nothing in scope covers it — flag for inclusion), or *fires-maybe* (it applies at the edge; operator judgment). The gap between what fired and what's covered **is** the silent-omission risk — surfaced explicitly at scope-definition time instead of discovered after delivery.
 
-**Six domain packs.** The eighteen domain lenses are grouped by primary failure surface as a readability aid: *Using the product*, *Running the system*, *Getting chosen*, *Proving results*, *Laws and rights*, and *Physical context*. The packs are a convention, not an orthogonal partition; cross-cutting concerns are handled through other lenses' triggers.
+**Six domain packs.** The twenty-two domain lenses are grouped by primary failure surface as a readability aid: *Using the product*, *Running the system*, *Getting chosen*, *Proving results*, *Laws and rights*, and *Physical context*. The packs are a convention, not an orthogonal partition; cross-cutting concerns are handled through other lenses' triggers.
 
 **Framework-neutral by design.** The Library is a standalone, framework-neutral catalog — not a methodology, not a rubric, not PRISM-specific. PRISM is one adopter: as of v2.0 the Library is a required attachment to every orchestration session, and the seven Setup probes (P1–P7) are what grade the draft strategy against it. The same catalog could be bound to a different audit framework.
 
 **Richer than a checklist.** Two lenses bind to version-pinned external rubrics — `LL-D-002` ("Can anyone use?") to WCAG 2.2 for accessibility, `LL-D-005` ("Can attackers get in?") to OWASP ASVS 5.0.0 for security — and the Library is explicit that keeping those anchors current is the adopting framework's responsibility, not something it does automatically. Two others — `LL-D-008` ("Compared to what?") and `LL-D-009` ("Does it pay back?") — carry `recommended_sources:`, a framework-curated list of external references, each shipped with a mandatory bias-and-handling caveat and a recency posture so a source never travels without its warning label.
 
-**Versioning.** The Lens Library is on its own release track, independent of the framework's MINOR releases, and is currently at **v0.15 (pre-release)** — awaiting at least one real-world calibration before promotion to a v1.0 stable. The canonical copy is [`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md); the single-file `PRISM.md` carries the same catalog embedded as Appendix G so a lone attachment is self-sufficient, and the Skill plugin drops that embedded copy in favor of fetching the bundled Library on demand.
+**Versioning.** The Lens Library is on its own release track, independent of the framework's MINOR releases, and is currently at **v0.16 (pre-release)** — awaiting at least one real-world calibration before promotion to a v1.0 stable. The canonical copy is [`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md); the single-file `PRISM.md` carries the same catalog embedded as Appendix G so a lone attachment is self-sufficient, and the Skill plugin drops that embedded copy in favor of fetching the bundled Library on demand.
 
 ## Which form should I use?
 

@@ -1,7 +1,7 @@
-# PRISM Lens Library — v0.15 (pre-release)
+# PRISM Lens Library — v0.16 (pre-release)
 
-**Version:** 0.15
-**Release date:** 2026-06-10
+**Version:** 0.16
+**Release date:** 2026-06-28
 **Status:** pre-release standalone artifact; awaiting real-world calibration before promotion to v1.0 stable
 **Scope:** framework-neutral reference catalog; not a methodology, not a rubric, not framework-specific
 
@@ -9,7 +9,7 @@
 
 ## What this is
 
-The PRISM Lens Library is a reference catalog of 26 audit-scope lenses. Each entry is a (material-question × evidence-class × specialist-type) triple that names a specific class of silent omission an audit can plausibly miss.
+The PRISM Lens Library is a reference catalog of 27 audit-scope lenses. Each entry is a (material-question × evidence-class × specialist-type) triple that names a specific class of silent omission an audit can plausibly miss.
 
 The Library is used as a coverage map at scope-definition time. For a given audit subject, an auditor evaluates every lens against the subject:
 
@@ -206,7 +206,7 @@ Every entry uses the following fields:
 
 ---
 
-## Domain lenses (21 entries across 6 packs)
+## Domain lenses (22 entries across 6 packs)
 
 ### Pack 1 — Using the product
 
@@ -443,6 +443,52 @@ Every entry uses the following fields:
     sentences audited first; unresolved
     referents and unstated premises route to
     rewrite.
+
+- id: LL-D-022
+  name: Does this respect the reader?
+  material_question: >
+    Does every sentence earn its place — would
+    the reader lose something real if it were
+    cut — or is the deliverable padded with
+    filler that spends the reader's attention
+    and returns nothing: empty preambles, the
+    prompt restated back, contentless
+    transitions, and qualifiers that hedge
+    without informing?
+  tier: domain
+  trigger: >
+    predicate: subject is or includes a prose
+    deliverable — report, pitch, marketing or
+    position copy, expository document — whose
+    length the reader must spend attention on
+  evidence_class: document
+  specialist_type: line editor / substantive editor (reader-advocate posture)
+  rubric_anchor: ~
+  informed_by:
+    - Strunk & White and Zinsser editorial tradition ("omit needless words"; clutter)
+    - Plain-language editorial tradition
+    - Generated-text review practice (boilerplate and filler detection)
+  failure_mode: >
+    The deliverable is reviewed for accuracy but
+    never for whether it respects the reader's
+    time. Empty openers ("in today's
+    landscape"), the brief restated as if new,
+    contentless transitions, and qualifier-
+    padding each survive because each is
+    individually harmless — and the reader, half
+    of whose attention bought nothing, reads the
+    author (or the tool that drafted it) as not
+    having cared enough to cut.
+  minimum_scope_binding: >
+    One pass reads every paragraph asking what
+    the reader loses if it is removed: each
+    empty preamble, restated prompt, contentless
+    transition, redundant restatement, and
+    content-free hedge is flagged to cut or
+    justify. Openings and each section's first
+    paragraph are audited first, where filler
+    concentrates; substance is preserved while
+    length is never defended for its own sake.
 ```
 
 ### Pack 2 — Running the system
@@ -677,6 +723,24 @@ Every entry uses the following fields:
         Substitute and do-nothing enumeration for an
         audience-job pair: what realistic alternatives
         a comparable subject was measured against.
+    - source: Failory
+      kind: narrative
+      access: open-web
+      framing: >
+        Founder-interview and post-mortem corpus;
+        failure-selection plus interview-subject
+        self-presentation bias. Funded ≠ correct, and a
+        founder's own account — of who they lost to, or
+        why the money ran out — is a claim, not a finding.
+      recency: >
+        Era-conditional: competitive sets, capital
+        climate, and cost structures in any case age; the
+        substitution and failure dynamics they reveal are
+        more durable. Weight recent cases for current priors.
+      answers: >
+        Substitute and lost-to enumeration from the
+        loser's side: which realistic alternatives a
+        comparable subject was actually displaced by.
     - source: pitch-deck libraries
       kind: narrative
       access: open-web
@@ -684,7 +748,8 @@ Every entry uses the following fields:
         Survivor bias — how a category presents itself
         to investors, not ground truth. Funded ≠
         correct. Premium tiers are paywalled; the
-        free corpus is browsable.
+        free corpus is browsable; open libraries
+        include bestpitchdeck.com.
       recency: >
         Era-conditional: deck conventions evolve with
         capital climate and category maturity. Match
@@ -712,6 +777,35 @@ Every entry uses the following fields:
         Competitor and comparable-population selection:
         which firms constitute the realistic
         alternative set for the audience-job pair.
+    - source: Start-Up Nation Central — Finder
+      kind: structured-record
+      access: open-web
+      framing: >
+        Deep, continuously-updated structured source for
+        the Israeli tech ecosystem (startups, investors,
+        multinationals, funding and M&A activity). Not a
+        merely-regional record: in sectors where Israel
+        leads — cybersecurity above all, and deep-tech
+        broadly — its companies are global category
+        innovators and disproportionately M&A targets
+        (predominantly of U.S. acquirers), so the Israeli
+        comparable, competitor, and acquirer set is
+        materially relevant even for a non-Israeli subject
+        in those sectors. Bias is depth-by-ecosystem:
+        deepest on Israel-linked firms — pair with a
+        global platform for full breadth. Free public tier
+        plus deeper authenticated data; classification is
+        platform-decided.
+      recency: >
+        Continuously updated with real-time company,
+        funding, and M&A data, so the question is coverage
+        scope, not staleness: deepest current coverage of
+        the Israeli ecosystem and its global acquirer links.
+      answers: >
+        Comparable, competitor, and likely-acquirer
+        enumeration: which firms make up the realistic
+        alternative set, at a depth global platforms miss
+        in Israel-led categories such as cybersecurity.
   informed_by:
     - Porter five-forces and strategy literature
     - Jobs-to-be-Done (substitute analysis)
@@ -785,6 +879,24 @@ Every entry uses the following fields:
         whether comparable subjects found a market that
         actually paid, and where demand assumptions
         broke down.
+    - source: Failory
+      kind: narrative
+      access: open-web
+      framing: >
+        Founder-interview and post-mortem corpus;
+        failure-selection plus interview-subject
+        self-presentation bias. Funded ≠ correct, and a
+        founder's own account — of who they lost to, or
+        why the money ran out — is a claim, not a finding.
+      recency: >
+        Era-conditional: competitive sets, capital
+        climate, and cost structures in any case age; the
+        substitution and failure dynamics they reveal are
+        more durable. Weight recent cases for current priors.
+      answers: >
+        Willingness-to-pay and burn post-mortems: where
+        revenue, retention, or cost assumptions broke for
+        comparable subjects, and how the runway ran out.
     - source: pitch-deck libraries
       kind: narrative
       access: open-web
@@ -792,7 +904,8 @@ Every entry uses the following fields:
         Survivor bias — how a category presents itself
         to investors, not ground truth. Funded ≠
         correct. Premium tiers are paywalled; the
-        free corpus is browsable.
+        free corpus is browsable; open libraries
+        include bestpitchdeck.com.
       recency: >
         Era-conditional: deck conventions evolve with
         capital climate and category maturity. Match
@@ -821,6 +934,31 @@ Every entry uses the following fields:
         Comparable transactions, valuations, and
         funding history as a market-sizing and
         commercial-viability cross-check.
+    - source: Start-Up Nation Central — Finder
+      kind: structured-record
+      access: open-web
+      framing: >
+        Deep, continuously-updated structured source for
+        the Israeli tech ecosystem, strongest on funding
+        rounds, valuations, and M&A / exit activity.
+        Israeli tech — cybersecurity especially — is a
+        world leader in acquisitions, predominantly by
+        U.S. companies, so its exit and transaction record
+        is a globally material payback and market-sizing
+        cross-check in those categories, not a regional
+        footnote. Bias is depth-by-ecosystem (deepest on
+        Israel-linked firms); funding ≠ business signal.
+        Free public tier plus deeper authenticated data.
+      recency: >
+        Continuously updated with real-time funding and
+        M&A data, so the question is coverage scope, not
+        staleness: current depth on the Israeli ecosystem's
+        rounds and exits.
+      answers: >
+        Comparable transactions, valuations, and exit /
+        acquisition outcomes as a market-sizing and
+        commercial-viability cross-check, with particular
+        depth on Israel-led categories such as cybersecurity.
   informed_by:
     - SaaS unit-economics literature (CAC, LTV, payback)
     - OECD RIA (counterfactual analysis)
@@ -1093,17 +1231,19 @@ Every entry uses the following fields:
 
 ## Summary counts
 
-- **Total entries:** 26 (5 universal + 21 domain across 6 packs)
-- **Rubric-anchored entries:** 2 (7.7%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
-- **`recommended_sources:`-bearing entries:** 2 (7.7%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
-- **`scope_integrity_probe:`-bearing entries:** 1 (3.8%) — LL-D-008 ("Compared to what?")
-- **`specialist_type:` population:** 26 / 26
+- **Total entries:** 27 (5 universal + 22 domain across 6 packs)
+- **Rubric-anchored entries:** 2 (7.4%) — LL-D-002 (WCAG 2.2, October 2023), LL-D-005 (OWASP ASVS 5.0.0, May 2025)
+- **`recommended_sources:`-bearing entries:** 2 (7.4%) — LL-D-008 ("Compared to what?"), LL-D-009 ("Does it pay back?")
+- **`scope_integrity_probe:`-bearing entries:** 1 (3.7%) — LL-D-008 ("Compared to what?")
+- **`specialist_type:` population:** 27 / 27
 - **`last_verified:` population on anchored entries:** 2 / 2 (all dated 2026-04-24)
 - **`verification_basis:` population on anchored entries:** 2 / 2 (all `schema-introduction-only` at v0.10; flips to `independent-review` after real currency review)
 
 ## Version and status
 
-**v0.15 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+**v0.16 pre-release.** Awaiting at least one real-world calibration application before promotion to v1.0 stable. Calibration may occur either as standalone use on a real audit or through a framework-integration (Phase B) effort against a committed target audit framework.
+
+v0.16 is an additive catalog bump on top of v0.15: one new domain lens plus a recommended-sources curation pass, no schema change. It adds LL-D-022 ("Does this respect the reader?") to Pack 1 — a reader-respect pass that flags filler which spends the reader's attention and returns nothing (empty preambles, the prompt restated back, contentless transitions, content-free hedges), completing the document-review family alongside LL-D-019/020/021. It also expands the `recommended_sources:` on the two source-bearing lenses: LL-D-008 ("Compared to what?") and LL-D-009 ("Does it pay back?") each gain Failory (a founder-interview and post-mortem corpus) and Start-Up Nation Central — Finder (a deep structured source for the Israeli tech ecosystem, globally material in Israel-led categories such as cybersecurity), and the existing pitch-deck-libraries source now names bestpitchdeck.com among its open examples. Each new source carries the mandatory `framing:` and `recency:` caveats; no schema change and no existing lens behavior changes beyond the two expanded source lists. Total entries 26 → 27 (5 universal + 22 domain).
 
 v0.15 is an additive catalog bump on top of v0.14: two new domain lenses and one amended lens, no schema change. It broadens LL-D-019 ("Who said otherwise?") from negations alone to the full uninvited-frame family — negations, defensive intensifiers ("real", "actual", "truly"), and temporal hedges ("for now", "currently") — with a fast path for self-bounding verbs (a verb like "shrink" already bounds the claim, so a trailing denial of the unbounded case is uncalled-for by default) and an exception for sections whose explicit job is worst-case assessment, where the extreme is a called question. It adds LL-D-020 ("Help or ammunition?"), a per-sentence triple audit that reads a deliverable as its named expert audience reads it — sense, clarity, and effect for the subject, recomputing any implied arithmetic under a hostile-but-fair posture — and LL-D-021 ("Does a stranger follow?"), a cold-reader pass requiring every referent to resolve on the page: third-party claims attributed, acronyms defined at first use, and the premises the document's logic depends on stated rather than assumed. Both new lenses carry the standard fields only, and existing lenses beyond LL-D-019 are untouched. Total entries 24 → 26 (5 universal + 21 domain).
 
@@ -1117,6 +1257,6 @@ v0.11 is a lens-binding refinement on top of v0.10: same 23 lenses, no schema ch
 
 v0.10 is a schema-fidelity bump on top of v0.9: same 23 lenses, same content, same triggers. The change is the addition of `verification_basis:` on the two rubric-anchored entries, gating any adopting framework's freshness logic against silently treating schema-introduction dates as performed currency checks.
 
-Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.15 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
+Feedback, patches, and field-observations welcome. Ongoing currency of rubric anchors is the responsibility of the adopting framework or engagement; v0.16 ships with anchors current as of 2026-04-24 (`schema-introduction-only` basis) and does not include an automated currency-update mechanism.
 
-*End of PRISM Lens Library v0.15.*
+*End of PRISM Lens Library v0.16.*
