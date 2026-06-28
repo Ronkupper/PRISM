@@ -57,7 +57,7 @@ Same framework on every surface — only install and invocation differ. **New he
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`.
-- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_20_0.md` for the version-pinned copy) to a fresh chat.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_20_1.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
 
@@ -153,7 +153,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_20_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_20_1.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
 - `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/core/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`. It ships six slash commands under `plugins/prism/commands/` — five for the engagement lifecycle (`/prism-start` begin · `/prism-whats-next` the Desk / resume · `/prism-converge` fold returns back · `/prism-status` trajectory view · `/prism-close` closure gate) plus `/prism-meta` for the methodology lane — and the Skill also triggers on plain-language PRISM requests.
