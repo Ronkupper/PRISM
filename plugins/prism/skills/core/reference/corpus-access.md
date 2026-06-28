@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Corpus-access dispatch (section 4.13) — the investigation-posture Envelope for a targeted lookup against an external reference corpus, brought back caveat-attached. Fetch when the dispatch-builder classifies a pass as corpus-access.
+<!-- PRISM v2.20.1 Skill bundle (on-demand reference). Corpus-access dispatch (section 4.13) — the investigation-posture Envelope for a targeted lookup against an external reference corpus, brought back caveat-attached. Fetch when the dispatch-builder classifies a pass as corpus-access.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ### 4.13 Corpus-access dispatch `[structural | review-if: corpus-access Phase 3 lands]`

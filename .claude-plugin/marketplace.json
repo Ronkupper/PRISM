@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "prism",
-      "version": "2.20.0",
+      "version": "2.20.1",
       "source": "./plugins/prism",
       "description": "PRISM — structured, multi-session, multi-vendor LLM-orchestrated audit & research framework. Loads a lean core and fetches reference bundles (Lens Library, templates, appendices) on demand."
     }

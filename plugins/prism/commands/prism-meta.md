@@ -1,5 +1,5 @@
 ---
-description: Resume the PRISM Meta lane — pull canonical repo state, adopt the session number, drain the meta inbox, and continue methodology work from the meta resume-pointer.
+description: Resume the PRISM Meta lane (methodology / contributor work) — pull canonical repo state, adopt the session number, drain the meta inbox, and continue from the meta resume-pointer.
 argument-hint: [meta pointer or focus, optional]
 disable-model-invocation: true
 ---
@@ -37,6 +37,9 @@ Then proceed:
    them here.
 
 This command is a Claude-Skill convenience for entering the Meta lane; it
-changes no framework mechanic. It is the meta-lane sibling of `/prism-start`
-and `/prism-whats-next`. The plain-language form ("resume the PRISM meta
-lane") is equivalent and is the portable form on every other vendor.
+changes no framework mechanic. It is the **contributor / methodology** command —
+the sibling of the engagement commands (`/prism-start`, `/prism-whats-next`,
+`/prism-converge`, `/prism-status`, `/prism-close`), serving the lane that
+develops the methodology itself rather than running an audit. The plain-language
+form ("resume the PRISM meta lane") is equivalent and is the portable form on
+every other vendor.

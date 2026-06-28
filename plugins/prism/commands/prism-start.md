@@ -1,10 +1,11 @@
 ---
-description: Start a PRISM audit or research engagement for a subject — activates PRISM and begins Setup (probes P1–P7).
+description: Start a PRISM audit or research engagement for a subject — activates PRISM and begins Setup (probes P1–P7). The lifecycle entry point.
 argument-hint: [subject]
 disable-model-invocation: true
 ---
 
-Activate **PRISM** and begin a new engagement for the following subject:
+Activate **PRISM** and begin a new engagement for the following subject — the
+entry point of the **Setup → rounds → Closure** lifecycle:
 
 $ARGUMENTS
 
@@ -32,4 +33,7 @@ silently restarting Setup.
 
 This command is a Claude-Skill convenience for invoking and seeding PRISM; it
 changes no framework mechanic. The plain-language invocation ("Run a PRISM audit
-on …") is equivalent and is the portable form on every other vendor.
+on …") is equivalent and is the portable form on every other vendor. Once an
+engagement is running, resume it with `/prism-whats-next`, fold returns back with
+`/prism-converge`, view the trajectory with `/prism-status`, and finish with
+`/prism-close`.

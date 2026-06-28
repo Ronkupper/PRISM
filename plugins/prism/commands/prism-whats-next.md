@@ -1,10 +1,11 @@
 ---
-description: Resume a PRISM engagement — read the Master's *What's next* artifact and proceed from the predicted next action.
+description: Resume a PRISM engagement — the PRISM Desk. Re-sync from the repo, show where you are and the one next action, and stage the next dispatch as a paste-ready Envelope.
 argument-hint: [master file or focus, optional]
 disable-model-invocation: true
 ---
 
-Resume the active **PRISM** engagement from its continuous state.
+Resume the active **PRISM** engagement from its continuous state — this is the
+**PRISM Desk**, your single pane of glass between sessions.
 
 Optional Master pointer or focus note (may be empty):
 
@@ -24,9 +25,15 @@ Then proceed:
 4. **Read the Master's *What's next* artifact and proceed** from the predicted next
    action. If a focus was supplied above, weigh it against *What's next* and let the
    operator choose when they diverge rather than silently overriding the plan.
-5. If *What's next* is missing or stale, surface that and ask the operator rather
+5. **Stage the next step as a card.** When the next action is a dispatch, render it
+   as a **paste-ready Execution Envelope** (the ACTION surface) with its Dispatch ID;
+   otherwise name the next move plainly. On request, render the **STATE view**
+   (`/prism-status`) instead.
+6. If *What's next* is missing or stale, surface that and ask the operator rather
    than guessing the next action.
 
 This command is a Claude-Skill convenience for resuming PRISM; it changes no
 framework mechanic. Asking "What's next?" in plain language is equivalent, and is
-the portable form on every other vendor.
+the portable form on every other vendor. Its siblings cover the rest of the loop:
+`/prism-converge` (fold returns back), `/prism-status` (the trajectory view), and
+`/prism-close` (finish the engagement).

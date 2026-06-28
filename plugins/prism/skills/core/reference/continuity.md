@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Continuity reference (sections 5.4-5.6 + 14) — migration handoff format, failsafe-recovery mechanics, defensive migration at natural seams, and cold-open missing-handoff recovery. Fetch at a resume / context-seam, or when M5 reads 🟠/🔴.
+<!-- PRISM v2.20.1 Skill bundle (on-demand reference). Continuity reference (sections 5.4-5.6 + 14) — migration handoff format, failsafe-recovery mechanics, defensive migration at natural seams, and cold-open missing-handoff recovery. Fetch at a resume / context-seam, or when M5 reads 🟠/🔴.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ### 5.4 Migration handoff `[structural | stable]`

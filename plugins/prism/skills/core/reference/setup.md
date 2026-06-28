@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.0 Skill bundle (on-demand reference). Setup mechanics (sections 6.1-6.6, 7.1, 7.3-7.4, 8.1) — three-layer readiness, the seven probes (P1–P7), Setup-artifact procedures, strategy stability, onboarding; Library-reference-at-Setup; the Scope-Integrity Test and specialist-pass promotion; the Claude-Project-as-Setup recommendation. Fetch at a Setup session.
+<!-- PRISM v2.20.1 Skill bundle (on-demand reference). Setup mechanics (sections 6.1-6.6, 7.1, 7.3-7.4, 8.1) — three-layer readiness, the seven probes (P1–P7), Setup-artifact procedures, strategy stability, onboarding; Library-reference-at-Setup; the Scope-Integrity Test and specialist-pass promotion; the Claude-Project-as-Setup recommendation. Fetch at a Setup session.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 6. Setup mechanics
