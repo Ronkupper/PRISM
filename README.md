@@ -65,16 +65,16 @@ Same framework on every surface — only install and invocation differ. **New he
 Run a PRISM audit on [your subject].
 ```
 
-Or, on the Skill, a slash-command set tracks the engagement lifecycle. All six are operator commands you run in the PRISM **orchestration** session (the chat where PRISM is loaded — not the vendor chats where dispatched prompts are pasted). The **lane** says where a command acts: *object* = running an engagement; *meta* = developing the methodology.
+Or, on the Skill, a slash-command set tracks the engagement lifecycle — all run in your PRISM (orchestration) chat, not the vendor chats where dispatched prompts are pasted. **Where** is the *kind* of session each command runs in: a **fresh chat you open when you need it**, not one long-running session. Each new **PRISM Desk** or **PRISM Meta** re-syncs from the repo, so you spin up as many as the work takes; the state lives in the repo, not the chat. Homes are best-practice — flexible, except `/prism-start` (Setup only).
 
-| Command | When | Lane | What it does |
+| Command | When | Where | What it does |
 | --- | --- | --- | --- |
-| `/prism-start` | At Setup | Object | Begin an engagement — run the Setup probes P1–P7 |
-| `/prism-whats-next` | Resume / any session | Object | The Desk — re-sync from repo, show the next action, stage the next dispatch |
-| `/prism-converge` | After a dispatch returns | Object | Integrity-check the returns and fold them into the Master |
-| `/prism-status` | Any time | Object | Show the trajectory (Desk state view): dependency map + progress timeline |
-| `/prism-close` | At the end | Object | Run the closure gate and produce the deliverables (report / workbook) |
-| `/prism-meta` | Methodology work | Meta | Resume the methodology (contributor) lane |
+| `/prism-start` | New engagement | Setup | Begin an engagement — run the probes P1–P7 |
+| `/prism-whats-next` | Resuming a session | PRISM Desk | Re-sync from repo, show the next action, stage the next dispatch |
+| `/prism-converge` | Returns are in | Convergence | Integrity-check the returns and fold them into the Master |
+| `/prism-status` | Need an overview | PRISM Desk | Show the trajectory: dependency map + progress timeline |
+| `/prism-close` | Work is done | Closure | Run the closure gate; produce the deliverables (report / workbook) |
+| `/prism-meta` | Improving PRISM | PRISM Meta | Resume the methodology (contributor) lane |
 
 The slash commands are Claude / Claude Code (untested in Cowork); the natural-language form (`Run a PRISM audit on …`) works everywhere and is the portable path on non-Claude vendors.
 
