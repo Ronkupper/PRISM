@@ -110,7 +110,7 @@ In a Claude Code session:
 
 ```
 /plugin marketplace add Ronkupper/PRISM
-/plugin install prism@prism
+/plugin install prism@prism-marketplace
 ```
 
 ### 3. Start an engagement
@@ -149,5 +149,5 @@ Worked example: §15 of `PRISM.md`.
 
 - **`/prism-start` scope.** Confirmed on Claude and Claude Code; untested in Cowork. The natural-language form (`Run a PRISM audit on…`) works everywhere and is the portable path on non-Claude vendors.
 - **Installing via the app vs. the CLI.** In Cowork and Chat you install through the **Customize → Plugins** UI — typing `/plugin …` in the chat box won't work there (that syntax is Claude Code only).
-- **Updating the Skill.** Cowork / Chat: Customize → Plugins → refresh the marketplace, then **Update** PRISM. Code: `/plugin marketplace update prism` to refresh the catalog, then `/plugin update prism@prism` (run `/reload-plugins` to apply without restarting).
-- **If an update won't appear.** After a new release, if the desktop refresh seems stuck, the **Update** button stays greyed, or Code reports "already at the latest version" — the local marketplace copy is stale (a known Claude Code client issue, not a PRISM problem). Retry the refresh first; if it still won't take, remove and re-add the marketplace. Code: `/plugin marketplace remove prism`, then `/plugin marketplace add Ronkupper/PRISM`, then `/plugin install prism@prism`. Cowork / Chat: remove the PRISM marketplace in Customize → Plugins, then re-add it from `Ronkupper/PRISM` and Install. (Removing a marketplace uninstalls its plugins; re-adding restores them.)
+- **Updating the Skill.** Cowork / Chat: Customize → Plugins → refresh the marketplace, then **Update** PRISM. Code: `/plugin marketplace update prism-marketplace` to refresh the catalog, then `/plugin update prism@prism-marketplace` (run `/reload-plugins` to apply without restarting).
+- **If an update won't appear.** After a new release, if the desktop refresh seems stuck, the **Update** button stays greyed, or Code reports "already at the latest version" — the local marketplace copy is stale (a known Claude Code client issue, not a PRISM problem). Retry the refresh first; if it still won't take, remove and re-add the marketplace. Code: `/plugin marketplace remove prism-marketplace`, then `/plugin marketplace add Ronkupper/PRISM`, then `/plugin install prism@prism-marketplace`. Cowork / Chat: remove the PRISM marketplace in Customize → Plugins, then re-add it from `Ronkupper/PRISM` and Install. (Removing a marketplace uninstalls its plugins; re-adding restores them.)

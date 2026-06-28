@@ -1,9 +1,9 @@
 {
-  "name": "prism",
+  "name": "prism-marketplace",
   "owner": { "name": "Ron Kuper", "url": "https://github.com/Ronkupper" },
   "metadata": {
     "description": "PRISM framework, distributed as a Claude Skill plugin.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {

@@ -56,7 +56,7 @@ Same framework on every surface — only install and invocation differ. **New he
 **Install** (paid plan required — Pro, Max, Team, or Enterprise):
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
-- **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism`.
+- **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism-marketplace`.
 - **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_20_1.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
@@ -109,7 +109,7 @@ Both forms carry the identical framework — the Skill is a verified, determinis
 
 ```
 /plugin marketplace add Ronkupper/PRISM
-/plugin install prism@prism
+/plugin install prism@prism-marketplace
 ```
 
 **Use the single file (`PRISM.md`) when:**
