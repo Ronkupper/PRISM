@@ -40,6 +40,8 @@ A project is a workspace that keeps its files, instructions, and memory across s
 3. Enter `Ronkupper/PRISM` (or `https://github.com/Ronkupper/PRISM`) and sync.
 4. PRISM appears in the list — click **Install**.
 
+**Or upload the plugin directly (no marketplace).** Download `PRISM-plugin-<version>.zip` from the [latest release](https://github.com/Ronkupper/PRISM/releases/latest), then in **Personal plugins** click **+** → **Upload plugin** and select the file. This bypasses the marketplace entirely — use it if a marketplace entry ever gets stuck or won't update.
+
 ### 4. Start an engagement
 
 In a Cowork session, ask in plain language:
@@ -65,6 +67,8 @@ Skills from plugins work in chat too.
 1. Open **Customize** in the left sidebar → **Plugins** tab.
 2. In **Personal plugins**, click **+** → **Add marketplace** → **Add from a repository**.
 3. Enter `Ronkupper/PRISM`, sync, then click **Install**.
+
+*No marketplace?* Download `PRISM-plugin-<version>.zip` from the [latest release](https://github.com/Ronkupper/PRISM/releases/latest), then **+** → **Upload plugin** and select it — installs the same Skill directly, bypassing the marketplace.
 
 ### Option B — attach the single file
 

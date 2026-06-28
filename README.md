@@ -57,6 +57,7 @@ Same framework on every surface — only install and invocation differ. **New he
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism-marketplace`.
+- **Upload the plugin (no marketplace)** — download `PRISM-plugin-<version>.zip` from the [latest release](https://github.com/Ronkupper/PRISM/releases/latest), then **Customize → Plugins → Personal → + → Upload plugin**. Installs the Skill directly — handy if a marketplace entry ever gets stuck.
 - **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_20_1.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:

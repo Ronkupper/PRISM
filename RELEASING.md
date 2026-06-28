@@ -58,7 +58,12 @@ When `PRISM.md` advances to a new framework version (e.g. `v2.1.0`):
    git tag -a v{X.Y.Z} -m "Release v{X.Y.Z}"
    git push origin main v{X.Y.Z}
    ```
-10. **Create a GitHub Release** at the tag (`https://github.com/Ronkupper/PRISM/releases/new?tag=v{X.Y.Z}`). Title: `PRISM v{X.Y.Z}`. Body: surface summary + calibration / report-back items + link to design provenance.
+10. **Create a GitHub Release** at the tag (`https://github.com/Ronkupper/PRISM/releases/new?tag=v{X.Y.Z}`). Title: `PRISM v{X.Y.Z}`. Body: surface summary + calibration / report-back items + link to design provenance. Then **build and attach the Upload-plugin package** — the non-marketplace install path (Customize → Plugins → Personal → + → Upload plugin):
+    ```bash
+    ./scripts/build-plugin-zip.sh                              # -> PRISM-plugin-{X.Y.Z}.zip (contents at archive root)
+    gh release upload v{X.Y.Z} PRISM-plugin-{X.Y.Z}.zip --clobber
+    ```
+    The desktop upload handler requires a `.zip` (rejects `.plugin`/other) with the plugin contents at the archive root. The `.zip` is a build artifact (gitignored) — attach it to the Release, never commit it. README/GETTING_STARTED link users to `releases/latest` for the download.
 11. **Post a Discussions announcement** in *Announcements* category. Title: `PRISM v{X.Y.Z} released`. Body: link to the release tag, surface highlights, calibration items worth reporting back, link to surface-drift map (Appendix D for v2.x; analogous appendix for future majors), link to `design/` artifacts at the tag. See the `v2.0.0` announcement for shape reference.
 
 ## Lens Library release
@@ -144,6 +149,7 @@ Before pushing a framework tag:
 - [ ] Version-pinned snapshot file present and byte-identical to stable file (`diff PRISM.md PRISM_v{X_Y_Z}.md` returns no output)
 - [ ] `SKILL.md` reviewed for version drift (loader instructions reference current snapshot filename); description prefix matches release
 - [ ] `plugins/prism/.claude-plugin/plugin.json` `version` bumped (authoritative update cache key — must change every release) and `.claude-plugin/marketplace.json` `plugins[].version` kept in sync with it (a stale value leaves the desktop Update button greyed)
+- [ ] Upload-plugin package built (`./scripts/build-plugin-zip.sh`) and attached to the GitHub Release as `PRISM-plugin-{X.Y.Z}.zip` (non-marketplace install path)
 - [ ] `CITATION.cff` version + date + abstract current
 - [ ] `README.md` *Current version* section current
 - [ ] `VERSION` file matches frontmatter `version` and title-block heading
