@@ -8,7 +8,7 @@
 
 The framework comes in two forms built from the same source: a single Markdown file (`PRISM.md`) you attach to any LLM chat, and a **Claude Skill plugin** that installs a lean core and fetches reference material on demand. The single file carries its own machine-readable frontmatter, lint contract, embedded [Lens Library](#the-lens-library) (Appendix G), and vendor-parsing escape-hatch (Appendix H) so it self-documents across sessions and vendors; the Skill is a verified, deterministic projection of that same content. See [Which form should I use?](#which-form-should-i-use).
 
-> **New in v2.9.0 — installable as a Claude Skill.** PRISM now ships as a Claude plugin that loads a lean core and fetches reference material (the [Lens Library](#the-lens-library), templates, appendices) only as a task needs it, alongside the single-file form. Install with `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`. The substrate declaration is also rewritten to a capability tier — Claude, Opus-class — so the framework no longer pins to specific model versions. See the [v2.9.0 release](https://github.com/Ronkupper/PRISM/releases/tag/v2.9.0).
+> **New through v2.20.0 — a named operating model.** Recent releases add the layer that runs an engagement end to end: a **PRISM Desk** (one operator-facing surface that stages every step), a symmetric **Setup → rounds → Closure** lifecycle, a five-stage **dispatch round-trip**, engagement deliverables (a plain-language report plus an optional interactive workbook), and a core-slimming refactor that keeps the always-loaded core lean by fetching phase-scoped material on demand. See [How an engagement runs](#how-an-engagement-runs). (Installation is unchanged — see [Quick start](#quick-start).)
 
 ## What PRISM is for
 
@@ -29,6 +29,26 @@ PRISM separates two layers, and several things in this README make sense only on
 
 So "PRISM runs on Claude" (orchestration) and "PRISM uses several vendors" (execution) are both true — they describe different layers. The two distribution forms below, and the vendor notes throughout, all concern the *orchestration* layer.
 
+## How an engagement runs
+
+Beyond the two distribution forms, PRISM runs an engagement as a small repeating loop behind a single operator-facing surface — you act on plain-language cards and never track the framework's internals.
+
+<p align="center"><img src="assets/prism_operator_flow.svg" alt="PRISM operator flow: Setup, repeating execution rounds, and Closure — each operator step an open / decide / act / hand-back card" width="50%"></p>
+
+**One lifecycle, three phases.** **Setup** scaffolds the workspace and grades scope against the Lens Library; a sequence of **execution rounds** does the work; a symmetric **Closure** gate checks everything off and hands over clean deliverables — a plain-language report, and, when the decision turns on numbers, an interactive workbook the audience can drive. Every step you touch is a rendered card — *open → decide → act → hand back* — while lanes, roles, and concurrency stay hidden machinery.
+
+**The PRISM Desk.** A standing "what's-next" desk is your single pane of glass: when you return it re-syncs state from the repo, shows where you are and the one next action, and stages each dispatch as a paste-ready prompt. Because it rebuilds from the canonical repo rather than memory, you can step away for several rounds and it catches up.
+
+**The dispatch round-trip.** Each pass is a bounded round-trip across the two layers above: a PRISM-loaded orchestration session builds the self-contained prompt, a PRISM-unaware vendor session runs it, and the returns are saved, integrity-checked (via a unique Dispatch ID), and converged back into the Master. The only places you act are the hand-off seams between sessions.
+
+<p align="center"><img src="assets/prism_dispatch_seams.svg" alt="PRISM dispatch seams: the Desk stages a pass, a fresh orchestration session builds the envelope, a PRISM-unaware vendor session runs it, and a consumer converges the returns into the Master" width="62%"></p>
+
+**The state view.** On request the Desk renders the engagement's trajectory two ways — a dependency / critical-path map (what gates what, where the bottleneck is) and a progress timeline (where am I, what's done) — both rendered from verified repo state, never from memory.
+
+<p align="center"><img src="assets/prism_ui_trajectory_view.svg" alt="Illustrative PRISM UI trajectory view: a dependency / critical-path map beside a progress timeline, using generic placeholder labels" width="100%"></p>
+
+*(Diagrams are illustrative; the state view uses generic placeholder labels.)*
+
 ## Quick start
 
 Same framework on every surface — only install and invocation differ. **New here? Follow the step-by-step [Getting started guide](./GETTING_STARTED.md)** (Cowork, Chat, and Code, from scratch). The short version:
@@ -37,7 +57,7 @@ Same framework on every surface — only install and invocation differ. **New he
 
 - **Cowork or Claude Chat** — open **Customize → Plugins → + → Add marketplace → Add from a repository**, enter `Ronkupper/PRISM`, then **Install**. (In Cowork, open the Cowork tab first.)
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@core`.
-- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_19_0.md` for the version-pinned copy) to a fresh chat.
+- **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_20_0.md` for the version-pinned copy) to a fresh chat.
 
 **Invoke** — ask in plain language:
 
@@ -133,7 +153,7 @@ The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contribut
 ## Repository contents
 
 - `PRISM.md` — current framework version (singleton: framework body + Lens Library embedded as Appendix G + skill frontmatter; stable filename, always up to date).
-- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_16_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
+- `PRISM_v{n}.md` — versioned snapshot of PRISM.md at the corresponding tag (e.g., `PRISM_v2_20_0.md`); for git-tag recovery per [`RELEASING.md`](./RELEASING.md). Not the primary install target.
 - `PRISM_v1_10_4.md` — terminal v1.x release retained at root for projects pinned to v1.10.4.
 - `SKILL.md` (repo root) — the standalone single-file skill loader (frontmatter only) that pairs with `PRISM.md`; distinct from the plugin's own loader inside `plugins/prism/`. Use when a decoupled loader / body layout is preferred over the fused `PRISM.md`.
 - `plugins/prism/` — the framework packaged as a **Claude Skill plugin**: a lean core (`PRISM_core.md`) plus on-demand reference bundles (`reference/`) and the bundled Lens Library, under `plugins/prism/skills/prism/`. This is the installable form; the marketplace manifest is at `.claude-plugin/marketplace.json`. It ships two slash commands under `plugins/prism/commands/` — `/prism-start <subject>` (begin an engagement) and `/prism-whats-next` (resume from the Master's *What's next*) — and the Skill also triggers on plain-language PRISM requests.

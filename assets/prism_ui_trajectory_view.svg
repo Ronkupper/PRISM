@@ -1,0 +1,66 @@
+<svg width="100%" viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" font-family="var(--font-sans)">
+<title>PRISM UI — the trajectory / state view (two modes)</title>
+<desc>Illustrative, generic reconstruction of PRISM's operator-facing state view: a dependency / critical-path map and a progress timeline shown side by side. Placeholder labels only — no engagement data.</desc>
+<style>
+svg{--surface-1:#f6f7f9;--surface-2:#ffffff;--text-primary:#1a1d21;--text-secondary:#555b66;--text-muted:#8a909a;--text-accent:#4f46e5;--ok:#2e7d57;--now:#b8860b;--crit:#c0552e;--border:#e3e6ea;--border-strong:#cbd0d6;--font-sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
+.panel{fill:none;stroke:var(--border);stroke-width:1.25;stroke-dasharray:2 3;}
+.node{fill:var(--surface-1);stroke:var(--border-strong);stroke-width:1.25;}
+.critn{fill:var(--surface-1);stroke:var(--crit);stroke-width:1.6;}
+.t{fill:var(--text-primary);font-size:12px;font-weight:500;}
+.s{fill:var(--text-secondary);font-size:10px;}
+.h{fill:var(--text-accent);font-size:12px;font-weight:500;letter-spacing:.03em;}
+.cap{fill:var(--text-muted);font-size:10px;}
+.e{stroke:var(--border-strong);stroke-width:1.4;fill:none;}
+.crit{stroke:var(--crit);stroke-width:1.8;fill:none;}
+</style>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--border-strong)"/></marker>
+</defs>
+
+<text class="t" x="16" y="22" font-weight="500">PRISM UI — the trajectory / state view (illustrative; generic labels)</text>
+<!-- legend -->
+<circle cx="22" cy="40" r="5" fill="var(--ok)"/><text class="s" x="32" y="44">complete</text>
+<circle cx="110" cy="40" r="5" fill="var(--now)"/><circle cx="110" cy="40" r="8" fill="none" stroke="var(--now)" stroke-width="1.2"/><text class="s" x="122" y="44">you are here</text>
+<circle cx="212" cy="40" r="5" fill="var(--surface-2)" stroke="var(--text-muted)" stroke-width="1.3"/><text class="s" x="222" y="44">pending</text>
+<rect x="290" y="36" width="14" height="7" fill="var(--crit)"/><text class="s" x="310" y="44">critical path</text>
+
+<!-- ===== LEFT PANEL: dependency / critical-path map ===== -->
+<rect class="panel" x="16" y="54" width="340" height="400" rx="8"/>
+<text class="h" x="32" y="76">▸ dependency / critical-path map</text>
+<text class="cap" x="32" y="91">what gates what · where the bottleneck is</text>
+
+<rect class="node" x="96" y="104" width="180" height="30" rx="6"/><circle cx="110" cy="119" r="5" fill="var(--ok)"/><text class="t" x="124" y="123">Setup</text>
+<line class="e" x1="186" y1="134" x2="186" y2="150" marker-end="url(#a)"/>
+<rect class="node" x="96" y="150" width="180" height="30" rx="6"/><circle cx="110" cy="165" r="5" fill="var(--ok)"/><text class="t" x="124" y="169">Recon + analysis passes</text>
+<line class="e" x1="186" y1="180" x2="186" y2="196" marker-end="url(#a)"/>
+<rect class="node" x="96" y="196" width="180" height="30" rx="6"/><circle cx="110" cy="211" r="5" fill="var(--now)"/><circle cx="110" cy="211" r="8" fill="none" stroke="var(--now)" stroke-width="1.2"/><text class="t" x="124" y="215">Interim verdict</text>
+
+<!-- fork -->
+<line class="e" x1="150" y1="226" x2="110" y2="250" marker-end="url(#a)"/>
+<line class="crit" x1="222" y1="226" x2="262" y2="250" marker-end="url(#a)"/>
+<rect class="node" x="34" y="252" width="120" height="34" rx="6"/><text class="t" x="46" y="270">Track A</text><text class="s" x="46" y="282">runs now</text>
+<rect class="critn" x="202" y="252" width="130" height="34" rx="6"/><text class="t" x="214" y="270">Track B</text><text class="s" x="214" y="282">gated on input</text>
+<!-- join -->
+<line class="e" x1="110" y1="286" x2="170" y2="312" marker-end="url(#a)"/>
+<line class="crit" x1="262" y1="286" x2="202" y2="312" marker-end="url(#a)"/>
+<rect class="node" x="96" y="314" width="180" height="30" rx="6"/><circle cx="110" cy="329" r="5" fill="var(--surface-2)" stroke="var(--text-muted)" stroke-width="1.3"/><text class="t" x="124" y="333">Firm verdict</text>
+<line class="e" x1="186" y1="344" x2="186" y2="360" marker-end="url(#a)"/>
+<rect class="node" x="96" y="360" width="180" height="30" rx="6"/><circle cx="110" cy="375" r="5" fill="var(--surface-2)" stroke="var(--text-muted)" stroke-width="1.3"/><text class="t" x="124" y="379">Editions → close</text>
+<text class="cap" x="32" y="410" fill="var(--crit)">▮ critical path = the awaited input → Track B</text>
+<text class="cap" x="32" y="426">(Track A runs in parallel; not the bottleneck)</text>
+
+<!-- ===== RIGHT PANEL: progress timeline ===== -->
+<rect class="panel" x="372" y="54" width="332" height="400" rx="8"/>
+<text class="h" x="388" y="76">▸ progress timeline</text>
+<text class="cap" x="388" y="91">where am I · what's done</text>
+
+<line x1="404" y1="110" x2="404" y2="392" stroke="var(--border-strong)" stroke-width="1.3"/>
+<circle cx="404" cy="116" r="6" fill="var(--ok)"/><text class="t" x="420" y="120">Setup</text>
+<circle cx="404" cy="162" r="6" fill="var(--ok)"/><text class="t" x="420" y="166">Execution — passes</text>
+<circle cx="404" cy="208" r="6" fill="var(--ok)"/><text class="t" x="420" y="212">Interim verdict</text>
+<circle cx="404" cy="254" r="6" fill="var(--now)"/><circle cx="404" cy="254" r="9" fill="none" stroke="var(--now)" stroke-width="1.3"/><text class="t" x="420" y="258">You are here — awaiting input</text>
+<circle cx="404" cy="300" r="6" fill="var(--surface-2)" stroke="var(--text-muted)" stroke-width="1.4"/><text class="t" x="420" y="304">Final verdict</text>
+<circle cx="404" cy="346" r="6" fill="var(--surface-2)" stroke="var(--text-muted)" stroke-width="1.4"/><text class="t" x="420" y="350">Plain-language editions</text>
+<circle cx="404" cy="392" r="6" fill="var(--surface-2)" stroke="var(--text-muted)" stroke-width="1.4"/><text class="t" x="420" y="396">Close</text>
+<text class="cap" x="388" y="430">two modes of one state view — rendered from verified repo state</text>
+</svg>
