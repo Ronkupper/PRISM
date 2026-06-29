@@ -195,7 +195,7 @@ What they share: one file, dual-audience (human-readable rationale + machine-par
 
 The **PRISM Lens Library** ([`lens/PRISM_lens_library.md`](./lens/PRISM_lens_library.md)) is the reference catalog of audit-scope lenses that grades scope-completeness at Setup — see [The Lens Library](#the-lens-library) for what it is and how it works.
 
-The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contributor-facing reference for what's checked mechanically on PRs. Two rules active (`PRISM-LINT-01 / named-refs-resolve`, error; `PRISM-LINT-02 / named-refs-orphan-anchor`, info); catalog version 4. A companion cross-file linter extends the same rule IDs across the Skill archive's files (core ↔ bundles ↔ lens). Seven reserved slots activate as their dependencies ship.
+The **PRISM lint catalog** ([`lint_rules.md`](./lint_rules.md)) is the contributor-facing reference for what's checked mechanically on PRs; catalog version 5. Active rules: `PRISM-LINT-01 / named-refs-resolve` (error) and `PRISM-LINT-02 / named-refs-orphan-anchor` (info), run over both `PRISM.md` and the split Skill archive (core ↔ bundles ↔ lens) via the now-CI-wired cross-file linter; plus the package-integrity rules `PRISM-LINT-10`–`13` (error) — frontmatter parses in every shipped `SKILL.md`/command, command field types, `plugin.json` / `marketplace.json` JSON-validity, and `VERSION` == `plugin.json` == marketplace version. The remaining slots (`PRISM-LINT-03`–`09`) stay reserved until their dependencies ship — `03`/`04`/`05`/`07` on the frontmatter schema (Pattern A), `06` on element-marking completeness (Pattern B, info), `08`/`09` on the embedded-lens field validators.
 
 ## Repository contents
 
