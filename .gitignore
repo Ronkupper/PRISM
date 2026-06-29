@@ -9,3 +9,7 @@ prism-skill-*.tgz
 # OS / editor cruft
 .DS_Store
 *.swp
+
+# Python bytecode cache (lint scripts)
+__pycache__/
+*.pyc

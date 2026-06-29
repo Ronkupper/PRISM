@@ -1,13 +1,11 @@
 name: lint
 
 on:
+  push:
+    branches: [main]
+    tags: ['**']
   pull_request:
     branches: [main]
-    paths:
-      - 'PRISM.md'
-      - 'scripts/lint/**'
-      - 'lint_rules.md'
-      - '.github/workflows/lint.yml'
 
 permissions:
   contents: read
@@ -71,6 +69,49 @@ jobs:
           else
             echo "::notice ::frontmatter schema not reachable from CI; PRISM-LINT-03 skipped"
           fi
+          # Note: the schema check above is best-effort and PRISM.md-only. The
+          # always-on structural gate is PRISM-LINT-10 (package-integrity step
+          # below), which parses every shipped SKILL.md/command frontmatter with
+          # no external schema, so an unreachable schema URL no longer leaves
+          # frontmatter unvalidated.
+
+      - name: Run cross-file lint — Skill archive (error + warning)
+        run: |
+          set +e
+          python scripts/lint/lint_cross_file_refs.py \
+            plugins/prism/skills/core/SKILL.md \
+            plugins/prism/skills/core/PRISM_core.md \
+            plugins/prism/skills/core/reference/*.md \
+            plugins/prism/skills/core/lens/PRISM_lens_library.md \
+            --severities error,warning > ndjson.archive.txt
+          code=$?
+          set -e
+          python scripts/lint/ndjson_to_gh.py ndjson.archive.txt
+          exit $code
+
+      - name: Run package-integrity lint (error + warning)
+        run: |
+          set +e
+          python scripts/lint/lint_package.py --severities error,warning > ndjson.pkg.txt
+          code=$?
+          set -e
+          python scripts/lint/ndjson_to_gh.py ndjson.pkg.txt
+          exit $code
+
+      - name: Verify plugin package builds with clean contents
+        run: |
+          bash scripts/build-plugin-zip.sh
+          VER=$(python -c "import json;print(json.load(open('plugins/prism/.claude-plugin/plugin.json'))['version'])")
+          ZIP="PRISM-plugin-${VER}.zip"
+          if unzip -Z1 "$ZIP" | grep -qiE '__pycache__|\.pyc$'; then
+            echo "::error ::plugin package $ZIP contains __pycache__/.pyc"; exit 1
+          fi
+          for e in '.claude-plugin/plugin.json' 'commands/' 'skills/'; do
+            if ! unzip -Z1 "$ZIP" | grep -q "^${e}"; then
+              echo "::error ::plugin package missing expected root entry: $e"; exit 1
+            fi
+          done
+          echo "package contents OK"
 
   lint-info:
     name: Informational lint (non-blocking)

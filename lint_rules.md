@@ -1,9 +1,10 @@
 # PRISM lint catalog
 
-**Catalog version:** 4
+**Catalog version:** 5
 
 This file is the contributor-facing reference catalog of lint rules
-enforced against `PRISM.md` by the workflow at `.github/workflows/lint.yml`.
+enforced against `PRISM.md` **and the installable plugin package** by the
+workflow at `.github/workflows/lint.yml`.
 Each rule has a stable ID (`PRISM-LINT-NN`), a stable alias, a severity,
 and a one-paragraph description.
 
@@ -136,6 +137,55 @@ linters, same rules:
 No new rule IDs — the same two rules over a wider surface. (This catalog-surface
 extension is why `lint_catalog_version` advances 2 → 3.)
 
+### Package integrity — the installable plugin (catalog v5, v2.20.2)
+
+The plugin package *is* the product, but CI gated only the framework prose. Two
+gaps closed at v5: (a) `lint_cross_file_refs.py` (cataloged active since v3) was
+wired into **no** workflow — it now runs in CI over the Skill archive, so a bare
+ref like `§7.2` in a core file is caught at merge, not at install; (b) the
+frontmatter schema step (`PRISM-LINT-03`) only touched `PRISM.md` and *silently
+skipped* when the private workshop schema URL was unreachable — leaving every
+`SKILL.md`/command frontmatter unvalidated. Four new rules, implemented by
+`scripts/lint/lint_package.py`, gate the package deterministically and
+unconditionally (no external schema fetch):
+
+#### `PRISM-LINT-10` / `package-frontmatter-parses` — error
+
+Every shipped `SKILL.md` (repo-root loader + `plugins/prism/skills/**/SKILL.md`)
+and every command file (`plugins/prism/commands/*.md`) has well-formed YAML
+frontmatter: the leading `---` … `---` block parses. Catches the unquoted-`description`-with-colon failure class. Always runs — this is the structural
+backstop that makes the best-effort `PRISM-LINT-03` schema step non-load-bearing.
+
+#### `PRISM-LINT-11` / `command-metadata-types` — error
+
+Command frontmatter field types match the Claude Code command schema:
+`description` is a non-empty string; `argument-hint`, if present, is a **string**
+(not a YAML flow list — `[a, b]` parses as a list and renders garbled in
+autocomplete; quote it); `disable-model-invocation`, if present, is a boolean.
+
+#### `PRISM-LINT-12` / `manifest-json-valid` — error
+
+`plugins/prism/.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`
+parse as JSON.
+
+#### `PRISM-LINT-13` / `version-consistency` — error
+
+`VERSION` equals `plugin.json` `version` equals the marketplace plugin entry's
+`version` (the `prism` entry under `plugins[]`; the top-level `metadata.version`
+is the independent marketplace-catalog counter and is not compared). A stale
+marketplace version is what greys the desktop **Update** button (RELEASING.md);
+this turns the manual checklist item into a CI gate.
+
+A companion CI step (`Verify plugin package builds with clean contents`) builds
+the upload package via `scripts/build-plugin-zip.sh` and asserts it has the
+expected root entries (`.claude-plugin/plugin.json`, `commands/`, `skills/`) and
+no `__pycache__`/`.pyc`. The build script also excludes those defensively.
+
+(This catalog-surface extension — CI-wiring the cross-file linter plus the four
+package rules — is why `lint_catalog_version` advances 4 → 5. The matching bump
+in `PRISM.md` frontmatter ships as a framework PATCH on its own track per
+`RELEASING.md`; the two integer counters may sit at different values off-cycle.)
+
 ## Output format
 
 All lint scripts emit NDJSON (newline-delimited JSON), one violation per
@@ -162,3 +212,4 @@ meaningfully (rule added; severity changed; rule removed).
 | 2 | `LINT-01`, `LINT-02` | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08` |
 | 3 | `LINT-01`, `LINT-02` — single-file (`PRISM.md`) **and** cross-file (Skill archive) | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08` |
 | 4 | `LINT-01`, `LINT-02` — single-file (`PRISM.md`) **and** cross-file (Skill archive) | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08`, `LINT-09` |
+| 5 | `LINT-01`, `LINT-02` — single-file **and** cross-file (**now CI-wired**); `LINT-10`, `LINT-11`, `LINT-12`, `LINT-13` (package integrity) | `LINT-03`, `LINT-04`, `LINT-05`, `LINT-06`, `LINT-07`, `LINT-08`, `LINT-09` |

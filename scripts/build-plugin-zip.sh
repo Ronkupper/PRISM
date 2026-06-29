@@ -21,7 +21,7 @@ VER="$(python3 -c "import json,sys;print(json.load(open('$PLUGIN_DIR/.claude-plu
 OUT="$ROOT/PRISM-plugin-${VER}.zip"
 
 rm -f "$OUT"
-( cd "$PLUGIN_DIR" && zip -rq "$OUT" . -x '*.DS_Store' )
+( cd "$PLUGIN_DIR" && zip -rq "$OUT" . -x '*.DS_Store' '*__pycache__*' '*.pyc' )
 
 # Verify the manifest landed at the archive root (the upload handler looks there).
 # Capture the file list first so grep -q closing the pipe early can't trip pipefail.
