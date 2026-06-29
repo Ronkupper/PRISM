@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.1 Skill bundle (on-demand reference). Currency reference (sections 7.5-7.6 + 18.3) — point-refresh, the Update session, and the session-open currency check. Fetch for an Update session or when the currency-check-at-open fires.
+<!-- PRISM v2.20.2 Skill bundle (on-demand reference). Currency reference (sections 7.5-7.6 + 18.3) — point-refresh, the Update session, and the session-open currency check. Fetch for an Update session or when the currency-check-at-open fires.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ### 7.5 Currency maintenance — point refresh `[methodological | stable]`
@@ -122,7 +122,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.20.1 attached; v{published} available at {releases URL}.`
+   `Framework v2.20.2 attached; v{published} available at {releases URL}.`
    `Lens v0.16 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at

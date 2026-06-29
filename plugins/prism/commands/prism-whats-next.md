@@ -1,6 +1,6 @@
 ---
 description: Resume a PRISM engagement — the PRISM Desk. Re-sync from the repo, show where you are and the one next action, and stage the next dispatch as a paste-ready Envelope.
-argument-hint: [master file or focus, optional]
+argument-hint: "[master file or focus, optional]"
 disable-model-invocation: true
 ---
 

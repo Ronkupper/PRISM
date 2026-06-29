@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.1 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
+<!-- PRISM v2.20.2 Skill bundle (on-demand reference). Parked v2 design ideas (section 8). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 8. Parked v2 design ideas

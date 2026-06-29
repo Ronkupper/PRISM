@@ -30,7 +30,7 @@ core first, fetch a bundle only when the work in front of you needs it.
 1. **Read `PRISM_core.md` in full** before acting — it is the operating core
    (operating model and architecture, the Execution Envelope / Self-check / Output
    triple contract, the prompt-package engine, the context-pressure framework
-   including the M5 bands and the in-core recovery floor, the §7.2 lens schema,
+   including the M5 bands and the in-core recovery floor, the §{section.lens-schema-what-orchestration-consumes} lens schema,
    Monitors M1–M12, Standing Principles, filename conventions, the atomic-prompt
    template, the operator-hint catalog, the engagement-closure gate, and the
    phase → bundle manifest). Phase-scoped mechanics (Setup, currency, continuity,

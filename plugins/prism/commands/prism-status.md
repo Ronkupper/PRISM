@@ -1,6 +1,6 @@
 ---
 description: Render the PRISM engagement state from verified repo state — the dependency / critical-path map and the progress timeline, side by side, with the code→name legend.
-argument-hint: [map | timeline | both, optional]
+argument-hint: "[map | timeline | both, optional]"
 disable-model-invocation: true
 ---
 

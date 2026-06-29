@@ -1,6 +1,6 @@
 ---
 description: Start a PRISM audit or research engagement for a subject — activates PRISM and begins Setup (probes P1–P7). The lifecycle entry point.
-argument-hint: [subject]
+argument-hint: "[subject]"
 disable-model-invocation: true
 ---
 

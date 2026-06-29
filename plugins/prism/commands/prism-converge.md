@@ -1,6 +1,6 @@
 ---
 description: Converge dispatch returns into the Master — transport-integrity check (Dispatch ID), Layer-1 absorption + reconciliation, write the convergence delta and refresh What's next.
-argument-hint: [returns file or paste, optional]
+argument-hint: "[returns file or paste, optional]"
 disable-model-invocation: true
 ---
 

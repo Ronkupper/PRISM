@@ -1,6 +1,6 @@
 ---
 description: Resume the PRISM Meta lane (methodology / contributor work) — pull canonical repo state, adopt the session number, drain the meta inbox, and continue from the meta resume-pointer.
-argument-hint: [meta pointer or focus, optional]
+argument-hint: "[meta pointer or focus, optional]"
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,6 @@
 ---
-description: Close a PRISM engagement — run the Engagement-closure gate (three-layer close sweep) and produce the deliverables: the plain-language report and, when the decision turns on numbers, the interactive workbook.
-argument-hint: [master file or focus, optional]
+description: Close a PRISM engagement — run the Engagement-closure gate (three-layer close sweep) and produce the deliverables — the plain-language report and, when the decision turns on numbers, the interactive workbook.
+argument-hint: "[master file or focus, optional]"
 disable-model-invocation: true
 ---
 

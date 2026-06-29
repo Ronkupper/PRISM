@@ -72,7 +72,7 @@ Skills from plugins work in chat too.
 
 ### Option B — attach the single file
 
-1. Download `PRISM.md` (stable) or `PRISM_v2_20_1.md` (version-pinned) from the repo.
+1. Download `PRISM.md` (stable) or `PRISM_v2_20_2.md` (version-pinned) from the repo.
    Raw URL: `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md`
 2. *Recommended:* create a **Project** (sidebar → **Projects** → **Create Project** → name it), then add `PRISM.md` to project knowledge so every chat in it has the framework loaded. Or attach `PRISM.md` directly to a single chat.
 

@@ -1,12 +1,12 @@
 ---
 # Skill metadata (consumed by Claude.ai skill loader)
 name: prism
-description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.20.1. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
+description: "PRISM — structured multi-session, multi-vendor LLM-orchestrated audit and research framework. Currently v2.20.2. Trigger this skill whenever the user invokes PRISM mechanics by name or by recognizable construct: PRISM, PRISM audit, PRISM v2, begin a PRISM audit, Master file, any filename matching *_master_p*.md or *_starter_v*.md (v1.x), Prompt Strategy, Lens Library, Vendor Selection, Vendor Triangulation, Setup probes or any of P1-P7 by number, Monitor M* or any of M1-M12 by number, Standing Principle SP-*, Execution Envelope, Execution Self-check, Execution Output, Dispatch register, Dispatch shape (equivalence/split/limitation-named), the What is next artifact, context band or 🟢🟡🟠🔴, migration handoff, P0/P1 boundary, three-layer readiness, Claude Project recommendation, Update session, point refresh, Setup artifacts (Decision brief / Stakeholder register / Claim inventory / Jurisdiction map). Also trigger when the user attaches a Master file or a Lens Library file. Read this file in full at the start of any PRISM session before doing any work."
 
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.20.1
-released: 2026-06-28
-supersedes: 2.20.0
+version: 2.20.2
+released: 2026-06-29
+supersedes: 2.20.1
 lens_library_embedded: "0.16"
 substrate_target:
   vendor: claude
@@ -17,12 +17,12 @@ normativity:
   strength_default: required
   polarity_vocabulary: ["✅", "⚠️", "🚫"]
   polarity_default: null
-lint_catalog_version: 4
+lint_catalog_version: 5
 ---
 
-# PRISM v2.20.1 — Framework operating document
+# PRISM v2.20.2 — Framework operating document
 
-**Status:** v2.20.1 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.20.2 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
 **Supersedes:** PRISM v2.20.0 (PATCH — plugin command-surface revision: the Skill ships a coherent engagement command set tracking the Setup → rounds → Closure lifecycle — `/prism-start` (begin), `/prism-whats-next` (the PRISM Desk — resume + next action), `/prism-converge` (the dispatch return leg), `/prism-status` (the STATE view), and `/prism-close` (the closure gate) — alongside `/prism-meta` for the methodology lane. No framework mechanic changes; `PRISM.md` and the projected Skill core are byte-stable apart from version strings. Lens Library stays v0.16; lint catalog stays v4.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** this file (or the
@@ -71,7 +71,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.20.1 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.20.2 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -86,7 +86,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.20.1 after running a session:
+Reading order for an operator returning to v2.20.2 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -94,11 +94,11 @@ Reading order for an operator returning to v2.20.1 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.20.1 covers `[structural | stable]`
+### 1.1 What v2.20.2 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.20.1 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.20.1 covers:
+PRISM v2.20.2 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.20.2 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -134,10 +134,10 @@ and research framework. v2.20.1 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.20.1 does not cover
+### 1.2 What v2.20.2 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.20.1 implements the spec; the spec implements
+- **Re-debating direction.** v2.20.2 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog ships embedded
@@ -145,14 +145,14 @@ and research framework. v2.20.1 covers:
   standalone file at `lens/PRISM_lens_library.md` (tag `prism-lens-v0.16`)
   remains authoritative for the Library's own evolution and for projects
   that explicitly pin to a newer Library version than the embedded copy.
-- **Empirical calibration.** Several thresholds in v2.20.1 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.20.2 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.20.1's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.20.2's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -160,7 +160,7 @@ and research framework. v2.20.1 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.20.1 honours the constraint inherited from the design document (DD.§8.3):
+v2.20.2 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -169,7 +169,7 @@ v2.20.1 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.20.1. Roadmap
+Mechanics that violate any leg do not earn their place in v2.20.2. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -180,14 +180,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.20.1 mechanics for the
+**Read this section first if you are encountering v2.20.2 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.20.1 has the following constructs, grouped by category.
+PRISM v2.20.2 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -8456,7 +8456,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.20.1 (this file)
+- **Framework version.** v2.20.2 (this file)
 - **Embedded Lens Library version.** v0.16 (Appendix G)
 - **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -8472,12 +8472,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_20_1.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_20_2.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_16.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.20.1` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.20.2` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -8503,7 +8503,7 @@ failed check is not an error.
    repository's `main` branch. The endpoints return one line each.
 3. Compare. If the published version is greater than the attached
    version on either track, surface a soft flag:
-   `Framework v2.20.1 attached; v{published} available at {releases URL}.`
+   `Framework v2.20.2 attached; v{published} available at {releases URL}.`
    `Lens v0.16 attached; v{published} available at {releases URL}.`
 4. The flag is informational. The operator decides whether to upgrade
    between sessions. PRISM does not silently swap attached files at
@@ -8546,8 +8546,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.20.1). https://github.com/Ronkupper/PRISM
+> (v2.20.2). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.20.1 framework operating document.*
+*End of PRISM v2.20.2 framework operating document.*
