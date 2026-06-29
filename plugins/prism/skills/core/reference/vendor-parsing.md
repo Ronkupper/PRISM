@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.2 Skill bundle (on-demand reference). Vendor parsing observations (Appendix H). Reference.
+<!-- PRISM v2.21.0 Skill bundle (on-demand reference). Vendor parsing observations (Appendix H). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix H — Vendor parsing observations
@@ -61,6 +61,27 @@ dispatched prompt body ensure semantic integrity even when fences are
 silently dropped in transit. The `not-tested` rows are placeholders;
 re-test at the next release sweep or when a session next dispatches
 fenced content via mobile paste on those vendors.
+
+### Heavy-line (`━`) delimiters in mobile-paste inputs
+
+Behavior when an envelope sent via the mobile-app *paste* input path uses
+`━━━` heavy-line delimiters — the PRISM dispatch-block convention
+(§{appendix.dispatch-conventions}, J.2) — instead of fenced Markdown / YAML.
+
+| Vendor | Status | Observed | Workaround |
+|---|---|---|---|
+| ChatGPT (mobile paste) | not-tested | — | — |
+| Claude (mobile paste) | not-tested | — | — |
+| Perplexity (mobile paste) | not-tested | — | — |
+| Gemini (mobile paste) | not-tested | — | — |
+
+These rows are **proactive placeholders** seeded by a queued real-device test
+(calibration item 10, §{section.empirical-calibration-items}); no vendor has an
+observation on record yet. The all-`not-tested` status is therefore expected, and
+this section is declared a queued-test section rather than reporting a sighting —
+the `━` heavy line is the dispatch convention precisely because it is
+fence-collision-safe and has no recorded transport incidents (rationale in J.2,
+§{appendix.dispatch-conventions}).
 
 ### Per-vendor download / export recipes
 

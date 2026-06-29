@@ -87,6 +87,13 @@ abstract: >-
   time and completes the document-review family, and curating external
   recommended-sources on the comparison and unit-economics lenses — and names
   that lens in the Independent Validation Dispatch default kit.
+  v2.21 ("External-review hardening") hardens the methodology from external
+  review — turn-close evaluate-then-emit ordering, a Self-check
+  visible-recompute line and a first-token Dispatch-ID echo, a clean split
+  between the orchestration dispatch record and the self-contained execution
+  seat paste, and a heavy-line-versus-XML dispatch-delimiter rationale — and
+  adds a runtime front door: a /prism-help orientation command and an
+  orientation-before-engagement core behavior.
   The framework codifies a triple execution contract
   (Envelope · Self-check · Output), Monitors, Standing Principles, a telemetric
   context-pressure framework, and continuous Master + What's-next state —
@@ -99,7 +106,7 @@ authors:
 repository-code: "https://github.com/Ronkupper/PRISM"
 url: "https://github.com/Ronkupper/PRISM"
 license: CC-BY-4.0
-version: "2.20.2"
+version: "2.21.0"
 date-released: "2026-06-29"
 keywords:
   - llm

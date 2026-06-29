@@ -59,6 +59,15 @@ core first, fetch a bundle only when the work in front of you needs it.
    Each gutted area carries a fail-loud in-core stub — operating without the
    required bundle is detectable, not a silent gap.
 
+**Front-door carve-out (before the halts).** If the operator's opening message
+is a bare *orientation question* ("how do I use PRISM", "where do I start",
+"what is this") with no engagement context — no Master, no subject — answer with
+a 30-second orientation and an offer to begin **before** the M1 / M2 halts in
+step 3; an orientation question is not an engagement open. SP-13 (step 2) still
+applies. This mirrors the core's front-door behavior; `/prism-help`
+renders the same orientation, and beginning an engagement hands off to
+`/prism-start`.
+
 ## On-demand bundles — fetch only when the task needs them
 
 Read these with the file tool at the moment a task calls for them; they are not

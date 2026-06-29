@@ -1,8 +1,8 @@
 ---
 # Framework metadata (consumed by PRISM maintenance tooling)
-version: 2.20.2
+version: 2.21.0
 released: 2026-06-29
-supersedes: 2.20.1
+supersedes: 2.20.2
 lens_library_bundled: "0.16"
 substrate_target:
   vendor: claude
@@ -16,15 +16,15 @@ normativity:
 lint_catalog_version: 5
 ---
 
-<!-- PRISM v2.20.2 Skill core (lean, always-loaded). Generated from the assembled
+<!-- PRISM v2.21.0 Skill core (lean, always-loaded). Generated from the assembled
      PRISM.md by scripts/decompose/project_skill_archive.py — edit PRISM.md, not this.
      Reference-grade material is in reference/*.md and lens/, fetched on demand. -->
 
-# PRISM v2.20.2 — Framework operating document
+# PRISM v2.21.0 — Framework operating document
 
-**Status:** v2.20.2 release. Canonical framework for Claude orchestration sessions.
+**Status:** v2.21.0 release. Canonical framework for Claude orchestration sessions.
 **Date:** June 2026
-**Supersedes:** PRISM v2.20.0 (PATCH — plugin command-surface revision: the Skill ships a coherent engagement command set tracking the Setup → rounds → Closure lifecycle — `/prism-start` (begin), `/prism-whats-next` (the PRISM Desk — resume + next action), `/prism-converge` (the dispatch return leg), `/prism-status` (the STATE view), and `/prism-close` (the closure gate) — alongside `/prism-meta` for the methodology lane. No framework mechanic changes; `PRISM.md` and the projected Skill core are byte-stable apart from version strings. Lens Library stays v0.16; lint catalog stays v4.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
+**Supersedes:** PRISM v2.20.2 (MINOR — external-review hardening, methodology lane: turn-close evaluate-then-emit ordering; a Self-check visible-recompute line (Step 6) and a first-token Dispatch-ID echo (Step 0); the orchestration dispatch-record vs. execution-seat-paste split (new template E.1a); a `━`-vs-XML dispatch-delimiter rationale (Appendix J.2 plus a new Appendix H heavy-line section) and a J.3 newline-normalization clarifier; and a runtime front door — the `/prism-help` command plus an orientation-before-engagement core behavior. Framework prose changes this release; Lens Library stays v0.16; lint catalog stays v5.). PRISM v1.10.4 is terminal on the v1.x line (pinned per DD §{section.standing-principles-introduced-or-extended-in-v2}).
 **Required attachments at every orchestration session:** the PRISM Skill
 (its core loads automatically) and the project's Master. The Skill bundles
 Lens Library v0.16 at `lens/PRISM_lens_library.md`, fetched on demand. Pin a
@@ -70,7 +70,7 @@ where pointing. Section headers carry the operative scope.
 
 Reading order for first encounter:
 
-1. **§{section.scope} Scope** (this section group) — what v2.20.2 is and what it isn't.
+1. **§{section.scope} Scope** (this section group) — what v2.21.0 is and what it isn't.
 2. **§{section.system-overview} System overview** — every construct, every lifecycle slot, the visual
    map. Use this to locate any specific mechanic later.
 3. **§{section.architecture-mechanics} Architecture** — sessions, the triple contract, Master, *What's next*,
@@ -85,7 +85,7 @@ After that, §{section.prompt-package-engine} (prompt-package engine), §{sectio
 v2 form), and §{section.operator-hint-catalog} (operator hint catalog) carry the rest of the operating
 mechanics. §{section.worked-example-flow} walks a complete worked example.
 
-Reading order for an operator returning to v2.20.2 after running a session:
+Reading order for an operator returning to v2.21.0 after running a session:
 *What's next* → relevant §{section.architecture-mechanics}–§{section.library-integration} mechanics → §{section.monitor-specifications} Monitors if a fire surfaced.
 
 ---
@@ -93,11 +93,11 @@ Reading order for an operator returning to v2.20.2 after running a session:
 ## 1. Scope
 <a id="section-scope"></a>
 
-### 1.1 What v2.20.2 covers `[structural | stable]`
+### 1.1 What v2.21.0 covers `[structural | stable]`
 <a id="section-what-v2-8-0-covers"></a>
 
-PRISM v2.20.2 is a structured multi-session, multi-vendor LLM-orchestrated audit
-and research framework. v2.20.2 covers:
+PRISM v2.21.0 is a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework. v2.21.0 covers:
 
 - **Two session types** (orchestration on Claude; execution on selected vendor per Vendor Selection)
   with explicit role separation (§{section.two-session-types}).
@@ -133,24 +133,24 @@ and research framework. v2.20.2 covers:
 - **Atomic prompt template v2 form** — wraps the triple contract around the
   prompt body (§{section.atomic-prompt-template-v2-form}).
 
-### 1.2 What v2.20.2 does not cover
+### 1.2 What v2.21.0 does not cover
 <a id="section-what-v2-8-0-does-not-cover"></a>
 
-- **Re-debating direction.** v2.20.2 implements the spec; the spec implements
+- **Re-debating direction.** v2.21.0 implements the spec; the spec implements
   the design document. Direction is settled. New direction goes through a
   fresh design cycle.
 - **Standalone Library evolution.** The Lens Library catalog is bundled at
   `lens/PRISM_lens_library.md` (tag `prism-lens-v0.16`, v0.16 at this release),
   fetched on demand. The bundled file remains authoritative for the Library's
   own evolution and for projects that explicitly pin to a newer Library version.
-- **Empirical calibration.** Several thresholds in v2.20.2 are rev. 1 draft
+- **Empirical calibration.** Several thresholds in v2.21.0 are rev. 1 draft
   estimates: M5 band thresholds (§{section.telemetric-framework-signal-weighting-and-compounding}), Update session trigger (§{section.currency-maintenance-update-session}),
   probe iteration ceilings (§{section.from-waterfall-to-library-graded-iterative-refinement}). Calibration against real use is a
   post-release item (§{section.empirical-calibration-items}).
 - **Multi-vendor Self-check empirical footing.** Verified on Claude
   Opus-class and Sonnet-class models. Behavior on Gemini, ChatGPT, Perplexity
   is report-worthy (§{section.empirical-calibration-items}).
-- **Non-Claude orchestration.** v2.20.2's machinery uses Claude-specific
+- **Non-Claude orchestration.** v2.21.0's machinery uses Claude-specific
   affordances (`present_files`, `create_file`, `str_replace`,
   `ask_user_input`, `conversation_search`, Skill packaging). Non-Claude
   orchestration is graceful-degradation, not a design target (DD.§3.1).
@@ -158,7 +158,7 @@ and research framework. v2.20.2 covers:
 ### 1.3 Three-leg constraint `[structural | stable]`
 <a id="section-three-leg-constraint"></a>
 
-v2.20.2 honours the constraint inherited from the design document (DD.§8.3):
+v2.21.0 honours the constraint inherited from the design document (DD.§8.3):
 
 - **Operator constraint.** Mobile-first; plain-chat substrate; manual
   artifact handling between sessions.
@@ -167,7 +167,7 @@ v2.20.2 honours the constraint inherited from the design document (DD.§8.3):
 - **Methodology constraint.** Structured audit-and-research with explicit
   scope-completeness and convergence discipline.
 
-Mechanics that violate any leg do not earn their place in v2.20.2. Roadmap
+Mechanics that violate any leg do not earn their place in v2.21.0. Roadmap
 adjacencies (DD.§9: automated cross-vendor orchestration, plugin-equipped
 execution, multi-vendor skill ecosystems) live in reserved structural
 surfaces — the `Tools:` slot and the reserved values on the
@@ -178,14 +178,14 @@ but no machinery beyond the reservation.
 ## 2. System overview
 <a id="section-system-overview"></a>
 
-**Read this section first if you are encountering v2.20.2 mechanics for the
+**Read this section first if you are encountering v2.21.0 mechanics for the
 first time, and re-read it any time you need to locate a specific construct.**
 This section is a map. Definitions live in the per-construct sections (§{section.architecture-mechanics}–§{section.missing-handoff-recovery}).
 
 ### 2.1 Construct list
 <a id="section-construct-list"></a>
 
-PRISM v2.20.2 has the following constructs, grouped by category.
+PRISM v2.21.0 has the following constructs, grouped by category.
 
 **Sessions** (§{section.two-session-types})
 - Orchestration session — Claude session with the framework attached
@@ -529,6 +529,28 @@ Crossing the boundary is the triple contract (§{section.the-triple-contract}). 
 inside execution sessions under SP-3; v2 dissolved SP-3 because it was
 incompatible with the split.
 
+**Front door — orientation before engagement entry** `[operator-scaffolding | stable | ✅]`
+
+When the operator's opening message is an *orientation question* ("how do I
+use PRISM", "where do I start", "what is this", "how does this work") rather
+than a named construct or an audit request, **and** there is no active
+engagement context (no Master attached, no subject), answer with a 30-second
+orientation — not the full engagement entry, and never a framework dump: (1)
+what it is — a structured multi-session, multi-vendor LLM-orchestrated audit
+and research framework; (2) the reassurance — you don't need to read it all,
+a lean always-loaded core pulls reference bundles on demand; (3) the one
+action — `/prism-start [subject]`, or "Run a PRISM audit/brief on [subject]";
+(4) the heaviness choice — a quick brief or a full audit (same rigor, less
+machinery; you can graduate later). Then offer to begin. Treat "the operator
+asks how to use it" as the intended front door, not a malformed open.
+
+This orientation is informational, not dependent work, so it is answered
+**before** the M1 / M2 missing-input halts (§{section.m1-missing-inputs}) — it
+is not an engagement open; SP-13 substrate verification
+(§{section.sp-13-substrate-declaration}) still applies. `/prism-help` renders the
+same orientation; beginning an engagement hands off to `/prism-start` (Setup is
+not duplicated here).
+
 ### 3.2 The triple contract `[structural | stable]`
 <a id="section-the-triple-contract"></a>
 
@@ -554,9 +576,9 @@ Project:            [project name]
 Master version:     [filename of Master at dispatch time]
 Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
 Posture:            epistemic | investigation
-Vendor:             [vendor] | multi-vendor          ← epistemic posture
-Dispatch shape:     equivalence | split | limitation-named   ← epistemic posture
-Dispatch rationale: [one positive-framing line per variant; see §4.2]   ← epistemic posture
+Vendor:             [vendor] | multi-vendor          ← epistemic posture [do-not-paste]
+Dispatch shape:     equivalence | split | limitation-named   ← epistemic posture [do-not-paste]
+Dispatch rationale: [one positive-framing line per variant; see §4.2]   ← epistemic posture [do-not-paste]
 Vendor config:      [vendor-specific config flags]
 Session hygiene:    [fresh session, project attachment posture, web search on/off]
 Tools:              [vendor tools requested; reserved slot for plugins/skills]
@@ -565,6 +587,12 @@ Expected output:    [filename to download as]
 Operator hints:     [zero or more one-line cues; see §3.2.4]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
+
+**Orchestration-side record.** This is the orchestration-side record of a
+dispatch; it is **never pasted whole** to an execution seat — the execution
+session receives the seat view (E.1a, §{appendix.execution-seat-paste-envelope-view}),
+the Envelope minus the triangulation fields. The record pairs with the
+never-copyable dispatch card (§{appendix.outbound-dispatch-card}).
 
 **Field semantics.**
 
@@ -639,6 +667,11 @@ Before doing the task:
    string-match only; never recompute the digest. (Restates
    the top-of-paste anchor, the truncation-surviving copy,
    which governs on any disagreement.)
+   On a clean Step 0, emit the matched Dispatch ID
+   as your first token, before any task output; on
+   a failed/truncated Step 0, the one-line
+   truncation report is your first token instead.
+   Any other first token means the gate did not run.
 1. State what model/vendor you are and what session
    state you can introspect (mode, thinking setting,
    tools enabled).
@@ -674,6 +707,14 @@ Before doing the task:
    noun, same metric. Exact match or rewrite;
    never round silently (SP-18, It must
    recompute).
+   Write each recompute out in full — operands
+   and operation on their own line, in the
+   Appendix K form (e.g. "share = 11 = 6+2+1+2") —
+   and compare that written line to the stated
+   value; do not assert "recomputed/matches"
+   without the line. Worked lines stay in the
+   working pass, not the shipped deliverable
+   (SP-17).
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -685,7 +726,14 @@ Before doing the task:
   is the only place the vendor may halt). It restates the top-of-paste anchor,
   which is the truncation-surviving copy and governs on disagreement; absent or
   mismatched, it halts with a one-line truncation report as the deliverable,
-  mirroring the mismatch-halts-task contract of steps 1–4.
+  mirroring the mismatch-halts-task contract of steps 1–4. The echo
+  (first-token Dispatch-ID emission) makes a silent Step-0 skip
+  detectable; it is the lowest-capability, vendor-agnostic observability
+  demand and adds no new halt class. The echoed line sits **outside** the
+  `PRISM EXECUTION OUTPUT` block and is **not** a reconciliation handle —
+  return reconciliation still reads the Dispatch ID + digest from the
+  Output signature only (§{section.transport-integrity-bracket}); the echo
+  is observability-only, discarded on convergence.
 - The vendor session must self-identify before touching task content.
   Self-identification is best-effort honest — vendors that cannot introspect
   a field hedge on it rather than fabricate.
@@ -703,7 +751,12 @@ Before doing the task:
   must recompute): recompute arithmetic, re-count enumerations, verify
   repeated structures as a set, re-read sourced claims for
   noun-and-metric congruence. Exact match or rewrite; silent rounding
-  is a violation. Judgment-class principles (§{principle.SP-17},
+  is a violation. Writing the line out is the mechanism, not a bare
+  assertion that it was checked; the notation reuses the visible-recompute
+  form of §{appendix.report-architecture} (Appendix K). The worked lines
+  belong to the working pass, kept out of the shipped deliverable per
+  §{principle.SP-17}.
+  Judgment-class principles (§{principle.SP-17},
   §{principle.SP-19}, §{principle.SP-20}) enforce via the Independent
   Validation Dispatch (§{section.independent-validation-dispatch}) and
   the Lens Library, with no Self-check step.
@@ -713,9 +766,10 @@ Sonnet-class models. Gemini, ChatGPT, Perplexity behavior under this
 block is **report-worthy finding** per DD.§3.5 — operators report
 divergences. See §{section.empirical-calibration-items}. Step 0's
 pre-task STOP is a stronger instruction-following demand than self-ID, so
-non-Claude adherence to the transport-integrity halt is itself a report-worthy
-calibration item — and a vendor that ignores Step 0 is no worse off than before
-the gate existed.
+non-Claude adherence to the transport-integrity halt — and to the first-token
+Dispatch-ID echo a clean Step 0 emits before any task output — is itself a
+report-worthy calibration item, and a vendor that ignores Step 0 is no worse
+off than before the gate existed.
 
 #### 3.2.3 PRISM Execution Output
 <a id="section-prism-execution-output"></a>
@@ -2098,9 +2152,11 @@ are protected.
 
 **Single-arm — strip the orchestration machinery.** A dispatched paste is a
 *single self-contained arm*: the executing vendor must not know it is one of N.
-Strip every orchestration-side field from the paste — `Vendor:` /
-`Vendor list:` / `Dispatch shape:` (`equivalence` / `split` / `limitation-
-named`) / dispatch rationale. The arm-count and the triangulation are
+Strip the orchestration triangulation fields from the paste — `Vendor
+list:` / `Dispatch shape:` (`equivalence` / `split` / `limitation-named`) /
+`Dispatch rationale:` — while **retaining** the single `Vendor:` and
+`Vendor config:` (required by Self-check Step 2,
+§{section.prism-execution-self-check}). The arm-count and the triangulation are
 orchestration-side bookkeeping; they live in the Envelope record's
 do-not-paste design block (§{section.single-envelope-with-spectrum-shape}),
 never in the execution unit. Pasting the orchestration envelope *as* the
@@ -3633,7 +3689,7 @@ body. It's the unit operators paste into execution sessions.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ━━━ PRISM EXECUTION ENVELOPE ━━━
-[Envelope per §3.2.1]
+[Execution seat paste — Envelope view, per E.1a (the §3.2.1 record minus the triangulation fields)]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ━━━ PRISM EXECUTION SELF-CHECK ━━━
@@ -3825,7 +3881,7 @@ to the maintainer.
 
 - **Repository.** `https://github.com/Ronkupper/PRISM`
 - **Maintainer.** Ron Kuper ([@Ronkupper](https://github.com/Ronkupper))
-- **Framework version.** v2.20.2 (this file)
+- **Framework version.** v2.21.0 (this file)
 - **Bundled Lens Library version.** v0.16 (`lens/PRISM_lens_library.md`)
 - **Release date.** 2026-06-28
 - **Licensing.** Documentation under CC BY 4.0; any code under MIT;
@@ -3841,12 +3897,12 @@ without that capability can paste the URLs into a browser and download.
 
 | Resource | Stable URL | Pinned URL |
 |---|---|---|
-| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_20_2.md` |
+| Framework (this file) | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/PRISM.md` | `…/PRISM_v2_21_0.md` |
 | Lens Library | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/PRISM_lens_library.md` | `…/lens/PRISM_lens_library_v0_16.md` |
 | Framework version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/VERSION` | — |
 | Lens version stamp | `https://raw.githubusercontent.com/Ronkupper/PRISM/main/lens/VERSION` | — |
 | Releases index | `https://github.com/Ronkupper/PRISM/releases` | — |
-| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.20.2` |
+| Release at this version | — | `https://github.com/Ronkupper/PRISM/releases/tag/v2.21.0` |
 
 The two `VERSION` endpoints exist as cheap currency checks: each is a
 single-line file containing the current version on the corresponding
@@ -3890,8 +3946,8 @@ To cite PRISM in published work, see `CITATION.cff` in the repository.
 A short attribution suitable for inline use:
 
 > Kuper, R. (2026). *PRISM: A Framework for LLM Research and Audits*
-> (v2.20.2). https://github.com/Ronkupper/PRISM
+> (v2.21.0). https://github.com/Ronkupper/PRISM
 
 ---
 
-*End of PRISM v2.20.2 framework operating document.*
+*End of PRISM v2.21.0 framework operating document.*

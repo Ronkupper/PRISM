@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.2 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
+<!-- PRISM v2.21.0 Skill bundle (on-demand reference). Templates compendium — paste-ready blocks (Appendix E). Fetch when producing a Setup/dispatch artifact.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix E — Templates compendium
@@ -17,9 +17,43 @@ Project:            [project name]
 Master version:     [filename of Master at dispatch time]
 Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
 Posture:            epistemic | investigation
-Vendor:             [vendor] | multi-vendor          ← epistemic posture
-Dispatch shape:     equivalence | split | limitation-named   ← epistemic posture
-Dispatch rationale: [one positive-framing line per variant]   ← epistemic posture
+Vendor:             [vendor] | multi-vendor          ← epistemic posture [do-not-paste]
+Dispatch shape:     equivalence | split | limitation-named   ← epistemic posture [do-not-paste]
+Dispatch rationale: [one positive-framing line per variant]   ← epistemic posture [do-not-paste]
+Vendor config:      [vendor-specific config flags]
+Session hygiene:    [fresh session, project attachment posture, web search on/off]
+Tools:              [vendor tools requested; reserved slot for plugins/skills]
+Attachments:        [filename, filename, ...]
+Expected output:    [filename to download as]
+Operator hints:     [zero or more one-line cues]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+**Orchestration-side record.** This is the orchestration-side record of a
+dispatch; it is **never pasted whole** to an execution seat — the execution
+session receives the seat view (E.1a below). The record pairs with the
+never-copyable dispatch card (§{appendix.outbound-dispatch-card}).
+
+### E.1a Execution seat paste — Envelope view
+<a id="appendix-execution-seat-paste-envelope-view"></a>
+
+The self-contained single-arm paste (§{section.atomic-prompt-self-containment}):
+the E.1 Envelope **record** minus the orchestration triangulation fields
+(`Vendor list:` / `Dispatch shape:` / `Dispatch rationale:`), with `Vendor:`
+resolved to the **single executing seat** (retained — Self-check Step 2 compares
+to it). This seat view — not the record — is what §{section.template-shape}
+pastes and what enters the J.3 digest preimage (§{appendix.dispatch-conventions};
+the byte scope is the content between the paste fences).
+
+```
+━━━ PRISM EXECUTION ENVELOPE ━━━
+Prompt ID:          [identifier — purpose/title]
+Dispatch ID:        [unique per dispatch instance; orchestration-generated; copy verbatim]
+Project:            [project name]
+Master version:     [filename of Master at dispatch time]
+Prompt digest:      [orchestration-generated at dispatch; copy verbatim; never recomputed]
+Posture:            epistemic | investigation
+Vendor:             [the single executing seat]
 Vendor config:      [vendor-specific config flags]
 Session hygiene:    [fresh session, project attachment posture, web search on/off]
 Tools:              [vendor tools requested; reserved slot for plugins/skills]
@@ -50,6 +84,11 @@ Before doing the task:
    string-match only; never recompute the digest. (Restates
    the top-of-paste anchor, the truncation-surviving copy,
    which governs on any disagreement.)
+   On a clean Step 0, emit the matched Dispatch ID
+   as your first token, before any task output; on
+   a failed/truncated Step 0, the one-line
+   truncation report is your first token instead.
+   Any other first token means the gate did not run.
 1. State what model/vendor you are and what session
    state you can introspect (mode, thinking setting,
    tools enabled).
@@ -85,6 +124,14 @@ Before doing the task:
    noun, same metric. Exact match or rewrite;
    never round silently (SP-18, It must
    recompute).
+   Write each recompute out in full — operands
+   and operation on their own line, in the
+   Appendix K form (e.g. "share = 11 = 6+2+1+2") —
+   and compare that written line to the stated
+   value; do not assert "recomputed/matches"
+   without the line. Worked lines stay in the
+   working pass, not the shipped deliverable
+   (SP-17).
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -451,7 +498,7 @@ Completeness:   This paste is complete ONLY if its LAST line is the terminal
                 do not begin. Presence + string-match only; never recompute the
                 digest.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-… Envelope · Self-check · body · Output-signature instruction …
+… Envelope (E.1a seat view) · Self-check · body · Output-signature instruction …
 ━━━ END PRISM DISPATCHED PASTE — <Dispatch ID> ━━━
 ```
 

@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.2 Skill bundle (on-demand reference). Worked example flow + empirical calibration items (sections 15-16). Reference.
+<!-- PRISM v2.21.0 Skill bundle (on-demand reference). Worked example flow + empirical calibration items (sections 15-16). Reference.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## 15. Worked example flow
@@ -110,7 +110,9 @@ feedback channel.
    per-project Learnings Register, staging area for Update-session
    promotion, or other?
 5. **Multi-vendor Self-check verification.** Verify Self-check block
-   adherence on Gemini, ChatGPT, Perplexity. Currently Claude-family
+   adherence on Gemini, ChatGPT, Perplexity — including the Step 0
+   first-token Dispatch-ID echo (does a clean Step 0 emit the matched
+   Dispatch ID before any task output?). Currently Claude-family
    verified only.
 6. **M5 band thresholds.** Volumetric thresholds (50KB / 200KB; 20 /
    40 turns; etc.) are rev. 1 draft estimates. Calibrate against real
@@ -128,6 +130,10 @@ feedback channel.
    session had passed); LL-D-020 ("Help or ammunition?") and LL-D-021
    ("Does a stranger follow?") fire rates. Calibrates family
    strictness and validation-dispatch cadence.
+10. **`━` heavy-line transport survival.** Does the `━━━` heavy-line
+    glyph survive mobile-app paste on ChatGPT, Claude, Perplexity, and
+    Gemini? Verifies the not-tested rows in the Appendix H heavy-line
+    section (§{appendix.vendor-parsing-observations}).
 
 These ride into the dogfood run as flagged items. Telemetry on each
 feeds the v2.1 minor version.

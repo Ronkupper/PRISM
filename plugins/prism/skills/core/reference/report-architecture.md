@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.2 Skill bundle (on-demand reference). Report architecture reference — the comprehensive final report skeleton + craft conventions, the interactive workbook cockpit pattern, the presentation house-style, and the reconcile-at-close checklist (Appendix K). Fetch when building or closing an engagement deliverable.
+<!-- PRISM v2.21.0 Skill bundle (on-demand reference). Report architecture reference — the comprehensive final report skeleton + craft conventions, the interactive workbook cockpit pattern, the presentation house-style, and the reconcile-at-close checklist (Appendix K). Fetch when building or closing an engagement deliverable.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix K — Report architecture (reference)

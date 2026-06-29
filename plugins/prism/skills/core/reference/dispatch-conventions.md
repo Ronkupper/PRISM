@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.2 Skill bundle (on-demand reference). Dispatch conventions reference — the promoted §A–H convention set, the promotion map, the canonical execution-paste model, and the digest-preimage pin (Appendix J). Fetch when building or converging a dispatch.
+<!-- PRISM v2.21.0 Skill bundle (on-demand reference). Dispatch conventions reference — the promoted §A–H convention set, the promotion map, the canonical execution-paste model, and the digest-preimage pin (Appendix J). Fetch when building or converging a dispatch.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ## Appendix J — Dispatch conventions (reference)
@@ -73,6 +73,22 @@ Use `━━━` heavy-line delimiters, never triple-backtick fences, for the pas
 internal blocks — they are fence-safe, so the whole paste survives inside one
 outer fenced block when rendered to the operator.
 
+**Why `━━━` and not XML tags.** "Fence-safe" here means
+fence-*collision*-safe — a `━━━` block nests inside the one outer fence the
+operator copies, where a ` ``` ` block cannot — not a Unicode-transport claim.
+The vendor-parsing ledger (§{appendix.vendor-parsing-observations}) indicts the
+*fences*, not the heavy line: ChatGPT mobile-paste silently strips ` ``` ` / `---`
+(observed 2026-05-15), while `━` has **zero** recorded transport incidents.
+Completeness, in any case, rides terminal-sentinel presence + Dispatch-ID
+string-match (Self-check Step 0, §{section.transport-integrity-bracket}), not the
+delimiter glyph. XML tag-soup degrades the mobile-paste legibility PRISM
+optimizes for, and reliable tag-extraction is a *Claude* property — execution is
+vendor-agnostic, so assuming tag-extraction is exactly the vendor dependency the
+dispatch surface is built to avoid. The remaining question — does `━` itself
+survive every mobile-paste path? — is empirical, not architectural; it is queued
+in §{appendix.vendor-parsing-observations} (the heavy-line section) and
+calibration item 10 (§{section.empirical-calibration-items}). No format change.
+
 ### J.3 Digest preimage — pin for re-stage reproducibility
 
 The copy-through digest (§{section.prism-execution-output}) is only reproducible
@@ -82,7 +98,11 @@ content between the paste fences, with the Envelope's (and Output's) `Reference:
 transport-integrity bracket (§{section.transport-integrity-bracket}) — the
 `PRISM PROMPT INTEGRITY` anchor block in full and the terminal
 `━━━ END PRISM DISPATCHED PASTE` sentinel — **excluded** from the byte scope as
-transport framing, and **no trailing-newline normalization**. (The bracket is
+transport framing, and **no trailing-newline normalization** — a re-stage rule only: it pins the
+preimage so a later session reproduces the *same* digest. It has no bearing on
+return verification, which reconciles a return by Dispatch-ID instance match and
+Prompt-digest copy-through comparison — never a rehash of clipboard bytes
+(§{section.recommended-vs-executed-reconciliation}). (The bracket is
 *excluded*, not normalized — its own `Prompt digest:` line is display-only and
 never enters the preimage; this differs from the `Reference:` line, which is
 *included-with-value-blanked*.)

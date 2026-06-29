@@ -1,4 +1,4 @@
-<!-- PRISM v2.20.2 Skill bundle (on-demand reference). Continuity reference (sections 5.4-5.6 + 14) — migration handoff format, failsafe-recovery mechanics, defensive migration at natural seams, and cold-open missing-handoff recovery. Fetch at a resume / context-seam, or when M5 reads 🟠/🔴.
+<!-- PRISM v2.21.0 Skill bundle (on-demand reference). Continuity reference (sections 5.4-5.6 + 14) — migration handoff format, failsafe-recovery mechanics, defensive migration at natural seams, and cold-open missing-handoff recovery. Fetch at a resume / context-seam, or when M5 reads 🟠/🔴.
      Generated from the assembled PRISM.md — edit PRISM.md, not this. -->
 
 ### 5.4 Migration handoff `[structural | stable]`
@@ -99,6 +99,22 @@ essentially nothing because state is always recoverable.
   - Always reflects the current state, not a future or planned state.
   - Operator reads *What's next* as the sole source of "what to do next" —
     not by scrolling chat, not by reading the Master in detail.
+
+- **Turn-close ordering — evaluate, then emit.** At every orchestration
+  turn-close the orchestrator first *evaluates* the per-turn Monitor set,
+  then *emits* the continuous-state artifacts (band header, Master, *What's
+  next*). The evaluation precedes the emission; a turn-close that writes
+  *What's next* without having run the per-turn evaluation is malformed.
+  - The per-turn set is M1 (Missing Inputs, §{section.m1-missing-inputs}),
+    M5 (Context Pressure, §{section.m5-context-pressure-monitor}), and M11
+    (Layer 2 Readiness, §{section.m11-layer-2-readiness}) — all evaluated
+    every turn-close — plus M3 / M10 whose preconditions are live this
+    turn. SPs are standing posture, not a per-turn checklist.
+  - The evaluation is **internal** — it produces no visible reasoning
+    block. Only *fires* surface: M5's band header, and each fire on the
+    *What's next* "Recent Monitor fires" field at its severity (SP-4). The
+    absence of fires is itself the all-quiet signal; PRISM emits no
+    per-turn evaluation transcript.
 
 - **Inbox drain at every orchestration turn-close (repo_backed lanes).**
   The lane owner reads its `OPEN_ITEMS` inbox alongside *What's next*, folds
