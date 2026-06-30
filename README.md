@@ -16,11 +16,12 @@
 |---|---|---|
 | **Claude plugin** | You use Claude web or desktop with plugins | **Customize → Plugins → + → Add marketplace**, enter `Ronkupper/PRISM`, then **Install** |
 | **Claude Code** | You work from a repo / terminal | `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism-marketplace` |
-| **Single file** | You're not using Claude plugins | Attach [`PRISM.md`](./PRISM.md) to a chat. Outside Claude orchestration this is best-effort / degraded mode. |
+| **Single file** | You're not using Claude plugins | Attach [`PRISM.md`](./PRISM.md) to a chat. Outside of Claude orchestration, this is best-effort / degraded mode. |
 
 ### 2. Set up your project (plugin paths)
 
-Before the first message, create a project for the engagement and paste the **[PRISM starter instructions](#starter-si)** into its instructions — one paste, about a minute. This makes PRISM's safety gates resident in every session of the project — most importantly a **complete core load** (the core is larger than a single read), plus the substrate check and the no-execution-without-explicit-ratification gate. New to projects? The **[Getting started guide](./GETTING_STARTED.md)** walks it step by step. *(Single-file users skip this — an attached `PRISM.md` is already fully in context.)*
+**IMPORTANT**: Before the first message, create a project for the engagement and paste the **[PRISM starter instructions](#starter-si)** into its **System Instructions** — one paste, about a minute. This means PRISM's safety gates are fully loaded in every session — **without them, this framework won't work as expected**.
+New to projects? The **[Getting started guide](./GETTING_STARTED.md)** walks it step by step. 
 
 ### 3. Start the work
 
