@@ -18,7 +18,11 @@
 | **Claude Code** | You work from a repo / terminal | `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism-marketplace` |
 | **Single file** | You're not using Claude plugins | Attach [`PRISM.md`](./PRISM.md) to a chat. Outside Claude orchestration this is best-effort / degraded mode. |
 
-### 2. Start the work
+### 2. Set up your project (plugin paths)
+
+Before the first message, create a project for the engagement and paste the **[PRISM starter instructions](#starter-si)** into its instructions — one paste, about a minute. This makes PRISM's safety gates resident in every session of the project — most importantly a **complete core load** (the core is larger than a single read), plus the substrate check and the no-execution-without-explicit-ratification gate. New to projects? The **[Getting started guide](./GETTING_STARTED.md)** walks it step by step. *(Single-file users skip this — an attached `PRISM.md` is already fully in context.)*
+
+### 3. Start the work
 
 The first thing Setup asks is how heavy to go — so say either:
 
@@ -27,7 +31,7 @@ The first thing Setup asks is how heavy to go — so say either:
 
 A quick brief keeps the rigor but drops the heavy machinery, and can graduate to a full engagement later without losing work.
 
-### 3. Follow the action card
+### 4. Follow the action card
 
 PRISM asks a few setup questions, then gives **one next action at a time**: answer it, approve the occasional real gate, paste one execution prompt where it tells you, attach the reply back, and continue. That's the loop.
 
@@ -94,6 +98,32 @@ Same framework on every surface — only install and invocation differ. **New he
 - **Claude Code** — `/plugin marketplace add Ronkupper/PRISM` then `/plugin install prism@prism-marketplace`.
 - **Upload the plugin (no marketplace)** — download `PRISM-plugin-<version>.zip` from the [latest release](https://github.com/Ronkupper/PRISM/releases/latest), then **Customize → Plugins → Personal → + → Upload plugin**. Installs the Skill directly — handy if a marketplace entry ever gets stuck.
 - **Any other vendor, or one file** — attach `PRISM.md` (or `PRISM_v2_21_0.md` for the version-pinned copy) to a fresh chat.
+
+<a id="starter-si"></a>
+**Set up your project, then paste the starter instructions** (plugin paths; single-file users skip — an attached `PRISM.md` is already resident). Create a project for the engagement and paste the block below into its instructions, wholesale. It makes PRISM's safety gates resident in every session — above all a *complete* core load, since the core is larger than one read. Setup replaces it with a fuller, engagement-specific install card once it runs; the [Getting started guide](./GETTING_STARTED.md) walks the project setup end to end.
+
+```
+━━━ PRISM — STARTER INSTRUCTIONS (paste into your project, wholesale) ━━━
+Orchestration: Claude, Opus-class. On every session open, in this order, before any work:
+
+1. LOAD THE CORE COMPLETELY. The PRISM Skill core (PRISM_core.md) is larger than one read
+   (~82k tokens; the file tool truncates at ~25k / ~1,000 lines). Page through it (offset/limit)
+   to its final line — a single truncated read is non-compliant; if you received only ~1,000
+   lines, keep reading. Then load the phase bundle the core's phase->bundle manifest (section
+   3.7.6) names — e.g. reference/setup.md at Setup, reference/continuity.md on resume.
+2. VERIFY SUBSTRATE (SP-13): confirm you are Claude, Opus-class; halt and ask on mismatch.
+3. CHECK INPUTS (M1) + VERSION (M2): halt at HIGH on a missing required artifact or version drift.
+
+RATIFICATION (SP-9): no execution — no Vendor Selection, dispatch, sub-agents, or passes —
+until the operator EXPLICITLY ratifies a named version. Topic-direction or scope additions are
+NOT ratification; scope changes RESET readiness.
+TURN-CLOSE: write the Master + What's next every turn; show your context band, and emit a
+handoff card the moment it reaches amber/red.
+
+Setup replaces these starter instructions with a fuller, engagement-specific install card —
+when it hands you that card, paste it over this one (wholesale, never splice).
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
 **Invoke** — ask in plain language:
 
