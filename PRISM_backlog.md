@@ -1,6 +1,6 @@
 # PRISM Backlog
 
-**Version:** 16
+**Version:** 17
 **Maintained by:** Ron Kuper + Claude
 **Purpose:** Capture ideas, proposals, and deferred items for future PRISM versions. Separate from PRISM.md because backlog items are proposals, not in-force rules — keeping them out of PRISM.md preserves the "everything in PRISM.md is canonical" property.
 
@@ -65,6 +65,27 @@ When an item is declined, move it to **Declined** with rationale — prevents re
 ### Multi-vendor skills/plugins ecosystems
 
 *(Active proposal — unchanged.)*
+
+---
+
+### Workflow-pattern fan-out in Quick mode (structured fan-out → synthesize → adversarial-verify)
+
+**Triggered by:** operator observation during the v2.17.0 dispatch-round-trip build (2026-06-28). The same-session, deterministic workflow pattern used to design-and-verify the transport-integrity bracket — fan out independent lenses → synthesize → adversarial-verify, all driven from one session — is a strong fit for **`SETUP_QUICKMODE`** (§6.6 + the Appendix I.6 mini-procedure).
+
+**The idea:** give Quick mode's fan-out a spine and a verify leg.
+- **Lens-driven fan-out.** Today step 2 (lite lens pick) and step 3 ("fan out clean-context sub-agents per strand") are loosely coupled. Tighten to **one picked lens → one clean-context sub-agent**, so the lens pick *drives* the fan-out — reusing the Lens Library as the decomposition.
+- **An adversarial-verify leg** — the part Quick mode lacks. Step 4 today is only the SP-16 / SP-17 / SP-18 *output gates* (negation audit, recompute, editions-stand-alone); it has no independent "try to refute the findings / hunt the missed falsifier" pass. Add a proportional one — the cheap in-session echo of the IVD.
+
+**Why it fits:** it is the production-stage sibling of the seam-③ clean-context converger (§3.7.2) and the Independent Validation Dispatch (§4.14) — both "use independent readers to check work," applied at the moment work is *produced* rather than at convergence/validation.
+
+**Caveats (load-bearing — the idea is wrong without them):**
+- **SP-15.** The sub-agents are one distribution → recall + internal stress-test, **not** cross-vendor triangulation. Adjudicate each catch **by re-derivation against the grounding facts**, never by sub-agent agreement-vote (the §4.14 / ML-73 discipline). A verdict-critical or *graduating* quick deliverable still wants a **distinct-vendor IVD** — the in-session skeptics do not replace it.
+- **Proportionality.** Scale down hard (2–3 lenses; the verify leg optional / single-skeptic or folded into synthesis as a self-critique; skippable for trivial tasks). Quick mode's whole point is cheap rigor — an 8-agent pass is not "quick."
+- **Surface.** The deterministic-*workflow* implementation is Claude-Code-specific; the **pattern** is portable as a recipe (model-driven fan-out on Claude.ai), with a one-line surface note — PRISM already handles this split (`auto_drive` deterministic on Code, model-driven elsewhere).
+
+**Where it lands:** a Quick-mode refinement — §6.6 rule + Appendix I.6 steps 3–4 — cross-referencing the seam-③ / IVD kinship. A future small slice or a Quick-mode-focused pass. Not gated; not part of the 2.15 → 2.19 ladder.
+
+**Logged:** 2026-06-28 (v2.17.0 build session).
 
 ---
 
